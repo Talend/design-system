@@ -7,7 +7,7 @@ import tokens from '../../tokens';
 
 export const BaseButton = styled(Button)`
 	display: inline-flex;
-	align-items: baseline;
+	align-items: center;
 	border: ${tokens.borders.normal};
 	border-radius: ${tokens.borders.rectRadius};
 	padding: ${tokens.spacings.none} ${tokens.spacings.large};
