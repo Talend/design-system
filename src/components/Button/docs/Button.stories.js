@@ -7,14 +7,6 @@ import Button from '../Button';
 import Dropdown from '../../Dropdown';
 import { createGlobalStyle } from 'styled-components';
 
-export default {
-	title: 'Components|Button',
-
-	parameters: {
-		component: Button,
-	},
-};
-
 const GlobalStyle = createGlobalStyle`
   html {
 	background-color: ${props => props.theme?.mainBackgroundColor};
@@ -32,9 +24,24 @@ const RowDiv = styled.div`
 	}
 `;
 
+export default {
+	title: 'Components|Button',
+
+	parameters: {
+		component: Button,
+	},
+	decorators: [
+		storyFn => (
+			<RowDiv>
+				<GlobalStyle />
+				{storyFn()}
+			</RowDiv>
+		),
+	],
+};
+
 export const basic = () => (
-	<RowDiv>
-		<GlobalStyle />
+	<>
 		<Button onClick={action('clicked')}>Basic Button</Button>
 		<Dropdown
 			as={Button}
@@ -51,12 +58,11 @@ export const basic = () => (
 		<Button disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button>
-	</RowDiv>
+	</>
 );
 
 export const primary = () => (
-	<RowDiv>
-		<GlobalStyle />
+	<>
 		<Button.Primary onClick={action('clicked')}>Basic Button</Button.Primary>
 		<Dropdown
 			as={Button.Primary}
@@ -73,11 +79,10 @@ export const primary = () => (
 		<Button.Primary disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Primary>
-	</RowDiv>
+	</>
 );
 export const destructive = () => (
-	<RowDiv>
-		<GlobalStyle />
+	<>
 		<Button.Destructive onClick={action('clicked')}>Basic Button</Button.Destructive>
 		<Dropdown
 			as={Button.Destructive}
@@ -94,11 +99,10 @@ export const destructive = () => (
 		<Button.Destructive disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Destructive>
-	</RowDiv>
+	</>
 );
 export const secondary = () => (
-	<RowDiv>
-		<GlobalStyle />
+	<>
 		<Button.Secondary onClick={action('clicked')}>Basic Button</Button.Secondary>
 		<Dropdown
 			as={Button.Secondary}
@@ -115,11 +119,11 @@ export const secondary = () => (
 		<Button.Secondary disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Secondary>
-	</RowDiv>
+	</>
 );
+
 export const ghost = () => (
-	<RowDiv>
-		<GlobalStyle />
+	<>
 		<Button.Ghost onClick={action('clicked')}>Basic Button</Button.Ghost>
 		<Dropdown
 			as={Button.Ghost}
@@ -136,11 +140,10 @@ export const ghost = () => (
 		<Button.Ghost disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Ghost>
-	</RowDiv>
+	</>
 );
 export const icon = () => (
-	<RowDiv>
-		<GlobalStyle />
+	<>
 		<Button.Icon onClick={action('clicked')} icon={'plus'}>
 			Basic Button
 		</Button.Icon>
@@ -160,5 +163,5 @@ export const icon = () => (
 		<Button.Icon disabled focusable onClick={action('clicked')} icon={'plus'}>
 			Disabled Focusable Button
 		</Button.Icon>
-	</RowDiv>
+	</>
 );

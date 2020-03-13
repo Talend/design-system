@@ -8,6 +8,7 @@ import tokens from '../../../tokens';
 
 const StyledButton = styled(Button)`
 	padding: 0;
+	min-height: unset;
 	height: ${tokens.sizes.small};
 	width: ${tokens.sizes.small};
 	align-items: center;

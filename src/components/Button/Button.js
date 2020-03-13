@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reakit';
-import styled, { createGlobalStyle, css, ThemeContext } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { tint } from 'polished';
 import tokens from '../../tokens';
 
@@ -11,7 +11,7 @@ export const BaseButton = styled(Button)`
 	border: ${tokens.borders.normal};
 	border-radius: ${tokens.borders.rectRadius};
 	padding: ${tokens.spacings.none} ${tokens.spacings.large};
-	height: ${tokens.sizes.large};
+	min-height: ${tokens.sizes.large};
 	font: ${tokens.typography.normal} ${tokens.typography.fontFamilies.sansSerif};
 	background: ${tokens.colors.transparent};
 	cursor: pointer;
@@ -31,6 +31,12 @@ export const BaseButton = styled(Button)`
 	&[aria-disabled='true'] {
 		color: ${tint(1 - tokens.opacity.disabled, tokens.colors.black)};
 		cursor: not-allowed;
+	}
+
+	svg {
+		margin-left: 1rem;
+		fill: currentColor;
+		flex: 0 0 1rem;
 	}
 `;
 
