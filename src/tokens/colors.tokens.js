@@ -35,5 +35,5 @@ export default {
 	warningColor: palette.jaffa,
 	successColor: palette.rioGrande,
 	destructiveColor: palette.chesnutRose,
-	transparent: 'rgba(0,0,0,0)',
+	transparent: 'transparent',
 };

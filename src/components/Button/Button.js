@@ -5,15 +5,14 @@ import styled, { createGlobalStyle, css, ThemeContext } from 'styled-components'
 import { tint } from 'polished';
 import tokens from '../../tokens';
 
-export const StyledComponent = styled(Button)`
+export const BaseButton = styled(Button)`
 	display: inline-flex;
 	align-items: baseline;
-	margin: ${tokens.spacings.smaller} ${tokens.spacings.small};
 	border: ${tokens.borders.normal};
 	border-radius: ${tokens.borders.rectRadius};
-	padding: ${tokens.spacings.none} ${tokens.spacings.normal};
+	padding: ${tokens.spacings.none} ${tokens.spacings.large};
 	height: ${tokens.sizes.large};
-	font: ${tokens.typography.normal};
+	font: ${tokens.typography.normal} ${tokens.typography.fontFamilies.sansSerif};
 	background: ${tokens.colors.transparent};
 	cursor: pointer;
 
@@ -28,31 +27,12 @@ export const StyledComponent = styled(Button)`
 		outline: ${tokens.colors.scooter} 0.3rem solid;
 	}
 
-	${props =>
-		props.disabled &&
-		css`
-			color: ${tint(1 - tokens.opacity.disabled, tokens.colors.black)} !important;
-			cursor: not-allowed !important;
-		`}
-
-	svg {
-		margin-left: 1rem;
-		height: 1rem;
-		max-width: 100%;
-		fill: currentColor;
+	&[disabled],
+	&[aria-disabled='true'] {
+		color: ${tint(1 - tokens.opacity.disabled, tokens.colors.black)};
+		cursor: not-allowed;
 	}
 `;
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${props => props.theme?.mainBackgroundColor};
-  }
-`;
-
-const BaseButton = React.forwardRef((props, ref) => {
-	// const themeContext = useContext(ThemeContext);
-	return <StyledComponent {...props} ref={ref} />;
-});
 
 BaseButton.propTypes = {
 	small: PropTypes.bool,

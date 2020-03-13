@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import styled from 'styled-components';
 
 import Button from '../Button';
 import Dropdown from '../../Dropdown';
@@ -15,13 +16,24 @@ export default {
 };
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${props => props.theme?.mainBackgroundColor};
+  html {
+	background-color: ${props => props.theme?.mainBackgroundColor};
+	font-size: 10px;
   }
 `;
 
+const RowDiv = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	> * {
+		margin: 0 2rem;
+	}
+`;
+
 export const basic = () => (
-	<>
+	<RowDiv>
 		<GlobalStyle />
 		<Button onClick={action('clicked')}>Basic Button</Button>
 		<Dropdown
@@ -39,11 +51,11 @@ export const basic = () => (
 		<Button disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button>
-	</>
+	</RowDiv>
 );
 
 export const primary = () => (
-	<>
+	<RowDiv>
 		<GlobalStyle />
 		<Button.Primary onClick={action('clicked')}>Basic Button</Button.Primary>
 		<Dropdown
@@ -61,10 +73,10 @@ export const primary = () => (
 		<Button.Primary disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Primary>
-	</>
+	</RowDiv>
 );
 export const destructive = () => (
-	<>
+	<RowDiv>
 		<GlobalStyle />
 		<Button.Destructive onClick={action('clicked')}>Basic Button</Button.Destructive>
 		<Dropdown
@@ -82,10 +94,10 @@ export const destructive = () => (
 		<Button.Destructive disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Destructive>
-	</>
+	</RowDiv>
 );
 export const secondary = () => (
-	<>
+	<RowDiv>
 		<GlobalStyle />
 		<Button.Secondary onClick={action('clicked')}>Basic Button</Button.Secondary>
 		<Dropdown
@@ -103,10 +115,10 @@ export const secondary = () => (
 		<Button.Secondary disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Secondary>
-	</>
+	</RowDiv>
 );
 export const ghost = () => (
-	<>
+	<RowDiv>
 		<GlobalStyle />
 		<Button.Ghost onClick={action('clicked')}>Basic Button</Button.Ghost>
 		<Dropdown
@@ -124,10 +136,10 @@ export const ghost = () => (
 		<Button.Ghost disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Ghost>
-	</>
+	</RowDiv>
 );
 export const icon = () => (
-	<>
+	<RowDiv>
 		<GlobalStyle />
 		<Button.Icon onClick={action('clicked')} icon={'plus'}>
 			Basic Button
@@ -148,5 +160,5 @@ export const icon = () => (
 		<Button.Icon disabled focusable onClick={action('clicked')} icon={'plus'}>
 			Disabled Focusable Button
 		</Button.Icon>
-	</>
+	</RowDiv>
 );
