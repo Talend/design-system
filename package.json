@@ -41,10 +41,13 @@
     "@storybook/react": "next",
     "@storybook/source-loader": "^6.0.0-alpha.26",
     "@storybook/theming": "next",
+    "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "storybook-addon-styled-component-theme": "^1.3.0",
+    "tailwind.macro": "^1.0.0-alpha.10",
+    "tailwindcss": "^1.2.0",
     "webpack": "^4.42.0"
   },
   "peerDependencies": {
