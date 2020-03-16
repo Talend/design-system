@@ -1,11 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import Button from '../Button';
 import Dropdown from '../../Dropdown';
-import { createGlobalStyle } from 'styled-components';
+
 import tokens from '../../../tokens';
 
 const GlobalStyle = createGlobalStyle`
@@ -167,8 +167,8 @@ export const Icon = () => (
 	</>
 );
 
-export const Theme = () => (
-	<ThemeProvider theme={{ ...tokens, colors: { ...tokens.colors, primaryColor: 'pink' } }}>
-		<Button.Primary>Basic Button</Button.Primary>
+export const WithTheme = () => (
+	<ThemeProvider theme={{ ...tokens, colors: { ...tokens.colors, primaryColor: 'deeppink' } }}>
+		<Button.Primary onClick={action('clicked')}>Basic Button</Button.Primary>
 	</ThemeProvider>
 );
