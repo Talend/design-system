@@ -3,11 +3,18 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { addDecorator } from '@storybook/react';
 import { withContexts } from '@storybook/addon-contexts/react';
 import { normalize } from 'polished';
-
+import { DocsPage } from 'storybook-addon-deps/blocks';
 import { contexts } from './contexts';
 
+
+
+addParameters({
+	docs: { page: DocsPage },
+	dependencies: { withStoriesOnly: true, hideEmpty: false },
+});
+
 const GlobalStyle = createGlobalStyle(({ theme }) => `
-  	${normalize()}
+	${normalize()}
   
 	html {
 		/* 1rem = 10px */
