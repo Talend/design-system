@@ -6,8 +6,6 @@ import { normalize } from 'polished';
 import { DocsPage } from 'storybook-addon-deps/blocks';
 import { contexts } from './contexts';
 
-
-
 addParameters({
 	docs: { page: DocsPage },
 	dependencies: { withStoriesOnly: true, hideEmpty: false },
