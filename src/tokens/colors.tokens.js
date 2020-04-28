@@ -34,6 +34,6 @@ export default {
 	informationColor: palette.lochmara,
 	warningColor: palette.jaffa,
 	successColor: palette.rioGrande,
-	destructiveColor: 'red',
+	destructiveColor: palette.chesnutRose,
 	transparent: 'rgba(0,0,0,0)',
 };
