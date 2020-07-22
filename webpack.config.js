@@ -1,15 +1,15 @@
 const path = require('path');
 
-module.exports = env => ({
+module.exports = (env = {}) => ({
 	mode: 'production',
 	optimization: {
-		minimize: !!env?.optimize,
+		minimize: !!env.optimize,
 	},
 	entry: './src/index.js',
 	output: {
 		path: path.join(__dirname, './dist'),
-		filename: env?.optimize ? 'cobalt.min.js' : 'cobalt.js',
-		library: 'TalendCobalt',
+		filename: env.optimize ? 'coral.min.js' : 'coral.js',
+		library: 'TalendCoral',
 		libraryTarget: 'umd',
 	},
 	resolve: {
