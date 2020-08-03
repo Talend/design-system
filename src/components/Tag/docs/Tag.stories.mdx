@@ -3,67 +3,102 @@ import Tag from '../';
 
 <Meta title="Components/Tag" component={Tag} />
 
+#### Components
 # Tag
+[//]: # (Optional short description of what the component is for)
 
-The Tag component is useful to emphasize information to the user, works best with single word values.
+<Preview>
+  <Story name="main">
+    <Tag>Example</Tag>
+	</Story>
+</Preview>
+
+## When to use this component
+
+Use the tag when you need to display a status or set of discrete attributes.
+
+An example could be when an item in a task list has been ‘completed’, or an object has multiple labels to help with search and discoverability.
+
+## When not to use this component
+
+Don't use this component inside body content or as a way to highlight sections of content.
+
+## Using this component
+
+Tags work best when they are short adjectives. Verbs should be avoided as they may cause the user to think the component is a link. Tags should always be written in sentence case.
+
+<Preview>
+  <Story name="Status (To do)">
+    <Tag>To do</Tag>
+  </Story>
+  <Story name="status-complete">
+    <Tag.Success>Complete</Tag.Success>
+	</Story>
+  <Story name="search">
+    <Tag.Information>New clients</Tag.Information>
+	</Story>
+ </Preview>
+
+## Variations
+
+### Contextual tags
+
+The tag component supports a set of generic contexts including:
+- `Information`
+- `Success`
+- `Warning`
+- `Destructive`
+
+<Preview>
+  <Story name="Information">
+    <Tag.Information>Information</Tag.Information>
+	</Story>
+  <Story name="Success">
+    <Tag.Success>Success</Tag.Success>
+	</Story>
+  <Story name="Warning">
+    <Tag.Warning>Warning</Tag.Warning>
+	</Story>
+  <Story name="Destructive">
+    <Tag.Destructive>Destructive</Tag.Destructive>
+	</Story>
+</Preview>
+
+### Truncated tags
+
+Tag length is always truncated to a proportional length that is relative to the font size used. Truncated tags will be appended with an ellipsis (...).
+
+<Preview>
+  <Story name="Truncated">
+    <Tag>Awaiting test completion</Tag>
+	</Story>
+ </Preview>
+
+[//]: # (## Handling errors)
+[//]: # (Optional)
+
+## Component properties
 
 ## Zoning
 
-## Style
-
-### Variations
-
-<Preview>
-    <Story name="Default">
-        <Tag>Example</Tag>
-	</Story>
-    <Story name="Information">
-        <Tag.Information>Example</Tag.Information>
-	</Story>
-    <Story name="Success">
-        <Tag.Success>Example</Tag.Success>
-	</Story>
-    <Story name="Warning">
-        <Tag.Warning>Example</Tag.Warning>
-	</Story>
-    <Story name="Destructive">
-        <Tag.Destructive>Example</Tag.Destructive>
-	</Story>
- </Preview>
-
-## States
-
-### Default
-
-<Preview>
-    <Story name="Ellipsis">
-        <Tag>Lorem ipsum dolor sit amet</Tag>
-	</Story>
- </Preview>
-
-## Content
-
-## Interaction
+[//]: # (## Content)
+[//]: # (Optional)
 
 ## Accessibility
 
-## Usage
+Large collections (clouds) of tags may be a source of visual confusion for some users. If you expect to display more than 10-15 tags in a single context, it may be appropriate to give users the option of displaying tags as a list.
 
-<Preview>
-  <Story
-    name="usage"
-    args={{
-      children: 'Lorem ipsum',
-    }}
-  >
-    {props => <Tag {...props} />}
-  </Story>
-</Preview>
+## Research on this component
 
-<Props story="usage" />
+Brief discussion of finding from user research and details of test scenarios.
+
+## Related patterns
+
+- [PATTERN NAME](a-pattern-link)
 
 ## Changelog
 
-| Date       | Author | Description |
-| ---------- | ------ | ----------- |
-| 07/30/2020 | Fabien Rassinier  | Init page   |
+| Date       | Author           | Description                        |
+| ---------- | ---------------- | ---------------------------------- |
+| 03/08/2020 | Ollie Williams   | New content and structural updates |
+| 07/30/2020 | Fabien Rassinier | Init page                          |
