@@ -8,9 +8,26 @@ import Tag from '../';
 [//]: # (Optional short description of what the component is for)
 
 <Preview>
-  <Story name="main">
-    <Tag>Example</Tag>
-	</Story>
+  <Story
+    name="usage"
+    args={{
+      children: 'Lorem ipsum',
+    }}
+    argTypes={{
+        variant: {
+            description: 'Tag variation',
+            control: {
+              type: 'select',
+              options: ['', 'Information', 'Success', 'Warning', 'Destructive'],
+            }
+        },
+    }}
+  >
+    {({ variant, ...rest }) => {
+        const Component = Tag[variant] || Tag;
+        return <Component {...rest} />;
+    }}
+  </Story>
 </Preview>
 
 ## When to use this component
