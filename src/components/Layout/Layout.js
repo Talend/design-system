@@ -27,8 +27,9 @@ export default function Layout({ header, nav, main, aside, footer, ...rest }) {
 							>
 								<Button.Icon
 									icon="opener"
+									data-testid="nav.toggle"
 									className={`nav__button ${isNavCollapsed ? 'nav__button--colapsed' : ''}`}
-									onClick={() => collapseNav(prevState => !prevState)}
+									onClick={() => collapseNav(!isNavCollapsed)}
 								>
 									Collapse menu
 								</Button.Icon>

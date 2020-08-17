@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import { VisuallyHidden as ReakitVisuallyHidden } from 'reakit';
 import Icon, { IconName } from '../Icon/Icon';

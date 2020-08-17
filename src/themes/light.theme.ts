@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { DefaultTheme } from 'styled-components';
 import { tint } from 'polished';
 

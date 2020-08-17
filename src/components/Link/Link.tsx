@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 
 import Icon, { IconName } from '../Icon/Icon';
@@ -17,6 +18,8 @@ export type LinkProps = {
 	target?: '_self' | '_blank' | '_parent' | '_top';
 	/** if the link is disabled */
 	disabled?: boolean;
+	className?: string;
+	children?: any;
 };
 
 const Link: React.FC<LinkProps> = React.forwardRef(

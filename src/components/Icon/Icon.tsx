@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
@@ -25,7 +26,8 @@ export type IconName =
 export type IconProps = {
 	/** The name of the icon  */
 	name: IconName;
-
+	/** If colors should be preserved */
+	preserveColors?: boolean;
 	className?: string;
 };
 
@@ -42,13 +44,17 @@ export default function Icon({ name, preserveColors, ...rest }: IconProps) {
 	if (!Object.keys(icons).find(iconName => iconName === name)) {
 		return null;
 	}
+	return null;
+	/*
 	return (
 		<SSVG
 			className="icon"
+			// @ts-ignore
 			preserveColors={preserveColors}
 			src={icons[name]}
 			aria-hidden
 			{...rest}
 		/>
 	);
+	*/
 }

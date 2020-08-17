@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import styled from 'styled-components';
 import { transparentize } from 'polished';
@@ -74,7 +75,7 @@ const Menu = ({ children }) => {
 	return (
 		<SMenu>
 			<ul>
-				{children.map((child, index) => (
+				{children.map((child: any, index: number) => (
 					<li key={index}>{child}</li>
 				))}
 			</ul>
