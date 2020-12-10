@@ -1,31 +1,36 @@
 import React from 'react';
-import { ButtonProps as ReakitButtonProps } from 'reakit';
+import { StyledProps } from 'styled-components';
 
 import Icon, { IconName } from '../Icon/Icon';
+import Loading from '../Loading';
 
 import * as S from './Button.style';
 
-export type ButtonProps = ReakitButtonProps & {
+export type ButtonProps = StyledProps<any> & {
 	/** The icon name of the button */
 	icon?: IconName;
 	/** If the button is small or not */
 	small?: boolean;
+	/** If the button is loading or not */
+	loading?: boolean;
 	/** If the button should not display text */
 	hideText?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
-	({ className, icon, small, hideText, children, ...rest }: ButtonProps, ref) => (
+	({ className, icon, small, hideText, loading, children, ...rest }: ButtonProps, ref) => (
 		<S.Button
 			ref={ref}
 			{...rest}
 			className={`
 				btn ${className ? className : ''} ${icon ? 'btn--has-icon' : ''} ${
 				hideText ? '' : 'btn--has-text'
-			} ${small ? `btn--small` : ''}
+			} ${small ? `btn--small` : ''} ${loading ? 'btn--loading' : ''}
 			`}
+			aria-busy={!!loading}
 		>
-			{icon && <Icon className="btn__icon" name={icon} />}
+			{loading && <Loading className="btn__loading" name={icon} aria-hidden />}
+			{!loading && icon && <Icon className="btn__icon" name={icon} />}
 			<span className={`btn__text ${hideText ? 'btn__text--hidden' : ''}`}>{children}</span>
 		</S.Button>
 	),

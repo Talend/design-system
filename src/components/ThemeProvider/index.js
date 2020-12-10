@@ -1,16 +1,20 @@
 import React from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { css, createGlobalStyle, ThemeProvider } from 'styled-components';
 import { normalize } from 'polished';
 
 import defaultTheme from '../../themes';
+import tokens from '../../tokens';
 
-const GlobalStyle = createGlobalStyle(
+const globalStyle = css(
 	({ theme }) => `  
-    
 	${normalize()};
 
 	*, ::after, ::before {
 		box-sizing: border-box;
+	}
+	
+	::selection {
+	  	background-color: ${tokens.colors.coral100};
 	}
 	
 	html {
@@ -51,6 +55,7 @@ const TalendThemeProvider = ({ theme = defaultTheme, children }) => (
 	<ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
-TalendThemeProvider.GlobalStyle = GlobalStyle;
+TalendThemeProvider.createGlobalStyle = createGlobalStyle;
+TalendThemeProvider.globalStyle = globalStyle;
 
 export default TalendThemeProvider;

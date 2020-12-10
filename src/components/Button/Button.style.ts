@@ -16,24 +16,21 @@ export const Button = styled(ReakitButton)(
 	}
 	
 	svg {
-		margin-left: 1rem;
 		flex-grow: 0;
 		flex-shrink: 0;
 	}
-
-	&.btn--small {
-		min-height: ${tokens.sizes.xl};
 	
-		&.btn--has-text {
-			padding: ${tokens.space.none} ${tokens.space.s};
-		}
+	.btn__loading {
+		width: ${tokens.sizes.l};
+		height: ${tokens.sizes.l};
 	}
 	
-	.btn__icon {
+ 	.btn__loading,
+ 	.btn__icon {
 		margin: 0;
 
 		+ .btn__text {
-			margin-left: 1rem; 
+			margin-left: ${tokens.space.s}; 
 		}
 	}
 	
@@ -53,6 +50,27 @@ export const Button = styled(ReakitButton)(
 		position: absolute;
 		whiteSpace: nowrap;
 		width: 1px;
+	}
+
+	&.btn--small {
+		min-height: ${tokens.sizes.xl};
+	
+		.btn__loading,
+		.btn__icon {
+			+ .btn__text {
+				margin-left: ${tokens.space.xs}; 
+			}
+		}
+		
+		&.btn--has-text {
+			padding: ${tokens.space.none} ${tokens.space.s};
+		}
+	}
+	
+	&.btn--loading {
+		color: ${theme.colors.buttonDisabledColor};
+		background: ${theme.colors.buttonDisabledBackgroundColor};
+		pointer-events: none;
 	}
 `,
 );

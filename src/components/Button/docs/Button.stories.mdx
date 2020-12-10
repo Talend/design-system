@@ -2,6 +2,8 @@ import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { FigmaImage, Use } from '../../../docs';
 import Button from '../';
+import Skeleton from '../../Skeleton';
+import Tooltip from '../../Tooltip';
 
 <Meta title="Components/Button" component={Button} />
 
@@ -34,15 +36,27 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 ### Variations
 
 **Primary**
+
 <Canvas>
 	<Story name="primary">
 		<Button.Primary onClick={action('clicked')}>Basic Button</Button.Primary>
+	</Story>
+	<Story name="primary--icon">
+		<Button.Primary onClick={action('clicked')} icon="plus">
+			Button with icon
+		</Button.Primary>
+	</Story>
+	<Story name="primary--small">
 		<Button.Primary small onClick={action('clicked')}>
 			Small Button
 		</Button.Primary>
+	</Story>
+	<Story name="primary--disabled">
 		<Button.Primary disabled onClick={action('clicked')}>
 			Disabled Button
 		</Button.Primary>
+	</Story>
+	<Story name="primary--disabled-focusable">
 		<Button.Primary disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Primary>
@@ -50,15 +64,27 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 </Canvas>
 
 **Destructive**
+
 <Canvas>
 	<Story name="destructive">
 		<Button.Destructive onClick={action('clicked')}>Basic Button</Button.Destructive>
+	</Story>
+	<Story name="destructive--icon">
+		<Button.Destructive onClick={action('clicked')} icon="plus">
+			Button with icon
+		</Button.Destructive>
+	</Story>
+	<Story name="destructive--small">
 		<Button.Destructive small onClick={action('clicked')}>
 			Small Button
 		</Button.Destructive>
+	</Story>
+	<Story name="destructive--disabled">
 		<Button.Destructive disabled onClick={action('clicked')}>
 			Disabled Button
 		</Button.Destructive>
+	</Story>
+	<Story name="destructive--disabled-focusable">
 		<Button.Destructive disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Destructive>
@@ -66,15 +92,27 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 </Canvas>
 
 **Secondary**
+
 <Canvas>
 	<Story name="secondary">
 		<Button.Secondary onClick={action('clicked')}>Basic Button</Button.Secondary>
+	</Story>
+	<Story name="secondary--icon">
+		<Button.Secondary onClick={action('clicked')} icon="plus">
+			Button with icon
+		</Button.Secondary>
+	</Story>
+	<Story name="secondary--small">
 		<Button.Secondary small onClick={action('clicked')}>
 			Small Button
 		</Button.Secondary>
+	</Story>
+	<Story name="secondary--disabled">
 		<Button.Secondary disabled onClick={action('clicked')}>
 			Disabled Button
 		</Button.Secondary>
+	</Story>
+	<Story name="secondary--disabled-focusable">
 		<Button.Secondary disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Secondary>
@@ -82,15 +120,27 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 </Canvas>
 
 **Tertiary**
+
 <Canvas>
 	<Story name="ghost">
 		<Button.Ghost onClick={action('clicked')}>Basic Button</Button.Ghost>
+	</Story>
+	<Story name="ghost--icon">
+		<Button.Ghost onClick={action('clicked')} icon="plus">
+			Button with icon
+		</Button.Ghost>
+	</Story>
+	<Story name="ghost--small">
 		<Button.Ghost small onClick={action('clicked')}>
 			Small Button
 		</Button.Ghost>
+	</Story>
+	<Story name="ghost--disabled">
 		<Button.Ghost disabled onClick={action('clicked')}>
 			Disabled Button
 		</Button.Ghost>
+	</Story>
+	<Story name="ghost--disabled-focusable">
 		<Button.Ghost disabled focusable onClick={action('clicked')}>
 			Disabled Focusable Button
 		</Button.Ghost>
@@ -98,17 +148,24 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 </Canvas>
 
 **Icon button**
+
 <Canvas>
 	<Story name="icon">
 		<Button.Icon onClick={action('clicked')} icon={'plus'}>
 			Basic Button
 		</Button.Icon>
+	</Story>
+	<Story name="icon--small">
 		<Button.Icon small onClick={action('clicked')} icon={'plus'}>
 			Small Button
 		</Button.Icon>
+	</Story>
+	<Story name="icon--disabled">
 		<Button.Icon disabled onClick={action('clicked')} icon={'plus'}>
 			Disabled Button
 		</Button.Icon>
+	</Story>
+	<Story name="icon--disabled-focusable">
 		<Button.Icon disabled focusable onClick={action('clicked')} icon={'plus'}>
 			Disabled Focusable Button
 		</Button.Icon>
@@ -116,29 +173,60 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 </Canvas>
 
 **Buttons should all have a tooltip on hover displaying the description**
+
 <Canvas>
 	<Story name="basic">
-		<Button onClick={action('clicked')}>Basic Button</Button>
-		<Button small onClick={action('clicked')}>
-			Small Button
-		</Button>
-		<Button disabled onClick={action('clicked')}>
-			Disabled Button
-		</Button>
-		<Button disabled focusable onClick={action('clicked')}>
-			Disabled Focusable Button
-		</Button>
+		<Tooltip title="Relevant information about contacting the support">
+			<Button.Primary onClick={action('clicked')} icon={'bubbles'}>
+				Contact support
+			</Button.Primary>
+		</Tooltip>
 	</Story>
 </Canvas>
 
 ## Interactions
 
-**Buttons has a loading states**
+### Button skeletons
 
-When the user clicks on the button, a spinner will appear on the left of the label. No actions will be possible until it's loading.
-In case of button with icon inside, the spinner will replace the icon as long as it's loading.
+<Canvas>
+	<Story name="skeleton">
+		<Skeleton.Button />
+	</Story>
+	<Story name="skeleton--small">
+		<Skeleton.Button small />
+	</Story>
+	<Story name="skeleton--icon">
+		<Skeleton.Icon />
+	</Story>
+</Canvas>
 
-// TODO add demo
+### Async button
+
+When the user clicks on the button, and the action is asynchronous, a spinner will appear on the left of the label.
+If the button has an icon, the spinner will temporary replace this icon as long as it's loading.
+No action will be possible until it's done.
+
+<Canvas>
+	<Story name="loading">
+		{() => {
+			const [loading, isLoading] = React.useState(false);
+			return (
+				<Tooltip title="Relevant description of the basic button">
+					<Button.Primary
+						icon="check"
+						loading={loading}
+						onClick={() => {
+							isLoading(true);
+							setTimeout(() => isLoading(false), 3000);
+						}}
+					>
+						Async call to action
+					</Button.Primary>
+				</Tooltip>
+			);
+		}}
+	</Story>
+</Canvas>
 
 ## Content
 
@@ -147,18 +235,16 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 <Use>
 	<Use.Do>
 		<ul>
-			<li>
-				Use sentence case in button labels.
-			</li>
+			<li>Use sentence case in button labels.</li>
 			<li>
 				Always start with an action verb: something happens when you click a button. Say what
 				happens with a verb. Navigation buttons are an example of an exception to using an action
 				verb. These often use Next and Back.
 			</li>
 			<li>
-				Choose specific words over vague words: “Try it now” for example is a common call to action (CTA), but
-				doesn’t really tell the user what will happen next. It might be too vague. Use your
-				judgement according to what the user should be doing when they click the button.
+				Choose specific words over vague words: “Try it now” for example is a common call to action
+				(CTA), but doesn’t really tell the user what will happen next. It might be too vague. Use
+				your judgement according to what the user should be doing when they click the button.
 			</li>
 			<li>
 				Choose words that logically align with the preceding content: if your headline says "Sign up
@@ -169,7 +255,9 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 	<Use.Dont>
 		<ul>
 			<li>Don’t use more than 3 words in a button: keep it short and simple.</li>
-			<li>Don't use Yes and No for buttons. Say what action really happens when the user clicks.</li>
+			<li>
+				Don't use Yes and No for buttons. Say what action really happens when the user clicks.
+			</li>
 			<li>Don't use title case or all caps in button labels (except for acronyms).</li>
 		</ul>
 	</Use.Dont>
@@ -180,10 +268,10 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 <Canvas>
 	<Story
 		name="usage"
-		height="20rem"
 		args={{
 			variant: 'Primary',
-			children: 'Lorem ipsum',
+			icon: 'upload',
+			children: 'Upload',
 		}}
 		argTypes={{
 			variant: {
@@ -191,6 +279,55 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 				control: {
 					type: 'select',
 					options: ['', 'Primary', 'Secondary', 'Ghost', 'Destructive', 'Icon'],
+				},
+			},
+			small: {
+				description: 'Button is small',
+				control: {
+					type: 'boolean',
+				},
+			},
+			icon: {
+				description: 'Button icon as illustration',
+				control: {
+					type: 'select',
+					options: [
+						'',
+						'arrowLeft',
+						'bell',
+						'burger',
+						'bubbles',
+						'caret',
+						'cross',
+						'check',
+						'datagrid',
+						'eye',
+						'eyeSlash',
+						'information',
+						'link',
+						'minus',
+						'opener',
+						'plus',
+						'search',
+						'talend',
+						'talendLogo',
+						'upload',
+						'user',
+						'validate',
+						'warning',
+					],
+				},
+			},
+			loading: {
+				description: 'Button is loading',
+				control: {
+					type: 'boolean',
+				},
+			},
+			hideText: {
+				description: 'Button has hidden text',
+				control: {
+					type: 'boolean',
 				},
 			},
 		}}

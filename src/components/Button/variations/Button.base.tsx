@@ -5,12 +5,12 @@ import tokens from '../../../tokens';
 
 const ButtonBase: React.FC<ButtonProps> = styled(Button)(
 	({ theme }) => `
-		padding: ${tokens.space.none} ${tokens.space.l};
+		padding: ${tokens.space.none} ${tokens.space.m};
 		min-height: ${tokens.sizes.xxl};
         color: ${theme.colors.textColor};
         border: ${tokens.borders.normal};
         border-radius: ${tokens.radii.rectRadius};
-    	transition: all 0.2s;
+    	transition: ${tokens.transitions.show};
 
         &:not([aria-disabled='true']):hover {
             background-color: ${theme.colors.buttonPrimaryHoverBackgroundColor};
