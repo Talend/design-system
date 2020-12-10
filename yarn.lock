@@ -1018,7 +1018,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
@@ -2586,10 +2586,10 @@
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
 
-"@types/js-cookie@2.2.6":
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.6.tgz#f1a1cb35aff47bc5cfb05cb0c441ca91e914c26f"
-  integrity sha512-+oY0FDTO2GYKEV0YPvSshGq9t7YozVkgvXLty7zogQNuCxBhT9/3INX9Q7H1aRZ4SUDRXAKlJuA4EA5nTt7SNw==
+"@types/js-cookie@2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.5.tgz#38dfaacae8623b37cc0b0d27398e574e3fc28b1e"
+  integrity sha512-cpmwBRcHJmmZx0OGU7aPVwGWGbs4iKwVYchk9iuMtxNCA2zorwdaTz4GkLgs2WGxiRZRFKnV1k6tRUHX7tBMxg==
 
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.6":
   version "7.0.6"
@@ -6779,7 +6779,7 @@ fake-tag@^2.0.0:
   resolved "https://registry.yarnpkg.com/fake-tag/-/fake-tag-2.0.0.tgz#08ea5df950ef8635833186247f569e8406ffb4da"
   integrity sha512-QDz+8qiNQ9AfBZ31EXlID5JIbUkU3e1nXDWk4tidFzd2gy8XJaEUW1HCuDY6DUy6t2Y0nvhD6PsUc+2WYy5w0w==
 
-fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
+fast-deep-equal@^3.1.1:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
@@ -8047,12 +8047,12 @@ hyphenate-style-name@^1.0.2:
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
-i18next@^19.8.4:
-  version "19.8.4"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.8.4.tgz#447718f2a26319b8debdbcc6fbc1a9761be7316b"
-  integrity sha512-FfVPNWv+felJObeZ6DSXZkj9QM1Ivvh7NcFCgA8XPtJWHz0iXVa9BUy+QY8EPrCLE+vWgDfV/sc96BgXVo6HAA==
+i18next@^15.1.3:
+  version "15.1.3"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-15.1.3.tgz#f1984cbee0e3cb00cff9008b037264289ce8840a"
+  integrity sha512-hN2DZLoRSY2h/RYeNqth5XxV4N1ekKGSJDCGhFmmuXkOCAfK5CkUG4VBv9OBXrvf93xApv0KKBVrb0zJP31EKg==
   dependencies:
-    "@babel/runtime" "^7.12.0"
+    "@babel/runtime" "^7.3.1"
 
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
@@ -12080,10 +12080,10 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-i18next@^11.8.0:
-  version "11.8.1"
-  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.8.1.tgz#bf60a03aa1522bb227a669e1b41afab25089acec"
-  integrity sha512-PbKWBphflI7la0gFc4MneeigmnCT2M/axnUUhCAz3MqfVekRdupFJFvYE25jiIMzbJcIpJeQJDfp/zyktD/O6Q==
+react-i18next@^10.11.4:
+  version "10.13.2"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-10.13.2.tgz#2943705fa751d366fc95b3755520ebe6eeed2408"
+  integrity sha512-DGoauWUdPEv/+PLa03nN+wlW31XrGmQJz+zIyOA+tRTIwlRaNgeM62nGP1WG3g7fJrphMZUwPcAQqNv6XBYM4w==
   dependencies:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
@@ -12189,30 +12189,24 @@ react-textarea-autosize@^8.1.1:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-universal-interface@^0.6.2:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
-  integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
-
-react-use@^15.3.4:
-  version "15.3.4"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.4.tgz#f853d310bd71f75b38900a8caa3db93f6dc6e872"
-  integrity sha512-cHq1dELW6122oi1+xX7lwNyE/ugZs5L902BuO8eFJCfn2api1KeuPVG1M/GJouVARoUf54S2dYFMKo5nQXdTag==
+react-use@^13.27.0:
+  version "13.27.1"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.27.1.tgz#e2ae2b708dafc7893c4772628801589aab9de370"
+  integrity sha512-bAwdqDMXs5lovEanXnL1izledfrPEUUv1afoTVB59eUiYcDyKul+M/dT/2WcgHjoY/R6QlrTcZoW4R7ifwvBfw==
   dependencies:
-    "@types/js-cookie" "2.2.6"
+    "@types/js-cookie" "2.2.5"
     "@xobotyi/scrollbar-width" "1.9.5"
     copy-to-clipboard "^3.2.0"
-    fast-deep-equal "^3.1.3"
+    fast-deep-equal "^3.1.1"
     fast-shallow-equal "^1.0.0"
     js-cookie "^2.2.1"
     nano-css "^5.2.1"
-    react-universal-interface "^0.6.2"
     resize-observer-polyfill "^1.5.1"
     screenfull "^5.0.0"
     set-harmonic-interval "^1.0.1"
     throttle-debounce "^2.1.0"
     ts-easing "^0.2.0"
-    tslib "^2.0.0"
+    tslib "^1.10.0"
 
 react@^16.14.0:
   version "16.14.0"
@@ -14467,7 +14461,7 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
