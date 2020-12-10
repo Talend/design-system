@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps as ReakitButtonProps } from 'reakit/Button';
+import { ButtonProps as ReakitButtonProps } from 'reakit';
 
 import Icon, { IconName } from '../Icon/Icon';
 
