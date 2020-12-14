@@ -42,7 +42,7 @@
     "@svgr/webpack": "^5.5.0",
     "@talend/scripts-core": "7.1.2",
     "@talend/scripts-preset-react-lib": "7.1.2",
-    "@testing-library/react": "^10.4.8",
+    "@testing-library/react": "^11.2.2",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
     "@types/react-is": "^16.7.2",
