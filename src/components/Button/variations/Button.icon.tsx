@@ -1,26 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button, { ButtonProps } from '../Button';
+import ButtonBase from './Button.base';
+import { ButtonProps } from '../Button';
 import tokens from '../../../tokens';
 
-const ButtonIcon: React.FC<ButtonProps> = styled(Button).attrs({ hideLabel: true })(
+const ButtonIcon: React.FC<ButtonProps> = styled(ButtonBase).attrs({ hideText: true })(
 	({ theme }) => `
 	padding: 0;
+	padding: ${tokens.space.xs};
 	min-height: unset;
-	height: ${tokens.sizes.xl};
-	width: ${tokens.sizes.xl};
 	align-items: center;
 	justify-content: center;
 	color: ${theme.colors.buttonPrimaryBackgroundColor};
 	border-color: currentColor;
 	border-radius: ${tokens.radii.circleRadius};
 
-	&:hover {
-		color: ${theme.colors.buttonPrimaryHoverBackgroundColor};
-	}
-
+	&:hover,
 	&:active {
-		color: ${theme.colors.buttonPrimaryActiveBackgroundColor};
+		color: ${theme.colors.buttonPrimaryColor};
 	}
 
 	&[aria-disabled='true'] {

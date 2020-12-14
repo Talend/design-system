@@ -1,33 +1,38 @@
 //@ts-nocheck
 import React from 'react';
-import { VisuallyHidden as ReakitVisuallyHidden } from 'reakit';
+import { StyledProps } from 'styled-components';
+
 import Icon, { IconName } from '../Icon/Icon';
+import Loading from '../Loading';
+
 import * as S from './Button.style';
 
-export type ButtonProps = {
+export type ButtonProps = StyledProps<any> & {
 	/** The icon name of the button */
 	icon?: IconName;
 	/** If the button is small or not */
 	small?: boolean;
-	/** If the button should not display children */
-	hideLabel?: boolean;
-	className?: string;
-	children?: any;
+	/** If the button is loading or not */
+	loading?: boolean;
+	/** If the button should not display text */
+	hideText?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
-	({ className, icon, small, hideLabel, children, ...rest }: ButtonProps, ref) => (
+	({ className, icon, small, hideText, loading, children, ...rest }: ButtonProps, ref) => (
 		<S.Button
+			ref={ref}
 			{...rest}
 			className={`
-				btn ${className ? className : null} ${small ? `btn--small` : ''}  ${
-				icon && hideLabel ? `btn--icon` : ''
-			}
+				btn ${className ? className : ''} ${icon ? 'btn--has-icon' : ''} ${
+				hideText ? '' : 'btn--has-text'
+			} ${small ? `btn--small` : ''} ${loading ? 'btn--loading' : ''}
 			`}
-			ref={ref}
+			aria-busy={!!loading}
 		>
-			{icon && <Icon className="btn__icon" name={icon} />}
-			{hideLabel ? children && <ReakitVisuallyHidden>{children}</ReakitVisuallyHidden> : children}
+			{loading && <Loading className="btn__loading" name={icon} aria-hidden />}
+			{!loading && icon && <Icon className="btn__icon" name={icon} />}
+			<span className={`btn__text ${hideText ? 'btn__text--hidden' : ''}`}>{children}</span>
 		</S.Button>
 	),
 );

@@ -3,7 +3,7 @@ import { shade } from 'polished';
 
 import tokens from '../../tokens';
 
-export const Switch = styled.div(
+export const Switch = styled.div<{ values: any[]; disabled: boolean; readOnly: boolean }>(
 	({ theme, values, disabled, readOnly }) => `
 	div {
 		position: relative;
@@ -26,7 +26,9 @@ export const Switch = styled.div(
 		font-size: ${tokens.fontSizes.small};
     	opacity: ${tokens.opacity.disabled};
 		user-select: none; 		
-    	cursor: pointer;
+		cursor: pointer;
+		background: none;
+		border: none;
 		z-index: 2;
 	}
 	
@@ -44,7 +46,7 @@ export const Switch = styled.div(
     	left: 0;
     	width: 0;
     	bottom: 0;
-    	transition: transform .2s, width .2s;
+    	transition: ${tokens.transitions.fast};
 		z-index: 1;
   	}
   	
@@ -72,7 +74,7 @@ export const Switch = styled.div(
 	} 
   
 	[data-checked] {
-		transition: color .3s;
+		transition: color ${tokens.transitions.normal};
 	}
 	
 	[data-checked="true"] {

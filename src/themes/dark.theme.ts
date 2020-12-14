@@ -48,6 +48,12 @@ const theme: DefaultTheme = {
 		inputBorderDisabledColor: colors.gray300,
 		inputBorderReadOnlyColor: colors.gray300,
 
+		modalBackground: colors.gray700,
+		modalHeadingBackground: colors.gray800,
+		modalHeadingBorderColor: colors.gray900,
+
+		skeletonBackgroundColor: colors.gray100,
+
 		tagDefaultColor: colors.gray700,
 		tagDefaultBackgroundColor: colors.gray75,
 		tagInformationColor: colors.lochmara700,

@@ -1,12 +1,15 @@
-//@ts-nocheck
 import React from 'react';
-import styled from 'styled-components';
-import SVG from 'react-inlinesvg';
-
+import styled, { StyledProps } from 'styled-components';
+import { BoxProps } from 'reakit';
 import icons from '../../icons';
+
+import tokens from '../../tokens';
 
 export type IconName =
 	| 'arrowLeft'
+	| 'bell'
+	| 'burger'
+	| 'bubbles'
 	| 'caret'
 	| 'cross'
 	| 'check'
@@ -16,45 +19,51 @@ export type IconName =
 	| 'information'
 	| 'link'
 	| 'minus'
+	| 'opener'
 	| 'plus'
 	| 'search'
 	| 'talend'
+	| 'talendLogo'
 	| 'upload'
+	| 'user'
 	| 'validate'
 	| 'warning';
 
-export type IconProps = {
-	/** The name of the icon  */
-	name: IconName;
-	/** If colors should be preserved */
-	preserveColors?: boolean;
-	className?: string;
-};
+export type IconProps = BoxProps &
+	StyledProps<any> & {
+		/** The name of the icon  */
+		name: IconName;
+	};
 
-const SSVG = styled(SVG)(
+const SVG = styled.svg<IconProps & { preserveColors: boolean }>(
 	({ preserveColors }) => `
-	path {
-		${preserveColors ? '' : 'fill: currentColor'};
+	width: ${tokens.sizes.l};
+	height: ${tokens.sizes.l};
+
+	circle,
+	path,
+	rect {
+		${preserveColors ? '' : 'fill: currentColor;'}
 	}
 `,
 );
 
-// TODO https://medium.com/@allalmohamedlamine/react-best-way-of-importing-svg-the-how-and-why-f7c968272dd9
-export default function Icon({ name, preserveColors, ...rest }: IconProps) {
-	if (!Object.keys(icons).find(iconName => iconName === name)) {
-		return null;
-	}
-	return null;
-	/*
-	return (
-		<SSVG
-			className="icon"
-			// @ts-ignore
-			preserveColors={preserveColors}
-			src={icons[name]}
-			aria-hidden
-			{...rest}
-		/>
-	);
-	*/
-}
+const Icon: React.FC<IconProps> = React.forwardRef(
+	({ className, name, ...rest }: IconProps, ref) => {
+		if (!Object.keys(icons).find(iconName => iconName === name)) {
+			return null;
+		}
+		return (
+			<SVG
+				// @ts-ignore
+				as={icons[name].ReactComponent}
+				aria-hidden
+				{...rest}
+				className={`icon ${className || ''}`}
+				ref={ref}
+			/>
+		);
+	},
+);
+
+export default React.memo(Icon);

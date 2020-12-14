@@ -1,4 +1,6 @@
-import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/blocks';
+import { FigmaImage, Use } from '../../../docs';
+import Tooltip from '../../Tooltip';
 import Toggle from '../';
 
 <Meta title="Components/Toggle" component={Toggle} />
@@ -9,31 +11,36 @@ The Toggle button component is used to toggle features visibility.
 
 ## Zoning
 
+<FigmaImage
+	src="https://www.figma.com/file/2Sw2IvUHZ9F2srJ3L8AWxr/%F0%9F%93%90-Zoning?node-id=32%3A56"
+	alt="zoning image for toggle"
+/>
+
 ## Style
 
 ## States
 
 ### Default
 
-<Preview>
-    <Story name="Active">
-        <Toggle isActive icon="datagrid" />
+<Canvas>
+	<Story name="Active">
+		<Toggle isActive icon="datagrid" />
 	</Story>
-    <Story name="Inactive">
-        <Toggle icon="datagrid" />
+	<Story name="Inactive">
+		<Toggle icon="datagrid" />
 	</Story>
- </Preview>
+</Canvas>
 
 ### Disabled
 
-<Preview>
-    <Story name="Disabled Active">
-        <Toggle disabled isActive icon="datagrid"/>
+<Canvas>
+	<Story name="Disabled Active">
+		<Toggle disabled isActive icon="datagrid" />
 	</Story>
-    <Story name="Disabled Inactive">
-        <Toggle disabled icon="datagrid"/>
+	<Story name="Disabled Inactive">
+		<Toggle disabled icon="datagrid" />
 	</Story>
- </Preview>
+</Canvas>
 
 ## Content
 
@@ -43,21 +50,25 @@ The Toggle button component is used to toggle features visibility.
 
 ## Usage
 
-<Preview>
-  <Story
-    name="usage"
-    args={{
-        icon: 'datagrid',
-    }}
-  >
-    {props => <Toggle {...props} />}
-  </Story>
-</Preview>
+<Canvas>
+	<Story
+		name="usage"
+		args={{
+			icon: 'datagrid',
+		}}
+	>
+		{props => (
+			<Tooltip title="Toggle the feature">
+				<Toggle {...props} />
+			</Tooltip>
+		)}
+	</Story>
+</Canvas>
 
 <Props story="usage" />
 
 ## Changelog
 
-| Date       | Author | Description |
-| ---------- | ------ | ----------- |
-| 07/30/2020 | Fabien Rassinier  | Init page   |
+| Date       | Author           | Description |
+| ---------- | ---------------- | ----------- |
+| 07/30/2020 | Fabien Rassinier | Init page   |

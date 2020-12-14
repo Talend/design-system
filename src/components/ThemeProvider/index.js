@@ -1,23 +1,45 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-const GlobalStyle = createGlobalStyle(
-	({ theme }) => `
+import React from 'react';
+import { css, createGlobalStyle, ThemeProvider } from 'styled-components';
+import { normalize } from 'polished';
 
+import defaultTheme from '../../themes';
+import tokens from '../../tokens';
+
+const globalStyle = css(
+	({ theme }) => `  
+	${normalize()};
+
+	*, ::after, ::before {
+		box-sizing: border-box;
+	}
+	
+	::selection {
+	  	background-color: ${tokens.colors.coral100};
+	}
+	
 	html {
 		/* 1rem = 10px */
 		font-size: 62.5%;
+		scroll-behavior: smooth;
 	}
 
 	body {
 		margin: 0;
 		padding: 0;
-        font-size: 14px;
+        font-family: 'Open Sans', sans-serif;
+		font-size: 14px;
 	}
-
-	.sb-show-main,
-	.sbdocs.sbdocs-preview {
-		background: ${theme.colors.backgroundColor};
+	
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    
+    a {
+        text-decoration: none;
 	}
-
+	
 	:focus,
 	button:focus {
 		outline: 0.3rem solid ${theme.colors.focusColor};
@@ -28,4 +50,12 @@ const GlobalStyle = createGlobalStyle(
 	}
 `,
 );
-export { ThemeProvider, GlobalStyle };
+
+const TalendThemeProvider = ({ theme = defaultTheme, children }) => (
+	<ThemeProvider theme={theme}>{children}</ThemeProvider>
+);
+
+TalendThemeProvider.createGlobalStyle = createGlobalStyle;
+TalendThemeProvider.globalStyle = globalStyle;
+
+export default TalendThemeProvider;

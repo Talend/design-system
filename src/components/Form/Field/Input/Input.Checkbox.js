@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit/Checkbox';
+import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
 import tokens from '../../../../tokens';
 import icons from '../../../../icons';
 import InlineStyle from './styles/Input.Inline.style';
-
-const { validate: ValidateSVG, minus: MinusSVG } = icons;
 
 const InlineField = styled(InlineStyle)(
 	({ theme }) => `
@@ -20,11 +18,11 @@ const InlineField = styled(InlineStyle)(
 	}
 	
 	input:checked + span:after {
-		mask-image: url(${ValidateSVG});
+		mask-image: url(${icons.validate.default});
 	}
 	
 	input[aria-checked="mixed"] + span:after {
-		mask-image: url(${MinusSVG});
+		mask-image: url(${icons.minus.default});
 	}
 `,
 );

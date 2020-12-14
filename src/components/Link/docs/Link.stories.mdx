@@ -1,114 +1,118 @@
-import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/blocks';
+import { FigmaImage, Use } from '../../../docs';
 import { action } from '@storybook/addon-actions';
 import Link from '../';
-import LinkZoning from './images/link-zoning.jpg';
 
 <Meta title="Components/Link" component={Link} />
 
 # Link
 
-Links are used for navigation.
+Link is used for navigation.
+
+If you use a link for triggering an action on the page, you must consider using a [Button](/?path=/docs/components-button--primary) instead.
+
+Still need to be convinced? Please, take the time to read [this article written by Marcy Sutton](https://marcysutton.com/links-vs-buttons-in-modern-web-applications).
 
 ## Zoning
 
-<img src={LinkZoning} alt="zoning image for links" className="full" class="full" />
-
-## Style
-
-### Sizes
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| icon           	             | 1.2rem            |
-
-### Spaces
-
-| Property          		                | Value             | 
-| ----------------------------------------- | ----------------- | 
-| (if icon) padding-right & padding-left	| $smaller          | 
-
-### Colors
-
-Icons should always be the same color as the link text.
-
-| Property                       | Value                               | 
-| ------------------------------ | ----------------------------------- | 
-| font & icon		             | $lochmara                           |
-| font & icon	(hover)	         | shade($lochmara, 20%)              |
-| font & icon	(active)         | shade($lochmara, 40%)              |
-
-### Font size
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- |
-| text							 | 1.4rem 			 |
-
-### Font weight
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- |
-| text							 | semibold 		 |
-
-### Text transform
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- |
-| text (hover & active)			 | underline 		 |
+<FigmaImage
+	src="https://www.figma.com/file/2Sw2IvUHZ9F2srJ3L8AWxr/%F0%9F%93%90-Zoning?node-id=12%3A142"
+	alt="zoning image for links"
+/>
 
 ## States
 
-
 ### Default
 
-<Preview>
-    <Story name="default">
-        <Link href="#">Link example</Link>
+<Canvas>
+	<Story name="default">
+		<Link href="#">Link example</Link>
 	</Story>
- </Preview>
+</Canvas>
 
 ### With icon
 
-<Preview>
-    <Story name="with icon">
-        <Link before="information" href="#">Link example</Link>
+<Canvas>
+	<Story name="with icon">
+		<Link iconBefore="information" href="#">
+			Link example
+		</Link>
 	</Story>
- </Preview>
+</Canvas>
 
 ### Multi lines
 
-<Preview>
-    <Story name="multi lines">
-        <Link before="information" href="https://www.talend.com" target="_blank">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac facilisis massa. Morbi et massa nulla. Nulla vitae hendrerit diam. Aenean eu sem libero. Integer vitae quam rutrum orci maximus imperdiet non sed lacus. Suspendisse ac est ac turpis luctus viverra. Proin tristique accumsan eleifend. Mauris at nibh aliquet, blandit turpis quis, scelerisque eros. Cras semper risus at felis convallis, ullamcorper rutrum augue ullamcorper. Donec malesuada felis tortor, vel porttitor tortor tincidunt at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</Link>
+<Canvas>
+	<Story name="multi lines">
+		<Link iconBefore="information" href="https://www.talend.com" target="_blank">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac facilisis massa. Morbi et
+			massa nulla. Nulla vitae hendrerit diam. Aenean eu sem libero. Integer vitae quam rutrum orci
+			maximus imperdiet non sed lacus. Suspendisse ac est ac turpis luctus viverra. Proin tristique
+			accumsan eleifend. Mauris at nibh aliquet, blandit turpis quis, scelerisque eros. Cras semper
+			risus at felis convallis, ullamcorper rutrum augue ullamcorper. Donec malesuada felis tortor,
+			vel porttitor tortor tincidunt at. Pellentesque habitant morbi tristique senectus et netus et
+			malesuada fames ac turpis egestas.
+		</Link>
 	</Story>
- </Preview>
+</Canvas>
 
 ### Disabled
 
 When the link is disabled the whole component is displayed with 0.54 opacity.
 
-<Preview>
-    <Story name="disabled">
-        <Link before="information" href="#" disabled>Link example</Link>
+<Canvas>
+	<Story name="disabled">
+		<Link iconBefore="information" href="#" disabled>
+			Link example
+		</Link>
 	</Story>
-</Preview>
+</Canvas>
 
 ### External
 
 When the link targets a new domain, we add an external-link icon right after.
 
-<Preview>
-    <Story name="external">
-        <Link href="https://www.talend.com" target="_blank">talend.com</Link>
+<Canvas>
+	<Story name="external">
+		<Link href="https://www.talend.com" target="_blank">
+			talend.com
+		</Link>
 	</Story>
- </Preview>
+</Canvas>
 
 The attribute `rel="noopener noreferrer"` is added if its target is `_blank`.
 
 ## Content
 
-Use a meaningful link text that indicates what will happen when the user interacts with the link.
+Link labels should be specific and clear enough to increase the likelihood that users will quickly understand the link as they scan and process the page. There's no maximum word count for links, but the best practice is to be as succinct as possible.
+
+<Use>
+	<Use.Do>
+		<ul>
+			<li>
+				Use a meaningful link text which communicates to users what they'll exactly find on the
+				other side of the click.
+			</li>
+			<li>
+				Make link text stand alone—it should make sense without any of the surrounding text as users
+				tend to scan UI.
+			</li>
+			<li>
+				Frontload link text with keywords and use the rest of the label text to increase user
+				understanding.
+			</li>
+		</ul>
+	</Use.Do>
+	<Use.Dont>
+		<ul>
+			<li>Avoid vague or repetative text for links.</li>
+		</ul>
+	</Use.Dont>
+</Use>
 
 ## Interaction
+
+Text underline appears while hovering the link and disappears as soon as the mouse is out of its clickable area with a smooth animation.
 
 ## Accessibility
 
@@ -118,21 +122,102 @@ Press <kbd>ENTER</kbd> to open a link
 
 ## Usage
 
-<Preview>
-  <Story
-    name="usage"
-    args={{
-      children: 'Lorem ipsum',
-    }}
-  >
-    {({ children, ...rest}) => <Link {...rest}>{children}</Link>}
-  </Story>
-</Preview>
+<Canvas>
+	<Story
+		name="usage"
+		args={{
+			iconBefore: 'information',
+			children: 'Help',
+			iconAfter: '',
+			href: 'https://help.talend.com',
+			disabled: false,
+			hideExternalIcon: false,
+		}}
+		argTypes={{
+			iconBefore: {
+				description: 'Link icon before text as illustration',
+				control: {
+					type: 'select',
+					options: [
+						'',
+						'arrowLeft',
+						'bell',
+						'burger',
+						'bubbles',
+						'caret',
+						'cross',
+						'check',
+						'datagrid',
+						'eye',
+						'eyeSlash',
+						'information',
+						'link',
+						'minus',
+						'opener',
+						'plus',
+						'search',
+						'talend',
+						'talendLogo',
+						'upload',
+						'user',
+						'validate',
+						'warning',
+					],
+				},
+			},
+			iconAfter: {
+				description: 'Link icon after text as illustration',
+				control: {
+					type: 'select',
+					options: [
+						'',
+						'arrowLeft',
+						'bell',
+						'burger',
+						'bubbles',
+						'caret',
+						'cross',
+						'check',
+						'datagrid',
+						'eye',
+						'eyeSlash',
+						'information',
+						'link',
+						'minus',
+						'opener',
+						'plus',
+						'search',
+						'talend',
+						'talendLogo',
+						'upload',
+						'user',
+						'validate',
+						'warning',
+					],
+				},
+			},
+			href: {
+				description: 'Link reference',
+				control: {
+					type: 'text',
+				},
+			},
+			hideExternalIcon: {
+				description: 'Button has hidden text',
+				control: {
+					type: 'boolean',
+				},
+			},
+		}}
+	>
+		{({ children, ...rest }) => <Link {...rest}>{children}</Link>}
+	</Story>
+</Canvas>
 
 <Props story="usage" />
 
 ## Changelog
 
-| Date       | Author | Description |
-| ---------- | ------ | ----------- |
-| 07/16/2020 | Monia Huet  | Init page   |
+| Date       | Author     | Description |
+| ---------- | ---------- | ----------- |
+| 07/16/2020 | Monia Huet | Init page   |

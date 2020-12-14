@@ -1,8 +1,7 @@
 // @ts-nocheck
 import { DefaultTheme } from 'styled-components';
-import { tint } from 'polished';
 
-import tokens from '../tokens';
+import tokens from './../tokens';
 
 const colors = tokens.colors;
 
@@ -50,6 +49,12 @@ const theme: DefaultTheme = {
 		inputBorderDisabledColor: colors.gray300,
 		inputBorderReadOnlyColor: colors.gray300,
 
+		modalBackground: colors.gray50,
+		modalHeadingBackground: colors.gray0,
+		modalHeadingBorderColor: colors.gray75,
+
+		skeletonBackgroundColor: colors.gray100,
+
 		tagDefaultColor: colors.gray700,
 		tagDefaultBackgroundColor: colors.gray75,
 		tagInformationColor: colors.lochmara700,
@@ -62,7 +67,7 @@ const theme: DefaultTheme = {
 		tagWarningBackgroundColor: colors.jaffa100,
 
 		tooltipColor: colors.gray0,
-		tooltipBackgroundColor: colors.gray700,
+		tooltipBackgroundColor: colors.gray900,
 	},
 	id: 'light',
 };

@@ -1,6 +1,8 @@
+import animations from './animations.tokens';
 import borders from './borders.tokens';
 import borderStyles from './borderStyles.tokens';
 import borderWidths from './borderWidths.tokens';
+import breakpoints from './breakpoints.tokens';
 import colors from './colors.tokens';
 import fonts from './fonts.tokens';
 import fontSizes from './fontSizes.tokens';
@@ -16,9 +18,11 @@ import transitions from './transitions.tokens';
 import zIndices from './zIndices.tokens';
 
 export default {
+	animations,
 	borders,
 	borderStyles,
 	borderWidths,
+	breakpoints,
 	colors,
 	fonts,
 	fontSizes,

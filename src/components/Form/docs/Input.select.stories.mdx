@@ -1,5 +1,5 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
-import InputZoning from './images/input-select-zoning.jpg';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { FigmaImage, Use } from '../../../docs';
 
 import Form from '../';
 import { Col, Row } from '../../../docs';
@@ -12,36 +12,17 @@ Select lets the user choose one option or multiple options from an options menu.
 
 ## Zoning
 
-<img src={InputZoning} alt="zoning image for default inputs" className="full" class="full" />
-
+<FigmaImage
+	src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=51%3A122"
+	alt="zoning image for input select"
+/>
 ## Style
-
-### Sizes
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| icon           	             | 1.2rem            | 
-
-
-### Space
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| padding-right					 | 3.2rem            | 
-
-
-### Colors
-
-| Property                       | Value                               | 
-| ------------------------------ | ----------------------------------- | 
-| icon		                     | $dark-silver                        |
-| icon	(hover)	                 | $dove-gray                          |
 
 ## States
 
 ### Default
 
-<Preview>
+<Canvas>
     <Story name="default">
         <Form.Select label="Select" values={['', 'foo', 'bar']}/>
     </Story>
@@ -51,11 +32,11 @@ Select lets the user choose one option or multiple options from an options menu.
     <Story name="read-only">
         <Form.Select label="Read-Only Select" readOnly value="foo" values={['', 'foo', 'bar']} />
     </Story>
-</Preview>
+</Canvas>
 
 ### Multiple
 
-<Preview>
+<Canvas>
     <Story name="default multiple">
         <Form.Select label="Select" values={['', 'foo', 'bar']} multiple />
     </Story>
@@ -65,11 +46,11 @@ Select lets the user choose one option or multiple options from an options menu.
     <Story name="read-only multiple">
         <Form.Select label="Read-Only Select" readOnly value={['','bar']} values={['', 'foo', 'bar']} multiple/>
     </Story>
-</Preview>
+</Canvas>
 
 ### With option group
 
-<Preview>
+<Canvas>
     <Story name="default object">
         <Form.Select label="Select" values={{foo: ['', 'foo', 'bar'], bar: ['', 'foo', 'bar']}} />
     </Story>
@@ -79,11 +60,11 @@ Select lets the user choose one option or multiple options from an options menu.
     <Story name="read-only object">
         <Form.Select label="Read-Only Select" readOnly value="foo" values={{foo: ['', 'foo', 'bar'], bar: ['', 'foo', 'bar']}}/>
     </Story>
-</Preview>
+</Canvas>
 
 ### Multiple with option group
 
-<Preview>
+<Canvas>
     <Story name="default multiple object">
         <Form.Select label="Select" values={{foo: ['', 'foo', 'bar'], bar: ['', 'foo', 'bar']}} multiple />
     </Story>
@@ -93,10 +74,24 @@ Select lets the user choose one option or multiple options from an options menu.
     <Story name="read-only multiple object">
         <Form.Select label="Read-Only Select" readOnly value={['','bar']} values={{foo: ['', 'foo', 'bar'], bar: ['', 'foo', 'bar']}} multiple />
     </Story>
-</Preview>
+</Canvas>
 
 ## Content
+When you use clear terms and order them logically in the list, you enable users to scan quickly and select what they need.
 
+<Use>
+	<Use.Do>
+		<ul>
+			<li>Aim for terms and words which are very familiar to users.</li>
+			<li>Write items/option in order (alphabetical order or any other order which makes sense).</li>
+		</ul>
+	</Use.Do>
+	<Use.Dont>
+		<ul>
+			<li>Don’t use vague or misleading options that are difficult to understand by average users.</li>
+		</ul>
+	</Use.Dont>
+</Use>
 
 ## Interaction
 

@@ -1,6 +1,5 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
-import InputZoning from './images/checkbox-zoning.jpg';
-
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { FigmaImage, Use } from '../../../docs';
 import Form from '../';
 import { Col, Row } from '../../../docs';
 
@@ -17,68 +16,14 @@ Use a checkbox when you want to give your recipients the opportunity to select m
 
 ## Zoning
 
-<img src={InputZoning} alt="zoning image for checkboxes" className="full" class="full" />
+<FigmaImage src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=44%3A59" alt="zoning image for checkbox" />
 
 ## Style
-
-### Sizes
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| width           	             | 1.2rem            | 
-| height    			    	 | 1.2rem            | 
-| icon 							 | $svg-xs-size		 |
-
-### Space
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| (label)margin-left             | $small            |
-
-### Colors
-
-To do
-
-| Property                       | Value                               | Themeable				 |
-| ------------------------------ | ----------------------------------- | ----------------------- |
-| background-color               | $wild-sand                          | -	 |
-| background-color (checked)     | $lochmara                           | -						 |
-| border (default)               | $dark-silver		                   | -		 |
-| border (checked)               | shade ($lochmara, 15%)              | -		 |
-| border (hover)                 | $lochmara                           | -	 |
-| border (disabled)              | $silver-chalice                     | -		 |
-| border (read-only)             | $dark-silver	                       | -		 |
-| icon 							 | $white							   | - | 
-| color							 | $black 							   | -	   			 |
-
-### Font size
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- |
-| Label							 | 1.4rem 			 |
-
-### Font weight
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- |
-| Label							 | regular			 |
-
-### Radii
- 
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| border-radius			         | 0.2rem            |
-
-### Shadows
-
-| Property                       | Value             | 
-| ------------------------------ | ----------------- | 
-| box-shadow			         | 0 0 0 0.1rem      |
 
 
 ## States
 
-<Preview>
+<Canvas>
     <Story name="default">
         <Form.Checkbox label="Checkbox" />
     </Story>
@@ -88,9 +33,9 @@ To do
     <Story name="checked">
         <Form.Checkbox label="Checked Checkbox" checked />
     </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
     <Story name="disabled">
         <Form.Checkbox label="Disabled Checkbox" disabled />
     </Story>
@@ -100,9 +45,9 @@ To do
     <Story name="disabled checked">
         <Form.Checkbox label="Disabled Checked Checkbox" disabled checked />
     </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
     <Story name="read-only">
         <Form.Checkbox label="Read-Only Checkbox" readOnly />
     </Story>
@@ -112,22 +57,33 @@ To do
     <Story name="read-only checked">
         <Form.Checkbox label="Read-Only Checked Checkbox" readOnly checked />
     </Story>
-</Preview>
+</Canvas>
 
 ## Content
+Checkboxes appear as a list on UI so it's important to make their labels as parallel as possible without twisting the language too much. It’s important to have parallelism, but not at the expense of comprehension. Labels should appear to the right of checkboxs.
 
-To do
-
-- Labels should appear to the right of checkbox inputs
-- Not use commas or semicolons at the end of each line
-- Each label should start with a capital letter
+<Use>
+	<Use.Do>
+		<ul>
+			<li>Use positive and active wording for checkbox lables.</li>
+			<li>Aim for parallel checkbox lables to ease reading flow and help users make the right choices.</li>
+			<li>Start each label with capital letter.</li>
+		</ul>
+	</Use.Do>
+	<Use.Dont>
+		<ul>
+			<li>Don’t use vague or misleading labels that are difficult to understand by average users.</li>
+			<li>Don’t use punctuations at the end of labels.</li>
+		</ul>
+	</Use.Dont>
+</Use>
 
 ## Interaction
 
 - If a label is provided, it should always be clickable to check or uncheck.
 - Checking one checkbox does not change the state of others, unless the parent was indeterminant and all children have the same state.
 
-## Code
+## Usage
 
 To do
 

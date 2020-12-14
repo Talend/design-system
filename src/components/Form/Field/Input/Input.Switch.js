@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { shade } from 'polished';
-import { useCheckboxState, Checkbox } from 'reakit/Checkbox';
+import { useCheckboxState, Checkbox } from 'reakit';
 import InlineStyle from './styles/Input.Inline.style';
 import tokens from '../../../../tokens';
 
@@ -25,7 +25,7 @@ const Div = styled(InlineStyle)(
 	input + span:after {
 		height: 1.2rem;
 		width: 1.2rem;
-		transition: transform .3s;
+		transition: transform ${tokens.transitions.normal};
 	}
 
 	input + span:before {

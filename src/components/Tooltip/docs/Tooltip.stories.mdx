@@ -1,5 +1,6 @@
-import { Meta, Preview, Props, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
+import { FigmaImage, Use } from '../../../docs';
 import Tooltip from '../.';
 import Button from '../../Button';
 import { Col, Row } from '../../../docs';
@@ -8,9 +9,18 @@ import { Col, Row } from '../../../docs';
 
 # Tooltip
 
-Tooltip appears on mouse hover in order to identify or define relevant information about elements.
+Tooltips provide helpful, additional content for their paired elements on hover. They are contextual and specific to the element and don't provide the big picture. 
 
-<Preview>
+## Zoning
+
+<FigmaImage
+	src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=46%3A94"
+	alt="zoning image for tooltips"
+/>
+
+## Style
+
+<Canvas>
   <Story name="top">
 		<Tooltip title="Relevant information about this basic button" placement="top" visible>
 			<Button onClick={action('clicked')}>Top</Button>
@@ -31,48 +41,37 @@ Tooltip appears on mouse hover in order to identify or define relevant informati
 			<Button onClick={action('clicked')}>Right</Button>
 		</Tooltip>
   </Story>
-</Preview>
+</Canvas>
 
-## Style
-
-## Sizes
-
-### Default
-
-| Attribute                   | Variable     |
-| --------------------------- | ------------ |
-| height                      | 2rem         |
-| max-height                  | 5rem         |
-| max-width                   | 25rem        |
-| padding-left; padding-right | $smaller    |
-| border-radius               | rectRadius   |
-| **Pointer details**         |
-| width                       | 0.6rem       |
-| height                      | 0.4rem       |
-| position                    | left-aligned |
-
-## Colors
-
-| Attribute        | Variable    |
-| ---------------- | ----------- |
-| background-color | $dove-gray |
-| color            | $white     |
-
-## Fonts
-
-| Attribute | Variable |
-| --------- | -------- |
-| font-size | 1.2rem   |
 
 ## Content
 
-- Tooltip should not include clickable content.
-- The tooltip content shouldn't be longer than 3 or 4 lines to make it easy to read. If you need more space to display the message please use a popover.
-- Tooltip should not display icons or images, only text.
+Tooltips with obvious or redundant text are not beneficial to users. If you can’t think of particularly helpful content, don’t offer a tooltip. Otherwise, you’ll just add information pollution to your UI and waste the time of users.
+
+<Use>
+	<Use.Do>
+		<ul>
+			<li>Use tooltips consistently throughout your site.</li>
+			<li>Try to make the text as short as possible and include the most critical or meaningful info to make reading easier.</li>
+			<li>If the tooltip has more than one sentence, use a period at the end.</li>
+		</ul>
+  </Use.Do>
+	<Use.Dont>
+		<ul>
+			<li>Don't use tooltips for simple actions users perform regularly.</li>
+			<li>Avoid tooltips which are complete duplicates of what is stated clearly in the UI.</li>
+			<li>Don't use tooltips for information that is necessary to task completion, e.g. field or password requirements. Such info essential to a frictionless user experience should always be present on the screen.</li>
+			<li>If the tooltip is one phrase, don't use a period at the end even if it's a complete sentence in order not to overload the interface.</li>
+		</ul>
+  </Use.Dont>
+</Use>
+
+
+<hr />
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story
     name="usage"
     args={{
@@ -81,7 +80,7 @@ Tooltip appears on mouse hover in order to identify or define relevant informati
   >
     {({ text, ...props }) => <Tooltip {...props}><Button onClick={action('clicked')}>{text}</Button></Tooltip>}
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="usage" />
 

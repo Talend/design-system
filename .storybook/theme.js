@@ -4,18 +4,18 @@ import logo from './logo.svg';
 export default create({
 	base: 'light',
 
-	colorPrimary: '#7bb2ff',
-	colorSecondary: '#1c44be',
+	colorPrimary: '#0675C1',
+	colorSecondary: '#19426c',
 
 	// UI
-	appBg: 'rgba(255,255,255,0.9)',
+	appBg: '#f3f3f3',
 	appContentBg: 'white',
 	appBorderColor: '#C6C6C6',
 	appBorderRadius: 4,
 
 	// Typography
-	fontBase: '"Open Sans", sans-serif',
-	fontCode: 'monospace',
+	fontBase: '"Source Sans Pro", sans-serif',
+	fontCode: '"Inconsolata", monospace',
 
 	// Text colors
 	textColor: '#202020',
@@ -24,7 +24,7 @@ export default create({
 	// Toolbar default and active colors
 	barTextColor: '#555555',
 	barSelectedColor: '#202020',
-	barBg: '#white',
+	barBg: 'white',
 
 	// Form colors
 	inputBg: 'white',

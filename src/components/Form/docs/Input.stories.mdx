@@ -1,6 +1,6 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import InputBehaviors from './images/input-behaviors.png';
-import InputZoning from './images/input-zoning.jpg';
+import { FigmaImage, Use } from '../../../docs';
 
 import Form from '../';
 import { Col, Row } from '../../../docs';
@@ -17,7 +17,10 @@ Common text input types include: usernames, descriptions, URLs, emails, addresse
 
 ## Zoning
 
-<img src={InputZoning} alt="zoning image for default inputs" className="full" class="full" />
+<FigmaImage
+	src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=51%3A147"
+	alt="zoning image for inputs"
+/>
 
 ## Style
 
@@ -81,7 +84,7 @@ To do
 
 ## States
 
-<Preview>
+<Canvas>
     <Story name="default">
         <Form.Text label="Input" />
     </Story>
@@ -94,13 +97,25 @@ To do
     <Story name="read-only">
         <Form.Text label="Read-Only Input" readOnly />
     </Story>
-</Preview>
+</Canvas>
 
 When the input is disabled the whole component is displayed with 0.54 opacity
 
 ## Content
 
-To do
+Text fields may have different text&labeling elements, e.g. labels, placeholders, hint text, tooltip icon.
+<Use>
+	<Use.Do>
+		<ul>
+			
+		</ul>
+	</Use.Do>
+	<Use.Dont>
+		<ul>
+			
+		</ul>
+	</Use.Dont>
+</Use>
 
 ## Interaction
 
