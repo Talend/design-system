@@ -42,9 +42,10 @@ export const Field = styled.div(
 	}
 	
 	textarea {
-	  	display: block;
+		min-height: 5.4rem;
+		max-height: 30rem;
+ 		resize: none; 		
  		overflow: hidden;
- 		resize: none;
 	}
 	
 	textarea,
