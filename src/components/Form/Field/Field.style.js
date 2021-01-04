@@ -41,6 +41,12 @@ export const Field = styled.div(
 		}
 	}
 	
+	textarea {
+	  	display: block;
+ 		overflow: hidden;
+ 		resize: none;
+	}
+	
 	textarea,
     select[multiple] {
 		padding: 1rem;
