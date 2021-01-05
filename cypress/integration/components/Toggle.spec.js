@@ -2,7 +2,7 @@
 
 context('<Toggle />', () => {
 	beforeEach(() => {
-		cy.visit('/iframe.html?id=components-toggle--active&viewMode=story');
+		cy.visit('/iframe.html?id=components-toggle--usage');
 	});
 
 	it('should toggle', () => {
