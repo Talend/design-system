@@ -7,10 +7,10 @@ context('<Toggle />', () => {
 
 	it('should toggle', () => {
 		cy.get('.btn')
-			.should('have.attr', 'aria-pressed', 'true')
-			.click()
 			.should('have.attr', 'aria-pressed', 'false')
 			.click()
-			.should('have.attr', 'aria-pressed', 'true');
+			.should('have.attr', 'aria-pressed', 'true')
+			.click()
+			.should('have.attr', 'aria-pressed', 'false');
 	});
 });
