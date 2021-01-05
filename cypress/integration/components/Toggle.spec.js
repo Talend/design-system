@@ -6,7 +6,7 @@ context('<Toggle />', () => {
 	});
 
 	it('should toggle', () => {
-		cy.get('[aria-pressed]')
+		cy.get('.btn')
 			.should('have.attr', 'aria-pressed', 'true')
 			.click()
 			.should('have.attr', 'aria-pressed', 'false')

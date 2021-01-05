@@ -6,11 +6,11 @@ context('<Button />', () => {
 	});
 
 	it('should be focusable', () => {
-		cy.get('button').focus();
+		cy.get('.btn').focus();
 	});
 
 	it('should load', () => {
-		cy.get('button')
+		cy.get('.btn')
 			.should('have.attr', 'aria-busy', 'false')
 			.click()
 			.should('have.attr', 'aria-busy', 'true')
@@ -19,7 +19,7 @@ context('<Button />', () => {
 	});
 
 	it('should have a tooltip', () => {
-		cy.get('button')
+		cy.get('.btn')
 			.focus()
 			.should('have.attr', 'aria-describedby')
 			.then(describedBy =>
