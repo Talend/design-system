@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
 import tokens from '../../../../tokens';
 import InlineStyle from './styles/Input.Inline.style';
-import { IconsProvider } from '../../../IconsProvider';
+import { Icon } from '../../../Icon/Icon';
 
 const InlineField = styled(InlineStyle)(
 	({ theme }) => `
@@ -11,18 +11,18 @@ const InlineField = styled(InlineStyle)(
 	span:after {
 		border-radius: ${tokens.radii.inputBorderRadius};
 	}
-
-	input:checked + span:after,
-	input[aria-checked="mixed"] + span:after {
+	label {
+		position: relative;
+	}
+	.tc-svg-icon {
+		position: absolute;
+		top: 1px;
+		left: 1px;
+		width: 1rem;
+	}
+	input:checked + .tc-svg-icon,
+	input[aria-checked="mixed"] + .tc-svg-icon {
 		background-color: ${theme.colors.inputBackgroundColor};
-	}
-	
-	input:checked + span:after {
-		mask-image: url(${IconsProvider.getCSSURL('icon-validate')});
-	}
-	
-	input[aria-checked="mixed"] + span:after {
-		mask-image: url(${IconsProvider.getCSSURL('icon-minus')});
 	}
 `,
 );
@@ -34,6 +34,11 @@ function Checkbox({ label, indeterminate, checked, ...rest }) {
 		<InlineField>
 			<label>
 				<ReakitCheckbox {...rest} {...checkbox} /> <span>{label}</span>
+				{checkbox.state ? (
+					<Icon name="icon-validate" />
+				) : (
+					<Icon name="icon-minus" />
+				)}
 			</label>
 		</InlineField>
 	);
