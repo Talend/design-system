@@ -5,7 +5,7 @@ import { VisuallyHidden } from 'reakit';
 import Button from '../../Button';
 import Dropdown from '../../Dropdown';
 import Link from '../../Link';
-import Icon from '../../Icon';
+import { Icon } from '../../Icon';
 import Toggle from '../../Toggle';
 import Tooltip from '../../Tooltip';
 import HeaderBar from '..';

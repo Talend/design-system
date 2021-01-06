@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledProps } from 'styled-components';
 import { BoxProps } from 'reakit';
-import Icon, { IconName } from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 import * as S from './Link.style';
 
@@ -9,9 +9,9 @@ export type LinkProps = BoxProps &
 	StyledProps<any> &
 	React.AnchorHTMLAttributes<any> & {
 		/** The name of the icon to display before */
-		iconBefore?: IconName;
+		iconBefore?: string;
 		/** The name of the icon to display after */
-		iconAfter?: IconName;
+		iconAfter?: string;
 		/** if the link is disabled */
 		disabled?: boolean;
 		/** if the link is external but the icon must not be shown */

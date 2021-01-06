@@ -2,13 +2,13 @@ import React from 'react';
 
 import { BoxProps } from 'reakit';
 
-import Icon, { IconName } from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 import * as S from './InlineMessage.style';
 
 export type InlineMessageProps = BoxProps & {
 	/** The icon element to display */
-	icon: IconName;
+	icon: string;
 	/** The title of the message */
 	title?: string;
 	/** The content of the message */

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { VisuallyHidden } from 'reakit';
 import Button from '../../../Button';
 import Link from '../../../Link';
-import Icon from '../../../Icon';
+import { Icon } from '../../../Icon';
 import Input from './Input';
 import tokens from '../../../../tokens';
 

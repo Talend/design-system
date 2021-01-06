@@ -7,7 +7,7 @@ import Dropdown from '../../components/Dropdown';
 import HeaderBar from '../../components/HeaderBar';
 import Modal from '../../components/Modal';
 import Link from '../../components/Link';
-import Icon from '../../components/Icon';
+import { Icon } from '../../components/Icon';
 import Toggle from '../../components/Toggle';
 import Tooltip from '../../components/Tooltip';
 

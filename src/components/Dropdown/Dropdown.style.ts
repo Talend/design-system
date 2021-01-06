@@ -5,7 +5,7 @@ import {
 	MenuSeparator as ReakitMenuSeparator,
 } from 'reakit';
 import styled from 'styled-components';
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 import tokens from '../../tokens';
 
 export const Button = ReakitMenuButton;

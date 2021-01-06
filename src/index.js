@@ -6,7 +6,8 @@ import Divider from './components/Divider';
 import Dropdown from './components/Dropdown';
 import Form from './components/Form';
 import HeaderBar from './components/HeaderBar';
-import Icon from './components/Icon';
+import { Icon } from './components/Icon';
+import { IconsProvider } from './components/IconsProvider';
 import InlineMessage from './components/InlineMessage';
 import Layout from './components/Layout';
 import Link from './components/Link';
@@ -36,6 +37,7 @@ export {
 	Form,
 	HeaderBar,
 	Icon,
+	IconsProvider,
 	InlineMessage,
 	Link,
 	Layout,
