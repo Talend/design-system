@@ -65,7 +65,7 @@ export const Portal = () => {
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Tooltip title="Chat with Talend support" placement="bottom">
-							<Toggle icon="bubbles">Intercom</Toggle>
+							<Toggle icon="icon-bubbles">Intercom</Toggle>
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
@@ -75,7 +75,7 @@ export const Portal = () => {
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Dropdown
-							icon="user"
+							icon="icon-user"
 							items={[
 								<Button>About</Button>,
 								<></>,
@@ -106,7 +106,7 @@ export const Apps = () => {
 			</HeaderBar.Logo>
 			<HeaderBar.Brand>
 				<Dropdown
-					icon="talend"
+					icon="icon-talend"
 					aria-label="Apps switcher"
 					items={[
 						<Link iconBefore="talend" href="#">
@@ -170,12 +170,12 @@ export const Apps = () => {
 				<HeaderBar.ContentRight>
 					<HeaderBar.Item>
 						<Tooltip title="Notifications (you have no unread notifications)" placement="bottom">
-							<Toggle icon="bell">Notifications</Toggle>
+							<Toggle icon="icon-bell">Notifications</Toggle>
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Tooltip title="Chat with Talend support" placement="bottom">
-							<Toggle icon="bubbles">Intercom</Toggle>
+							<Toggle icon="icon-bubbles">Intercom</Toggle>
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
@@ -185,7 +185,7 @@ export const Apps = () => {
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Dropdown
-							icon="user"
+							icon="icon-user"
 							items={[
 								<Button>About</Button>,
 								<></>,
