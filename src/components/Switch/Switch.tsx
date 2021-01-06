@@ -77,7 +77,7 @@ const Switch: React.FC<SwitchProps> = ({
 					);
 				})}
 				<strong ref={switchIndicator} aria-hidden="true">
-					<em></em>
+					<em />
 				</strong>
 			</RadioGroup>
 		</S.Switch>
