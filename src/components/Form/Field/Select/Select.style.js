@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import icons from '../../../../icons';
-
 import tokens from '../../../../tokens';
+import { IconsProvider } from '../../../IconsProvider';
 
 export const FieldWrapper = styled.div(
 	({ theme }) => `
@@ -34,7 +33,7 @@ export const FieldWrapper = styled.div(
 					mask-repeat: no-repeat;
 					mask-position: center;
 					background-color: ${theme.colors.inputPlaceholderColor};
-					mask-image: url(${icons.caret.default});
+					mask-image: url(${IconsProvider.getCSSUrl('icon-caret')});
 					pointer-events: none;
 				}
 	

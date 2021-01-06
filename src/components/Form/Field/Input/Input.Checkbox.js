@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
 import tokens from '../../../../tokens';
-import icons from '../../../../icons';
 import InlineStyle from './styles/Input.Inline.style';
+import { IconsProvider } from '../../../IconsProvider';
 
 const InlineField = styled(InlineStyle)(
 	({ theme }) => `
@@ -18,11 +18,11 @@ const InlineField = styled(InlineStyle)(
 	}
 	
 	input:checked + span:after {
-		mask-image: url(${icons.validate.default});
+		mask-image: url(${IconsProvider.getCSSURL('icon-validate')});
 	}
 	
 	input[aria-checked="mixed"] + span:after {
-		mask-image: url(${icons.minus.default});
+		mask-image: url(${IconsProvider.getCSSURL('icon-minus')});
 	}
 `,
 );

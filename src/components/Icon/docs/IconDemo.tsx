@@ -38,7 +38,6 @@ export function IconDemo() {
                 </select>
             </div>
             <IconGallery>
-                <IconsProvider bundles={['https://statics-dev.cloud.talend.com/@talend/icons/6.4.0/dist/svg-bundle/all.svg']}/>
                 <IconItem name="remote-url as svg">
                     <Icon name="remote-https://unpkg.com/@talend/icons@6.1.5/src/svg/core/abc.svg" transform={transform} />
                 </IconItem>

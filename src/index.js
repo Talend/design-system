@@ -23,7 +23,6 @@ import Toggle from './components/Toggle';
 import Tooltip from './components/Tooltip';
 import VisuallyHidden from './components/VisuallyHidden';
 
-import icons from './icons';
 import themes from './themes';
 import tokens from './tokens';
 
@@ -52,7 +51,6 @@ export {
 	Toggle,
 	Tooltip,
 	VisuallyHidden,
-	icons,
 	themes,
 	tokens,
 };

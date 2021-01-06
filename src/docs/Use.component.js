@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Grid from './Grid.component';
 
-import icons from '../icons';
+import { IconsProvider } from '../components/IconsProvider';
 import tokens from '../tokens';
 
 const Block = styled(({ title, children, ...rest }) => (
@@ -34,7 +34,7 @@ const Block = styled(({ title, children, ...rest }) => (
 const Do = styled(props => <Block title="Do" {...props} />)`
 	strong:before {
 		background-color: ${tokens.colors.rioGrande500};
-		mask-image: url(${icons.check.default});
+		mask-image: url(${IconsProvider.getCSSURL('icon-check')});
 	}
 
 	background: ${tokens.colors.rioGrande100};

@@ -123,8 +123,12 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 	);
 }
 
+function getCSSURL(name: string) {
+	return `#${name}`;
+}
+
 IconsProvider.displayName = 'IconsProvider';
 IconsProvider.getAllIconIds = getAllIconIds;
 IconsProvider.getAllFilterIds = getAllFilterIds;
 IconsProvider.injectIcon = injectIcon;
-
+IconsProvider.getCSSURL = getCSSURL;

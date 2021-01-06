@@ -7,6 +7,7 @@ import { normalize } from 'polished';
 import light, { dark } from '../src/themes';
 import tokens from '../src/tokens';
 import ThemeProvider from '../src/components/ThemeProvider';
+import { IconsProvider } from '../src/components/IconsProvider';
 
 export const globalTypes = {
 	theme: {
@@ -82,11 +83,17 @@ const GlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
+const ICONS = [
+	'https://statics-dev.cloud.talend.com/@talend/icons/6.4.0/dist/svg-bundle/all.svg',
+	'svg-bundle/design-system.svg',
+];
+
 const withThemeProvider = (Story, context) => {
 	const theme = getTheme(context.globals.theme);
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
+			<IconsProvider bundles={ICONS} />
 			<Story {...context} />
 		</ThemeProvider>
 	);

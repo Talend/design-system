@@ -1,3 +1,5 @@
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
 	stories: [
 		'../src/Welcome.stories.mdx',
@@ -24,4 +26,12 @@ module.exports = {
 		},
 		'@storybook/addon-links',
 	],
+	webpackFinal: config => {
+		config.plugins.push(
+			new CopyPlugin({
+				patterns: [{ from: './dist' }],
+			}),
+		);
+		return config;
+	},
 };
