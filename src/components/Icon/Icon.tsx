@@ -6,36 +6,29 @@ import classnames from 'classnames';
 import tokens from '../../tokens';
 import { IconsProvider } from '../IconsProvider';
 
+export enum SVG_TRANSFORMS {
+	Spin = 'spin',
+	Rotate45 = 'rotate-45',
+	Rotate90 = 'rotate-90',
+	Rotate135 = 'rotate-135',
+	Rotate180 = 'rotate-180',
+	Rotate225 = 'rotate-225',
+	Rotate270 = 'rotate-270',
+	Rotate315 = 'rotate-315',
+	FlipHorizontal = 'flip-horizontal',
+	FlipVertical = 'flip-vertical',
+};
+
+
 export type IconProps = BoxProps &
 	StyledProps<any> & {
 		/** The name of the icon  */
+		className: string,
 		name: string;
 		title: string;
-		transform: string;
+		transform: SVG_TRANSFORMS;
 		onClick: (event: any) => void;
 	};
-export type TransformName =
-	| 'spin'
-	| 'rotate-90'
-	| 'rotate-180'
-	| 'rotate-270'
-	| 'flip-horizontal'
-	| 'flip-vertical';
-
-const SVG_TRANSFORMS = {
-	spin: 'spin',
-	'rotate-45': 'rotate-45',
-	'rotate-90': 'rotate-90',
-	'rotate-135': 'rotate-135',
-	'rotate-180': 'rotate-180',
-	'rotate-225': 'rotate-225',
-	'rotate-270': 'rotate-270',
-	'rotate-315': 'rotate-315',
-	'flip-horizontal': 'flip-horizontal',
-	'flip-vertical': 'flip-vertical',
-};
-
-const TRANSFORMS = Object.keys(SVG_TRANSFORMS);
 
 const SVG = styled.svg<IconProps & { preserveColors: boolean }>(
 	({ preserveColors }) => `
@@ -85,8 +78,10 @@ const SVG = styled.svg<IconProps & { preserveColors: boolean }>(
 );
 
 export const Icon = React.forwardRef(
-	({ className, name, title, transform, onClick, ...rest }: IconProps, ref) => {
-		let safeRef = ref || React.createRef();
+	(props: IconProps, ref) => {
+		const { className, name, title, transform, onClick, ...rest } = props;
+		const safeRef = ref || React.createRef();
+		console.log('####', name, safeRef);
 		const isRemote = name.startsWith('remote-');
 		const imgSrc = name.replace('remote-', '').replace('src-', '');
 		const [content, setContent] = React.useState<string>();
@@ -119,14 +114,13 @@ export const Icon = React.forwardRef(
 		}, [imgSrc, isRemote]);
 	
 		React.useEffect(() => {
-			console.log('###', ref)
-			if (ref && ref.current && isRemoteSVG) {
+			if (safeRef && safeRef.current && isRemoteSVG) {
 				// eslint-disable-next-line no-param-reassign
-				ref.current.innerHTML = content;
-			} else if (ref && ref.current && !isRemote) {
-				IconsProvider.injectIcon(name, ref.current);
+				safeRef.current.innerHTML = content;
+			} else if (safeRef && safeRef.current && !isRemote) {
+				IconsProvider.injectIcon(name, safeRef.current);
 			}
-		}, [isRemoteSVG, ref, content, name, isRemote]);
+		}, [isRemoteSVG, safeRef, content, name, isRemote]);
 	
 		const accessibility = {
 			focusable: 'false', // IE11
@@ -142,6 +136,7 @@ export const Icon = React.forwardRef(
 		const classname = classnames(
 			'tc-svg-icon',
 			className,
+			// @ts-ignore
 			SVG_TRANSFORMS[transform],
 		);
 	
