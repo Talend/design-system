@@ -28,7 +28,7 @@ export default function HeaderBarBlock() {
 			<HeaderBar.Brand>
 				<Tooltip title="Change for another Talend app" placement="bottom">
 					<Dropdown
-						icon="icon-talend"
+						icon="talend-talend"
 						aria-label="Apps switcher"
 						items={[
 							<Link iconBefore="talend" href="#">
@@ -102,12 +102,12 @@ export default function HeaderBarBlock() {
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Tooltip title="Notifications (you have no unread notifications)" placement="bottom">
-							<Toggle icon="icon-bell">Notifications</Toggle>
+							<Toggle icon="talend-bell">Notifications</Toggle>
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Tooltip title="Chat with Talend support" placement="bottom">
-							<Toggle icon="icon-bubbles">Intercom</Toggle>
+							<Toggle icon="talend-bubbles">Intercom</Toggle>
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
@@ -119,7 +119,7 @@ export default function HeaderBarBlock() {
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Dropdown
-							icon="icon-user"
+							icon="talend-user"
 							items={[
 								<Button onClick={() => aboutModal.show()}>About</Button>,
 								<></>,

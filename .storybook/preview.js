@@ -85,7 +85,6 @@ const GlobalStyle = ThemeProvider.createGlobalStyle(
 
 const ICONS = [
 	'https://statics-dev.cloud.talend.com/@talend/icons/6.4.0/dist/svg-bundle/all.svg',
-	'svg-bundle/design-system.svg',
 ];
 
 const withThemeProvider = (Story, context) => {
