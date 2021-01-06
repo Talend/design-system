@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 type GenericObject = { [key: string]: Promise<Response> };
 
@@ -75,10 +75,13 @@ function addBundle(response: Response) {
 				container.innerHTML = content;
 				document.body.appendChild(container);
 			}
+			return response;
 		});
 	}
 	return Promise.resolve(response);
 }
+
+type IconSet = Record<string, ReactElement>;
 
 /**
  * If you want to use Icon with SVG you have to load this
@@ -90,7 +93,7 @@ function addBundle(response: Response) {
 <IconsProvider />
  */
 export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, icons = {} }) {
-	const iconset = { ...defaultIcons, ...icons };
+	const iconset:  IconSet = { ...defaultIcons, ...icons };
 
 	React.useEffect(() => {
 		if (!Array.isArray(bundles)) {
@@ -113,7 +116,7 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 				focusable="false"
 				className="sr-only tc-iconsprovider"
 			>
-				{Object.keys({ ...defaultIcons, ...icons }).map((id, index) => (
+				{Object.keys(iconset).map((id, index) => (
 					<symbol key={index} id={id}>
 						{iconset[id]}
 					</symbol>
