@@ -47,10 +47,11 @@ function getAllFilterIds() {
  * @param {string} id
  * @param {Element} container
  */
-function injectIcon(id:string, container: HTMLElement) {
+function injectIcon(id:string, container: Element) {
 	const element = document.querySelector(`.tc-iconsprovider #${id}`);
 	if (element) {
 		while (container.hasChildNodes()) {
+			// @ts-ignores
 			container.removeChild(container.lastChild);
 		}
 		container.appendChild(element.children[0].cloneNode(true));

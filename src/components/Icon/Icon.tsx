@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { StyledProps } from 'styled-components';
-import { BoxProps } from 'reakit';
 import classnames from 'classnames';
 
 import tokens from '../../tokens';
@@ -19,19 +18,17 @@ export enum SVG_TRANSFORMS {
 	FlipVertical = 'flip-vertical',
 };
 
+export type IconProps = StyledProps<any> & SVGElement & {
+	className: string,
+	title: string,
+	name: string, // TODO: try to get the list of icons in all.svg as a type
+	onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
+	transform: SVG_TRANSFORMS;
+};
 
-export type IconProps = BoxProps &
-	StyledProps<any> & {
-		/** The name of the icon  */
-		className: string,
-		name: string;
-		title: string;
-		transform: SVG_TRANSFORMS;
-		onClick: (event: any) => void;
-	};
+type SvgType = IconProps & { preserveColors: boolean };
 
-const SVG = styled.svg<IconProps & { preserveColors: boolean }>(
-	({ preserveColors }) => `
+const SVG = styled.svg<SvgType>`
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
 
@@ -39,30 +36,33 @@ const SVG = styled.svg<IconProps & { preserveColors: boolean }>(
 	circle,
 	path,
 	rect {
-		${preserveColors ? '' : 'fill: currentColor;'}
+		${({ preserveColors }) => preserveColors ? '' : 'fill: currentColor;'}
 	}
-	.link {
+	&.link {
 		cursor: pointer;
 	}
-	.spin {
+	&.spin {
 		animation-name: svg-spin;
 		animation-duration: 2s;
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 	}
-	.rotate-90 {
+	&.rotate-45 {
+		transform: rotate(45deg);
+	}
+	&.rotate-90 {
 		transform: rotate(90deg);
 	}
-	.rotate-180 {
+	&.rotate-180 {
 		transform: rotate(180deg);
 	}
-	.rotate-270 {
+	&.rotate-270 {
 		transform: rotate(270deg);
 	}
-	.flip-vertical {
+	&.flip-vertical {
 		transform: scaleY(-1)
 	}
-	.flip-horizontal {
+	&.flip-horizontal {
 		transform: scaleX(-1)
 	}
 	@keyframes svg-spin {
@@ -74,14 +74,19 @@ const SVG = styled.svg<IconProps & { preserveColors: boolean }>(
 			transform: rotate(360deg);
 		}
 	}
-`,
-);
+`;
+
+function getCurrent(ref: React.Ref<SVGElement>) {
+	if (typeof ref === 'object'  && ref !== null && ref.current) {
+		return ref.current;
+	}
+	return null;
+}
 
 export const Icon = React.forwardRef(
-	(props: IconProps, ref) => {
+	(props: IconProps, ref: React.Ref<SVGElement>) => {
 		const { className, name, title, transform, onClick, ...rest } = props;
-		const safeRef = ref || React.createRef();
-		console.log('####', name, safeRef);
+		const safeRef = ref || React.createRef<SVGElement>();
 		const isRemote = name.startsWith('remote-');
 		const imgSrc = name.replace('remote-', '').replace('src-', '');
 		const [content, setContent] = React.useState<string>();
@@ -114,11 +119,12 @@ export const Icon = React.forwardRef(
 		}, [imgSrc, isRemote]);
 	
 		React.useEffect(() => {
-			if (safeRef && safeRef.current && isRemoteSVG) {
+			const current = getCurrent(safeRef);
+			if (current && isRemoteSVG && content) {
 				// eslint-disable-next-line no-param-reassign
-				safeRef.current.innerHTML = content;
-			} else if (safeRef && safeRef.current && !isRemote) {
-				IconsProvider.injectIcon(name, safeRef.current);
+				current.innerHTML = content;
+			} else if (current && !isRemote) {
+				IconsProvider.injectIcon(name, current);
 			}
 		}, [isRemoteSVG, safeRef, content, name, isRemote]);
 	
@@ -128,6 +134,7 @@ export const Icon = React.forwardRef(
 			title: title || null,
 		};
 		if (name.startsWith('src-')) {
+			// @ts-ignore
 			return <img className="tc-icon" src={name.substring(4)} alt="" aria-hidden {...rest} />;
 		}
 		if (!name) {
@@ -136,11 +143,11 @@ export const Icon = React.forwardRef(
 		const classname = classnames(
 			'tc-svg-icon',
 			className,
-			// @ts-ignore
-			SVG_TRANSFORMS[transform],
+			transform,
 		);
 	
 		let iconElement = (
+			// @ts-ignore
 			<SVG
 				// @ts-ignore
 				aria-hidden
@@ -153,6 +160,7 @@ export const Icon = React.forwardRef(
 		if (isRemote && content && !isRemoteSVG) {
 			const classNames = classnames('tc-icon', className);
 			iconElement = (
+				// @ts-ignore
 				<img
 					alt="icon"
 					src={name.replace('remote-', '')}
