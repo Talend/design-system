@@ -45,7 +45,7 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 		<Button.Primary onClick={action('clicked')}>Basic Button</Button.Primary>
 	</Story>
 	<Story name="primary--icon">
-		<Button.Primary onClick={action('clicked')} icon="talend-minus-circle">
+		<Button.Primary onClick={action('clicked')} icon="talend-plus">
 			Button with icon
 		</Button.Primary>
 	</Story>
@@ -154,22 +154,22 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 
 <Canvas>
 	<Story name="icon">
-		<Button.Icon onClick={action('clicked')} icon={'plus'}>
+		<Button.Icon onClick={action('clicked')} icon={'talend-plus'}>
 			Basic Button
 		</Button.Icon>
 	</Story>
 	<Story name="icon--small">
-		<Button.Icon small onClick={action('clicked')} icon={'plus'}>
+		<Button.Icon small onClick={action('clicked')} icon={'talend-plus'}>
 			Small Button
 		</Button.Icon>
 	</Story>
 	<Story name="icon--disabled">
-		<Button.Icon disabled onClick={action('clicked')} icon={'plus'}>
+		<Button.Icon disabled onClick={action('clicked')} icon={'talend-plus'}>
 			Disabled Button
 		</Button.Icon>
 	</Story>
 	<Story name="icon--disabled-focusable">
-		<Button.Icon disabled focusable onClick={action('clicked')} icon={'plus'}>
+		<Button.Icon disabled focusable onClick={action('clicked')} icon={'talend-plus'}>
 			Disabled Focusable Button
 		</Button.Icon>
 	</Story>
@@ -180,7 +180,7 @@ Icon buttons has also two sizes: **default** and **small**. They can be used as 
 <Canvas>
 	<Story name="basic">
 		<Tooltip title="Relevant information about contacting the support">
-			<Button.Primary onClick={action('clicked')} icon={'bubbles'}>
+			<Button.Primary onClick={action('clicked')} icon={'talend-bubbles'}>
 				Contact support
 			</Button.Primary>
 		</Tooltip>
@@ -273,7 +273,7 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 		name="usage"
 		args={{
 			variant: 'Primary',
-			icon: 'upload',
+			icon: 'talend-upload',
 			children: 'Upload',
 		}}
 		argTypes={{
