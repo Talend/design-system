@@ -4,7 +4,7 @@ import { tint } from 'polished';
 import InlineMessage, { InlineMessageProps } from '../InlineMessage';
 
 const InlineMessageWarning = styled(InlineMessage).attrs({
-	icon: 'warning',
+	icon: 'talend-warning',
 })(
 	({ withBackground, theme }) => `
 	color: ${theme.colors.warningColor};

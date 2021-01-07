@@ -4,7 +4,7 @@ import { tint } from 'polished';
 import InlineMessage, { InlineMessageProps } from '../InlineMessage';
 
 const InlineMessageInformation = styled(InlineMessage).attrs({
-	icon: 'information',
+	icon: 'talend-info-circle',
 })(
 	({ withBackground, theme }) => `
 	color: ${theme.colors.informationColor};

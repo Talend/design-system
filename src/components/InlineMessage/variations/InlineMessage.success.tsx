@@ -4,7 +4,7 @@ import { tint } from 'polished';
 import InlineMessage, { InlineMessageProps } from '../InlineMessage';
 
 const InlineMessageSuccess = styled(InlineMessage).attrs({
-	icon: 'check',
+	icon: 'talend-check',
 })(
 	({ withBackground, theme }) => `
 	color: ${theme.colors.successColor};
