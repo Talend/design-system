@@ -1,26 +1,23 @@
 import React from 'react';
-import {
-	usePopoverState,
-	Popover as BasePopover,
-	PopoverDisclosure,
-	PopoverArrow,
-} from 'reakit';
+import { usePopoverState } from 'reakit';
 
-export type PopoverProps = {
-	disclosure: React.ReactElement<any>;
+import * as S from './Popover.style';
+
+export type PopoverProps = React.PropsWithChildren<any> & {
+	disclosure: React.ReactElement;
 };
 
-const Popover: React.FC<PopoverProps> = ({ disclosure, ...props }: PopoverProps) => {
+const Popover = ({ disclosure, ...props }: PopoverProps) => {
 	const popover = usePopoverState();
 	return (
 		<>
-			<PopoverDisclosure {...popover} ref={disclosure.ref} {...disclosure.props}>
+			<S.PopoverDisclosure {...popover} ref={disclosure.ref} {...disclosure.props}>
 				{disclosureProps => React.cloneElement(disclosure, disclosureProps)}
-			</PopoverDisclosure>
-			<BasePopover {...popover} {...props}>
-				<PopoverArrow {...popover} />
+			</S.PopoverDisclosure>
+			<S.Popover {...popover} {...props}>
+				<S.PopoverArrow {...popover} />
 				{props.children}
-			</BasePopover>
+			</S.Popover>
 		</>
 	);
 };
