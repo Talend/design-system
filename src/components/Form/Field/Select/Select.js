@@ -46,7 +46,7 @@ function Select({ className = '', children, values, value: initialValue, multipl
 	}
 
 	return (
-		<S.FieldWrapper className="fieldwrapper__select">
+		<S.FieldWrapper>
 			<Field
 				as="select"
 				{...rest}

@@ -33,7 +33,6 @@ const Block = styled(({ title, children, ...rest }) => (
 const Do = styled(props => <Block title="Do" {...props} />)`
 	strong:before {
 		background-color: ${tokens.colors.rioGrande500};
-		mask-image: url(#talend-check);
 	}
 
 	background: ${tokens.colors.rioGrande100};
@@ -43,7 +42,6 @@ const Do = styled(props => <Block title="Do" {...props} />)`
 const Dont = styled(props => <Block title="Don't" {...props} />)`
 	strong:before {
 		background-color: ${tokens.colors.coral500};
-		mask-image: url(#talend-warning);
 	}
 
 	background: ${tokens.colors.coral100};

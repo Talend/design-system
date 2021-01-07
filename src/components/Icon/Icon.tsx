@@ -5,24 +5,11 @@ import classnames from 'classnames';
 import tokens from '../../tokens';
 import { IconsProvider } from '../IconsProvider';
 
-export enum SVG_TRANSFORMS {
-	Spin = 'spin',
-	Rotate45 = 'rotate-45',
-	Rotate90 = 'rotate-90',
-	Rotate135 = 'rotate-135',
-	Rotate180 = 'rotate-180',
-	Rotate225 = 'rotate-225',
-	Rotate270 = 'rotate-270',
-	Rotate315 = 'rotate-315',
-	FlipHorizontal = 'flip-horizontal',
-	FlipVertical = 'flip-vertical',
-};
-
 /**
  * to update this list just use the following command within a React page with the IconsProvider instanciated
  * Array.from(document.querySelectorAll('symbol')).map(i => i.id).filter(Boolean).map(id => `| '${id}'`).join('\n')
  * */
-type IconName =
+export type IconName =
 	| 'talend-activemq'
 	| 'talend-apache'
 	| 'talend-aws-kinesis'
@@ -332,19 +319,30 @@ type IconName =
 	| 'talend-tic-positive'
 	| 'talend-tmc-colored'
 	| 'talend-tmc-negative'
-	| 'talend-tmc-positive';
+	| 'talend-tmc-positive'
+	| string;
+
+export enum SVG_TRANSFORMS {
+	Spin = 'spin',
+	Rotate45 = 'rotate-45',
+	Rotate90 = 'rotate-90',
+	Rotate135 = 'rotate-135',
+	Rotate180 = 'rotate-180',
+	Rotate225 = 'rotate-225',
+	Rotate270 = 'rotate-270',
+	Rotate315 = 'rotate-315',
+	FlipHorizontal = 'flip-horizontal',
+	FlipVertical = 'flip-vertical',
+};
+
 
 export type IconProps = StyledProps<any> & SVGElement & {
 	className: string,
-	title: string,
-	name: IconName | string,
-	onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
+	name: IconName,
 	transform: SVG_TRANSFORMS;
 };
 
-type SvgType = IconProps;
-
-const SVG = styled.svg<SvgType>`
+const SVG = styled.svg<IconProps>`
 
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
@@ -403,7 +401,7 @@ function getCurrent(ref: React.Ref<SVGElement>) {
 
 export const Icon = React.forwardRef(
 	(props: IconProps, ref: React.Ref<SVGElement>) => {
-		const { className, name, title, transform, onClick, ...rest } = props;
+		const { className, name = 'talend-empty-space', transform, ...rest } = props;
 		const safeRef = ref || React.createRef<SVGElement>();
 		const isRemote = name.startsWith('remote-');
 		const imgSrc = name.replace('remote-', '').replace('src-', '');
@@ -449,15 +447,12 @@ export const Icon = React.forwardRef(
 		const accessibility = {
 			focusable: 'false', // IE11
 			'aria-hidden': 'true',
-			title: title || null,
 		};
 		if (name.startsWith('src-')) {
 			// @ts-ignore
 			return <img className="tc-icon" src={name.substring(4)} alt="" aria-hidden {...rest} />;
 		}
-		if (!name) {
-			return <div className="alert alert-danger">Icon: no name provided</div>;
-		}
+
 		const classname = classnames(
 			'tc-svg-icon',
 			className,
@@ -465,37 +460,27 @@ export const Icon = React.forwardRef(
 		);
 	
 		let iconElement = (
-			// @ts-ignore
 			<SVG
-				// @ts-ignore
-				aria-hidden
 				{...rest}
 				{...accessibility}
 				className={classname}
 				ref={safeRef}
 			/>
 		);
+
 		if (isRemote && content && !isRemoteSVG) {
 			const classNames = classnames('tc-icon', className);
 			iconElement = (
-				// @ts-ignore
 				<img
-					alt="icon"
+					alt=""
 					src={name.replace('remote-', '')}
 					className={classNames}
-					aria-hidden
+					{...accessibility}
 					{...rest}
 				/>
 			);
 		}
-		if (!onClick) {
-			return iconElement;
-		}
-		return (
-			<button onClick={onClick} className=".tc-svg-anchor .link">
-				{iconElement}
-			</button>
-		);
+		return iconElement;
 	},
 );
 

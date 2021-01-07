@@ -4,6 +4,7 @@ import { FigmaImage, FigmaLink, Use } from '../../../docs';
 import Button from '../';
 import Skeleton from '../../Skeleton';
 import Tooltip from '../../Tooltip';
+import { IconsProvider } from '../../IconsProvider';
 
 <Meta title="Components/Button" component={Button} />
 
@@ -293,31 +294,7 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 				description: 'Button icon as illustration',
 				control: {
 					type: 'select',
-					options: [
-						'',
-						'arrowLeft',
-						'bell',
-						'burger',
-						'bubbles',
-						'caret',
-						'cross',
-						'check',
-						'datagrid',
-						'eye',
-						'eyeSlash',
-						'information',
-						'link',
-						'minus',
-						'opener',
-						'plus',
-						'search',
-						'talend',
-						'talendLogo',
-						'upload',
-						'user',
-						'validate',
-						'warning',
-					],
+					options: Array.from(document.querySelectorAll('.tc-iconsprovider symbol')).map(symbol => symbol.getAttribute('id')).filter(Boolean),
 				},
 			},
 			loading: {

@@ -40,7 +40,7 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 );
 
 const ICONS = [
-	'https://statics-dev.cloud.talend.com/@talend/icons/6.4.0/dist/svg-bundle/all.svg',
+	'https://statics-dev.cloud.talend.com/@talend/icons/6.7.0/dist/svg-bundle/all.svg',
 ];
 
 const withThemeProvider = (Story, context) => {

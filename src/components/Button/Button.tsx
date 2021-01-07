@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyledProps } from 'styled-components';
 
-import { Icon } from '../Icon/Icon';
+import { Icon, IconName } from '../Icon/Icon';
 import Loading from '../Loading';
 
 import * as S from './Button.style';
 
 export type ButtonProps = StyledProps<any> & {
 	/** The icon name of the button */
-	icon?: string;
+	icon?: IconName;
 	/** If the button is small or not */
 	small?: boolean;
 	/** If the button is loading or not */

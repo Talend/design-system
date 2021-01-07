@@ -16,7 +16,7 @@ export const PortalOnBoarding = () => (
 	<HeaderBar>
 		<HeaderBar.Logo full>
 			<Link href="#">
-				<Icon name="talend-logo" className="fix-current-color" />
+				<Icon name="talend-logo" />
 				<VisuallyHidden>Talend</VisuallyHidden>
 			</Link>
 		</HeaderBar.Logo>
@@ -28,7 +28,7 @@ export const Portal = () => {
 		<HeaderBar>
 			<HeaderBar.Logo full>
 				<Link href="#">
-					<Icon name="talend-logo" className="fix-current-color" />
+					<Icon name="talend-logo" />
 					<VisuallyHidden>Talend</VisuallyHidden>
 				</Link>
 			</HeaderBar.Logo>
@@ -106,7 +106,7 @@ export const Apps = () => {
 			</HeaderBar.Logo>
 			<HeaderBar.Brand>
 				<Dropdown
-					icon="talend-talend"
+					icon="talend-logo"
 					aria-label="Apps switcher"
 					items={[
 						<Link iconBefore="talend" href="#">

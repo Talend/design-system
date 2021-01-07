@@ -36,12 +36,6 @@ export const FieldWrapper = styled.div(
 					padding-right: ${tokens.sizes.xxl};
 					appearance: none;
 					
-					&:hover {
-						&:after  {
-							background-color: ${theme.colors.inputBorderFocusColor};
-						}
-					}
-
 					&:disabled {
 						border: 1px solid ${theme.colors.inputBorderDisabledColor};
 						opacity: ${tokens.opacity.disabled};
