@@ -1,5 +1,6 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { FigmaImage, FigmaLink, Use } from '../../../docs';
+import { IconsProvider } from '../../IconsProvider';
 import Link from '../';
 
 <Meta title="Components/Link" component={Link} />
@@ -140,62 +141,14 @@ Press <kbd>ENTER</kbd> to open a link
 				description: 'Link icon before text as illustration',
 				control: {
 					type: 'select',
-					options: [
-						'',
-						'arrowLeft',
-						'bell',
-						'burger',
-						'bubbles',
-						'caret',
-						'cross',
-						'check',
-						'datagrid',
-						'eye',
-						'eyeSlash',
-						'information',
-						'link',
-						'minus',
-						'opener',
-						'plus',
-						'search',
-						'talend',
-						'talendLogo',
-						'upload',
-						'user',
-						'validate',
-						'warning',
-					],
+					options: [''].concat(IconsProvider.getCurrentIconIds()),
 				},
 			},
 			iconAfter: {
 				description: 'Link icon after text as illustration',
 				control: {
 					type: 'select',
-					options: [
-						'',
-						'arrowLeft',
-						'bell',
-						'burger',
-						'bubbles',
-						'caret',
-						'cross',
-						'check',
-						'datagrid',
-						'eye',
-						'eyeSlash',
-						'information',
-						'link',
-						'minus',
-						'opener',
-						'plus',
-						'search',
-						'talend',
-						'talendLogo',
-						'upload',
-						'user',
-						'validate',
-						'warning',
-					],
+					options: [''].concat(IconsProvider.getCurrentIconIds()),
 				},
 			},
 			href: {

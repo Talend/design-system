@@ -1,5 +1,6 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { FigmaImage, FigmaLink } from '../../../docs';
+import { IconsProvider } from '../../IconsProvider';
 import Tooltip from '../../Tooltip';
 import Toggle from '../';
 
@@ -56,7 +57,16 @@ The Toggle button component is used to toggle features visibility.
 	<Story
 		name="usage"
 		args={{
-			icon: 'datagrid',
+			icon: 'talend-datagrid',
+		}}
+		argTypes={{
+			icon: {
+				description: 'Toggle icon',
+				control: {
+					type: 'select',
+					options: [''].concat(IconsProvider.getCurrentIconIds()),
+				},
+			},
 		}}
 	>
 		{props => (

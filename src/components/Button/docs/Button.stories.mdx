@@ -294,7 +294,7 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 				description: 'Button icon as illustration',
 				control: {
 					type: 'select',
-					options: Array.from(document.querySelectorAll('.tc-iconsprovider symbol')).map(symbol => symbol.getAttribute('id')).filter(Boolean),
+					options: [''].concat(IconsProvider.getCurrentIconIds()),
 				},
 			},
 			loading: {

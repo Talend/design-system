@@ -22,13 +22,19 @@ function hasBundle(url: string) {
  * This function return the list of available icons in the document
  * @returns <Array<string>> Array of id if available icons
  */
+function getCurrentIconIds() {
+	const symbols = document.querySelectorAll('.tc-iconsprovider symbol');
+	return Array.from(symbols)
+		.map(symbol => symbol.getAttribute('id'))
+		.filter(Boolean);
+}
+
+/**
+ * This function fetch all icon bundles and get the list of available icons in the document
+ * @returns <Array<string>> Array of id if available icons
+ */
 function getAllIconIds() {
-	return Promise.all(Object.values(FETCHING_BUNDLES)).then(() => {
-		const symbols = document.querySelectorAll('.tc-iconsprovider symbol');
-		return Array.from(symbols)
-			.map(symbol => symbol.getAttribute('id'))
-			.filter(Boolean);
-	});
+	return Promise.all(Object.values(FETCHING_BUNDLES)).then(getCurrentIconIds);
 }
 
 /**
@@ -47,7 +53,7 @@ function getAllFilterIds() {
  * @param {string} id
  * @param {Element} container
  */
-function injectIcon(id:string, container: Element) {
+function injectIcon(id: string, container: Element) {
 	const element = document.querySelector(`.tc-iconsprovider #${id}`);
 	if (element) {
 		while (container.hasChildNodes()) {
@@ -103,12 +109,12 @@ function isRootProvider(ref) {
 <IconsProvider />
  */
 export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, icons = {} }) {
-	const iconset:  IconSet = { ...defaultIcons, ...icons };
+	const iconset: IconSet = { ...defaultIcons, ...icons };
 	const ref = React.createRef<SVGSVGElement>();
 	React.useEffect(() => {
 		if (!Array.isArray(bundles)) {
 			return;
-        }
+		}
 		bundles
 			.filter(url => !hasBundle(url))
 			.forEach(url => {
@@ -130,7 +136,7 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 			xmlns="http://www.w3.org/2000/svg"
 			focusable="false"
 			className="tc-iconsprovider"
-			style={{display: 'none'}}
+			style={{ display: 'none' }}
 			ref={ref}
 		>
 			{Object.keys(iconset).map((id, index) => (
@@ -143,7 +149,7 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 }
 
 IconsProvider.displayName = 'IconsProvider';
+IconsProvider.getCurrentIconIds = getCurrentIconIds;
 IconsProvider.getAllIconIds = getAllIconIds;
 IconsProvider.getAllFilterIds = getAllFilterIds;
 IconsProvider.injectIcon = injectIcon;
-
