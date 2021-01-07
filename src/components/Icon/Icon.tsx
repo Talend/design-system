@@ -339,6 +339,7 @@ export type IconProps = StyledProps<any> &
 	SVGElement & {
 		className: string;
 		name: IconName;
+		monochrome: boolean;
 		transform: SVG_TRANSFORMS;
 	};
 
@@ -347,17 +348,20 @@ const SVG = styled.svg<IconProps>`
 	height: ${tokens.sizes.l};
 	transform-origin: center;
 
-	.ti-foreground {
-		fill: currentColor;
+	circle,
+	path,
+	polygon {
+		${({ currentColor }) => currentColor && 'fill: currentColor;'}
 	}
 
 	.ti-background {
-		fill: transparent;
+		${({ currentColor }) => currentColor && 'display: none;'}
 	}
 
 	&.link {
 		cursor: pointer;
 	}
+
 	&.spin {
 		animation-name: svg-spin;
 		animation-duration: 2s;
