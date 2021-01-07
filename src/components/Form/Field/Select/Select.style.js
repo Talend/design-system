@@ -33,7 +33,7 @@ export const FieldWrapper = styled.div(
 					mask-repeat: no-repeat;
 					mask-position: center;
 					background-color: ${theme.colors.inputPlaceholderColor};
-					mask-image: url(${IconsProvider.getCSSUrl('icon-caret')});
+					mask-image: url(#talend-caret); //IconsProvider.getCSSUrl('icon-caret')});
 					pointer-events: none;
 				}
 	

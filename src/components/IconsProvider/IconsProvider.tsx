@@ -83,6 +83,14 @@ function addBundle(response: Response) {
 
 type IconSet = Record<string, ReactElement>;
 
+function isRootProvider(ref) {
+	const providers = document.querySelectorAll('.tc-iconsprovider');
+	if (ref !== null && ref.current && providers.length > 0) {
+		return providers[0] === ref.current;
+	}
+	return providers.length === 0;
+}
+
 /**
  * If you want to use Icon with SVG you have to load this
  * component in your app.
@@ -94,7 +102,7 @@ type IconSet = Record<string, ReactElement>;
  */
 export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, icons = {} }) {
 	const iconset:  IconSet = { ...defaultIcons, ...icons };
-
+	const ref = React.createRef<SVGSVGElement>();
 	React.useEffect(() => {
 		if (!Array.isArray(bundles)) {
 			return;
@@ -109,12 +117,19 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 					});
 			});
 	}, [bundles]);
+
+	if (isRootProvider(ref)) {
+		console.warn('IconsProvider Error: multiple instance escape, return null');
+		return null;
+	}
+
 	return (
 		<>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				focusable="false"
 				className="sr-only tc-iconsprovider"
+				ref={ref}
 			>
 				{Object.keys(iconset).map((id, index) => (
 					<symbol key={index} id={id}>

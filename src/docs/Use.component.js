@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import Grid from './Grid.component';
 
-import { IconsProvider } from '../components/IconsProvider';
 import tokens from '../tokens';
 
 const Block = styled(({ title, children, ...rest }) => (
@@ -34,7 +33,7 @@ const Block = styled(({ title, children, ...rest }) => (
 const Do = styled(props => <Block title="Do" {...props} />)`
 	strong:before {
 		background-color: ${tokens.colors.rioGrande500};
-		mask-image: url(${IconsProvider.getCSSURL('icon-check')});
+		mask-image: url(#talend-check);
 	}
 
 	background: ${tokens.colors.rioGrande100};
@@ -44,16 +43,16 @@ const Do = styled(props => <Block title="Do" {...props} />)`
 const Dont = styled(props => <Block title="Don't" {...props} />)`
 	strong:before {
 		background-color: ${tokens.colors.coral500};
-		mask-image: url(${icons.warning.default});
+		mask-image: url(#talend-warning);
 	}
 
 	background: ${tokens.colors.coral100};
 	box-shadow: 0 0 0.1rem 0.1rem ${tokens.colors.coral500};
 `;
 
-const Use = ({ children }) => <Grid columns={2}>{children}</Grid>;
+export const Use = ({ children }) => <Grid columns={2}>{children}</Grid>;
 
 Use.Do = Do;
 Use.Dont = Dont;
 
-export default Use;
+
