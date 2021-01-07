@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { tint } from 'polished';
-import InlineMessage, { InlineMessageProps } from '../InlineMessage';
+import InlineMessage from '../InlineMessage';
 
 const InlineMessageSuccess = styled(InlineMessage).attrs({
 	icon: 'talend-check',
