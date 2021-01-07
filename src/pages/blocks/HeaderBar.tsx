@@ -20,7 +20,7 @@ export default function HeaderBarBlock() {
 			<HeaderBar.Logo>
 				<Tooltip title="Talend Portal" placement="bottom">
 					<Link href="#">
-						<Icon name="talend" preserveColors />
+						<Icon name="talend" />
 						<VisuallyHidden>Talend</VisuallyHidden>
 					</Link>
 				</Tooltip>

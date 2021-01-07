@@ -35,9 +35,9 @@ function Checkbox({ label, indeterminate, checked, ...rest }) {
 			<label>
 				<ReakitCheckbox {...rest} {...checkbox} /> <span>{label}</span>
 				{checkbox.state ? (
-					<Icon name="icon-validate" />
+					<Icon name="talend-check" />
 				) : (
-					<Icon name="icon-minus" />
+					<Icon name="talend-minus-circle" />
 				)}
 			</label>
 		</InlineField>

@@ -342,17 +342,20 @@ export type IconProps = StyledProps<any> & SVGElement & {
 	transform: SVG_TRANSFORMS;
 };
 
-type SvgType = IconProps & { preserveColors: boolean };
+type SvgType = IconProps;
 
 const SVG = styled.svg<SvgType>`
+
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
-
 	transform-origin: center;
-	circle,
-	path,
-	rect {
-		${({ preserveColors }) => preserveColors ? '' : 'fill: currentColor;'}
+
+	&.fix-current-color {
+		circle,
+		path,
+		rect {
+			fill: currentColor;
+		}
 	}
 	&.link {
 		cursor: pointer;
