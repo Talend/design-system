@@ -350,12 +350,11 @@ const SVG = styled.svg<SvgType>`
 	height: ${tokens.sizes.l};
 	transform-origin: center;
 
-	&.fix-current-color {
-		circle,
-		path,
-		rect {
-			fill: currentColor;
-		}
+	.ti-foreground {
+		fill: currentColor;
+	}
+	.ti-background {
+		fill: transparent;
 	}
 	&.link {
 		cursor: pointer;
