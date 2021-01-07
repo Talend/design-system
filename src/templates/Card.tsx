@@ -139,7 +139,7 @@ const CardTemplate: React.FC<CardTemplateProps> = ({ title, main, footer }: Card
 				<Card>
 					{title && (
 						<Card.Heading>
-							<Icon name="talendLogo" />
+							<Icon name="talend-logo" />
 							<h1>{title}</h1>
 						</Card.Heading>
 					)}
