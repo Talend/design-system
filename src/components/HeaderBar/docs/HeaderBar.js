@@ -16,7 +16,7 @@ export const PortalOnBoarding = () => (
 	<HeaderBar>
 		<HeaderBar.Logo full>
 			<Link href="#">
-				<Icon name="talend-logo" />
+				<Icon name="talend-logo" currentColor />
 				<VisuallyHidden>Talend</VisuallyHidden>
 			</Link>
 		</HeaderBar.Logo>
@@ -28,7 +28,7 @@ export const Portal = () => {
 		<HeaderBar>
 			<HeaderBar.Logo full>
 				<Link href="#">
-					<Icon name="talend-logo" />
+					<Icon name="talend-logo" currentColor />
 					<VisuallyHidden>Talend</VisuallyHidden>
 				</Link>
 			</HeaderBar.Logo>
@@ -36,19 +36,19 @@ export const Portal = () => {
 				<Dropdown
 					aria-label="Apps switcher"
 					items={[
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 1
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 2
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 3
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 4
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 5
 						</Link>,
 					]}
@@ -69,13 +69,13 @@ export const Portal = () => {
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
-						<Link iconBefore="information" href="#">
+						<Link iconBefore="talend-info-circle" href="#">
 							Help
 						</Link>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Dropdown
-							icon="talend-user"
+							icon="talend-user-circle"
 							items={[
 								<Button>About</Button>,
 								<></>,
@@ -106,19 +106,19 @@ export const Apps = () => {
 			</HeaderBar.Logo>
 			<HeaderBar.Brand>
 				<Dropdown
-					icon="talend-logo"
+					icon="talend-api-designer-positive"
 					aria-label="Apps switcher"
 					items={[
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 2
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 3
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 4
 						</Link>,
-						<Link iconBefore="talend" href="#">
+						<Link iconBefore="talend-stop" href="#">
 							App name 5
 						</Link>,
 					]}
@@ -170,7 +170,7 @@ export const Apps = () => {
 				<HeaderBar.ContentRight>
 					<HeaderBar.Item>
 						<Tooltip title="Notifications (you have no unread notifications)" placement="bottom">
-							<Toggle icon="talend-bell">Notifications</Toggle>
+							<Toggle icon="talend-bell-notification">Notifications</Toggle>
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
@@ -179,13 +179,13 @@ export const Apps = () => {
 						</Tooltip>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
-						<Link iconBefore="information" href="#">
+						<Link iconBefore="talend-info-circle" href="#">
 							Help
 						</Link>
 					</HeaderBar.Item>
 					<HeaderBar.Item>
 						<Dropdown
-							icon="talend-user"
+							icon="talend-user-circle"
 							items={[
 								<Button>About</Button>,
 								<></>,
