@@ -58,12 +58,16 @@ const Link: React.FC<LinkProps> = React.forwardRef(
 				ariaDisabled={disabled ? 'true' : null}
 				ref={ref}
 			>
-				{iconBefore && <Icon className="link__icon link__icon--before" name={iconBefore} />}
+				{iconBefore && (
+					<Icon className="link__icon link__icon--before" name={iconBefore} currentColor />
+				)}
 				<span className="link__text">{children}</span>
 				{isExternal && !hideExternalIcon && (
-					<Icon className="link__icon link__icon--external" name="link" />
+					<Icon className="link__icon link__icon--external" name="talend-link" currentColor />
 				)}
-				{iconAfter && <Icon className="link__icon link__icon--after" name={iconAfter} />}
+				{iconAfter && (
+					<Icon className="link__icon link__icon--after" name={iconAfter} currentColor />
+				)}
 			</S.Link>
 		);
 	},
