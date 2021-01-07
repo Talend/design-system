@@ -333,17 +333,16 @@ export enum SVG_TRANSFORMS {
 	Rotate315 = 'rotate-315',
 	FlipHorizontal = 'flip-horizontal',
 	FlipVertical = 'flip-vertical',
-};
+}
 
-
-export type IconProps = StyledProps<any> & SVGElement & {
-	className: string,
-	name: IconName,
-	transform: SVG_TRANSFORMS;
-};
+export type IconProps = StyledProps<any> &
+	SVGElement & {
+		className: string;
+		name: IconName;
+		transform: SVG_TRANSFORMS;
+	};
 
 const SVG = styled.svg<IconProps>`
-
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
 	transform-origin: center;
@@ -351,9 +350,11 @@ const SVG = styled.svg<IconProps>`
 	.ti-foreground {
 		fill: currentColor;
 	}
+
 	.ti-background {
 		fill: transparent;
 	}
+
 	&.link {
 		cursor: pointer;
 	}
@@ -376,16 +377,16 @@ const SVG = styled.svg<IconProps>`
 		transform: rotate(270deg);
 	}
 	&.flip-vertical {
-		transform: scaleY(-1)
+		transform: scaleY(-1);
 	}
 	&.flip-horizontal {
-		transform: scaleX(-1)
+		transform: scaleX(-1);
 	}
 	@keyframes svg-spin {
 		0% {
 			transform: rotate(0deg);
 		}
-	
+
 		100% {
 			transform: rotate(360deg);
 		}
@@ -393,95 +394,82 @@ const SVG = styled.svg<IconProps>`
 `;
 
 function getCurrent(ref: React.Ref<SVGElement>) {
-	if (typeof ref === 'object'  && ref !== null && ref.current) {
+	if (typeof ref === 'object' && ref !== null && ref.current) {
 		return ref.current;
 	}
 	return null;
 }
 
-export const Icon = React.forwardRef(
-	(props: IconProps, ref: React.Ref<SVGElement>) => {
-		const { className, name = 'talend-empty-space', transform, ...rest } = props;
-		const safeRef = ref || React.createRef<SVGElement>();
-		const isRemote = name.startsWith('remote-');
-		const imgSrc = name.replace('remote-', '').replace('src-', '');
-		const [content, setContent] = React.useState<string>();
-		const isRemoteSVG = isRemote && content && content.includes('svg') && !content.includes('script');
-	
-		React.useEffect(() => {
-			if (isRemote) {
-				fetch(imgSrc, {
-					headers: {
-						Accept: 'image/svg+xml',
-					},
-				})
-					.then(response => {
-						if (response.status === 200 && response.ok) {
-							response.text().then(data => {
-								setContent(data);
-							});
-						} else {
-							console.error(
-								new Error(
-									`IconResponseError: status=${response.status} ok=${response.ok} url=${imgSrc}`,
-								),
-							);
-						}
-					})
-					.catch(error => {
-						console.error('IconResponseError', imgSrc, error);
-					});
-			}
-		}, [imgSrc, isRemote]);
-	
-		React.useEffect(() => {
-			const current = getCurrent(safeRef);
-			if (current && isRemoteSVG && content) {
-				// eslint-disable-next-line no-param-reassign
-				current.innerHTML = content;
-			} else if (current && !isRemote) {
-				IconsProvider.injectIcon(name, current);
-			}
-		}, [isRemoteSVG, safeRef, content, name, isRemote]);
-	
-		const accessibility = {
-			focusable: 'false', // IE11
-			'aria-hidden': 'true',
-		};
-		if (name.startsWith('src-')) {
-			// @ts-ignore
-			return <img className="tc-icon" src={name.substring(4)} alt="" aria-hidden {...rest} />;
-		}
+export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElement>) => {
+	const { className, name = 'talend-empty-space', transform, ...rest } = props;
+	const safeRef = ref || React.createRef<SVGElement>();
+	const isRemote = name.startsWith('remote-');
+	const imgSrc = name.replace('remote-', '').replace('src-', '');
+	const [content, setContent] = React.useState<string>();
+	const isRemoteSVG = isRemote && content && content.includes('svg') && !content.includes('script');
 
-		const classname = classnames(
-			'tc-svg-icon',
-			className,
-			transform,
-		);
-	
-		let iconElement = (
-			<SVG
-				{...rest}
+	React.useEffect(() => {
+		if (isRemote) {
+			fetch(imgSrc, {
+				headers: {
+					Accept: 'image/svg+xml',
+				},
+			})
+				.then(response => {
+					if (response.status === 200 && response.ok) {
+						response.text().then(data => {
+							setContent(data);
+						});
+					} else {
+						console.error(
+							new Error(
+								`IconResponseError: status=${response.status} ok=${response.ok} url=${imgSrc}`,
+							),
+						);
+					}
+				})
+				.catch(error => {
+					console.error('IconResponseError', imgSrc, error);
+				});
+		}
+	}, [imgSrc, isRemote]);
+
+	React.useEffect(() => {
+		const current = getCurrent(safeRef);
+		if (current && isRemoteSVG && content) {
+			// eslint-disable-next-line no-param-reassign
+			current.innerHTML = content;
+		} else if (current && !isRemote) {
+			IconsProvider.injectIcon(name, current);
+		}
+	}, [isRemoteSVG, safeRef, content, name, isRemote]);
+
+	const accessibility = {
+		focusable: 'false', // IE11
+		'aria-hidden': 'true',
+	};
+	if (name.startsWith('src-')) {
+		// @ts-ignore
+		return <img className="tc-icon" src={name.substring(4)} alt="" aria-hidden {...rest} />;
+	}
+
+	const classname = classnames('tc-svg-icon', className, transform);
+
+	let iconElement = <SVG {...rest} {...accessibility} className={classname} ref={safeRef} />;
+
+	if (isRemote && content && !isRemoteSVG) {
+		const classNames = classnames('tc-icon', className);
+		iconElement = (
+			<img
+				alt=""
+				src={name.replace('remote-', '')}
+				className={classNames}
 				{...accessibility}
-				className={classname}
-				ref={safeRef}
+				{...rest}
 			/>
 		);
-
-		if (isRemote && content && !isRemoteSVG) {
-			const classNames = classnames('tc-icon', className);
-			iconElement = (
-				<img
-					alt=""
-					src={name.replace('remote-', '')}
-					className={classNames}
-					{...accessibility}
-					{...rest}
-				/>
-			);
-		}
-		return iconElement;
-	},
-);
+	}
+	return iconElement;
+});
 
 export const IconMemo = React.memo(Icon);
