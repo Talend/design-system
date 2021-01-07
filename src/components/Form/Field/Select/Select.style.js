@@ -1,13 +1,24 @@
 import styled from 'styled-components';
 
 import tokens from '../../../../tokens';
-import { IconsProvider } from '../../../IconsProvider';
 
 export const FieldWrapper = styled.div(
 	({ theme }) => `
+		position: relative;
+
 		.field__group--select {
 			position: relative;
-		
+
+			.talend-caret-down {
+				position: absolute;
+				top: auto;
+				left: auto;
+				right: 0;
+				width: ${tokens.sizes.s};
+				color: ${theme.colors.inputPlaceholderColor};
+				pointer-events: none;
+			}
+
 			select {
 				overflow: auto;
 				cursor: pointer;
@@ -19,23 +30,7 @@ export const FieldWrapper = styled.div(
 					border: 1px solid ${theme.colors.inputBorderHoverColor};
 				}
 			}			
-			
 			&:not(.field__group--multiple) {
-				&:after {
-					display: flex;
-					content: '';
-					top: 0;
-					bottom: 0;
-					right: 0;
-					position: absolute;
-					width: ${tokens.sizes.s};
-					margin: 0 1rem;
-					mask-repeat: no-repeat;
-					mask-position: center;
-					background-color: ${theme.colors.inputPlaceholderColor};
-					mask-image: url(#talend-caret); //IconsProvider.getCSSUrl('icon-caret')});
-					pointer-events: none;
-				}
 	
 				select {
 					padding-right: ${tokens.sizes.xxl};
