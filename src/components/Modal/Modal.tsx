@@ -14,14 +14,12 @@ export type ModalProps = DialogProps & {
 	onValidate?: () => void;
 };
 
-export const useModalState = initialState => useDialogState({ animated: true, ...initialState });
-
 const Modal = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
 	(
 		{ disclosure, children, icon, title, subtitle, onClose, onValidate, ...props }: ModalProps,
 		ref,
 	) => {
-		const dialog = useModalState({});
+		const dialog = useDialogState({ animated: true });
 
 		function onCloseHandler() {
 			dialog.hide();
@@ -64,6 +62,8 @@ const Modal = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>
 		);
 	},
 );
+
+export const useModalState = useDialogState;
 
 export const ModalDisclosure = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
 	(props, ref) => <S.DialogDisclosure ref={ref} {...props} />,

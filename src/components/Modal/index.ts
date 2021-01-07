@@ -1,9 +1,8 @@
-import { useDialogState } from 'reakit';
 import Modal, { useModalState, ModalDisclosure, ModalDialog } from './Modal';
 import * as S from './Modal.style';
 
 const ModalComponent = Modal as typeof Modal & {
-	useDialogState: typeof useDialogState;
+	useDialogState: typeof useModalState;
 	Disclosure: typeof ModalDisclosure;
 	Dialog: typeof ModalDialog;
 	Heading: typeof S.DialogHeading;
