@@ -28,10 +28,6 @@ const InlineField = styled(InlineStyle)`
 
 	// FIXME
 	svg {
-		circle {
-			display: none;
-		}
-
 		path {
 			fill: ${({ readOnly, theme }) =>
 				readOnly ? 'currentColor' : theme.colors.inputBackgroundColor};

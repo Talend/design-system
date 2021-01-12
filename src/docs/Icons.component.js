@@ -6,6 +6,7 @@ export const Icons = () => {
 	const [icons, setIds] = React.useState([]);
 	const [query, setQuery] = React.useState('');
 	const [transform, setTransform] = React.useState('');
+	const [background, setBackground] = React.useState(true);
 
 	React.useEffect(() => {
 		IconsProvider.getAllIconIds().then(setIds);
@@ -34,6 +35,7 @@ export const Icons = () => {
 						onChange={onChangeTransform}
 						values={['', 'rotate-45', 'rotate-90']}
 					/>
+					<Form.Checkbox label="Background" onChange={() => setBackground(!background)} />
 				</Form>
 			</ThemeProvider>
 			<IconGallery>
@@ -41,7 +43,7 @@ export const Icons = () => {
 					.filter(iconName => iconName.includes(query))
 					.map((iconName, index) => (
 						<IconItem key={index} name={iconName}>
-							<Icon name={iconName} transform={transform} />
+							<Icon name={iconName} transform={transform} background={background} />
 						</IconItem>
 					))}
 			</IconGallery>

@@ -339,13 +339,15 @@ export type IconProps = StyledProps<any> &
 	SVGElement & {
 		className: string;
 		name: IconName;
-		monochrome: boolean;
+		currentColor: boolean;
 		transform: SVG_TRANSFORMS;
+		background: boolean;
 	};
 
 const SVG = styled.svg<IconProps>`
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
+	/*
 	transform-origin: center;
 
 	circle,
@@ -353,7 +355,7 @@ const SVG = styled.svg<IconProps>`
 	polygon {
 		${({ currentColor }) => currentColor && 'fill: currentColor;'}
 	}
-
+	
 	.ti-background {
 		${({ currentColor }) => currentColor && 'display: none;'}
 	}
@@ -361,6 +363,7 @@ const SVG = styled.svg<IconProps>`
 	&.link {
 		cursor: pointer;
 	}
+	*/
 
 	&.spin {
 		animation-name: svg-spin;
@@ -405,11 +408,12 @@ function getCurrent(ref: React.Ref<SVGElement>) {
 }
 
 export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElement>) => {
-	const { className, name = 'talend-empty-space', transform, ...rest } = props;
+	const { className, name = 'talend-empty-space', transform, background, ...rest } = props;
 	const safeRef = ref || React.createRef<SVGElement>();
 	const isRemote = name.startsWith('remote-');
 	const imgSrc = name.replace('remote-', '').replace('src-', '');
 	const [content, setContent] = React.useState<string>();
+	const [lol, setLol] = React.useState<string>();
 	const isRemoteSVG = isRemote && content && content.includes('svg') && !content.includes('script');
 
 	React.useEffect(() => {
@@ -448,6 +452,22 @@ export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElemen
 		}
 	}, [isRemoteSVG, safeRef, content, name, isRemote]);
 
+	React.useEffect(() => {
+		if (background) {
+			const SVG = safeRef.current;
+			if (SVG) {
+				const svg = SVG.querySelector('svg');
+				const circle = document.createElement('circle');
+				circle.setAttribute('cx', '8');
+				circle.setAttribute('cy', '8');
+				circle.setAttribute('r', '8');
+				circle.setAttribute('fill', 'red');
+				svg.appendChild(circle);
+				setLol('lol');
+			}
+		}
+	}, [background, safeRef.current, setLol]);
+
 	const accessibility = {
 		focusable: 'false', // IE11
 		'aria-hidden': 'true',
@@ -476,4 +496,4 @@ export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElemen
 	return iconElement;
 });
 
-export const IconMemo = React.memo(Icon);
+export const IconMemo = Icon;
