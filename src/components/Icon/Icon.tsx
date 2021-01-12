@@ -347,23 +347,27 @@ export type IconProps = StyledProps<any> &
 const SVG = styled.svg<IconProps>`
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
-	/*
 	transform-origin: center;
 
 	circle,
 	path,
-	polygon {
-		${({ currentColor }) => currentColor && 'fill: currentColor;'}
+	polygon,
+	polyline {
+		${({ currentColor }) => currentColor && 'fill: currentColor;'};
+		${({ background }) => background && 'transform: translate(20%, 20%);'};
 	}
-	
+
 	.ti-background {
-		${({ currentColor }) => currentColor && 'display: none;'}
+		${({ background, currentColor }) => !background && currentColor && 'display: none;'};
+	}
+
+	.ti-border {
+		${({ background }) => background && 'fill: none; stroke: currentColor; transform: none'};
 	}
 
 	&.link {
 		cursor: pointer;
 	}
-	*/
 
 	&.spin {
 		animation-name: svg-spin;
@@ -413,7 +417,6 @@ export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElemen
 	const isRemote = name.startsWith('remote-');
 	const imgSrc = name.replace('remote-', '').replace('src-', '');
 	const [content, setContent] = React.useState<string>();
-	const [lol, setLol] = React.useState<string>();
 	const isRemoteSVG = isRemote && content && content.includes('svg') && !content.includes('script');
 
 	React.useEffect(() => {
@@ -457,16 +460,25 @@ export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElemen
 			const SVG = safeRef.current;
 			if (SVG) {
 				const svg = SVG.querySelector('svg');
-				const circle = document.createElement('circle');
-				circle.setAttribute('cx', '8');
-				circle.setAttribute('cy', '8');
-				circle.setAttribute('r', '8');
-				circle.setAttribute('fill', 'red');
-				svg.appendChild(circle);
-				setLol('lol');
+				const viewBox = svg.viewBox.baseVal;
+				const factor = viewBox.height * 0.7;
+				const strokeWidth = 1;
+				const xmlns = 'http://www.w3.org/2000/svg';
+				const circle = document.createElementNS(xmlns, 'circle');
+				circle.setAttribute('class', 'ti-border');
+				circle.setAttribute('cx', (viewBox.width + factor) / 2);
+				circle.setAttribute('cy', (viewBox.height + factor) / 2);
+				circle.setAttribute('r', (viewBox.height + (factor - strokeWidth)) / 2);
+				circle.setAttribute('stroke', tokens.colors.coral500);
+				circle.setAttribute('stroke-width', strokeWidth);
+				svg.prepend(circle);
+				svg.setAttribute(
+					'viewBox',
+					`${viewBox.x} ${viewBox.y} ${viewBox.width + factor} ${viewBox.height + factor}`,
+				);
 			}
 		}
-	}, [background, safeRef.current, setLol]);
+	}, [background, safeRef.current]);
 
 	const accessibility = {
 		focusable: 'false', // IE11
@@ -479,7 +491,9 @@ export const Icon = React.forwardRef((props: IconProps, ref: React.Ref<SVGElemen
 
 	const classname = classnames('tc-svg-icon', className, transform);
 
-	let iconElement = <SVG {...rest} {...accessibility} className={classname} ref={safeRef} />;
+	let iconElement = (
+		<SVG {...rest} {...accessibility} className={classname} background={background} ref={safeRef} />
+	);
 
 	if (isRemote && content && !isRemoteSVG) {
 		const classNames = classnames('tc-icon', className);
