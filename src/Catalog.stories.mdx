@@ -1,17 +1,5 @@
-import { action } from '@storybook/addon-actions';
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import {
-	Accordion,
-	Button,
-	Dropdown,
-	Form,
-	Icon,
-	InlineMessage,
-	Link,
-	Popover,
-	Tag,
-	Toggle,
-} from './';
+import { Button, Dropdown, Form, Icon, InlineMessage, Link, Popover, Tag, Toggle } from './';
 
 <Meta title="Component catalog" />
 
@@ -45,6 +33,7 @@ import {
 		<Dropdown
 			as={Button.Primary}
 			aria-label="Custom menu"
+            icon="talend-datagrid"
 			items={[
 				<button>Custom item 1</button>,
 				<button>Custom item 2</button>,
@@ -56,6 +45,7 @@ import {
 		<Dropdown
 			as={Button.Destructive}
 			aria-label="Custom menu"
+            icon="talend-datagrid"
 			items={[
 				<button>Custom item 1</button>,
 				<button>Custom item 2</button>,
@@ -67,6 +57,7 @@ import {
 		<Dropdown
 			as={Button.Secondary}
 			aria-label="Custom menu"
+            icon="talend-datagrid"
 			items={[
 				<button>Custom item 1</button>,
 				<button>Custom item 2</button>,
@@ -78,6 +69,7 @@ import {
 		<Dropdown
 			as={Button.Tertiary}
 			aria-label="Custom menu"
+            icon="talend-datagrid"
 			items={[
 				<button>Custom item 1</button>,
 				<button>Custom item 2</button>,
@@ -85,6 +77,18 @@ import {
 			]}
 		>
 			Tertiary Dropdown
+		</Dropdown>
+		<Dropdown
+			as={Button.Icon}
+			aria-label="Custom menu"
+            icon={<Icon name="talend-caret-down" />}
+			items={[
+				<button>Custom item 1</button>,
+				<button>Custom item 2</button>,
+				<button>Custom item 3</button>,
+			]}
+		>
+			Icon Dropdown
 		</Dropdown>
 	</Story>
 </Canvas>
@@ -94,10 +98,20 @@ import {
 <Canvas>
 	<Story name="Links">
 		<Link href="#">Link</Link>
-		<Link href="#" icon="talend-info-circle">
+		<Link href="#" iconBefore="talend-info-circle">
 			Inline help
 		</Link>
 		<Link href="https://www.talend.com">Talend</Link>
+		<Button
+			as={Link}
+			iconBefore={<Icon name="talend-arrow-left" transform="rotate-90" />}
+			onClick={() => {
+				document.body.scrollTop = 0; // For Safari
+				document.documentElement.scrollTop = 0; // For others
+			}}
+		>
+			Scroll to top
+		</Button>
 	</Story>
 </Canvas>
 
