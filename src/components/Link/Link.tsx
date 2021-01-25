@@ -3,17 +3,17 @@ import { StyledProps } from 'styled-components';
 import { BoxProps } from 'reakit';
 import { IconName } from '@talend/icons';
 
-import { Icon } from '../Icon/Icon';
+import { Icon, IconProps } from '../Icon/Icon';
 
 import * as S from './Link.style';
 
 export type LinkProps = BoxProps &
 	StyledProps<any> &
 	React.AnchorHTMLAttributes<any> & {
-		/** The name of the icon to display before */
-		iconBefore?: IconName;
-		/** The name of the icon to display after */
-		iconAfter?: IconName;
+		/** The icon to display before */
+		iconBefore?: IconName | IconProps;
+		/** The icon to display after */
+		iconAfter?: IconName | IconProps;
 		/** if the link is disabled */
 		disabled?: boolean;
 		/** if the link is external but the icon must not be shown */
@@ -60,12 +60,20 @@ const Link: React.FC<LinkProps> = React.forwardRef(
 				ariaDisabled={disabled ? 'true' : null}
 				ref={ref}
 			>
-				{iconBefore && <Icon className="link__icon link__icon--before" name={iconBefore} />}
+				{iconBefore && typeof iconBefore === 'string' ? (
+					<Icon className="link__icon link__icon--before" name={iconBefore} />
+				) : (
+					iconBefore
+				)}
 				<span className="link__text">{children}</span>
 				{isExternal && !hideExternalIcon && (
 					<Icon className="link__icon link__icon--external" name="talend-link" />
 				)}
-				{iconAfter && <Icon className="link__icon link__icon--after" name={iconAfter} />}
+				{iconAfter && typeof iconBefore === 'string' ? (
+					<Icon className="link__icon link__icon--after" name={iconAfter} />
+				) : (
+					iconAfter
+				)}
 			</S.Link>
 		);
 	},

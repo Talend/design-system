@@ -1,5 +1,17 @@
+import { action } from '@storybook/addon-actions';
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { Button, Dropdown, Form, InlineMessage, Link, Tag, Toggle } from './';
+import {
+	Accordion,
+	Button,
+	Dropdown,
+	Form,
+	Icon,
+	InlineMessage,
+	Link,
+	Popover,
+	Tag,
+	Toggle,
+} from './';
 
 <Meta title="Component catalog" />
 
@@ -81,7 +93,11 @@ import { Button, Dropdown, Form, InlineMessage, Link, Tag, Toggle } from './';
 
 <Canvas>
 	<Story name="Links">
-		<Link>Link</Link>
+		<Link href="#">Link</Link>
+		<Link href="#" icon="talend-info-circle">
+			Inline help
+		</Link>
+		<Link href="https://www.talend.com">Talend</Link>
 	</Story>
 </Canvas>
 
@@ -100,14 +116,14 @@ import { Button, Dropdown, Form, InlineMessage, Link, Tag, Toggle } from './';
 				<Form.Datalist label="Datalist" values={['foo', 'bar']} />
 				<Form.Search label="Search" />
 				<Form.Textarea label="Textarea" />
-                <Form.Select label="Select">
-                    <option selected>Foo</option>
-                    <option>Bar</option>
-                </Form.Select>
-                <Form.Select label="Select multiple" multiple>
-                    <option selected>Foo</option>
-                    <option selected>Bar</option>
-                </Form.Select>
+				<Form.Select label="Select">
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Select label="Select multiple" multiple>
+					<option selected>Foo</option>
+					<option selected>Bar</option>
+				</Form.Select>
 				<Form.Checkbox label="Checkbox" checked />
 				<Form.Radio label="Radio" checked />
 				<Form.Switch label="Switch" checked />
@@ -168,5 +184,22 @@ import { Button, Dropdown, Form, InlineMessage, Link, Tag, Toggle } from './';
 			link={<Link href={'#'}>See more</Link>}
 			withBackground
 		/>
+	</Story>
+</Canvas>
+
+### Popovers
+
+<Canvas>
+	<Story name="Popovers">
+		<Popover
+			aria-label="Custom popover"
+			disclosure={
+				<Button.Icon icon={<Icon name="talend-ellipsis" transform="rotate-90" />}>
+					Open popover
+				</Button.Icon>
+			}
+		>
+			Custom popover
+		</Popover>
 	</Story>
 </Canvas>
