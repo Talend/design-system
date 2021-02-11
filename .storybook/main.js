@@ -27,7 +27,6 @@ module.exports = {
 	],
 	webpackFinal: async config => {
 		config.entry.unshift('regenerator-runtime', 'core-js');
-		console.log(config);
 		return config;
 	},
 };
