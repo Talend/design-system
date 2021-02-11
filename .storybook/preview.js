@@ -2,6 +2,7 @@ import React from 'react';
 import { addParameters } from '@storybook/react';
 import { withTableOfContents } from 'storybook-docs-toc';
 import 'focus-outline-manager';
+import 'core-js';
 
 import light, { dark } from '../src/themes';
 import ThemeProvider from '../src/components/ThemeProvider';
@@ -39,9 +40,7 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
-const ICONS = [
-	'https://statics-dev.cloud.talend.com/@talend/icons/6.7.0/dist/svg-bundle/all.svg',
-];
+const ICONS = ['https://statics-dev.cloud.talend.com/@talend/icons/6.7.0/dist/svg-bundle/all.svg'];
 
 const withThemeProvider = (Story, context) => {
 	const theme = getTheme(context.globals.theme);
