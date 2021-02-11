@@ -26,7 +26,7 @@ module.exports = {
 		'storybook-addon-pseudo-states',
 	],
 	webpackFinal: async config => {
-		config.entry.unshift('regenerator-runtime', 'core-js');
+		config.entry.unshift('core-js');
 		return config;
 	},
 };
