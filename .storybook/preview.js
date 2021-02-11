@@ -2,7 +2,6 @@ import React from 'react';
 import { addParameters } from '@storybook/react';
 import { withTableOfContents } from 'storybook-docs-toc';
 import 'focus-outline-manager';
-import 'core-js';
 
 import light, { dark } from '../src/themes';
 import ThemeProvider from '../src/components/ThemeProvider';
