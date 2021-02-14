@@ -2,6 +2,10 @@ import { css } from 'styled-components';
 
 // @see https://github.com/hankchizljaw/modern-css-reset/blob/master/dist/reset.css
 const reset = css`
+	:root {
+		color-scheme: light dark;
+	}
+
 	/* Box sizing rules */
 	*,
 	*::before,
@@ -27,6 +31,8 @@ const reset = css`
 	ul[role='list'],
 	ol[role='list'] {
 		list-style: none;
+		margin: 0;
+		padding: 0;
 	}
 
 	/* Set core root defaults */
