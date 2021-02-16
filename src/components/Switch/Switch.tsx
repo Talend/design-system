@@ -53,27 +53,22 @@ const Switch = ({
 		const checkedRadioIndex = radioGroupChildren.indexOf(checkedElement);
 		const checkedRadioSpanWidth = checkedElement.scrollWidth;
 		const switchIndicatorRef = switchIndicator?.current;
-		const isFirst = checkedRadioIndex === 0;
-		const isLast = checkedRadioIndex === radioWidths.length - 1;
 		if (switchIndicatorRef) {
-			switchIndicatorRef.style.transform = `translateX(${
-				radioWidths
-					.slice(0, checkedRadioIndex)
-					.reduce((accumulator, currentValue) => accumulator + currentValue, 0) +
-				(!isFirst ? 10 : 0)
-			}px)`;
-			switchIndicatorRef.style.width = `${checkedRadioSpanWidth + (isFirst || isLast ? 10 : 0)}px`;
+			switchIndicatorRef.style.transform = `translateX(${radioWidths
+				.slice(0, checkedRadioIndex)
+				.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}px)`;
+			switchIndicatorRef.style.width = `${checkedRadioSpanWidth}px`;
 		}
 	}, [radio]);
 
 	return (
-		<S.Switch values={values} readOnly={readOnly} disabled={disabled}>
+		<S.Switch readOnly={readOnly} disabled={disabled}>
 			<RadioGroup {...rest} {...radio} ref={containerRef} aria-label={label} disabled={disabled}>
 				{values.map((v: string, i: number) => {
 					const isChecked = radio.state === v;
 					return (
 						<Radio
-							onChange={event => onChange(event, v)}
+							onChange={event => onChange && onChange(event, v)}
 							{...radio}
 							value={v}
 							as="button"
