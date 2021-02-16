@@ -110,7 +110,7 @@ function isRootProvider(ref: React.RefObject<any>) {
  */
 export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, icons = {} }) {
 	const iconset: IconSet = { ...defaultIcons, ...icons };
-	const ref = React.createRef<SVGSVGElement>();
+	const ref = React.useRef<SVGSVGElement>();
 	React.useEffect(() => {
 		if (!Array.isArray(bundles)) {
 			return;
@@ -126,7 +126,7 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 			});
 	}, [bundles]);
 
-	if (isRootProvider(ref)) {
+	if (ref.current) {
 		console.warn('IconsProvider Error: multiple instance escape, return null');
 		return null;
 	}
