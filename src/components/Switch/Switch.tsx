@@ -12,7 +12,16 @@ export type SwitchProps = React.PropsWithChildren<any> & {
 	readOnly: boolean;
 };
 
-const Switch = ({ label, value, values, checked, disabled, readOnly, ...rest }: SwitchProps) => {
+const Switch = ({
+	label,
+	value,
+	values,
+	checked,
+	disabled,
+	readOnly,
+	onChange,
+	...rest
+}: SwitchProps) => {
 	const radio = useRadioState({
 		state: value || (values && values[0]),
 		loop: false,
@@ -63,7 +72,14 @@ const Switch = ({ label, value, values, checked, disabled, readOnly, ...rest }: 
 				{values.map((v: string, i: number) => {
 					const isChecked = radio.state === v;
 					return (
-						<Radio {...radio} value={v} as="button" key={i} data-checked={isChecked}>
+						<Radio
+							onChange={event => onChange(event, v)}
+							{...radio}
+							value={v}
+							as="button"
+							key={i}
+							data-checked={isChecked}
+						>
 							{v}
 						</Radio>
 					);
