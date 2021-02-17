@@ -91,14 +91,6 @@ function addBundle(response: Response) {
 
 type IconSet = Record<string, ReactElement>;
 
-function isRootProvider(ref: React.RefObject<any>) {
-	const providers = document.querySelectorAll('.tc-iconsprovider');
-	if (ref !== null && ref.current && providers.length > 0) {
-		return providers[0] === ref.current;
-	}
-	return providers.length === 0;
-}
-
 /**
  * If you want to use Icon with SVG you have to load this
  * component in your app.
