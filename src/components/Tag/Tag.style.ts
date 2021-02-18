@@ -12,6 +12,7 @@ export const Tag = styled.span.attrs({
 	font-family: ${tokens.fonts.sansSerif};
 	font-size: ${tokens.fontSizes.small};
 	font-weight: ${tokens.fontWeights.semiBold};
+	line-height: 1;
 	border-radius: ${tokens.radii.inputBorderRadius};
 	vertical-align: middle;
 	${ellipsis};
