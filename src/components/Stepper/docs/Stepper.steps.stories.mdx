@@ -1,0 +1,63 @@
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { FigmaImage, FigmaLink, Use } from '../../../docs';
+
+<Meta title="Components/Stepper/Steps" />
+
+# Steps
+
+Steps are the main elements for the stepper. 
+
+## Zoning
+
+<FigmaImage
+	src="https://www.figma.com/file/ADMhuI0tLeW93pgvKDNH7V/Stepper?node-id=344%3A0"
+	alt="zoning image for the steps"
+/>
+
+## Style
+
+### Sizes
+
+The max-width for a step is 15rem, if the label is longer display an ellipsis.
+
+### Variations
+
+**Description**
+
+Having a step description is optional. The description offers additional information or guidance to the user.
+
+**Sub step**
+
+Sub steps are optional. They should be used to avoid having too many steps, or too long steps.
+
+## States
+
+<FigmaImage
+	src="https://www.figma.com/file/ADMhuI0tLeW93pgvKDNH7V/Stepper?node-id=350%3A0"
+	alt="states image for the steps"
+/>
+
+
+## Interactions
+
+Hovering the step will display a tooltip with the full label.
+
+<FigmaImage
+	src="https://www.figma.com/file/ADMhuI0tLeW93pgvKDNH7V/Stepper?node-id=355%3A10170"
+	alt="hovering on"
+/>
+
+## Usage
+
+To do
+
+## Accessibility
+
+- Press <kbd>TABS</kbd> to focus is on each steps (icon + label) meaning max focus will be 15rem
+
+## Changelog
+
+| Date       | Author     | Description |
+| ---------- | ---------- | ----------- |
+| 02/25/2021 | Monia Huet | Init page   |
