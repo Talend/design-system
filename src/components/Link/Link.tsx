@@ -3,7 +3,7 @@ import { StyledProps } from 'styled-components';
 import { BoxProps } from 'reakit';
 import { IconName } from '@talend/icons';
 
-import { Icon, IconProps } from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 import * as S from './Link.style';
 
@@ -11,16 +11,16 @@ export type LinkProps = BoxProps &
 	StyledProps<any> &
 	React.AnchorHTMLAttributes<any> & {
 		/** The icon to display before */
-		iconBefore?: IconName | IconProps;
+		iconBefore?: IconName | React.ReactElement;
 		/** The icon to display after */
-		iconAfter?: IconName | IconProps;
+		iconAfter?: IconName | React.ReactElement;
 		/** if the link is disabled */
 		disabled?: boolean;
 		/** if the link is external but the icon must not be shown */
 		hideExternalIcon?: boolean;
 	};
 
-const Link: React.FC<LinkProps> = React.forwardRef(
+const Link = React.forwardRef(
 	(
 		{
 			className,
@@ -63,7 +63,10 @@ const Link: React.FC<LinkProps> = React.forwardRef(
 				{iconBefore && typeof iconBefore === 'string' ? (
 					<Icon className="link__icon link__icon--before" name={iconBefore} />
 				) : (
-					iconBefore
+					React.cloneElement(iconBefore, {
+						...iconBefore.props,
+						className: `${iconBefore.props.className} link__icon link__icon--before`,
+					})
 				)}
 				<span className="link__text">{children}</span>
 				{isExternal && !hideExternalIcon && (
@@ -72,7 +75,10 @@ const Link: React.FC<LinkProps> = React.forwardRef(
 				{iconAfter && typeof iconBefore === 'string' ? (
 					<Icon className="link__icon link__icon--after" name={iconAfter} />
 				) : (
-					iconAfter
+					React.cloneElement(iconAfter, {
+						...iconAfter.props,
+						className: `${iconAfter.props.className} link__icon link__icon--after`,
+					})
 				)}
 			</S.Link>
 		);
