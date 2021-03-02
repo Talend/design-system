@@ -60,26 +60,28 @@ const Link = React.forwardRef(
 				ariaDisabled={disabled ? 'true' : null}
 				ref={ref}
 			>
-				{iconBefore && typeof iconBefore === 'string' ? (
-					<Icon className="link__icon link__icon--before" name={iconBefore} />
-				) : (
-					React.cloneElement(iconBefore, {
-						...iconBefore.props,
-						className: `${iconBefore.props.className} link__icon link__icon--before`,
-					})
-				)}
+				{iconBefore &&
+					(typeof iconBefore === 'string' ? (
+						<Icon className="link__icon link__icon--before" name={iconBefore} />
+					) : (
+						React.cloneElement(iconBefore, {
+							...iconBefore.props,
+							className: `${iconBefore.props.className} link__icon link__icon--before`,
+						})
+					))}
 				<span className="link__text">{children}</span>
 				{isExternal && !hideExternalIcon && (
 					<Icon className="link__icon link__icon--external" name="talend-link" />
 				)}
-				{iconAfter && typeof iconBefore === 'string' ? (
-					<Icon className="link__icon link__icon--after" name={iconAfter} />
-				) : (
-					React.cloneElement(iconAfter, {
-						...iconAfter.props,
-						className: `${iconAfter.props.className} link__icon link__icon--after`,
-					})
-				)}
+				{iconAfter &&
+					(typeof iconBefore === 'string' ? (
+						<Icon className="link__icon link__icon--after" name={iconAfter} />
+					) : (
+						React.cloneElement(iconAfter, {
+							...iconAfter.props,
+							className: `${iconAfter.props.className} link__icon link__icon--after`,
+						})
+					))}
 			</S.Link>
 		);
 	},
