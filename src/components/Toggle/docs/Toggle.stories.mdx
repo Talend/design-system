@@ -1,10 +1,12 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { withDesign } from 'storybook-addon-designs'
+import { Figma } from 'storybook-addon-designs/blocks';
 import { FigmaImage, FigmaLink } from '../../../docs';
 import { IconsProvider } from '../../IconsProvider';
 import Tooltip from '../../Tooltip';
 import Toggle from '../';
 
-<Meta title="Components/Toggle" component={Toggle} />
+<Meta title="Components/Toggle" component={Toggle} decorators={[withDesign]}/>
 
 <FigmaLink href="https://www.figma.com/file/uA0kGVh0USLFEg6bhU8YZR/Toggle" />
 
@@ -20,6 +22,8 @@ The Toggle button component is used to toggle features visibility.
 />
 
 ## Style
+
+<Figma url="https://www.figma.com/file/uA0kGVh0USLFEg6bhU8YZR/Toggle?node-id=0%3A68" collapsable={false} showLink={false}/>
 
 ## States
 
