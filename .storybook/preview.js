@@ -12,7 +12,7 @@ export const globalTypes = {
 		name: 'Theme',
 		description: 'Choose a theme to apply to the design system',
 		toolbar: {
-			icon: 'mirror',
+			icon: 'paintbrush',
 			items: [
 				{ value: 'light', left: '⚪️', title: 'Default theme' },
 				{ value: 'dark', left: '⚫️', title: 'Dark theme' },
@@ -39,9 +39,7 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
-const ICONS = [
-	'https://statics-dev.cloud.talend.com/@talend/icons/6.7.0/dist/svg-bundle/all.svg',
-];
+const ICONS = ['https://statics-dev.cloud.talend.com/@talend/icons/6.7.0/dist/svg-bundle/all.svg'];
 
 const withThemeProvider = (Story, context) => {
 	const theme = getTheme(context.globals.theme);

@@ -23,6 +23,11 @@ module.exports = {
 			},
 		},
 		'@storybook/addon-links',
+		'@storybook/addon-a11y',
 		'storybook-addon-pseudo-states',
 	],
+	webpackFinal: async config => {
+		config.entry.unshift('core-js');
+		return config;
+	},
 };

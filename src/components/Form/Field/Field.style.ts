@@ -79,7 +79,7 @@ export const Field = styled.div`
 	.field__group--has-error {
 		${FieldControl} {
 			border-width: 2px;
-			border-color: ${({ theme }) => theme.colors.destructiveColor};
+			border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
 		}
 
 		+ [role='status'] {
@@ -118,7 +118,7 @@ export const FieldGroup = styled.div<{ after: boolean }>`
 	svg {
 		left: 0;
 		margin: 0 1rem;
-		fill: ${tokens.colors.gray500};
+		fill: ${tokens.colors.gray[500]};
 		pointer-events: none;
 
 		+ input {
@@ -141,7 +141,7 @@ export const FieldGroup = styled.div<{ after: boolean }>`
 
 		&:hover {
 			svg {
-				fill: ${({ theme }) => theme.colors.activeColor};
+				fill: ${({ theme }) => theme.colors.activeColor[500]};
 			}
 		}
 	}
