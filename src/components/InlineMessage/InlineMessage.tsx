@@ -1,13 +1,13 @@
 import React, { PropsWithChildren } from 'react';
 import { IconName } from '@talend/icons';
 
-import { Icon, IconProps } from '../Icon/Icon';
+import { Icon } from '../Icon/Icon';
 
 import * as S from './InlineMessage.style';
 
 export type InlineMessageProps = PropsWithChildren<any> & {
-	/** The icon to display */
-	icon: IconName | IconProps;
+	/** The icon element to display */
+	icon: IconName;
 	/** The title of the message */
 	title?: string;
 	/** The content of the message */
@@ -39,7 +39,7 @@ const InlineMessage = React.forwardRef(
 					{(icon || title) && (
 						<>
 							<span className="inline-message__icon">
-								{typeof icon === 'string' ? <Icon name={icon} /> : icon}
+								<Icon name={icon} />
 							</span>
 							{title && (
 								<>
