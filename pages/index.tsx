@@ -31,12 +31,8 @@ import {
 export default function () {
 	return (
 		<ThemeProvider>
-			<IconsProvider
-				bundles={[
-					'https://statics-dev.cloud.talend.com/@talend/icons/6.10.0/dist/svg-bundle/all.svg',
-				]}
-			/>
 			<ThemeProvider.GlobalStyle />
+			<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 			<ThemeProvider.ThemeSwitcher />
 			<h1>Catalog</h1>
 			<strong>What can I do with the design system?</strong>
