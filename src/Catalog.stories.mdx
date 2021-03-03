@@ -8,6 +8,13 @@ import { Button, Dropdown, Form, Icon, InlineMessage, Link, Popover, Tag, Toggle
 <Canvas>
 	<Story name="Buttons">
 		<Button.Primary icon="talend-datagrid">Primary button</Button.Primary>
+        <Button.Primary
+            icon={
+                <Icon name="src-https://fonts.gstatic.com/s/i/materialiconsoutlined/lightbulb/v10/24px.svg" />
+            }
+        >
+            Button with custom icon
+        </Button.Primary>
 		<Button.Destructive icon="talend-datagrid">Destructive button</Button.Destructive>
 		<Button.Secondary icon="talend-datagrid">Secondary button</Button.Secondary>
 		<Button.Tertiary icon="talend-datagrid">Tertiary button</Button.Tertiary>
