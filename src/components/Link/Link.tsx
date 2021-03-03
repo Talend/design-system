@@ -65,7 +65,6 @@ const Link = React.forwardRef(
 						<Icon className="link__icon link__icon--before" name={iconBefore} />
 					) : (
 						React.cloneElement(iconBefore, {
-							...iconBefore.props,
 							className: `${iconBefore.props.className} link__icon link__icon--before`,
 						})
 					))}
@@ -78,7 +77,6 @@ const Link = React.forwardRef(
 						<Icon className="link__icon link__icon--after" name={iconAfter} />
 					) : (
 						React.cloneElement(iconAfter, {
-							...iconAfter.props,
 							className: `${iconAfter.props.className} link__icon link__icon--after`,
 						})
 					))}

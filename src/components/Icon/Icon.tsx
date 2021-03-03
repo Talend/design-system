@@ -165,13 +165,7 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
 
 		if (isImg) {
 			return (
-				<img
-					alt=""
-					src={name.substring(4)}
-					className={classnames('tc-icon', classname)}
-					{...accessibility}
-					{...rest}
-				/>
+				<img alt="" src={name.substring(4)} className={classname} {...accessibility} {...rest} />
 			);
 		}
 
@@ -180,7 +174,7 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
 				<img
 					alt=""
 					src={name.replace('remote-', '')}
-					className={classnames('tc-icon', className)}
+					className={className}
 					{...accessibility}
 					{...rest}
 				/>

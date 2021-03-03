@@ -37,7 +37,6 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
 					<Icon className="btn__icon" name={icon} />
 				) : (
 					React.cloneElement(icon, {
-						...icon.props,
 						className: `${icon.props.className} btn__icon`,
 					})
 				))}
