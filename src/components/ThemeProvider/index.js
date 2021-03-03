@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import Switch from '../Switch';
+import Toggle from '../Toggle';
 import defaultTheme, { dark, light } from '../../themes';
 import tokens from '../../tokens';
 
@@ -54,11 +54,19 @@ const TalendThemeProvider = ({ theme = defaultTheme, children }) => {
 };
 
 const ThemeSwitcher = () => {
-	const { switchTheme } = useContext(ThemeContext);
-	function toggle(event, value) {
-		switchTheme(value === light.id ? light : dark);
+	const { switchTheme, theme } = useContext(ThemeContext);
+	const [hasDarkMode, setDarkMode] = useState();
+	React.useEffect(() => {
+		setDarkMode(theme === dark);
+	}, [theme]);
+	function toggle() {
+		switchTheme(hasDarkMode ? light : dark);
 	}
-	return <Switch onChange={toggle} values={[light.id, dark.id]} />;
+	return (
+		<Toggle icon={hasDarkMode ? 'talend-eye-slash' : 'talend-eye'} onChange={toggle}>
+			Toggle dark mode
+		</Toggle>
+	);
 };
 
 TalendThemeProvider.createGlobalStyle = createGlobalStyle;
