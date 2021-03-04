@@ -8,7 +8,7 @@ export const Icons = () => {
 	const [size, setSize] = React.useState(2);
 	const [transform, setTransform] = React.useState('');
 	const [useCurrentColor, setUseCurrentColor] = React.useState();
-	const [currentColor, setCurrentColor] = React.useState(tokens.colors.gray800);
+	const [currentColor, setCurrentColor] = React.useState(tokens.colors.gray[800]);
 	const [border, setBorder] = React.useState();
 
 	React.useEffect(() => {
@@ -86,7 +86,7 @@ export const Icons = () => {
 								name={iconName}
 								style={{ width: size + 'rem', height: size + 'rem' }}
 								transform={transform}
-								currentColor={useCurrentColor ? currentColor : null}
+								preserveColor={!useCurrentColor}
 								border={border}
 							/>
 						</IconItem>

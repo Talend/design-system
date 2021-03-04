@@ -1,6 +1,6 @@
 {
   "name": "@talend/design-system",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Talend Design System",
   "main": "lib/index.js",
   "scripts": {
@@ -28,6 +28,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "i18next": "^15.1.3",
+    "modern-css-reset": "^1.4.0",
     "polished": "^4.0.5",
     "react-i18next": "^10.11.4",
     "react-use": "^13.27.0",
@@ -35,15 +36,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
-    "@storybook/addon-essentials": "6.1.14",
-    "@storybook/addon-links": "6.1.14",
-    "@storybook/addons": "6.1.14",
-    "@storybook/react": "6.1.14",
-    "@storybook/theming": "6.1.14",
+    "@storybook/addon-a11y": "^6.1.20",
+    "@storybook/addon-essentials": "6.1.20",
+    "@storybook/addon-links": "6.1.20",
+    "@storybook/addons": "6.1.20",
+    "@storybook/react": "6.1.20",
+    "@storybook/theming": "6.1.20",
     "@svgr/webpack": "^5.5.0",
-    "@talend/icons": "^6.9.1",
-    "@talend/scripts-core": "7.5.0",
-    "@talend/scripts-preset-react-lib": "7.5.0",
+    "@talend/icons": "^6.12.0",
+    "@talend/scripts-core": "^9.5.0",
+    "@talend/scripts-preset-react-lib": "^9.5.0",
     "@testing-library/react": "^11.2.3",
     "@types/classnames": "^2.2.11",
     "@types/react": "^16.14.2",
@@ -51,21 +53,25 @@
     "@types/react-is": "^16.7.2",
     "@types/styled-components": "^5.1.7",
     "babel-plugin-styled-components": "^1.12.0",
+    "chromatic": "^5.6.1",
+    "core-js": "^3.8.3",
     "cypress": "^6.3.0",
     "enzyme": "^3.11.0",
     "figma-js": "^1.13.0",
     "focus-outline-manager": "^1.0.2",
+    "mdx-embed": "^0.0.19",
     "next": "^10.0.5",
     "prettier": "^2.2.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "storybook-chroma": "^4.0.2",
-    "storybook-docs-toc": "^1.2.0",
+    "storybook-addon-mdx-embed": "^0.0.19",
+    "storybook-addon-pseudo-states": "^1.0.0",
+    "storybook-docs-toc": "^1.3.1",
     "styled-components": "^5.2.1"
   },
   "peerDependencies": {
-    "@talend/icons": "^6.9.1",
+    "@talend/icons": "^6.15.0",
     "focus-outline-manager": "^1.0.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -73,6 +79,7 @@
     "styled-components": "^5.2.1"
   },
   "resolutions": {
-    "core-js": "3"
+    "immer": "^8.0.1",
+    "node-notifier": "^8.0.1"
   }
 }

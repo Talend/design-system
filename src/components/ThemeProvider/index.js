@@ -1,44 +1,78 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import 'modern-css-reset';
 
-import defaultTheme from '../../themes';
+import Toggle from '../Toggle';
+import defaultTheme, { dark, light } from '../../themes';
 import tokens from '../../tokens';
 
-import reset from './reset';
+import useGoogleFont from './useGoogleFont';
 
 const GlobalStyle = createGlobalStyle`  
-	${reset};
-
 	html {
 		/* 1rem = 10px */
 		font-size: 62.5%;
 	}
-
+	
 	body {
 		margin: 0;
 		padding: 0;
 		font-family: 'Open Sans', sans-serif;
 		font-size: 14px;
+		color: ${({ theme }) => theme.colors.textColor};
+		background: ${({ theme }) => theme.colors.backgroundColor};
 	}
 
 	a {
 		text-decoration: none;
 	}
-
+	
 	.focus-outline-hidden *:focus {
 		outline: none;
 	}
 
 	::selection {
-		background-color: ${tokens.colors.coral100};
+		color: ${tokens.colors.gray[900]};
+		background-color: ${tokens.colors.coral[100]};
 	}
 `;
 
-const TalendThemeProvider = ({ theme = defaultTheme, children }) => (
-	<ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
+const ThemeContext = React.createContext({});
+
+const TalendThemeProvider = ({ theme = defaultTheme, children }) => {
+	useGoogleFont(
+		'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Inconsolata:wght@300;400;500;600;700;800;900&display=swap',
+	);
+	const [selectedTheme, setSelectedTheme] = useState(theme);
+	React.useEffect(() => {
+		setSelectedTheme(theme);
+	}, [theme]);
+	const switchTheme = newTheme => setSelectedTheme(newTheme);
+	return (
+		<ThemeContext.Provider value={{ switchTheme, theme: selectedTheme }}>
+			<ThemeProvider theme={selectedTheme}>{children}</ThemeProvider>
+		</ThemeContext.Provider>
+	);
+};
+
+const ThemeSwitcher = () => {
+	const { switchTheme, theme } = useContext(ThemeContext);
+	const [hasDarkMode, setDarkMode] = useState();
+	React.useEffect(() => {
+		setDarkMode(theme === dark);
+	}, [theme]);
+	function toggle() {
+		switchTheme(hasDarkMode ? light : dark);
+	}
+	return (
+		<Toggle icon={hasDarkMode ? 'talend-eye-slash' : 'talend-eye'} onChange={toggle}>
+			Toggle dark mode
+		</Toggle>
+	);
+};
 
 TalendThemeProvider.createGlobalStyle = createGlobalStyle;
 TalendThemeProvider.GlobalStyle = GlobalStyle;
+TalendThemeProvider.ThemeSwitcher = ThemeSwitcher;
 
 export default TalendThemeProvider;

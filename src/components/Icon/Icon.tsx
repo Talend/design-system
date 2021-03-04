@@ -22,11 +22,12 @@ export enum SVG_TRANSFORMS {
 export type IconProps = PropsWithChildren<any> & {
 	name: IconName;
 	transform: SVG_TRANSFORMS;
-	currentColor: boolean;
+	preserveColor: boolean;
 	border: boolean;
 };
 
 const SVG = styled.svg<IconProps>`
+	fill: currentColor;
 	width: ${tokens.sizes.l};
 	height: ${tokens.sizes.l};
 	transform-origin: center;
@@ -35,13 +36,13 @@ const SVG = styled.svg<IconProps>`
 	path,
 	polygon,
 	polyline {
-		${({ currentColor }) => currentColor && 'fill: currentColor;'};
+		// 	${({ preserveColor }) => (preserveColor ? '' : 'fill: currentColor;')};
 		${({ border }) => border && 'transform: translate(25%, 25%);'};
 	}
 
-	.ti-background {
-		${({ border, currentColor }) => !border && currentColor && 'display: none;'};
-	}
+	// .ti-background {
+	// 	${({ border, preserveColor }) => !border && !preserveColor && 'display: none;'};
+	// }
 
 	.ti-border {
 		${({ border }) => border && 'stroke: currentColor; fill: none; transform: none'};
@@ -158,34 +159,41 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
 			}
 		}, [border, safeRef]);
 
+		const classname = classnames('tc-icon', className, transform, {
+			[`tc-icon-name-${name}`]: !(isImg || isRemote),
+		});
+
 		if (isImg) {
 			return (
-				<img alt="" src={name.substring(4)} className="tc-icon" {...accessibility} {...rest} />
+				<img alt="" src={name.substring(4)} className={classname} {...accessibility} {...rest} />
 			);
 		}
 
-		const classname = classnames('tc-svg-icon', className, transform, { [`tc-icon-name-${name}`]: !(isImg || isRemote) });
-
-		let iconElement = (
-			<SVG {...rest} name={!(isImg || isRemote) ? name : null} {...accessibility} className={classname} border={border} ref={safeRef} />
-		);
-
 		if (isRemote && content && !isRemoteSVG) {
-			const classNames = classnames('tc-icon', className);
-			iconElement = (
+			return (
 				<img
 					alt=""
 					src={name.replace('remote-', '')}
-					className={classNames}
+					className={className}
 					{...accessibility}
 					{...rest}
 				/>
 			);
 		}
 
-		return iconElement;
+		return (
+			<SVG
+				{...rest}
+				name={!(isImg || isRemote) ? name : null}
+				{...accessibility}
+				className={classnames('tc-svg-icon', classname)}
+				border={border}
+				ref={safeRef}
+			/>
+		);
 	},
 );
 
 export const IconMemo = React.memo(Icon);
+
 IconMemo.displayName = 'Icon';

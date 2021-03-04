@@ -62,7 +62,7 @@ function injectIcon(id: string, container: Element) {
 		}
 		container.appendChild(element.children[0].cloneNode(true));
 	} else if (Object.keys(FETCHING_BUNDLES).length) {
-		Promise.all(Object.values(FETCHING_BUNDLES)).then(() => injectIcon(id, container));
+		Promise.any(Object.values(FETCHING_BUNDLES)).then(() => injectIcon(id, container));
 	}
 }
 
@@ -73,7 +73,7 @@ function addBundle(response: Response) {
 	if (response.status === 200 && response.ok) {
 		return response.text().then(content => {
 			if (content.startsWith('<svg')) {
-				const container = document.createElement('svg');
+				const container = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 				container.setAttribute('class', 'tc-iconsprovider');
 				container.setAttribute('style', 'display: none');
 				container.setAttribute('aria-hidden', 'true');

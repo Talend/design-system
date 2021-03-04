@@ -1,19 +1,39 @@
 import 'styled-components';
 
 declare module 'styled-components' {
+	export interface ColorSwatch {
+		900: string;
+		800: string;
+		700: string;
+		600: string;
+		500: string;
+		400: string;
+		300: string;
+		200: string;
+		100: string;
+		75?: string;
+		50?: string;
+		0?: string;
+	}
 	export interface DefaultTheme {
 		colors: {
-			//
-			primaryColor: string;
-			informationColor: string;
-			warningColor: string;
-			successColor: string;
-			destructiveColor: string;
-			//
+			// Palette
+			primaryColor: ColorSwatch;
+			informationColor: ColorSwatch;
+			warningColor: ColorSwatch;
+			successColor: ColorSwatch;
+			destructiveColor: ColorSwatch;
+			focusColor: ColorSwatch;
+			activeColor: ColorSwatch;
+			grayColor: ColorSwatch;
+
+			// Global
 			textColor: string;
-			focusColor: string;
-			activeColor: string;
 			backgroundColor: string;
+
+			// Accordions
+			accordionBorderColor: string;
+			accordionBackgroundColor: string;
 
 			// Buttons
 			buttonPrimaryColor: string;
@@ -47,6 +67,11 @@ declare module 'styled-components' {
 			inputGroupBackgroundColor: string;
 			inputGroupInteractiveColor: string;
 			inputGroupInteractiveBackgroundColor: string;
+
+			// Links
+			linkColor: string;
+			linkHoverColor: string;
+			linkActiveColor: string;
 
 			// Modals
 			modalBackground: string;

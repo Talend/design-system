@@ -37,12 +37,12 @@ export const Tab = styled(ReakitTab)`
 
 	&:hover,
 	&[aria-selected='true'] {
-		color: ${({ theme }) => theme.colors.activeColor};
+		color: ${({ theme }) => theme.colors.activeColor[500]};
 	}
 
 	&[aria-selected='true'] {
 		font-weight: ${tokens.fontWeights.semiBold};
-		box-shadow: ${tokens.shadows.underline} ${({ theme }) => theme.colors.activeColor};
+		box-shadow: ${tokens.shadows.underline} ${({ theme }) => theme.colors.activeColor[500]};
 	}
 
 	.tc-svg-icon {
@@ -50,7 +50,6 @@ export const Tab = styled(ReakitTab)`
 		margin-right: ${tokens.space.xs};
 		width: ${tokens.sizes.s};
 		height: ${tokens.sizes.s};
-		color: ${({ theme }) => theme.colors.textColor};
 	}
 
 	.tag {
