@@ -387,7 +387,7 @@ export default function () {
 				</section>
 				<section>
 					<h2>Visually Hidden</h2>
-					<VisuallyHidden>this content is visually hidden</VisuallyHidden>
+					This content is visible<VisuallyHidden> and, this, is visually hidden</VisuallyHidden>!
 				</section>
 			</main>
 		</ThemeProvider>
