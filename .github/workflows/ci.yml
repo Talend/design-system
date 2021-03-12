@@ -31,11 +31,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn
-
-      - name: Build
-        run: yarn build
 
       - name: TypeScript Check
         run: tsc
