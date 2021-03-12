@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledProps } from 'styled-components';
 import { IconName } from '@talend/icons';
 
-import { Icon } from '../Icon/Icon';
+import { Icon, IconProps } from '../Icon/Icon';
 import Loading from '../Loading';
 
 import * as S from './Button.style';
