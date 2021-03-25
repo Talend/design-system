@@ -7,6 +7,8 @@ import { Col, Row } from '../../../docs';
 
 # Form
 
+// add description
+
 ## Zoning
 
 <FigmaImage
@@ -16,8 +18,13 @@ import { Col, Row } from '../../../docs';
 
 ## Style 
 
-The form container is adaptative, the width depends on the screen size. 
+The form width is adaptative, it depends on the form container size. The form is horizontally **centered** in its container.
 
+| Container         | Width      |
+| ---------------- | ---------- |
+| > 1536px         | max-width: 78rem |
+| 1536px < 834px   | 55%        |
+| < 834px          | 100%       |
 
 ## States
 
@@ -25,6 +32,14 @@ The form container is adaptative, the width depends on the screen size.
 
 ## Interactions
 
+### Data loss message
+
+When the user clicks on the cancel button or go back to the previous page, provide a confirmation dialog.
+
+<FigmaImage
+	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=232%3A39"
+	alt="example for data loss message"
+/>
 ## Usage
 
 ## Accessibility
