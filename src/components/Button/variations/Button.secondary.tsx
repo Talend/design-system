@@ -6,17 +6,17 @@ import { ButtonProps } from '../Button';
 const ButtonSecondary: React.FC<ButtonProps> = styled(ButtonPrimary).attrs({
 	className: 'btn--secondary',
 })`
-	color: ${({ theme }) => theme.colors.buttonPrimaryBackgroundColor};
-	background: none;
+	--button-color: ${({ theme }) => theme.colors?.buttonPrimaryBackgroundColor};
+	--button-background-color: none;
 
 	&:hover {
-		color: ${({ theme }) => theme.colors.buttonPrimaryHoverBackgroundColor};
-		background-color: ${({ theme }) => theme.colors.buttonSecondaryHoverBackgroundColor};
+		--button-color: ${({ theme }) => theme.colors?.buttonPrimaryHoverBackgroundColor};
+		--button-background-color: ${({ theme }) => theme.colors?.buttonSecondaryHoverBackgroundColor};
 	}
 
 	&:active {
-		color: ${({ theme }) => theme.colors.buttonPrimaryActiveBackgroundColor};
-		background-color: ${({ theme }) => theme.colors.buttonSecondaryActiveBackgroundColor};
+		--button-color: ${({ theme }) => theme.colors?.buttonPrimaryActiveBackgroundColor};
+		--button-background-color: ${({ theme }) => theme.colors?.buttonSecondaryActiveBackgroundColor};
 	}
 `;
 
