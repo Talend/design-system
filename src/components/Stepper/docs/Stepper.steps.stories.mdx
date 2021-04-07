@@ -1,15 +1,15 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { action } from '@storybook/addon-actions';
+import { action, ColorPalette, ColorItem, IconItem, IconGallery } from '@storybook/components';
 import { FigmaImage, FigmaLink, Use } from '../../../docs';
+import Step from '../Step';
 
-<Meta title="Components/Stepper/Steps" />
+<Meta title="Components/Stepper/Steps" component={Step} />
 
 <FigmaLink href="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/?node-id=1%3A4" />
 
-
 # Steps
 
-Steps are the main elements for the stepper. 
+Steps are the main elements for the stepper.
 
 ## Zoning
 
@@ -20,18 +20,35 @@ Steps are the main elements for the stepper.
 
 ## Style
 
+### Icons
+
+<IconGallery>
+	{['talend-check-circle', 'talend-cross-circle'].map((iconName, index) => (
+		<IconItem key={index} name={iconName}>
+			<Icon name={iconName} />
+		</IconItem>
+	))}
+</IconGallery>
+
+
 ### Sizes
 
 The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 ### Variations
-
+<!--
 <FigmaImage
 	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=128%3A0"
 	alt="variations image for steps"
 />
+-->
 
-<!---
+<Step.Validated index={1} title="Lorem Ipsum" />
+<Step.Enabled index={2} title="Lorem Ipsum" />
+<Step.Error index={3} title="Lorem Ipsum" />
+<Step.InProgress index={4} title="Lorem Ipsum" />
+
+<!--
 <FigmaImage
 	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=1%3A424"
 	alt="variations image for steps"
@@ -42,14 +59,12 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 Sub steps are optional. They should be used to avoid having too many steps, or too long steps.
 -->
 
-
 ## States
 
 <FigmaImage
 	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=104%3A0"
 	alt="states image for the steps"
 />
-
 
 ## Interactions
 
