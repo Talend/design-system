@@ -7,14 +7,13 @@ const size = 2;
 
 const StepValidated = styled(Step).attrs({
 	icon: 'talend-check-circle',
-})(
-	() => `
-	  .step__icon, .step__icon > svg {
-	  		fill: ${tokens.colors.lochmara[500]};
-	  		height: ${size}rem;
-	  		width: ${size}rem;
-	  	}
- `,
-);
+})`
+	.step__icon,
+	.step__icon > svg {
+		fill: ${tokens.colors.lochmara[500]};
+		height: ${size}rem;
+		width: ${size}rem;
+	}
+`;
 
 export default React.memo(StepValidated);

@@ -1,13 +1,19 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { action, ColorPalette, ColorItem, IconItem, IconGallery } from '@storybook/components';
+import { IconsProvider } from '../../IconsProvider';
 import { FigmaImage, FigmaLink, Use } from '../../../docs';
+import { Icon } from '../../Icon';
 import Step from '../Step';
 
-<Meta title="Components/Stepper/Steps" component={Step} />
+<Meta title="Components/Stepper/Step" component={Step} />
 
 <FigmaLink href="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/?node-id=1%3A4" />
 
-# Steps
+<IconsProvider
+	bundles={['https://statics-dev.cloud.talend.com/@talend/icons/6.7.0/dist/svg-bundle/all.svg']}
+/>
+
+# Step
 
 Steps are the main elements for the stepper.
 
@@ -30,23 +36,60 @@ Steps are the main elements for the stepper.
 	))}
 </IconGallery>
 
-
 ### Sizes
 
 The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 ### Variations
-<!--
-<FigmaImage
-	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=128%3A0"
-	alt="variations image for steps"
-/>
--->
 
-<Step.Validated index={1} title="Lorem Ipsum" />
-<Step.Enabled index={2} title="Lorem Ipsum" />
-<Step.Error index={3} title="Lorem Ipsum" />
-<Step.InProgress index={4} title="Lorem Ipsum" />
+**Validated**
+
+<Canvas>
+	<Story name="Validated">
+		<Step.Validated index={1} title="Lorem Ipsum" />
+	</Story>
+</Canvas>
+
+**Enabled**
+
+<Canvas>
+	<Story name="Enabled">
+		<Step.Enabled index={2} title="Lorem Ipsum" />
+	</Story>
+</Canvas>
+
+**Error**
+
+<Canvas>
+	<Story name="Error">
+		<Step.Error index={3} title="Lorem ipsum" />
+	</Story>
+</Canvas>
+
+**In Progress**
+
+<Canvas>
+	<Story name="InProgress">
+		<Step.InProgress index={4} title="Lorem Ipsum" />
+	</Story>
+</Canvas>
+
+**Disabled**
+
+<Canvas>
+	<Story name="Disabled">
+		<Step.Disabled index={5} title="Lorem Ipsum" />
+	</Story>
+</Canvas>
+
+**Skeleton**
+
+<Canvas>
+	<Story name="Skeleton">
+		<Step.Skeleton />
+	</Story>
+</Canvas>
+
 
 <!--
 <FigmaImage
@@ -85,6 +128,7 @@ _To do_
 
 ## Changelog
 
-| Date       | Author     | Description |
-| ---------- | ---------- | ----------- |
-| 02/25/2021 | Monia Huet | Init page   |
+| Date       | Author         | Description        |
+| ---------- | -------------- | ------------------ |
+| 02/25/2021 | Monia Huet     | Init page          |
+| 04/08/2021 | Nicolas Comont | Add Step component |

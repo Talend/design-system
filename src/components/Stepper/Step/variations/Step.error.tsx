@@ -7,14 +7,13 @@ const size = 2;
 
 const StepEnabled = styled(Step).attrs({
 	icon: 'talend-cross-circle',
-})(
-	() => `
-	  .step__icon, .step__icon > svg {
-	  		fill: ${tokens.colors.coral[500]};
-	  		height: ${size}rem;
-	  		width: ${size}rem;
-	  	}
- `,
-);
+})`
+	.step__icon,
+	.step__icon > svg {
+		fill: ${tokens.colors.coral[500]};
+		height: ${size}rem;
+		width: ${size}rem;
+	}
+`;
 
 export default React.memo(StepEnabled);
