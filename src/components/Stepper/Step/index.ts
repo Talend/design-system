@@ -6,9 +6,6 @@ import StepError from './variations/Step.error';
 import StepInProgress from './variations/Step.progress';
 import StepSkeleton from './variations/Step.skeleton';
 
-// FIXME [NC]:
-// @see link ?
-
 const StepComponent = Step as typeof Step & {
 	Validated: typeof StepValidated;
 	Enabled: typeof StepEnabled;

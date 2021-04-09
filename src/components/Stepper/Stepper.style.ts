@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
 
-// import tokens from '../../../tokens';
-
-export type StepperProps = {};
-
-export const Stepper = styled.ol<StepperProps>`
+export const Stepper = styled.ol`
 	width: 20rem;
 	display: flex;
 	list-style: none;
@@ -20,6 +16,6 @@ export const Stepper = styled.ol<StepperProps>`
 	}
 
 	> li:first-of-type ~ :not(.in-progress ~ *):not(.in-progress):not(li) {
-		border-left: 2px solid ${tokens.colors.lochmara[500]};
+		border-left: .2rem solid ${tokens.colors.lochmara[500]};
 	}
 `;

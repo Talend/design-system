@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 import tokens from '../../../tokens';
 
-export type StepProps = {
-};
-
-export const Step = styled.li<StepProps>`
+export const Step = styled.li`
 	display: inline-flex;
 	max-width: 20rem;
 
