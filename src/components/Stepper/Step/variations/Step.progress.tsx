@@ -6,7 +6,9 @@ import tokens from '../../../../tokens';
 const size = 2;
 const gap = 0.8;
 
-const StepInProgress = styled(Step)`
+const StepInProgress = styled(Step).attrs({
+	className: 'in-progress',
+})`
 	color: ${tokens.colors.lochmara[500]};
 	font-weight: ${tokens.fontWeights.semiBold};
 

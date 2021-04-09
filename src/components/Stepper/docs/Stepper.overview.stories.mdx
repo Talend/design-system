@@ -1,15 +1,16 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { action } from '@storybook/addon-actions';
 import { FigmaImage, FigmaLink, Use } from '../../../docs';
+import Stepper from '../Stepper';
+import Step from '../Step';
 
-<Meta title="Components/Stepper/Overview" />
+<Meta title="Components/Stepper/Overview" component={Stepper} />
 
 <FigmaLink href="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/?node-id=1%3A5" />
 
-
 # Overview
 
-Stepper is used to display the different steps to do to complete an action. 
+Stepper is used to display the different steps to do to complete an action.
 
 It helps users avoid frustration and successfully complete a primary task.
 
@@ -32,6 +33,21 @@ A Stepper is **vertical by default** but can be horizontal.
 
 Consider to use a vertical stepper when there are workflows greater than 3 steps.
 
+<Canvas>
+	<Story name="Vertical">
+		<Stepper>
+			<Step.Validated title="I'm ok" />
+			<Step.Error title="I'm not ok" />
+			<Step.Validated title="Hey" />
+			<Step.Validated title="Yup" />
+			<Step.InProgress title="Hey, I'm in progress" />
+			<Step.Disabled title="I'm disabled" />
+			<Step.Enabled title="I'm disabled" />
+		</Stepper>
+	</Story>
+</Canvas>
+
+
 <FigmaImage
 	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=104%3A193"
 	alt="vertical stepper example"
@@ -39,9 +55,9 @@ Consider to use a vertical stepper when there are workflows greater than 3 steps
 
 **Horizontal**
 
-Consider to use an horizontal stepper when full page components are used (such as Data grid or List) 
+Consider to use an horizontal stepper when full page components are used (such as Data grid or List)
 
-An horizontal stepper cannot have more than 3 steps. 
+An horizontal stepper cannot have more than 3 steps.
 
 The sub-steps option is not available with the horizontal stepper.
 

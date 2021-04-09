@@ -5,7 +5,7 @@ import tokens from '../../../tokens';
 export type StepProps = {
 };
 
-export const Step = styled.div<StepProps>`
+export const Step = styled.li<StepProps>`
 	display: inline-flex;
 	max-width: 20rem;
 
