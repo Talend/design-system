@@ -38,38 +38,18 @@ module.exports = {
 		'../src/pages/**/*.stories.mdx',
 		'../src/pages/**/*.stories.js',
 	],
-	features: {
-		postcss: false,
-	},
 	addons: [
 		{
-			name: '@storybook/addon-docs',
+			name: '@storybook/addon-essentials',
 			options: {
-				sourceLoaderOptions: {
-					prettierConfig: {
-						arrowParens: 'always',
-						singleQuote: true,
-						bracketSpacing: false,
-						trailingComma: 'all',
-					},
+				backgrounds: false,
 				},
 			},
-		},
-		'@storybook/addon-controls',
-		'@storybook/addon-a11y',
-		'@storybook/addon-actions',
-		'@storybook/addon-backgrounds',
-		'@storybook/addon-viewport',
-		'@storybook/addon-toolbars',
 		'@storybook/addon-links',
+		'@storybook/addon-a11y',
 		'storybook-addon-pseudo-states',
 		'storybook-addon-mdx-embed',
 	],
-	typescript: {
-		check: false,
-		checkOptions: {},
-		reactDocgen: 'react-docgen-typescript',
-	},
 	webpackFinal: async config => {
 		config.entry.unshift('core-js');
 		config.module.rules.map(rule => {
@@ -87,9 +67,8 @@ module.exports = {
 			new BrowserSyncPlugin({
 				host: 'localhost',
 				port: 3002,
-				proxy: 'http://localhost:6006/',
-			}),
-		);
+			proxy: 'http://localhost:6006/'
+		}));
 		return config;
 	},
 };
