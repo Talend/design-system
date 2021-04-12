@@ -1,4 +1,25 @@
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const visit = require('unist-util-visit');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
+const tokens = require('../lib/tokens').default;
+
+const getValue = (path, obj) => path.split('.').reduce((acc, c) => acc && acc[c], obj);
+const getTokenValue = path => getValue(path, tokens);
+const designTokensPlugin = () => tree =>
+	visit(tree, 'text', node => {
+		const regex = /\$([\w+\.]+\w+)/g;
+		const nodeValue = node.value;
+		let results;
+		while ((results = regex.exec(nodeValue)) !== null) {
+			if (getTokenValue(results[1])) {
+				node.type = 'html';
+				node.value = node.value.replace(
+					results[0],
+					`<abbr title="${getTokenValue(results[1])}">${results[0]}</abbr>`,
+				);
+			}
+		}
+	});
 
 module.exports = {
 	stories: [
@@ -17,25 +38,58 @@ module.exports = {
 		'../src/pages/**/*.stories.mdx',
 		'../src/pages/**/*.stories.js',
 	],
+	features: {
+		postcss: false,
+	},
 	addons: [
 		{
-			name: '@storybook/addon-essentials',
+			name: '@storybook/addon-docs',
 			options: {
-				backgrounds: false,
+				sourceLoaderOptions: {
+					prettierConfig: {
+						arrowParens: 'always',
+						singleQuote: true,
+						bracketSpacing: false,
+						trailingComma: 'all',
+					},
+				},
 			},
 		},
-		'@storybook/addon-links',
+		'@storybook/addon-controls',
 		'@storybook/addon-a11y',
+		'@storybook/addon-actions',
+		'@storybook/addon-backgrounds',
+		'@storybook/addon-viewport',
+		'@storybook/addon-toolbars',
+		'@storybook/addon-links',
 		'storybook-addon-pseudo-states',
 		'storybook-addon-mdx-embed',
 	],
+	typescript: {
+		check: false,
+		checkOptions: {},
+		reactDocgen: 'react-docgen-typescript',
+	},
 	webpackFinal: async config => {
 		config.entry.unshift('core-js');
-		config.plugins.push(new BrowserSyncPlugin({
-			host: 'localhost',
-			port: 3002,
-			proxy: 'http://localhost:6006/'
-		}));
+		config.module.rules.map(rule => {
+			if (rule.use && rule.use.some(use => use.loader && use.loader.includes('@mdx-js'))) {
+				return rule.use.map(use => {
+					if (use.options && use.options.remarkPlugins) {
+						use.options.remarkPlugins.push(designTokensPlugin);
+					}
+					return use;
+				});
+			}
+			return rule;
+		});
+		config.plugins.push(
+			new BrowserSyncPlugin({
+				host: 'localhost',
+				port: 3002,
+				proxy: 'http://localhost:6006/',
+			}),
+		);
 		return config;
 	},
 };
