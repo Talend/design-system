@@ -32,7 +32,10 @@ const FigmaIcon = () => (
 	</svg>
 );
 
-const Link = styled.a`
+const Link = styled.a.attrs({
+	target: '_blank',
+	rel: 'noopener noreferrer',
+})`
 	position: relative;
 	float: right;
 	display: inline-flex;
@@ -54,7 +57,7 @@ const Link = styled.a`
 
 const FigmaLink = props => {
 	return (
-		<Link target="_blank" {...props}>
+		<Link {...props}>
 			<FigmaIcon />
 			See in Figma
 		</Link>

@@ -9,7 +9,10 @@ const GitHubIcon = () => (
 	</svg>
 );
 
-const Link = styled.a`
+const Link = styled.a.attrs({
+	target: '_blank',
+	rel: 'noopener noreferrer',
+})`
 	position: relative;
 	float: right;
 	display: inline-flex;
@@ -31,7 +34,7 @@ const Link = styled.a`
 
 const GitHubLink = props => {
 	return (
-		<Link target="_blank" {...props}>
+		<Link {...props}>
 			<GitHubIcon />
 			See in GitHub
 		</Link>
