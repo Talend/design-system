@@ -8,6 +8,11 @@ export const Stepper = styled.ol`
 	align-items: flex-end;
 	flex-direction: column;
 
+	.step[data-index]::before {
+		content: attr(data-index) '. ';
+		margin-right: ${tokens.space.xxs};
+	}
+
 	> :first-of-type ~ div.stepper__progress-bar:not(:last-child) {
 		height: 5rem;
 		width: 0.2rem;

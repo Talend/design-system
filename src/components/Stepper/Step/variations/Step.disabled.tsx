@@ -6,7 +6,7 @@ import tokens from '../../../../tokens';
 const size = 2;
 
 const StepDisabled = styled(Step).attrs({ className: 'step--disabled' })`
-	.step__index,
+	::before,
 	.step__title {
 		color: ${tokens.colors.gray[900]};
 		opacity: ${tokens.opacity.disabled};

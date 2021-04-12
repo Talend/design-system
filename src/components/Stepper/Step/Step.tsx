@@ -22,7 +22,7 @@ export type StepProps = {
 const Step: React.FC<StepProps> = ({ icon, index, title, className = '', ...rest }: StepProps) => {
 	return (
 		<S.Step role="status" aria-live="polite" {...rest} className={`step ${className || ''}`}>
-			<span className="step__index">{index}</span>
+			{/* <span className="step__index">{index}</span> */}
 			<span className="step__title">{title}</span>
 			<span className="step__icon">{icon && <Icon name={icon} />}</span>
 		</S.Step>
