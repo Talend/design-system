@@ -43,8 +43,8 @@ module.exports = {
 			name: '@storybook/addon-essentials',
 			options: {
 				backgrounds: false,
-				},
 			},
+		},
 		'@storybook/addon-links',
 		'@storybook/addon-a11y',
 		'storybook-addon-pseudo-states',
@@ -67,8 +67,9 @@ module.exports = {
 			new BrowserSyncPlugin({
 				host: 'localhost',
 				port: 3002,
-			proxy: 'http://localhost:6006/'
-		}));
+				proxy: 'http://localhost:6006/',
+			}),
+		);
 		return config;
 	},
 };
