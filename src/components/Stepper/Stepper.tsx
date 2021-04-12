@@ -5,7 +5,7 @@ export type StepperProps = PropsWithChildren<any>;
 
 const Stepper: React.FC<StepperProps> = ({ children, ...rest }: StepperProps) => (
 	<S.Stepper>
-		{React.Children.map(children, (child, index) => [
+		{children && React.Children.map(children, (child, index) => [
 			<div className="line" />,
 			React.cloneElement(child, { index: index + 1, ...rest }),
 		])}

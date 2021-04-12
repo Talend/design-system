@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
@@ -7,7 +7,7 @@ const size = 2;
 const gap = 0.8;
 
 const StepInProgress = styled(Step).attrs({
-	className: 'in-progress',
+	className: 'step--in-progress',
 })`
 	color: ${tokens.colors.lochmara[500]};
 	font-weight: ${tokens.fontWeights.semiBold};

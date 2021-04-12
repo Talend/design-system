@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
@@ -6,7 +6,7 @@ import tokens from '../../../../tokens';
 const size = 2;
 const gap = 0.8;
 
-const StepEnabled = styled(Step)`
+const StepEnabled = styled(Step).attrs({ className: 'step--enabled' })`
 	.step__icon {
 		display: block;
 		height: ${size}rem;

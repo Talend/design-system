@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
 
 const size = 2;
 
-const StepDisabled = styled(Step).attr({ className: 'step--disabled' })`
+const StepDisabled = styled(Step).attrs({ className: 'step--disabled' })`
 	.step__index,
 	.step__title {
 		color: ${tokens.colors.gray[900]};
