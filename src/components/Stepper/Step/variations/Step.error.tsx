@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
 
-const size = 2;
 
 const StepError = styled(Step).attrs({
 	icon: 'talend-cross-circle',
@@ -12,8 +11,8 @@ const StepError = styled(Step).attrs({
 	.step__icon,
 	.step__icon > .tc-svg-icon {
 		fill: ${tokens.colors.coral[500]};
-		height: ${size}rem;
-		width: ${size}rem;
+		height: ${tokens.space.l};
+		width: ${tokens.space.l};
 	}
 `;
 
