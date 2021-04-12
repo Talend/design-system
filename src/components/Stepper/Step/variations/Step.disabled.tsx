@@ -5,7 +5,7 @@ import tokens from '../../../../tokens';
 
 const size = 2;
 
-const StepDisabled = styled(Step)`
+const StepDisabled = styled(Step).attr({ className: 'step--disabled' })`
 	.step__index,
 	.step__title {
 		color: ${tokens.colors.gray[900]};
