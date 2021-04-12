@@ -10,7 +10,7 @@ export type StepProps = {
 	/** The index displayed in front of the step */
 	index: string;
 	/** The optionnal class name */
-	className: string;
+	className?: string;
 	/** The icon element to display */
 	icon: IconName;
 };
