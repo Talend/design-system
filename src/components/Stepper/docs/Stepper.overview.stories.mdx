@@ -44,11 +44,6 @@ Consider using a vertical stepper when there are workflows greater than 3 steps.
 	</Story>
 </Canvas>
 
-<FigmaImage
-	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=104%3A193"
-	alt="vertical stepper example"
-/>
-
 **Horizontal**
 
 Consider using a horizontal stepper when full page components are used (such as Data grid or List)
@@ -63,6 +58,20 @@ The sub-steps option is not available with the horizontal stepper.
 />
 
 ## States
+
+### Loading
+
+<Canvas>
+    <Story name="Loading">
+        <Stepper>
+            <Step.Skeleton />
+            <Step.Skeleton />
+            <Step.Skeleton />
+            <Step.Skeleton />
+            <Step.Skeleton />
+        </Stepper>
+    </Story>
+</Canvas>
 
 ## Content
 
