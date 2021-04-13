@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
 
-
 const StepDisabled = styled(Step).attrs({ className: 'step--disabled' })`
-	::before,
+	color: ${({ theme }) => theme.colors?.grayColor[900]};
+
+	&:before,
 	.step__title {
-		color: ${tokens.colors.gray[900]};
 		opacity: ${tokens.opacity.disabled};
 	}
 
@@ -17,7 +17,7 @@ const StepDisabled = styled(Step).attrs({ className: 'step--disabled' })`
 		width: ${tokens.space.l};
 		background: radial-gradient(
 			${tokens.space.l} ${tokens.space.l} at ${tokens.space.s} ${tokens.space.s},
-			${tokens.colors.gray[100]} 50%,
+			${({ theme }) => theme.colors?.grayColor[100]} 50%,
 			transparent 50%
 		);
 	}

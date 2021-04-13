@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
 
-
 const StepInProgress = styled(Step).attrs({
 	className: 'step--in-progress',
 })`
-	color: ${tokens.colors.lochmara[500]};
+	color: ${({ theme }) => theme.colors?.activeColor[500]};
 	font-weight: ${tokens.fontWeights.semiBold};
 
 	.step__icon {
@@ -16,12 +15,12 @@ const StepInProgress = styled(Step).attrs({
 		width: ${tokens.space.l};
 		background: radial-gradient(
 				1.2rem 1.2rem at ${tokens.space.s} ${tokens.space.s},
-				${tokens.colors.lochmara[500]} 50%,
+				${({ theme }) => theme.colors?.activeColor[500]} 50%,
 				transparent 50%
 			),
 			radial-gradient(
 				${tokens.space.l} ${tokens.space.l} at ${tokens.space.s} ${tokens.space.s},
-				${tokens.colors.lochmara[100]} 50%,
+				${({ theme }) => theme.colors?.activeColor[100]} 50%,
 				transparent 50%
 			);
 	}

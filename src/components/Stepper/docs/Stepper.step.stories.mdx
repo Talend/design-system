@@ -1,8 +1,9 @@
-import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { action, ColorPalette, ColorItem, IconItem, IconGallery } from '@storybook/components';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { IconItem, IconGallery } from '@storybook/components';
 import { IconsProvider } from '../../IconsProvider';
 import { FigmaImage, FigmaLink, Use } from '../../../docs';
 import { Icon } from '../../Icon';
+import Tooltip from '../../Tooltip';
 import Step from '../Step';
 
 <Meta title="Components/Stepper/Step" component={Step} />
@@ -38,7 +39,7 @@ Steps are the main elements for the stepper.
 
 ### Sizes
 
-The max-width for a step is 20rem, if the label is longer display an ellipsis.
+The max-width for a step is 20rem, if the label is longer we display an ellipsis.
 
 ### Variations
 
@@ -46,7 +47,7 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 <Canvas>
 	<Story name="Validated">
-		<Step.Validated index={1} title="Lorem Ipsum" />
+		<Step.Validated data-index={1} title="Lorem Ipsum" />
 	</Story>
 </Canvas>
 
@@ -54,7 +55,7 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 <Canvas>
 	<Story name="Enabled">
-		<Step.Enabled index={2} title="Lorem Ipsum" />
+		<Step.Enabled data-index={2} title="Lorem Ipsum" />
 	</Story>
 </Canvas>
 
@@ -62,7 +63,7 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 <Canvas>
 	<Story name="Error">
-		<Step.Error index={3} title="Lorem ipsum" />
+		<Step.Error data-index={3} title="Lorem ipsum" />
 	</Story>
 </Canvas>
 
@@ -70,7 +71,7 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 <Canvas>
 	<Story name="InProgress">
-		<Step.InProgress index={4} title="Lorem Ipsum" />
+		<Step.InProgress data-index={4} title="Lorem Ipsum" />
 	</Story>
 </Canvas>
 
@@ -78,7 +79,7 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 
 <Canvas>
 	<Story name="Disabled">
-		<Step.Disabled index={5} title="Lorem Ipsum" />
+		<Step.Disabled data-index={5} title="Lorem Ipsum" />
 	</Story>
 </Canvas>
 
@@ -89,7 +90,6 @@ The max-width for a step is 20rem, if the label is longer display an ellipsis.
 		<Step.Skeleton />
 	</Story>
 </Canvas>
-
 
 <!--
 <FigmaImage
@@ -113,6 +113,14 @@ Sub steps are optional. They should be used to avoid having too many steps, or t
 
 Hovering the step will display a tooltip with the full label.
 
+<Canvas>
+	<Story name="Max width">
+        <Tooltip title="lorem ipsum dolor sit amet">
+            <Step.InProgress data-index={1} title="lorem ipsum dolor sit amet" />
+        </Tooltip>
+	</Story>
+</Canvas>
+
 <FigmaImage
 	src="https://www.figma.com/file/WUVKJmcDHfR7K1q1lYhaHk/Stepper?node-id=1%3A462"
 	alt="hovering on"
@@ -124,7 +132,7 @@ _To do_
 
 ## Accessibility
 
-- Press <kbd>Tabs</kbd> to focus is on each steps (icon + label) meaning max focus will be 15rem
+- Press <kbd>Tabs</kbd> to focus is on each step (icon + label) meaning max focus will be 15rem
 
 ## Changelog
 
