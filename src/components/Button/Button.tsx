@@ -8,8 +8,8 @@ import Loading from '../Loading';
 import * as S from './Button.style';
 
 export type ButtonProps = StyledProps<any> & {
-	/** The icon name of the button */
-	icon?: IconName;
+	/** The icon of the button */
+	icon?: IconName | React.ReactElement;
 	/** If the button is small or not */
 	small?: boolean;
 	/** If the button is loading or not */
@@ -30,8 +30,16 @@ const Button: React.FC<ButtonProps> = React.forwardRef(
 			`}
 			aria-busy={!!loading}
 		>
-			{loading && <Loading className="btn__loading" name={icon} aria-hidden />}
-			{!loading && icon && <Icon className="btn__icon" name={icon} />}
+			{loading && <Loading className="btn__loading btn__icon" name={icon} aria-hidden />}
+			{!loading &&
+				icon &&
+				(typeof icon === 'string' ? (
+					<Icon className="btn__icon" name={icon} />
+				) : (
+					React.cloneElement(icon, {
+						className: `${icon.props?.className} btn__icon`,
+					})
+				))}
 			<span className={`btn__text ${hideText ? 'btn__text--hidden' : ''}`}>{children}</span>
 		</S.Button>
 	),

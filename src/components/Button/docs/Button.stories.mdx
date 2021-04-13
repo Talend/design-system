@@ -17,7 +17,7 @@ Buttons are clickable items used for actions. They can have different style depe
 ## Zoning
 
 <FigmaImage
-	src="https://www.figma.com/file/2Sw2IvUHZ9F2srJ3L8AWxr/%F0%9F%93%90-Zoning?node-id=12%3A64"
+    src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=12%3A64"
 	alt="zoning image for buttons"
 />
 
@@ -209,24 +209,24 @@ When the user clicks on the button, and the action is asynchronous, a spinner wi
 If the button has an icon, the spinner will temporary replace this icon as long as it's loading.
 No action will be possible until it's done.
 
-export const LoadingButton = (props) => {
-    const [loading, isLoading] = React.useState(false);
-    return (
-        <Tooltip title="Relevant description of the basic button">
-            <Button.Primary
-                icon="talend-check"
-                loading={loading}
-                onClick={() => {
-                    isLoading(true);
-                    setTimeout(() => isLoading(false), 3000);
-                }}
-                {...props}
-            >
-                Async call to action
-            </Button.Primary>
-        </Tooltip>
-    );
-}
+export const LoadingButton = props => {
+	const [loading, isLoading] = React.useState(false);
+	return (
+		<Tooltip title="Relevant description of the basic button">
+			<Button.Primary
+				icon="talend-check"
+				loading={loading}
+				onClick={() => {
+					isLoading(true);
+					setTimeout(() => isLoading(false), 3000);
+				}}
+				{...props}
+			>
+				Async call to action
+			</Button.Primary>
+		</Tooltip>
+	);
+};
 
 <Canvas>
 	<Story name="loading">
@@ -306,7 +306,7 @@ The word/words on buttons should be accurate, specific, and explicit—not vague
 					type: 'boolean',
 				},
 			},
-            disabled: {
+			disabled: {
 				description: 'Button is disabled',
 				control: {
 					type: 'boolean',

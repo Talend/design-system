@@ -1,3 +1,5 @@
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+
 module.exports = {
 	stories: [
 		'../src/Welcome.stories.mdx',
@@ -25,9 +27,15 @@ module.exports = {
 		'@storybook/addon-links',
 		'@storybook/addon-a11y',
 		'storybook-addon-pseudo-states',
+		'storybook-addon-mdx-embed',
 	],
 	webpackFinal: async config => {
 		config.entry.unshift('core-js');
+		config.plugins.push(new BrowserSyncPlugin({
+			host: 'localhost',
+			port: 3002,
+			proxy: 'http://localhost:6006/'
+		}));
 		return config;
 	},
 };
