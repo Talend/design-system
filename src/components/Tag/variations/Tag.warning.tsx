@@ -5,8 +5,8 @@ import Tag from '../Tag';
 const StyledTag = styled(Tag).attrs({
 	className: 'tag--warning',
 })`
-	--tag-color: ${({ theme }) => theme.colors?.tagWarningColor};
-	--tag-background-color: ${({ theme }) => theme.colors?.tagWarningBackgroundColor};
+	--t-tag-color: ${({ theme }) => theme.colors?.tagWarningColor};
+	--t-tag-background-color: ${({ theme }) => theme.colors?.tagWarningBackgroundColor};
 `;
 
 export default React.memo(StyledTag);

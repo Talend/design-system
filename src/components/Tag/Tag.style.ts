@@ -17,9 +17,9 @@ export const Tag = styled.span.attrs({
 	vertical-align: middle;
 	${ellipsis};
 
-	color: var(--tag-color, ${({ theme }) => theme.colors?.tagDefaultColor});
+	color: var(--t-tag-color, ${({ theme }) => theme.colors?.tagDefaultColor});
 	background-color: var(
-		--tag-background-color,
+		--t-tag-background-color,
 		${({ theme }) => theme.colors?.tagDefaultBackgroundColor}
 	);
 `;
