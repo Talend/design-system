@@ -8,7 +8,7 @@ const Stepper: React.FC<StepperProps> = ({ children, ...rest }: StepperProps) =>
 		{children &&
 			React.Children.map(children, (child, index) => [
 				<div className="stepper__progress-bar" />,
-				React.cloneElement(child, { 'data-index': index + 1 }),
+				<li>{React.cloneElement(child, { 'data-index': index + 1 })}</li>,
 			])}
 	</S.Stepper>
 );

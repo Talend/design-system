@@ -3,11 +3,11 @@ import SkeletonButton from './variations/Skeleton.Button';
 import SkeletonIconButton from './variations/Skeleton.IconButton';
 
 const SkeletonComponent = Skeleton as typeof Skeleton & {
-	Icon: typeof SkeletonIconButton;
 	Button: typeof SkeletonButton;
+	Icon: typeof SkeletonIconButton;
 };
 
-SkeletonComponent.Icon = SkeletonIconButton;
 SkeletonComponent.Button = SkeletonButton;
+SkeletonComponent.Icon = SkeletonIconButton;
 
 export default SkeletonComponent;
