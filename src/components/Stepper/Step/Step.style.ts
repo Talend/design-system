@@ -20,5 +20,7 @@ export const Step = styled.div`
 
 	.step__icon {
 		flex-shrink: 0;
+		height: ${tokens.space.l};
+		width: ${tokens.space.l};
 	}
 `;
