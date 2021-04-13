@@ -4,9 +4,9 @@ import tokens from '../../tokens';
 
 export const Link = styled.a`
 	font-family: ${tokens.fonts.sansSerif};
-	color: var(--link-color, ${({ theme }) => theme.colors?.linkColor});
+	color: var(--t-link-color, ${({ theme }) => theme.colors?.linkColor});
 	text-decoration: none;
-    border-bottom-color: currentColor;
+	border-bottom-color: currentColor;
 
 	.link__text {
 		border-bottom: 0.1rem solid transparent;
@@ -35,19 +35,25 @@ export const Link = styled.a`
 	}
 
 	&:hover {
-		color: var(--link-color--hover, ${({ theme }) => theme.colors?.linkHoverColor});
+		color: var(--t-link-color--hover, ${({ theme }) => theme.colors?.linkHoverColor});
 
-      .link__text {
-        border-bottom-color: var(--link-color, ${({ theme }) => theme.colors?.linkHoverColor});
-      }
+		.link__text {
+			border-bottom-color: var(
+				--t-link-color--hover,
+				${({ theme }) => theme.colors?.linkHoverColor}
+			);
+		}
 	}
 
 	&:active {
-		color: var(--link-color--active, ${({ theme }) => theme.colors?.linkActiveColor});
+		color: var(--t-link-color--active, ${({ theme }) => theme.colors?.linkActiveColor});
 
-      .link__text {
-        border-bottom-color: var(--link-color, ${({ theme }) => theme.colors?.linkActiveColor});
-      }
+		.link__text {
+			border-bottom-color: var(
+				--t-link-color--active,
+				${({ theme }) => theme.colors?.linkActiveColor}
+			);
+		}
 	}
 
 	&.link--disabled {
