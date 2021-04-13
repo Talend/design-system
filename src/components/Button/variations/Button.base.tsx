@@ -9,9 +9,9 @@ const ButtonBase: React.FC<ButtonProps> = styled(Button)`
 	border: ${tokens.borders.normal};
 	border-radius: ${tokens.radii.rectRadius};
 	transition: ${tokens.transitions.fast};
-	color: var(--button-color, ${({ theme }) => theme.colors?.textColor});
-	background: var(--button-background-color);
-	border-color: var(--button-border-color);
+	color: var(--t-button-color, ${({ theme }) => theme.colors?.textColor});
+	background: var(--t-button-background-color);
+	border-color: var(--t-button-border-color);
 
 	&[aria-busy='true'],
 	&[aria-disabled='true'] {

@@ -6,19 +6,19 @@ import { ButtonProps } from '../Button';
 const ButtonDestructive: React.FC<ButtonProps> = styled(ButtonPrimary).attrs({
 	className: 'btn--destructive',
 })`
-	--button-background-color: ${({ theme }) => theme.colors?.buttonDestructiveBackgroundColor};
-	--button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveBackgroundColor};
+	--t-button-background-color: ${({ theme }) => theme.colors?.buttonDestructiveBackgroundColor};
+	--t-button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveBackgroundColor};
 
 	&:hover {
-		--button-background-color: ${({ theme }) =>
+		--t-button-background-color: ${({ theme }) =>
 			theme.colors?.buttonDestructiveHoverBackgroundColor};
-		--button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveHoverBackgroundColor};
+		--t-button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveHoverBackgroundColor};
 	}
 
 	&:active {
-		--button-background-color: ${({ theme }) =>
+		--t-button-background-color: ${({ theme }) =>
 			theme.colors?.buttonDestructiveActiveBackgroundColor};
-		--button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveActiveBackgroundColor};
+		--t-button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveActiveBackgroundColor};
 	}
 `;
 

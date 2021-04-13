@@ -17,7 +17,7 @@ const ButtonIcon: React.FC<ButtonProps> = styled(ButtonSecondary).attrs({
 	&,
 	&:hover,
 	&:active {
-		--button-background-color: none;
+		--t-button-background-color: none;
 	}
 
 	.btn__icon {
