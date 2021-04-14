@@ -37,6 +37,5 @@ export const StepperStep = styled.li.attrs({
 		height: 99999px;
 		bottom: 0;
 		background: ${({ theme }) => theme.colors?.activeColor[500]};
-		border: 1px solid deepskyblue;
 	}
 `;
