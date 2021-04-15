@@ -1,20 +1,36 @@
 import React, { PropsWithChildren } from 'react';
+
 import * as S from './Stepper.style';
 
-export type StepperProps = PropsWithChildren<any>;
+export type StepperProps = PropsWithChildren<any> & {
+	orientation: 'horizontal' | 'vertical';
+	loading?: boolean;
+};
 
 const Stepper: React.FC<StepperProps> = React.forwardRef(
-	({ children, ...rest }: StepperProps, ref) => (
-		<S.Stepper role="list" {...rest} ref={ref}>
-			{children &&
-				React.Children.map(children, (child, index) => (
-					<S.StepperStep key={index}>
-						{React.cloneElement(child, { 'data-index': index + 1 })}
-						<div aria-hidden className="stepper__progress-bar" />
-					</S.StepperStep>
-				))}
-		</S.Stepper>
-	),
+	({ children, orientation, loading, ...rest }: StepperProps, ref) => {
+		const isInProgress = ({ type }) => type.displayName.includes('InProgress');
+		const lastIndex = React.Children.toArray(children)
+			.map(child => isInProgress(child.type))
+			.lastIndexOf(true);
+		const valuenow = lastIndex + 1;
+		const valuemax = React.Children.count(children);
+		const ProgressBar =
+			orientation === 'vertical' ? S.StepperProgressBar.Vertical : S.StepperProgressBar.Horizontal;
+		return (
+			<S.Stepper {...rest} ref={ref}>
+				<ProgressBar valuenow={valuenow} valuemax={valuemax} />
+				<S.StepperSteps>
+					{children &&
+						React.Children.map(children, (child, index) => (
+							<S.StepperStep key={index} aria-current={isInProgress(child.type) ? 'step' : null}>
+								{React.cloneElement(child, { 'data-index': index + 1 })}
+							</S.StepperStep>
+						))}
+				</S.StepperSteps>
+			</S.Stepper>
+		);
+	},
 );
 
 export default Stepper;

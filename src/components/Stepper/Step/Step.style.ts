@@ -12,7 +12,6 @@ export const Step = styled.div`
 	}
 
 	.step__title {
-		margin-right: ${tokens.space.s};
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
