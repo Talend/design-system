@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, ThemeProps } from 'styled-components';
 import Step from '../Step';
 import tokens from '../../../../tokens';
 
-const pulse = ({ theme }) => keyframes`
+const pulse = ({ theme }: ThemeProps<any>) => keyframes`
 	0% {
 		transform: scale(0.95);
 		box-shadow: 0 0 0 0 ${theme.colors?.activeColor[100]};

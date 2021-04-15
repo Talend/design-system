@@ -5,6 +5,8 @@ import { Icon } from '../../Icon/Icon';
 import * as S from './Step.style';
 
 export type StepProps = React.PropsWithRef<any> & {
+	/** The title of the step */
+	title: string;
 	/** The optional class name */
 	className?: string;
 	/** The icon element to display */
@@ -15,10 +17,10 @@ export type StepProps = React.PropsWithRef<any> & {
  * Steps are the main elements for the stepper.
  */
 const Step: React.FC<StepProps> = React.forwardRef(
-	({ icon, className = '', children, ...rest }: StepProps, ref) => {
+	({ icon, title, className = '', children, ...rest }: StepProps, ref) => {
 		return (
 			<S.Step ref={ref} {...rest} className={`step ${className || ''}`}>
-				<span className="step__title">{children}</span>
+				<span className="step__title">{children || title}</span>
 				<span className="step__icon" aria-hidden>
 					{icon && <Icon name={icon} />}
 				</span>

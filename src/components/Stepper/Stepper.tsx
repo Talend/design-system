@@ -9,9 +9,11 @@ export type StepperProps = PropsWithChildren<any> & {
 
 const Stepper: React.FC<StepperProps> = React.forwardRef(
 	({ children, orientation, loading, ...rest }: StepperProps, ref) => {
-		const isInProgress = ({ type }) => type.displayName.includes('InProgress');
+		const isInProgress = (child: React.ReactNode) =>
+			// @ts-ignore
+			child.type.type.displayName.includes('InProgress');
 		const lastIndex = React.Children.toArray(children)
-			.map(child => isInProgress(child.type))
+			.map((child: React.ReactNode) => isInProgress(child))
 			.lastIndexOf(true);
 		const valuenow = lastIndex + 1;
 		const valuemax = React.Children.count(children);
@@ -23,7 +25,8 @@ const Stepper: React.FC<StepperProps> = React.forwardRef(
 				<S.StepperSteps>
 					{children &&
 						React.Children.map(children, (child, index) => (
-							<S.StepperStep key={index} aria-current={isInProgress(child.type) ? 'step' : null}>
+							// @ts-ignore
+							<S.StepperStep key={index} aria-current={isInProgress(child) ? 'step' : null}>
 								{React.cloneElement(child, { 'data-index': index + 1 })}
 							</S.StepperStep>
 						))}
