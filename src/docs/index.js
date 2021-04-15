@@ -5,6 +5,7 @@ import FigmaImage from './FigmaImage';
 import FigmaLink from './FigmaLink';
 import GitHubLink from './GitHubLink';
 import Grid from './Grid.component';
+import Links from './Links.component';
 import Table from './Table.component';
 import Row from './Row.component';
 import { Use } from './Use.component';
@@ -19,6 +20,7 @@ export {
 	GitHubLink,
 	Grid,
 	Icons,
+	Links,
 	Row,
 	Table,
 	Use,
