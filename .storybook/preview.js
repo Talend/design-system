@@ -1,30 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+import { useLocalStorage } from 'react-use';
 import { addParameters } from '@storybook/react';
-import { withTableOfContents } from 'storybook-docs-toc';
+import { DocsContainer } from '@storybook/addon-docs/blocks';
+import { BackToTop, TableOfContents } from 'storybook-docs-toc';
 import 'focus-outline-manager';
 
 import light, { dark } from '../src/themes';
 import ThemeProvider from '../src/components/ThemeProvider';
 import { IconsProvider } from '../src/components/IconsProvider';
-
-export const globalTypes = {
-	theme: {
-		name: 'Theme',
-		description: 'Choose a theme to apply to the design system',
-		toolbar: {
-			icon: 'paintbrush',
-			items: [
-				{ value: 'light', left: '⚪️', title: 'Default theme' },
-				{ value: 'dark', left: '⚫️', title: 'Dark theme' },
-			],
-		},
-	},
-};
-
-const getTheme = themeKey => {
-	if (themeKey === 'dark') return dark;
-	return light;
-};
+import Button from '../src/components/Button';
+import VisuallyHidden from '../src/components/VisuallyHidden';
 
 const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	({ theme }) => `
@@ -39,17 +25,36 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
-const withThemeProvider = (Story, context) => {
-	const theme = getTheme(context.globals.theme);
-	return (
-		<ThemeProvider theme={theme}>
-			<ThemeProvider.GlobalStyle />
-			<StorybookGlobalStyle />
-			<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-			<Story {...context} />
-		</ThemeProvider>
-	);
-};
-export const decorators = [withThemeProvider];
+const ThemeSwitcher = styled(Button)`
+	position: fixed;
+	top: 5rem;
+	left: calc(50% - 50rem);
+	transform: translateX(-110%);
+	border-radius: 9999rem;
+`;
 
-addParameters(withTableOfContents());
+const hasThemeSwitcher = ({ kind }) =>
+	kind.startsWith('Components') || kind.startsWith('Templates') || kind.startsWith('Pages');
+
+addParameters({
+	docs: {
+		container: props => {
+			const [theme, setTheme] = useLocalStorage('coral-theme', light);
+			return (
+				<ThemeProvider theme={theme}>
+					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
+					<ThemeProvider.GlobalStyle />
+					<StorybookGlobalStyle />
+					<TableOfContents />
+					{hasThemeSwitcher(props.context) && (
+						<ThemeSwitcher onClick={() => setTheme(theme.id === 'light' ? dark : light)}>
+							<VisuallyHidden>Toggle</VisuallyHidden> Mode {theme.id === 'light' ? '☀️' : '🌙'}
+						</ThemeSwitcher>
+					)}
+					<DocsContainer {...props} />
+					<BackToTop />
+				</ThemeProvider>
+			);
+		},
+	},
+});
