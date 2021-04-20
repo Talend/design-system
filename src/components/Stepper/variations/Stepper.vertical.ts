@@ -22,10 +22,6 @@ const StepperVertical = styled(Stepper).attrs({
 			margin-bottom: 5rem;
 		}
 	}
-
-	.step__title {
-		margin-right: ${tokens.space.s};
-	}
 `;
 
 export default StepperVertical;

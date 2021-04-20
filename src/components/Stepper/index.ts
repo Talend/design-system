@@ -1,9 +1,8 @@
-import Stepper from './Stepper';
-import Step from './Step';
 import StepperVertical from './variations/Stepper.vertical';
 import StepperHorizontal from './variations/Stepper.horizontal';
+import Step from './Step';
 
-const StepperComponent = Stepper as typeof Stepper & {
+const StepperComponent = StepperVertical as typeof StepperVertical & {
 	Vertical: typeof StepperVertical;
 	Horizontal: typeof StepperHorizontal;
 	Step: typeof Step;

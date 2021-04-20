@@ -1,7 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { FigmaImage, FigmaLink } from '../../../docs';
-import Stepper from '../Stepper';
-import Step from '../Step';
+import Stepper from '../';
 
 <Meta title="Components/Stepper/Overview" component={Stepper} />
 
@@ -34,13 +33,13 @@ Consider using a vertical stepper when there are workflows greater than 3 steps.
 
 <Canvas>
 	<Story name="Vertical">
-		<Stepper.Vertical>
-			<Step.Validated>Lorem ipsum</Step.Validated>
-			<Step.InProgress>Lorem ipsum</Step.InProgress>
-			<Step.Enabled>Enabled state</Step.Enabled>
-			<Step.Disabled>Disabled state</Step.Disabled>
-			<Step.Error>Error state</Step.Error>
-		</Stepper.Vertical>
+		<Stepper>
+			<Stepper.Step.Validated title="Lorem ipsum" />
+			<Stepper.Step.InProgress title="Lorem ipsum" />
+			<Stepper.Step.Enabled title="Enabled state" />
+			<Stepper.Step.Disabled title="Disabled state" />
+			<Stepper.Step.Error title="Error state" />
+		</Stepper>
 	</Story>
 </Canvas>
 
@@ -55,9 +54,9 @@ The sub-steps option is not available with the horizontal stepper.
 <Canvas>
 	<Story name="Horizontal">
 		<Stepper.Horizontal>
-			<Step.Validated>Lorem ipsum</Step.Validated>
-			<Step.InProgress>Lorem ipsum</Step.InProgress>
-			<Step.Enabled>Enabled state</Step.Enabled>
+			<Stepper.Step.Validated>Lorem ipsum</Stepper.Step.Validated>
+			<Stepper.Step.InProgress>Lorem ipsum</Stepper.Step.InProgress>
+			<Stepper.Step.Enabled>Enabled state</Stepper.Step.Enabled>
 		</Stepper.Horizontal>
 	</Story>
 </Canvas>
@@ -76,9 +75,9 @@ The sub-steps option is not available with the horizontal stepper.
 <Canvas>
 	<Story name="Loading vertical">
 		<Stepper.Vertical>
-			<Step.Skeleton />
-			<Step.Skeleton />
-			<Step.Skeleton />
+			<Stepper.Step.Skeleton />
+			<Stepper.Step.Skeleton />
+			<Stepper.Step.Skeleton />
 		</Stepper.Vertical>
 	</Story>
 </Canvas>
@@ -88,9 +87,9 @@ The sub-steps option is not available with the horizontal stepper.
 <Canvas>
 	<Story name="Loading horizontal">
 		<Stepper.Horizontal>
-			<Step.Skeleton />
-			<Step.Skeleton />
-			<Step.Skeleton />
+			<Stepper.Step.Skeleton />
+			<Stepper.Step.Skeleton />
+			<Stepper.Step.Skeleton />
 		</Stepper.Horizontal>
 	</Story>
 </Canvas>
