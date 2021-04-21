@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import 'modern-css-reset';
+import { hideVisually } from 'polished';
+import 'modern-css-reset/dist/reset.min.css';
 
 import Toggle from '../Toggle';
 import defaultTheme, { dark, light } from '../../themes';
@@ -17,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		margin: 0;
 		padding: 0;
-		font-family: 'Open Sans', sans-serif;
+		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 14px;
 		color: ${({ theme }) => theme.colors.textColor};
 		background: ${({ theme }) => theme.colors.backgroundColor};
@@ -35,13 +36,17 @@ const GlobalStyle = createGlobalStyle`
 		color: ${tokens.colors.gray[900]};
 		background-color: ${tokens.colors.coral[100]};
 	}
+	
+	.sr-only {
+		${hideVisually()}
+	}
 `;
 
 const ThemeContext = React.createContext({});
 
 const TalendThemeProvider = ({ theme = defaultTheme, children }) => {
 	useGoogleFont(
-		'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Inconsolata:wght@300;400;500;600;700;800;900&display=swap',
+		'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Inconsolata:wght@300;400;500;600;700;800;900&display=swap',
 	);
 	const [selectedTheme, setSelectedTheme] = useState(theme);
 	React.useEffect(() => {
