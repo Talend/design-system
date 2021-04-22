@@ -95,7 +95,7 @@ function isRootProvider(ref: React.RefObject<any>) {
 	if (ref !== null && ref.current && providers.length > 0) {
 		return providers[0] === ref.current;
 	}
-	return providers.length === 0;
+	return providers.length === 1;
 }
 
 /**

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconsProvider default 1`] = `
+<svg
+  class="tc-iconsprovider sr-only"
+  focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+/>
+`;
+
+exports[`IconsProvider should match snapshot 1`] = `
+<svg
+  class="tc-iconsprovider sr-only"
+  focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+/>
+`;
+
+exports[`IconsProvider should prevent multiple instance creation 1`] = `
+<svg
+  class="tc-iconsprovider sr-only"
+  focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+/>
+`;
