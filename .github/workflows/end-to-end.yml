@@ -6,12 +6,38 @@ jobs:
   cypress-run:
     runs-on: ubuntu-16.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+      - name: Checkout repository
+          uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Yarn cache directory
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Yarn cache
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install
+        run: yarn
+
+      - name: Build storybook
+        run: yarn build-storybook:e2e
+
+      - name: Build storybook
+          run: npx serve storybook-static
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: true
+          config: baseUrl=http://localhost:5000
