@@ -1,35 +1,39 @@
 import React, { PropsWithChildren } from 'react';
+import { isMemo, isElement } from 'react-is';
 
 import * as S from './Stepper.style';
 
+export type StepperOrientation = 'horizontal' | 'vertical';
+
 export type StepperProps = PropsWithChildren<any> & {
-	orientation: 'horizontal' | 'vertical';
+	orientation: StepperOrientation;
 	loading?: boolean;
 };
 
 const Stepper: React.FC<StepperProps> = React.forwardRef(
 	({ children, orientation, loading, ...rest }: StepperProps, ref) => {
 		const isInProgress = (child: React.ReactNode) =>
-			// @ts-ignore
-			child.type.type.displayName.includes('InProgress');
-		const lastIndex = React.Children.toArray(children)
-			.map((child: React.ReactNode) => isInProgress(child))
-			.lastIndexOf(true);
-		const valuenow = lastIndex + 1;
-		const valuemax = React.Children.count(children);
+			// Use isMemo to be sure to only test React.ReactElement and its attrs
+			isMemo(child) && Array.isArray(child.type.type.attrs) && child.type.type.attrs[0].active;
+		const lastIndex = React.Children.toArray(children).map(isInProgress).lastIndexOf(true);
+		const value = lastIndex + 1;
+		const max = React.Children.count(children);
 		const ProgressBar =
 			orientation === 'vertical' ? S.StepperProgressBar.Vertical : S.StepperProgressBar.Horizontal;
 		return (
 			<S.Stepper {...rest} ref={ref}>
-				<ProgressBar valuenow={valuenow} valuemax={valuemax} />
+				<ProgressBar value={value} max={max} />
 				<S.StepperSteps>
 					{children &&
-						React.Children.map(children, (child, index) => (
-							// @ts-ignore
-							<S.StepperStep key={index} aria-current={isInProgress(child) ? 'step' : null}>
-								{React.cloneElement(child, { 'data-index': index + 1 })}
-							</S.StepperStep>
-						))}
+						React.Children.map(
+							children,
+							(child, index) =>
+								isElement(child) && (
+									<S.StepperStep key={index} aria-current={isInProgress(child) ? 'step' : false}>
+										{React.cloneElement(child, { 'data-index': index + 1 })}
+									</S.StepperStep>
+								),
+						)}
 				</S.StepperSteps>
 			</S.Stepper>
 		);

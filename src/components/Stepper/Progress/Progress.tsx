@@ -1,35 +1,30 @@
 import React from 'react';
 import VisuallyHidden from '../../VisuallyHidden';
 
+import { StepperOrientation } from '../Stepper';
+
 import * as S from './Progress.style';
 
 export type ProgressProps = React.PropsWithChildren<any> & {
-	orientation: 'horizontal' | 'vertical';
-	valuemin?: number;
-	valuenow?: number;
-	valuemax?: number;
+	orientation: StepperOrientation;
+	min?: number;
+	value?: number;
+	max?: number;
 };
 
-const Progress = ({
-	valuemin = 1,
-	valuenow,
-	valuemax,
-	orientation,
-	children,
-	...rest
-}: ProgressProps) => {
-	const size = `${(valuenow - 1) * (100 / (valuemax - 1))}%`;
+const Progress = ({ min = 1, value, max, orientation, children, ...rest }: ProgressProps) => {
+	const size = `${(value - 1) * (100 / (max - 1))}%`;
 	return (
 		<S.Progress
 			role="progressbar"
-			aria-valuemin={valuemin}
-			aria-valuenow={valuenow}
-			aria-valuemax={valuemax}
+			aria-valuemin={min}
+			aria-valuenow={value}
+			aria-valuemax={max}
 			{...rest}
 		>
 			<div aria-hidden style={orientation === 'vertical' ? { height: size } : { width: size }} />
 			<VisuallyHidden>
-				{valuenow}/{valuemax}
+				{value}/{max}
 			</VisuallyHidden>
 			{children}
 		</S.Progress>
