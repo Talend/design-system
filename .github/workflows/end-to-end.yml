@@ -33,7 +33,7 @@ jobs:
         run: yarn build-storybook:e2e
 
       - name: Build storybook
-        run: nohup npx serve storybook-static
+        run: npx serve storybook-static &
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
