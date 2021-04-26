@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 import React from 'react';
 
 import Tag from './';
