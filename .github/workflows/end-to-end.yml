@@ -30,7 +30,7 @@ jobs:
         run: yarn
 
       - name: Build storybook
-        run: yarn build-storybook
+        run: yarn build-storybook:e2e
 
       - name: Build storybook
         run: nohup npx serve storybook-static
