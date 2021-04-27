@@ -12,22 +12,26 @@ self.addEventListener('fetch', event => {
 				cache =>
 					// eslint-disable-next-line no-console
 					console.debug(`[${CACHE_NAME}] Get Figma asset from cache`, event.request.url) ||
-					cache.match(event.request).then(match => match || fetch(event.request)),
+					cache
+						.match(event.request)
+						.then(match => match || fetch(event.request).catch(reason => console.error(reason))),
 			),
 		);
 
 		event.waitUntil(
 			caches.open(CACHE_NAME).then(cache =>
-				fetch(event.request).then(response =>
-					cache.put(event.request, response.clone()).then(
-						() =>
-							// eslint-disable-next-line no-console
-							console.debug(
-								`[${CACHE_NAME}] Async get Figma assets from network`,
-								event.request.url,
-							) || response,
-					),
-				),
+				fetch(event.request)
+					.then(response =>
+						cache.put(event.request, response.clone()).then(
+							() =>
+								// eslint-disable-next-line no-console
+								console.debug(
+									`[${CACHE_NAME}] Async get Figma assets from network`,
+									event.request.url,
+								) || response,
+						),
+					)
+					.catch(reason => console.error(reason)),
 			),
 		);
 	}
