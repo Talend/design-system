@@ -12,9 +12,7 @@ self.addEventListener('fetch', event => {
 				cache =>
 					// eslint-disable-next-line no-console
 					console.debug(`[${CACHE_NAME}] Get Figma asset from cache`, event.request.url) ||
-					cache
-						.match(event.request)
-						.then(match => match || fetch(event.request)),
+					cache.match(event.request).then(match => match || fetch(event.request)),
 			),
 		);
 
