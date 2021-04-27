@@ -14,7 +14,7 @@ self.addEventListener('fetch', event => {
 					console.debug(`[${CACHE_NAME}] Get Figma asset from cache`, event.request.url) ||
 					cache
 						.match(event.request)
-						.then(match => match || fetch(event.request).catch(reason => console.error(reason))),
+						.then(match => match || fetch(event.request)),
 			),
 		);
 
