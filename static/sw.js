@@ -20,18 +20,16 @@ self.addEventListener('fetch', event => {
 
 		event.waitUntil(
 			caches.open(CACHE_NAME).then(cache =>
-				fetch(event.request)
-					.then(response =>
-						cache.put(event.request, response.clone()).then(
-							() =>
-								// eslint-disable-next-line no-console
-								console.debug(
-									`[${CACHE_NAME}] Async get Figma assets from network`,
-									event.request.url,
-								) || response,
-						),
-					)
-					.catch(reason => console.error(reason)),
+				fetch(event.request).then(response =>
+					cache.put(event.request, response.clone()).then(
+						() =>
+							// eslint-disable-next-line no-console
+							console.debug(
+								`[${CACHE_NAME}] Async get Figma assets from network`,
+								event.request.url,
+							) || response,
+					),
+				),
 			),
 		);
 	}
