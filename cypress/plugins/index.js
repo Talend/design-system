@@ -16,6 +16,9 @@ module.exports = (on, config) => {
 						test: /\.js|\.jsx|\.ts|\.tsx$/,
 						use: {
 							loader: 'ts-loader',
+							options: {
+								transpileOnly: true,
+							},
 						},
 						exclude: /node_modules/,
 					},
