@@ -40,7 +40,6 @@ context('<Button />', () => {
 				.should('have.attr', 'aria-busy', 'false')
 				.click()
 				.should('have.attr', 'aria-busy', 'true')
-				.wait(3000)
 				.should('have.attr', 'aria-busy', 'false');
 		});
 
