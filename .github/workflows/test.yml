@@ -30,3 +30,10 @@ jobs:
         run: |
           yarn
           npx cypress run-ct
+
+      - name: Cypress artifacts upload
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: cypress-component-testing-videos
+          path: cypress/videos/components/**/*
