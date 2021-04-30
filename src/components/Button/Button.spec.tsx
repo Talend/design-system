@@ -39,7 +39,8 @@ context('<Button />', () => {
 			cy.get('.btn')
 				.should('have.attr', 'aria-busy', 'false')
 				.click()
-				.should('have.attr', 'aria-busy', 'true')
+				.should('have.attr', 'aria-busy', 'true');
+			cy.get('.btn')
 				.should('have.attr', 'aria-busy', 'false');
 		});
 
