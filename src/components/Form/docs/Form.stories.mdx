@@ -1,16 +1,26 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { FigmaImage, FigmaLink, Use } from '../../../docs';
+import { action } from '@storybook/addon-actions';
+import { FigmaImage, FigmaLink } from '../../../docs';
+
 import Form from '../';
-import { Col, Row } from '../../../docs';
+import Button from '../../Button';
+
+import CountryCodes from './data/CountryCodes.json';
+
+export function getCountryCodes() {
+	return CountryCodes.map(({ name, dial_code }) => `${name} (${dial_code})`);
+}
+export function getColumnTypes() {
+	return ['String', 'Long', 'Date', 'Boolean', 'Decimal'];
+}
 
 <Meta title="Components/Form/Form" />
 
 <FigmaLink href="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=58%3A0" />
 
-
 # Form
 
-A form allows a user to configure multiple options and set data accross different input controls types.
+A form allows a user to configure multiple options and set data across different form fields.
 
 ## Zoning
 
@@ -19,15 +29,15 @@ A form allows a user to configure multiple options and set data accross differen
 	alt="zoning image for form"
 />
 
-## Style 
+## Style
 
-The form width is adaptative, it depends on the form container size. The form is horizontally **centered** in its container.
+The form width depends on the form container size. The form is horizontally **centered** in its container.
 
-| Container         | Width      |
-| ---------------- | ---------- |
-| > 1536px         | max-width: 78rem |
-| 1536px < 834px   | 55%        |
-| < 834px          | 100%       |
+| Container            | Width            |
+| -------------------- | ---------------- |
+| By default           | 100%             |
+| From $breakpoints.m  | 55%              |
+| From $breakpoints.xl | max-width: 78rem |
 
 ## Variations
 
@@ -42,6 +52,72 @@ Forms can be horizontal or vertical. They are vertical by default. For horizonta
 	alt="skeleton image for form"
 />
 
+### Default
+
+<Canvas>
+	<Story name="Overview">
+		<Form>
+			<Form.Fieldset legend="Fieldset">
+				<Form.Text label="Input" />
+				<Form.Text
+					label="Input with error"
+					errorMessage="Lorem ipsum dolor sit amet Quis nostrud exercitation ullamco laboris nisi ut aliquip ex eaLorem ipsum dolor sit ame"
+				/>
+				<Form.InputGroup
+					label="Phone"
+					prefix={
+						<Form.Select label="Phone prefix" value="France (+33)" style={{ width: '13rem' }}>
+							{getCountryCodes().map(countryCode => (
+								<option>{countryCode}</option>
+							))}
+						</Form.Select>
+					}
+				>
+					<Form.Tel label="Phone number" />
+				</Form.InputGroup>
+				<Form.InputGroup
+					label="Column"
+					suffix={
+						<Form.Select label="Column type" value="Date">
+							{getColumnTypes().map(columnType => (
+								<option>{columnType}</option>
+							))}
+						</Form.Select>
+					}
+				>
+					<Form.Text label="Column name" />
+				</Form.InputGroup>
+				<Form.InputGroup label="Amount" prefix="$" suffix=".00">
+					<Form.Number label="Amount without decimal" min="1" step="1" />
+				</Form.InputGroup>
+				<Form.File label="File" />
+				<Form.Password label="Password" />
+				<Form.Datalist label="Datalist" values={['foo', 'bar']} />
+				<Form.Search label="Search" />
+				<Form.Textarea label="Textarea" />
+				<Form.Range label="Range" />
+				<Form.Select label="Select">
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Select label="Select multiple" multiple>
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Checkbox label="Checkbox" checked />
+				<Form.Radio label="Radio" checked />
+				<Form.Switch label="Switch" checked />
+			</Form.Fieldset>
+			<Form.Buttons>
+				<Button.Secondary type="reset" onClick={action('clicked')}>
+					Reset
+				</Button.Secondary>
+				<Button.Primary onClick={action('clicked')}>Submit</Button.Primary>
+			</Form.Buttons>
+		</Form>
+	</Story>
+</Canvas>
+
 ### Error
 
 <FigmaImage
@@ -49,12 +125,137 @@ Forms can be horizontal or vertical. They are vertical by default. For horizonta
 	alt="error state image for form"
 />
 
+### Disabled
+
+<Canvas>
+	<Story name="Overview-disabled">
+		<Form>
+			<Form.Fieldset legend="Fieldset">
+				<Form.Text label="Input" disabled />
+				<Form.InputGroup
+					label="Phone"
+					disabled
+					prefix={
+						<Form.Select
+							disabled
+							label="Phone prefix"
+							value="France (+33)"
+							style={{ width: '13rem' }}
+						>
+							{getCountryCodes().map(countryCode => (
+								<option>{countryCode}</option>
+							))}
+						</Form.Select>
+					}
+				>
+					<Form.Tel disabled label="Phone number" />
+				</Form.InputGroup>
+				<Form.InputGroup
+					label="Column"
+					suffix={
+						<Form.Select disabledlabel="Column type" value="Date">
+							{getColumnTypes().map(columnType => (
+								<option>{columnType}</option>
+							))}
+						</Form.Select>
+					}
+				>
+					<Form.Text disabled label="Column name" />
+				</Form.InputGroup>
+				<Form.InputGroup label="Amount" prefix="$" suffix=".00">
+					<Form.Number disabled label="Amount without decimal" min="1" step="1" />
+				</Form.InputGroup>
+				<Form.File disabled label="File" />
+				<Form.Password disabled label="Password" />
+				<Form.Datalist disabled label="Datalist" values={['foo', 'bar']} />
+				<Form.Search disabled label="Search" />
+				<Form.Textarea disabled label="Textarea" />
+				<Form.Range disabledlabel="Range" />
+				<Form.Select disabled label="Select">
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Select disabled label="Select multiple" multiple>
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Checkbox disabled label="Checkbox" checked />
+				<Form.Radio disabled label="Radio" checked />
+				<Form.Switch disabled label="Switch" checked />
+			</Form.Fieldset>
+			<Form.Buttons>
+				<Button.Secondary type="reset" disabled onClick={action('clicked')}>
+					Reset
+				</Button.Secondary>
+				<Button.Primary disabled onClick={action('clicked')}>
+					Submit
+				</Button.Primary>
+			</Form.Buttons>
+		</Form>
+	</Story>
+</Canvas>
+
 ### Read-only
 
-<FigmaImage
-	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=311%3A113"
-	alt="read-only state image for form"
-/>
+<Canvas>
+	<Story name="Overview-readonly">
+		<Form>
+			<Form.Fieldset legend="Fieldset">
+				<Form.Text label="Input" readOnly />
+				<Form.InputGroup
+					label="Phone"
+					readOnly
+					prefix={
+						<Form.Select
+							label="Phone prefix"
+							readOnly
+							value="France (+33)"
+							style={{ width: '13rem' }}
+						>
+							{getCountryCodes().map(countryCode => (
+								<option>{countryCode}</option>
+							))}
+						</Form.Select>
+					}
+				>
+					<Form.Tel readOnly label="Phone number" />
+				</Form.InputGroup>
+				<Form.InputGroup
+					label="Column"
+					suffix={
+						<Form.Select readOnly label="Column type" value="Date">
+							{getColumnTypes().map(columnType => (
+								<option>{columnType}</option>
+							))}
+						</Form.Select>
+					}
+				>
+					<Form.Text readOnly label="Column name" />
+				</Form.InputGroup>
+				<Form.InputGroup label="Amount" prefix="$" suffix=".00">
+					<Form.Number readOnly label="Amount without decimal" min="1" step="1" />
+				</Form.InputGroup>
+				<Form.File readOnly label="File" />
+				<Form.Password readOnly label="Password" />
+				<Form.Datalist readOnly label="Datalist" values={['foo', 'bar']} />
+				<Form.Search readOnly label="Search" />
+				<Form.Textarea readOnly label="Textarea" />
+				<Form.Range readOnlylabel="Range" />
+				<Form.Select readOnly label="Select">
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Select readOnly label="Select multiple" multiple>
+					<option selected>Foo</option>
+					<option>Bar</option>
+				</Form.Select>
+				<Form.Checkbox readOnly label="Checkbox" checked />
+				<Form.Radio readOnly label="Radio" checked />
+				<Form.Switch readOnly label="Switch" checked />
+			</Form.Fieldset>
+		</Form>
+	</Story>
+</Canvas>
 
 ## Content
 
@@ -89,11 +290,10 @@ When the user clicks on the cancel button or go back to the previous page, provi
 
 In case of error after submission, the focus on the screen should be on the first field errored. If more than one field in error, the focus should be placed on the first one.
 
-
 ## Usage
 
 _to do_
 
 ## Accessibility
 
-_to do_
+Non applicable
