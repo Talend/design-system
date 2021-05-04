@@ -35,7 +35,7 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	}
 
 	.inline-message__title {
-		font-weight: bold;
+		font-weight: ${tokens.fontWeights.semiBold};
 	}
 
 	.inline-message__title,
