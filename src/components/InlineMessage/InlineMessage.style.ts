@@ -7,40 +7,40 @@ export type InlineMessageProps = {
 	withBackground?: boolean;
 };
 
-export const InlineMessage = styled.div<InlineMessageProps>(
-	({ small, withBackground, theme }) => `
-	display: ${withBackground ? 'inline-flex' : 'inline'};
-	margin-right: 0.5rem;
-	${
-		withBackground
-			? `padding: ${tokens.space.xs} ${tokens.space.s} ${tokens.space.xs} ${tokens.space.xl};`
-			: ''
-	}
+export const InlineMessage = styled.div<InlineMessageProps>`
+	display: ${({ withBackground }) => (withBackground ? 'inline-block' : 'inline')};
+	margin-bottom: ${tokens.space.m};
+	${({ withBackground }) =>
+		withBackground ? `padding: ${tokens.space.xs} ${tokens.space.s};` : ''}
 	font-family: ${tokens.fonts.sansSerif};
-	${small ? `font-size: ${tokens.fontSizes.small};` : ''}
+	${({ small }) => (small ? `font-size: ${tokens.fontSizes.small};` : '')}
+	border-radius: ${tokens.radii.inputBorderRadius};
 
-	p {
-		margin: 0;
-	}
-	
 	.inline-message__icon {
+		vertical-align: middle;
 		padding-right: ${tokens.space.xs};
-		${withBackground ? `margin-left: -${tokens.space.l}; ` : ''}
-		    
+
 		svg {
-	  		margin-bottom: ${small ? '-0.1rem' : '-0.2rem'};
-			height: ${small ? tokens.sizes.s : tokens.sizes.m};
-			width: ${small ? tokens.sizes.s : tokens.sizes.m};
+			height: ${({ small }) => (small ? tokens.sizes.s : tokens.sizes.l)};
+			width: ${({ small }) => (small ? tokens.sizes.s : tokens.sizes.l)};
 		}
 
 		path {
 			fill: currentColor;
 		}
 	}
-	
+
+	p {
+		display: inline-block;
+	}
+
+	.inline-message__title {
+		font-weight: bold;
+	}
+
 	.inline-message__title,
 	.inline-message__description {
-		color: ${withBackground ? tokens.colors.gray[900] : theme.colors.textColor};
+		color: ${({ withBackground, theme }) =>
+			withBackground ? tokens.colors.gray[900] : theme.colors.textColor};
 	}
-`,
-);
+`;
