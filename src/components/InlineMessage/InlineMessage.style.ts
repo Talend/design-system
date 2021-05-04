@@ -8,7 +8,7 @@ export type InlineMessageProps = {
 };
 
 export const InlineMessage = styled.div<InlineMessageProps>`
-	display: ${({ withBackground }) => (withBackground ? 'inline-block' : 'inline')};
+	display: ${({ withBackground }) => (withBackground ? 'inline-flex' : 'inline')};
 	margin-bottom: ${tokens.space.m};
 	${({ withBackground }) =>
 		withBackground ? `padding: ${tokens.space.xs} ${tokens.space.s};` : ''}
@@ -17,12 +17,12 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	border-radius: ${tokens.radii.inputBorderRadius};
 
 	.inline-message__icon {
-		vertical-align: middle;
 		padding-right: ${tokens.space.xs};
 
 		svg {
 			height: ${({ small }) => (small ? tokens.sizes.s : tokens.sizes.l)};
 			width: ${({ small }) => (small ? tokens.sizes.s : tokens.sizes.l)};
+			vertical-align: middle;
 		}
 
 		path {
@@ -31,7 +31,7 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	}
 
 	p {
-		display: inline-block;
+		display: inline;
 	}
 
 	.inline-message__title {
@@ -42,5 +42,11 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	.inline-message__description {
 		color: ${({ withBackground, theme }) =>
 			withBackground ? tokens.colors.gray[900] : theme.colors.textColor};
+	}
+
+	.inline-message__title,
+	.inline-message__description,
+	.inline-message__link {
+		vertical-align: middle;
 	}
 `;
