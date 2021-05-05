@@ -4,6 +4,8 @@ import tokens from '../../../../../tokens';
 const InlineStyle = styled.div.attrs(({ readOnly, checked }) => ({
 	className: `${readOnly ? 'input--read-only' : ''} ${checked ? 'input--checked' : ''}`,
 }))`
+	margin-bottom: ${tokens.space.xs};
+
 	input {
 		position: absolute;
 		margin-left: -9999px;
