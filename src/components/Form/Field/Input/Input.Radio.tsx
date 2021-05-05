@@ -29,13 +29,7 @@ export type RadioProps = HTMLInputElement & {
 	label: string;
 };
 
-const Radio = ({
-	id = `radio--${Math.random()}`,
-	label,
-	checked,
-	readOnly,
-	...rest
-}: RadioProps) => (
+const Radio = ({ id = `radio--${Date.now()}`, label, checked, readOnly, ...rest }: RadioProps) => (
 	<InlineField readOnly={readOnly} checked={checked}>
 		<label htmlFor={id}>
 			{!readOnly && (

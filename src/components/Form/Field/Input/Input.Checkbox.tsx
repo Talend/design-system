@@ -24,6 +24,7 @@ const InlineField = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>
 		top: 1px;
 		left: 1px;
 		width: 1rem;
+		cursor: pointer;
 	}
 
 	// FIXME
@@ -33,8 +34,7 @@ const InlineField = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>
 		}
 
 		path {
-			fill: ${({ readOnly, theme }) =>
-				readOnly ? 'currentColor' : theme.colors.inputBackgroundColor};
+			fill: ${({ readOnly, theme }) => (readOnly ? 'currentColor' : theme.colors.backgroundColor)};
 		}
 	}
 `;
@@ -44,7 +44,7 @@ export type CheckboxProps = HTMLInputElement & {
 };
 
 const Checkbox = ({
-	id = `checkbox--${Math.random()}`,
+	id = `checkbox--${Date.now()}`,
 	label,
 	indeterminate,
 	checked,
