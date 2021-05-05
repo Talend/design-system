@@ -2888,10 +2888,10 @@
     babel-eslint "^10.1.0"
     requireindex "~1.1.0"
 
-"@talend/icons@^6.22.0":
-  version "6.22.0"
-  resolved "https://registry.yarnpkg.com/@talend/icons/-/icons-6.22.0.tgz#1f85194e11ae59d6f787bf82b465f09f9cc4e8ed"
-  integrity sha512-mX3VdC4+9h2ZPb3XS4q6JItvSvIzO78dgWb0GjLe/D2z7/Mi1NkV/fBi9dN+3tUJdmA1Vm/ueLmXmn66Ondi4Q==
+"@talend/icons@^6.23.0":
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/@talend/icons/-/icons-6.23.0.tgz#4addf24dca10f761dccfeb41b14787676fb40b77"
+  integrity sha512-cm5tuBTFwiLm0VHN06fbHUGxLBV5Bp/5uxts5FYp6/bYtmSxp/MG6p0+aMLYuNWNnSIXu0wUqvqCdda85U4xQg==
 
 "@talend/module-to-cdn@^9.6.2":
   version "9.6.2"
