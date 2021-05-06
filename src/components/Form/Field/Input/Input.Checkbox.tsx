@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
 import tokens from '../../../../tokens';
-import InlineStyle from './styles/Input.Inline.style';
+import InlineStyle from './Input.Inline.style';
 import { Icon } from '../../../Icon/Icon';
 
 const InlineField = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>`

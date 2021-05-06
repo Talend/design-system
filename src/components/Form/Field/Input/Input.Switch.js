@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { shade } from 'polished';
 import { useCheckboxState, Checkbox } from 'reakit';
-import InlineStyle from './styles/Input.Inline.style';
+import InlineStyle from './Input.Inline.style';
 import tokens from '../../../../tokens';
 
 const InlineField = styled(InlineStyle)`

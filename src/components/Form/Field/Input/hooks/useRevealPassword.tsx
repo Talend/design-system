@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Icon } from '../../../../Icon';
 import Button from '../../../../Button';
 
@@ -6,7 +7,16 @@ export default function useRevealPassword() {
 	const [revealed, setRevealed] = useState(false);
 	const currentType = revealed ? 'text' : 'password';
 
-	function RevealPasswordButton(props) {
+	function onReveal(event: MouseEvent) {
+		event.preventDefault();
+		setRevealed(prevState => !prevState);
+	}
+
+	function onReset() {
+		setRevealed(() => false);
+	}
+
+	function RevealPasswordButton(props: any) {
 		return (
 			<Button
 				className="reveal__button"
@@ -15,18 +25,9 @@ export default function useRevealPassword() {
 				aria-hidden
 				{...props}
 			>
-				<Icon name={revealed ? 'talend-eye' : 'talend-eye-slash'} />
+				<Icon name={revealed ? 'talend-eye-slash' : 'talend-eye'} />
 			</Button>
 		);
-	}
-
-	function onReveal(event) {
-		event.preventDefault();
-		setRevealed(prevState => !prevState);
-	}
-
-	function onReset() {
-		setRevealed(() => false);
 	}
 
 	return { currentType, onReset, RevealPasswordButton };

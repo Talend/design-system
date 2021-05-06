@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import tokens from '../../../../tokens';
 
-import InlineStyle from './styles/Input.Inline.style';
+import InlineStyle from './Input.Inline.style';
 
 const InlineField = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>`
 	span:before,

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import tokens from '../../../../../tokens';
+import tokens from '../../../../tokens';
 
 const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolean }>(
 	({ readOnly, checked }) => ({
