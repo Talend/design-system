@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import Skeleton from '../Skeleton';
 
 const TextSkeleton = styled(Skeleton)`
