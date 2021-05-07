@@ -263,13 +263,15 @@ export const Loading = () => (
 	<div style={{ margin: '0 auto', width: '60rem' }}>
 		<Form>
 			<Form.Fieldset legend="Run job">
-				<Form.Text label="Name" required disabled placeholder="Job using JDBBC connection" />
+				<Form.Text label="Name" required disabled placeholder="Job using JDBC connection" />
 				<Form.Textarea label="Description" disabled placeholder="Describe the job" />
 			</Form.Fieldset>
 			<Form.Buttons>
 				<Button.Secondary disabled>Previous</Button.Secondary>
 				<Button.Secondary disabled>Save</Button.Secondary>
-				<Button.Primary loading>Run</Button.Primary>
+				<Button.Primary icon="talend-launch" loading>
+					Run
+				</Button.Primary>
 			</Form.Buttons>
 		</Form>
 	</div>

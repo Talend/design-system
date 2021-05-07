@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useCopyToClipboard } from 'react-use';
 import Button from '../../../Button';
 import InlineMessage from '../../../InlineMessage';
-import InputGroup from './../InputGroup';
+import InputGroup from '../InputGroup';
 import Text from './Input.Text';
 
 import tokens from '../../../../tokens';

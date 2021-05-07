@@ -6,7 +6,7 @@ export const Span = styled.span`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0 1rem;
+	padding: ${tokens.space.none} ${tokens.space.s};
 	height: ${tokens.sizes.xxl};
 	color: ${({ theme }) => theme.colors.inputGroupColor};
 	background: ${({ theme }) => theme.colors.inputGroupBackgroundColor};

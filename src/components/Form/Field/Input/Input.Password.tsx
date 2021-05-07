@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
-import Input from './Input';
+import React, { useEffect, useRef, FormEvent } from 'react';
+import Input, { InputProps } from './Input';
 
 import useRevealPassword from './hooks/useRevealPassword';
 
-function Password(props) {
+const Password = (props: InputProps) => {
 	const { currentType, onReset, RevealPasswordButton } = useRevealPassword();
 	const isInitialMount = useRef(true);
 	const inputRef = useRef();
@@ -12,8 +12,8 @@ function Password(props) {
 		if (isInitialMount.current) {
 			isInitialMount.current = false;
 		} else if (inputRef.current) {
-				inputRef.current.focus();
-			}
+			inputRef.current.focus();
+		}
 	});
 
 	return (
@@ -21,13 +21,13 @@ function Password(props) {
 			{...props}
 			type={currentType}
 			ref={inputRef}
-			onBlur={event => {
+			onBlur={() => {
 				inputRef.current = null;
-				onReset(event);
+				onReset();
 			}}
 			after={<RevealPasswordButton />}
 		/>
 	);
-}
+};
 
 export default Password;

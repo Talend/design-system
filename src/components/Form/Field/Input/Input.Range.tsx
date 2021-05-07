@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { shade } from 'polished';
-import Input from './Input';
+import Input, { InputProps } from './Input';
 import tokens from '../../../../tokens';
 
-const SRange = styled.div(
-	({ theme }) => `
+const SRange = styled.div`
 	input[type='range'] {
 		-webkit-appearance: none;
 		margin: 0;
@@ -17,19 +16,19 @@ const SRange = styled.div(
 		&::-webkit-slider-runnable-track {
 			width: 100%;
 			height: ${tokens.sizes.xs};
-			background: ${theme.colors.inputRadioBackgroundColor};
+			background: ${({ theme }) => theme.colors.inputRadioBackgroundColor};
 			border-radius: 1rem;
 			transition: ${tokens.transitions.normal};
 			cursor: pointer;
 		}
-        
-        &:hover::-webkit-slider-runnable-track {
-			background: ${shade(0.25, theme.colors.inputRadioBackgroundColor)};
-        }
-        
-        &:focus::-webkit-slider-runnable-track {
-            background: ${theme.colors.activeColor[500]};
-        }
+
+		&:hover::-webkit-slider-runnable-track {
+			background: ${({ theme }) => shade(0.25, theme.colors.inputRadioBackgroundColor)};
+		}
+
+		&:focus::-webkit-slider-runnable-track {
+			background: ${({ theme }) => theme.colors.activeColor[500]};
+		}
 
 		&::-webkit-slider-thumb {
 			-webkit-appearance: none;
@@ -37,14 +36,14 @@ const SRange = styled.div(
 			height: ${tokens.sizes.l};
 			width: ${tokens.sizes.l};
 			border-radius: ${tokens.radii.circleRadius};
-			background: ${theme.colors.inputBackgroundColor};
-			box-shadow: 0 0 0 1px ${theme.colors.inputBorderColor};
+			background: ${({ theme }) => theme.colors.inputBackgroundColor};
+			box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputBorderColor};
 			cursor: pointer;
 		}
-		
-        &:focus::-webkit-slider-thumb {
-        }
-        
+
+		&:focus::-webkit-slider-thumb {
+		}
+
 		/*
 		&::-moz-range-track {
 			width: 100%;
@@ -106,13 +105,12 @@ const SRange = styled.div(
 		}
 		*/
 	}
-`,
-);
+`;
 
-function Range(props) {
+function Range(props: InputProps) {
 	return (
 		<SRange>
-			<Input type="range" {...props} />
+			<Input {...props} type="range" />
 		</SRange>
 	);
 }
