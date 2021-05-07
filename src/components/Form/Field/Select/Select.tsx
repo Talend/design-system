@@ -1,20 +1,27 @@
 import React from 'react';
+import { isElement } from 'react-is';
+
 import { Icon } from '../../../Icon/Icon';
 
 import Field from '../Field';
-
-import * as S from './Select.style';
 import Input from '../Input';
 
-function Select({ children, multiple, readOnly, required, placeholder, ...rest }) {
+import * as S from './Select.style';
+
+export type SelectProps = HTMLInputElement & {};
+
+const Select = ({ children, multiple, readOnly, required, placeholder, ...rest }: SelectProps) => {
 	if (readOnly) {
-		const values = children.reduce((acc, current) => {
+		const values = React.Children.toArray(children).reduce((acc: string[], current) => {
+			if (!isElement(current)) {
+				return acc.concat(current.toString());
+			}
 			const { children: optChildren, originalType, selected } = current.props;
 			if (originalType === 'optgroup') {
 				return acc.concat(
 					React.Children.toArray(optChildren)
-						.filter(option => option.props.selected)
-						.map(option => option.props.children),
+						.filter(option => isElement(option) && option.props.selected)
+						.map(option => isElement(option) && option.props.children),
 				);
 			}
 			if (selected) {
@@ -22,7 +29,7 @@ function Select({ children, multiple, readOnly, required, placeholder, ...rest }
 			}
 			return acc;
 		}, []);
-
+		// @ts-ignore
 		return <Input readOnly value={values.join('; ')} {...rest} />;
 	}
 
@@ -39,11 +46,12 @@ function Select({ children, multiple, readOnly, required, placeholder, ...rest }
 						{placeholder}
 					</option>
 				)}
-				{!required && <option value=""></option>}
+				{/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+				{!required && <option value="" />}
 				{children}
 			</Field>
 		</S.FieldWrapper>
 	);
-}
+};
 
 export default Select;
