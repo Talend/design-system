@@ -60,6 +60,7 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 						className={`${className} field__control ${
 							typeof as === 'string' ? `field__control--${as}` : ''
 						}`}
+						disabled={disabled}
 						ref={ref}
 					/>
 					{loading && <Loading className="field__loading" />}
