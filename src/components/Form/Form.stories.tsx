@@ -19,7 +19,7 @@ function getColumnTypes() {
 
 export const FormSkeleton = () => (
 	<Form>
-		<Skeleton.Title />
+		<Skeleton.Heading />
 		<Skeleton.Text />
 		<Skeleton.Text />
 		<Form.Buttons>
