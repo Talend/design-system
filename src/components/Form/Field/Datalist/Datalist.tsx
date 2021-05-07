@@ -1,7 +1,11 @@
 import React from 'react';
 import Field from '../Field';
 
-export const Datalist = ({ id = Math.round(Math.random() * 1e5).toString(), values, ...rest }) => {
+export type DatalistProps = HTMLInputElement & {
+	values?: string[];
+};
+
+export const Datalist = ({ id = `datalist--${Date.now()}`, values, ...rest }: DatalistProps) => {
 	const listId = `datalist-${id}`;
 	return (
 		<>
@@ -9,7 +13,8 @@ export const Datalist = ({ id = Math.round(Math.random() * 1e5).toString(), valu
 			<Field {...rest} id={id} list={listId} />
 			{values && (
 				<datalist id={listId}>
-					{values.map((value, index) => (
+					{values.map((value: string, index: React.Key) => (
+						// eslint-disable-next-line jsx-a11y/control-has-associated-label
 						<option key={index} value={value} />
 					))}
 				</datalist>
