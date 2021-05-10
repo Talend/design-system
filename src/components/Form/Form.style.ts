@@ -21,7 +21,7 @@ export const Form = styled.form`
 `;
 
 export const Row = styled.div`
-	display: flex;
+	display: inline-flex;
 	align-items: flex-start;
 	gap: ${tokens.space.l};
 `;
