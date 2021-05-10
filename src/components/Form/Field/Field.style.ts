@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import Label from '../Label';
@@ -9,7 +10,7 @@ export type FieldControlProps = { as: string; type: string; multiple: boolean };
 export const FieldControl = styled.input.attrs(({ readOnly, checked }) => ({
 	className: `${readOnly ? 'input--read-only' : ''} ${checked ? 'input--checked' : ''}`,
 }))`
-	padding: 0 ${tokens.space.s};
+	padding: ${tokens.space.none} ${tokens.space.s};
 	width: 100%;
 	color: ${({ theme }) => theme.colors.inputColor};
 	font-size: ${tokens.fontSizes.normal};
@@ -87,14 +88,36 @@ export const Field = styled.div`
 		}
 	}
 
+	.field__group--has-warning {
+		${FieldControl} {
+			border-width: 2px;
+			border-color: ${({ theme }) => theme.colors.warningColor[500]};
+		}
+
+		+ [role='status'] {
+			padding-top: ${tokens.space.xs};
+		}
+	}
+
 	select[multiple] {
 		padding: 1rem;
+	}
+
+	.field__label,
+	.link {
+		order: -1;
+	}
+
+	.link {
+		align-self: flex-end;
+		margin-top: -2rem;
+		margin-bottom: 0.5rem;
 	}
 `;
 
 export const FieldLabel = Label;
 
-export const FieldGroup = styled.div<{ after: boolean }>`
+export const FieldGroup = styled.div<{ after: React.ReactNode }>`
 	position: relative;
 	display: inline-flex;
 	align-items: center;
@@ -117,7 +140,7 @@ export const FieldGroup = styled.div<{ after: boolean }>`
 
 	svg {
 		left: 0;
-		margin: 0 1rem;
+		margin: ${tokens.space.none} ${tokens.space.s};
 		fill: ${tokens.colors.gray[500]};
 		pointer-events: none;
 

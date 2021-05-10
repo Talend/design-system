@@ -1,7 +1,7 @@
 import React from 'react';
-import Field from '../Field';
+import Field, { FieldProps } from '../Field';
 
-export type InputProps = HTMLInputElement & {
+export type InputProps = FieldProps & {
 	label: string;
 	before?: any;
 	after?: any;

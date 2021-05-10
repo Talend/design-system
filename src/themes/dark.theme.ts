@@ -42,7 +42,7 @@ const theme: DefaultTheme = {
 		buttonDisabledBackgroundColor: palette.grayColor[600],
 
 		inputColor: palette.grayColor[0],
-		inputBackgroundColor: palette.grayColor[600],
+		inputBackgroundColor: palette.grayColor[800],
 		inputBorderColor: palette.grayColor[75],
 		inputHoverBorderColor: palette.activeColor[500],
 		inputFocusBorderColor: palette.primaryColor[500],

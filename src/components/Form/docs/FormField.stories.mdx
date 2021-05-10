@@ -1,5 +1,6 @@
-import { Meta } from '@storybook/addon-docs/blocks';
-import { FigmaImage } from '../../../docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+import { FigmaIframe, FigmaImage } from '../../../docs';
+import * as Stories from '../Field/Field.stories';
 
 <Meta title="Components/Form/Form Field" />
 
@@ -29,10 +30,18 @@ The validation of the field should appear when the field loses the focus. Two ty
 
 The user must correct the error within the field. Once the error is corrected, the message is disappearing.
 
-<FigmaImage
-	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=230%3A229"
-	alt="warning or error message image example"
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=230%3A229"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=342%3A447"
 />
+
+<Canvas>
+    <Story story={Stories.FormFieldError} />
+</Canvas>
+
+<Canvas>
+    <Story story={Stories.FormFieldWarning} />
+</Canvas>
 
 ## Content
 
@@ -40,28 +49,40 @@ The user must correct the error within the field. Once the error is corrected, t
 
 The default behavior is to highlight the mandatory fields by using the asterisk next to the label.
 
-<FigmaImage
-	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=227%3A98"
-	alt="mandatory image example"
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=227%3A98"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=342%3A673"
 />
+
+<Canvas>
+    <Story story={Stories.FormFieldRequired} />
+</Canvas>
 
 ### Information
 
 A message can be displayed below the input to help the user by recommending appropriate content or suggesting an action.
 
-<FigmaImage
-	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=230%3A188"
-	alt="helper message image example"
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=230%3A188"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=342%3A482"
 />
+
+<Canvas>
+    <Story story={Stories.FormFieldInformation} />
+</Canvas>
 
 ### Link
 
 For the [password input](/?path=/docs/components-form-fields-password--default-story), a link could be added at the top right of the input.
 
-<FigmaImage
-	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=230%3A404"
-	alt="password input with link example"
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=230%3A404"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=342%3A382"
 />
+
+<Canvas>
+    <Story story={Stories.FormFieldPassword} />
+</Canvas>
 
 ## Usage
 

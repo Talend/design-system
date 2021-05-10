@@ -36,7 +36,8 @@ export const Default = () => (
 			<Form.Text label="Input" />
 			<Form.Text
 				label="Input with error"
-				errorMessage="Lorem ipsum dolor sit amet Quis nostrud exercitation ullamco laboris nisi ut aliquip ex eaLorem ipsum dolor sit ame"
+				hasError
+				description="Lorem ipsum dolor sit amet Quis nostrud exercitation ullamco laboris nisi ut aliquip ex eaLorem ipsum dolor sit ame"
 			/>
 			<Form.InputGroup
 				label="Phone"
