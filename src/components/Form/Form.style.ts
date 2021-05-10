@@ -19,3 +19,9 @@ export const Form = styled.form`
 		max-width: 78rem;
 	}
 `;
+
+export const Row = styled.div`
+	display: flex;
+	align-items: flex-start;
+	gap: ${tokens.space.l};
+`;

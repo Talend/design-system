@@ -1,8 +1,8 @@
 import React from 'react';
 import Input, { InputProps } from './Input';
 
-function Time(props: InputProps) {
-	return <Input {...props} type="time" />;
-}
+const Time = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+	return <Input {...props} type="time" ref={ref} />;
+});
 
 export default Time;

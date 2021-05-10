@@ -78,6 +78,7 @@ export const InputGroup = styled.div`
 	}
 `;
 export const InputGroupLabel = styled.span`
+	margin-bottom: ${tokens.space.xs};
 	font-size: ${tokens.fontSizes.small};
 	font-weight: ${tokens.fontWeights.semiBold};
 	color: ${({ theme }) => theme.colors.textColor};

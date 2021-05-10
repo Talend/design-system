@@ -1,8 +1,8 @@
 import React from 'react';
 import Input, { InputProps } from './Input';
 
-function Tel(props: InputProps) {
-	return <Input {...props} type="tel" />;
-}
+const Tel = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+	return <Input {...props} type="tel" ref={ref} />;
+});
 
 export default Tel;

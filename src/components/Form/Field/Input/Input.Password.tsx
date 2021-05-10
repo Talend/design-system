@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, FormEvent } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Input, { InputProps } from './Input';
 
 import useRevealPassword from './hooks/useRevealPassword';
 
-const Password = (props: InputProps) => {
+const Password = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const { currentType, onReset, RevealPasswordButton } = useRevealPassword();
 	const isInitialMount = useRef(true);
-	const inputRef = useRef();
+	const inputRef = useRef(ref);
 
 	useEffect(() => {
 		if (isInitialMount.current) {
@@ -28,6 +28,6 @@ const Password = (props: InputProps) => {
 			after={<RevealPasswordButton />}
 		/>
 	);
-};
+});
 
 export default Password;

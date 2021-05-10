@@ -5,7 +5,7 @@ import { VisuallyHidden } from 'reakit';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import { Icon } from '../../../Icon';
-import Input from './Input';
+import Input, { InputProps } from './Input';
 import tokens from '../../../../tokens';
 
 const FileField = styled.div`
@@ -227,8 +227,8 @@ function InputFile(props) {
 	);
 }
 
-function File(props) {
-	return <Input as={InputFile} {...props} />;
-}
+const File = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+	return <Input {...props} as={InputFile} ref={ref} />;
+});
 
 export default File;

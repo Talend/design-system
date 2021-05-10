@@ -8,7 +8,7 @@ export type InputProps = FieldProps & {
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <Field as="input" ref={ref} {...props} />;
+	return <Field {...props} as="input" ref={ref} />;
 });
 
 export default Input;

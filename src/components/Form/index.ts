@@ -8,7 +8,10 @@ import Label from './Label';
 import Select from './Field/Select';
 import Textarea from './Field/Textarea';
 
+import * as S from './Form.style';
+
 export const FormComponent = Form as typeof Form & {
+	Row: typeof S.Row;
 	Color: typeof Input.Color;
 	Checkbox: typeof Input.Checkbox;
 	Datalist: typeof Datalist;
@@ -37,6 +40,8 @@ export const FormComponent = Form as typeof Form & {
 	Week: typeof Input.Week;
 	Buttons: typeof Buttons;
 };
+
+FormComponent.Row = S.Row;
 
 FormComponent.Color = Input.Color;
 FormComponent.Checkbox = Input.Checkbox;

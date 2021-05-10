@@ -1,8 +1,8 @@
 import React from 'react';
 import Input, { InputProps } from './Input';
 
-function Week(props: InputProps) {
-	return <Input {...props} type="week" />;
-}
+const Week = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+	return <Input {...props} type="week" ref={ref} />;
+});
 
 export default Week;

@@ -5,6 +5,7 @@ import Button from '../../../Button';
 import InlineMessage from '../../../InlineMessage';
 import InputGroup from '../InputGroup';
 import Text from './Input.Text';
+import { InputProps } from './Input';
 
 import tokens from '../../../../tokens';
 
@@ -16,11 +17,7 @@ const CopyButton = styled(Button.Icon)`
 	border-radius: 0 ${tokens.radii.inputBorderRadius} ${tokens.radii.inputBorderRadius} 0;
 `;
 
-export type InputCopyProps = React.PropsWithChildren<any> & {
-	value?: string;
-};
-
-const InputCopy = ({ value, ...rest }: InputCopyProps) => {
+const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(({ value, ...rest }, ref) => {
 	const [text, setText] = React.useState(value);
 	const [state, copyToClipboard] = useCopyToClipboard();
 
@@ -39,6 +36,7 @@ const InputCopy = ({ value, ...rest }: InputCopyProps) => {
 				value={text}
 				onChange={(event: React.ChangeEvent<HTMLInputElement>) => setText(event.target.value)}
 				{...rest}
+				ref={ref}
 			/>
 			{state.error ? (
 				<InlineMessage.Destructive title="Unable to copy value" description={state.error.message} />
@@ -47,6 +45,6 @@ const InputCopy = ({ value, ...rest }: InputCopyProps) => {
 			)}
 		</InputGroup>
 	);
-};
+});
 
 export default InputCopy;
