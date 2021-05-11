@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import Text from './Skeleton.Text';
+import Skeleton from '../Skeleton';
 
-const TitleSkeleton = styled(Text)`
+const HeadingSkeleton = styled(Skeleton)`
 	max-width: 20rem;
 `;
 
-export default TitleSkeleton;
+export default HeadingSkeleton;
