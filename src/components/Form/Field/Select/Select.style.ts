@@ -8,17 +8,17 @@ export const FieldWrapper = styled.div`
 	.field__group--select {
 		position: relative;
 
-		.talend-caret-down {
+		svg {
 			position: absolute;
 			top: auto;
 			left: auto;
 			right: 0;
 			width: ${tokens.sizes.s};
-			color: ${({ theme }) => theme.colors.inputPlaceholderColor};
+			fill: currentColor;
 			pointer-events: none;
 		}
 
-		select {
+		.field__control {
 			overflow: auto;
 			cursor: pointer;
 			border-color: ${({ theme }) => theme.colors.inputBorderColor};
@@ -26,12 +26,13 @@ export const FieldWrapper = styled.div`
 		}
 
 		&:hover {
-			select:not(:disabled) {
+			.field__control:not(:disabled) {
 				border: 1px solid ${({ theme }) => theme.colors.inputHoverBorderColor};
 			}
 		}
+
 		&:not(.field__group--multiple) {
-			select {
+			.field__control {
 				padding-right: ${tokens.sizes.xxl};
 				appearance: none;
 

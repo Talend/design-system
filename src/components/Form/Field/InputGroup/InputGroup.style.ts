@@ -10,15 +10,12 @@ export const Span = styled.span`
 	height: ${tokens.sizes.xxl};
 	color: ${({ theme }) => theme.colors.inputGroupColor};
 	background: ${({ theme }) => theme.colors.inputGroupBackgroundColor};
-	border: 1px solid ${({ theme }) => theme.colors.inputBorderColor};
 `;
 export const SpanPrefix = styled(Span)`
-	border-right: none;
 	border-top-left-radius: ${tokens.radii.inputBorderRadius};
 	border-bottom-left-radius: ${tokens.radii.inputBorderRadius};
 `;
 export const SpanSuffix = styled(Span)`
-	border-left: none;
 	border-top-right-radius: ${tokens.radii.inputBorderRadius};
 	border-bottom-right-radius: ${tokens.radii.inputBorderRadius};
 `;
@@ -41,39 +38,29 @@ export const InputGroup = styled.div`
 		width: 1px;
 	}
 
-	.field__control--select {
-		color: ${({ theme }) => theme.colors.inputGroupInteractiveColor};
-		background: ${({ theme }) => theme.colors.inputGroupInteractiveBackgroundColor};
+	.input-group__item.input-group__item--prefix,
+	.input-group__item.input-group__item--suffix {
+		.field__group,
+		.field__control,
+		.btn {
+			color: ${({ theme }) => theme.colors.inputGroupInteractiveColor};
+			background: ${({ theme }) => theme.colors.inputGroupInteractiveBackgroundColor};
+		}
 	}
 
-	.input-group__item--suffix .field__control--select,
-	&.input-group--has-prefix .input-group__item--input .field__control {
-		border-left: none;
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
+	.input-group__item.input-group__item--suffix {
+		.field__control,
+		.btn {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
 	}
 
-	.input-group__item--prefix .field__control--select,
-	&.input-group--has-suffix .input-group__item--input .field__control {
-		border-right: none;
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-	}
-
-	.input-group__item--prefix,
-	.input-group__item--prefix .field__group--select:hover select:not(:disabled) {
-		border-right: none;
-	}
-
-	.input-group__item--suffix,
-	.input-group__item--suffix .field__group--select:hover select:not(:disabled) {
-		border-left: none;
-	}
-
-	&:hover {
-		${Span},
-		.input-group__item .field__control {
-			border-color: ${({ theme }) => theme.colors.inputHoverBorderColor};
+	.input-group__item.input-group__item--prefix {
+		.field__control,
+		.btn {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
 		}
 	}
 `;
@@ -82,7 +69,37 @@ export const InputGroupLabel = styled.span`
 	font-size: ${tokens.fontSizes.small};
 	font-weight: ${tokens.fontWeights.semiBold};
 	color: ${({ theme }) => theme.colors.textColor};
+	cursor: pointer;
 `;
 export const InputGroupRow = styled.div`
 	display: flex;
+	margin-bottom: ${tokens.space.m};
+	border: 1px solid ${({ theme }) => theme.colors.inputBorderColor};
+	border-radius: ${tokens.radii.inputBorderRadius};
+
+	&:hover {
+		border-color: ${({ theme }) => theme.colors.inputHoverBorderColor};
+	}
+
+	&:focus-within {
+		border-width: 2px;
+		border-color: ${({ theme }) => theme.colors.inputFocusBorderColor};
+	}
+
+	.field {
+		margin-bottom: 0;
+	}
+
+	.field__group,
+	.btn {
+		&,
+		&:hover,
+		&:focus {
+			&,
+			.field__control:not(.disabled) {
+				border: none;
+				border-radius: ${tokens.radii.inputBorderRadius};
+			}
+		}
+	}
 `;

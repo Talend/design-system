@@ -16,6 +16,7 @@ export type FieldProps = HTMLInputElement &
 		link?: React.ReactNode;
 		hasError?: boolean;
 		hasWarning?: boolean;
+		hasSuccess?: boolean;
 		hasInformation?: boolean;
 		description?: string;
 	};
@@ -32,6 +33,7 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 			link,
 			hasError,
 			hasWarning,
+			hasSuccess,
 			hasInformation,
 			description,
 			required,
@@ -56,6 +58,9 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 			}
 			if (hasWarning) {
 				return <InlineMessage.Warning small description={description} />;
+			}
+			if (hasSuccess) {
+				return <InlineMessage.Success small description={description} />;
 			}
 			if (hasInformation) {
 				return <InlineMessage.Information small description={description} />;

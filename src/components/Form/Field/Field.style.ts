@@ -57,7 +57,7 @@ export const Field = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
-	padding-bottom: ${tokens.space.m};
+	margin-bottom: ${tokens.space.m};
 	width: 100%;
 	min-width: 8rem;
 	color: ${({ theme }) => theme.colors.textColor};

@@ -1,17 +1,16 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { FigmaImage, Use } from '../../../docs';
+import { FigmaImage, WithSelector } from '../../../docs';
 
 import Form from '../';
-import { Col, Row } from '../../../docs';
+import Button from '../../Button';
 
-<Meta title="Components/Form/Fields/Group" />
+<Meta title="Components/Form/Field Group" />
 
 # Input group
 
- An input group allows to extend the form controls by adding simple text, select or buttons on either side of the default input.
+An input group allows to extend the form controls by adding simple text, select or buttons on either side of the default input.
 
 ## Zoning
-
 
 <FigmaImage
 	src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=249%3A129"
@@ -20,21 +19,101 @@ import { Col, Row } from '../../../docs';
 
 ## Style
 
-demo
+<Canvas>
+	<Story name="select">
+		<Form.InputGroup
+			label="Input"
+			prefix={
+				<Form.Select label="Protocol">
+					<option selected>http://</option>
+					<option>https://</option>
+					<option>ftp://</option>
+					<option>pop3://</option>
+					<option>imap://</option>
+					<option>smtp://</option>
+				</Form.Select>
+			}
+		>
+			<Form.Url label="Domain" placeholder="www.talend.com" />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="button">
+		<Form.InputGroup label="Input" suffix={<Button.Secondary>Button</Button.Secondary>}>
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
 
 ## States
 
 ### Default
 
-demo
+<Canvas>
+	<Story name="default">
+		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
+
+### Hover
+
+<Canvas withSource="none">
+	<Story
+		name="hover"
+		decorators={[storyFn => <WithSelector selector=":hover">{storyFn()}</WithSelector>]}
+	>
+		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
+
+### Focus
+
+<Canvas withSource="none">
+	<Story
+		name="focus"
+		decorators={[storyFn => <WithSelector selector=":focus">{storyFn()}</WithSelector>]}
+	>
+		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
+
+### Filled
+
+<Canvas>
+	<Story name="filled">
+		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
 
 ### Disabled
 
-demo
+<Canvas>
+	<Story name="disabled">
+		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
 
 ### Read only
 
-demo
+<Canvas>
+	<Story name="read-only">
+		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+			<Form.Text />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
 
 ## Content
 
@@ -54,7 +133,6 @@ To do
 
 ## Changelog
 
-| Date       | Author | Description |
-| ---------- | ------ | ----------- |
-| 07/22/2020 | Monia Huet  | Init page   |
-
+| Date       | Author     | Description |
+| ---------- | ---------- | ----------- |
+| 07/22/2020 | Monia Huet | Init page   |
