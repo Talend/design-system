@@ -1,21 +1,21 @@
 import React from 'react';
 import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
+import styled from 'styled-components';
 
 import { InputProps } from './Input';
-
 import { Icon } from '../../../Icon/Icon';
 
-import styled from 'styled-components';
 import { InlineStyle } from '../Field.style';
+
 import tokens from '../../../../tokens';
 
 export const SCheckbox = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>`
-	span:before,
-	span:after {
+	label > span:before,
+	label > span:after {
 		border-radius: ${tokens.radii.inputBorderRadius};
 	}
 
-	span:after {
+	label > span:after {
 		background-color: transparent;
 	}
 
@@ -44,7 +44,19 @@ export const SCheckbox = styled(InlineStyle)<{ readOnly: boolean; checked: boole
 `;
 
 const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
-	({ id = `checkbox--${Date.now()}`, label, indeterminate, checked, readOnly, ...rest }, ref) => {
+	(
+		{
+			id = `checkbox--${Date.now()}`,
+			label,
+			indeterminate,
+			checked,
+			readOnly,
+			required,
+			children,
+			...rest
+		},
+		ref,
+	) => {
 		const checkbox = useCheckboxState({ state: (indeterminate && 'indeterminate') || checked });
 
 		const icon =
@@ -58,13 +70,13 @@ const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
 			<SCheckbox readOnly={readOnly} checked={checked}>
 				<label htmlFor={id}>
 					{!readOnly && (
-						<>
-							{/*
-						// @ts-ignore */}
-							<ReakitCheckbox id={id} {...rest} {...checkbox} ref={ref} />
-						</>
+						// @ts-ignore
+						<ReakitCheckbox id={id} {...rest} {...checkbox} ref={ref} />
 					)}
-					<span>{label}</span>
+					<span>
+						{label || children}
+						{required && '*'}
+					</span>
 					{icon}
 				</label>
 			</SCheckbox>

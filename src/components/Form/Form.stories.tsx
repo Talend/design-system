@@ -5,6 +5,7 @@ import Form from './Form';
 import Button from '../Button';
 import InlineMessage from '../InlineMessage';
 import Skeleton from '../Skeleton';
+import Link from '../Link';
 
 import CountryCodes from './docs/data/CountryCodes.json';
 
@@ -32,64 +33,39 @@ FormSkeleton.parameters = {};
 
 export const Default = () => (
 	<Form>
-		<Form.Fieldset legend="Fieldset">
-			<Form.Text label="Input" />
-			<Form.Text
-				label="Input with error"
-				hasError
-				description="Lorem ipsum dolor sit amet Quis nostrud exercitation ullamco laboris nisi ut aliquip ex eaLorem ipsum dolor sit ame"
-			/>
+		<Form.Fieldset legend="Complete your registration">
+			<Form.Row>
+				<Form.Text label="First Name" required />
+				<Form.Text label="Last Name" required />
+			</Form.Row>
+			<Form.Text label="Company" value="Talend" required />
 			<Form.InputGroup
 				label="Phone"
 				prefix={
-					<Form.Select label="Phone prefix" value="France (+33)" style={{ width: '13rem' }}>
-						{getCountryCodes().map(countryCode => (
-							<option>{countryCode}</option>
+					<Form.Select label="Phone prefix" value="France (+33)">
+						{getCountryCodes().map((countryCode, key) => (
+							<option key={key}>{countryCode}</option>
 						))}
 					</Form.Select>
 				}
+				hasError
+				description="Phone number is invalid"
+				required
 			>
-				<Form.Tel label="Phone number" />
+				<Form.Tel label="Phone number" value="6121314k" />
 			</Form.InputGroup>
-			<Form.InputGroup
-				label="Column"
-				suffix={
-					<Form.Select label="Column type" value="Date">
-						{getColumnTypes().map(columnType => (
-							<option>{columnType}</option>
-						))}
-					</Form.Select>
-				}
-			>
-				<Form.Text label="Column name" />
-			</Form.InputGroup>
-			<Form.InputGroup label="Amount" prefix="$" suffix=".00">
-				<Form.Number label="Amount without decimal" min="1" step="1" />
-			</Form.InputGroup>
-			<Form.File label="File" />
+			<Form.Select label="Industry">
+				<option selected>IT</option>
+			</Form.Select>
 			<Form.Password label="Password" />
-			<Form.Datalist label="Datalist" values={['foo', 'bar']} />
-			<Form.Search label="Search" />
-			<Form.Textarea label="Textarea" />
-			<Form.Range label="Range" />
-			<Form.Select label="Select">
-				<option selected>Foo</option>
-				<option>Bar</option>
-			</Form.Select>
-			<Form.Select label="Select multiple" multiple>
-				<option selected>Foo</option>
-				<option>Bar</option>
-			</Form.Select>
-			<Form.Checkbox label="Checkbox" checked />
-			<Form.Radio label="Radio" checked />
-			<Form.Switch label="Switch" checked />
+			<Form.Password label="Repeat password" />
+			<Form.Checkbox checked required>
+				I have read and accept the <Link href="#">terms of use</Link>
+			</Form.Checkbox>
+			<Form.Buttons>
+				<Button.Primary onClick={action('submit')}>Complete Registration</Button.Primary>
+			</Form.Buttons>
 		</Form.Fieldset>
-		<Form.Buttons>
-			<Button.Secondary type="reset" onClick={action('clicked')}>
-				Reset
-			</Button.Secondary>
-			<Button.Primary onClick={action('clicked')}>Submit</Button.Primary>
-		</Form.Buttons>
 	</Form>
 );
 Default.parameters = {};

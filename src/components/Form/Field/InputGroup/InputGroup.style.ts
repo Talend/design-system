@@ -47,7 +47,7 @@ export const InputGroupLabel = styled.span`
 `;
 export const InputGroupRow = styled.div`
 	display: flex;
-	margin-bottom: ${tokens.space.m};
+	margin-bottom: ${tokens.space.xs};
 	border: 1px solid ${({ theme }) => theme.colors.inputBorderColor};
 	border-radius: ${tokens.radii.inputBorderRadius};
 
@@ -74,6 +74,8 @@ export const InputGroupRow = styled.div`
 
 	.input-group__item.input-group__item--prefix,
 	.input-group__item.input-group__item--suffix {
+		max-width: 20%;
+
 		.field__group,
 		.field__control,
 		.btn {

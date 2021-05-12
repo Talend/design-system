@@ -137,8 +137,8 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 		cursor: pointer;
 	}
 
-	span:before,
-	span:after {
+	label > span:before,
+	label > span:after {
 		content: '';
 		position: absolute;
 		top: 0.3rem;
@@ -147,13 +147,13 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 		transition: ${tokens.transitions.fast};
 	}
 
-	span:before {
+	label > span:before {
 		width: ${tokens.sizes.s};
 		height: ${tokens.sizes.s};
 		box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputBorderColor};
 	}
 
-	span:after {
+	label > span:after {
 		margin: calc((${tokens.sizes.s} - ${tokens.sizes.xs}) / 2);
 		width: ${tokens.sizes.xs};
 		height: ${tokens.sizes.xs};
