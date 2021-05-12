@@ -79,6 +79,17 @@ export const InputGroupRow = styled.div`
 		.btn {
 			color: ${({ theme }) => theme.colors.inputGroupInteractiveColor};
 			background: ${({ theme }) => theme.colors.inputGroupInteractiveBackgroundColor};
+			transition: ${tokens.transitions.fast};
+
+			&:hover {
+				color: ${({ theme }) => theme.colors.inputGroupInteractiveHoverColor};
+				background: ${({ theme }) => theme.colors.inputGroupInteractiveHoverBackgroundColor};
+			}
+
+			&:active {
+				color: ${({ theme }) => theme.colors.inputGroupInteractiveActiveColor};
+				background: ${({ theme }) => theme.colors.inputGroupInteractiveActiveBackgroundColor};
+			}
 		}
 	}
 

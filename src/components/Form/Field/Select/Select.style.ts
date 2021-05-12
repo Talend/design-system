@@ -10,7 +10,7 @@ export const FieldWrapper = styled.div`
 		top: auto;
 		left: auto;
 		right: 0;
-		width: ${tokens.sizes.s};
+		width: ${tokens.sizes.xs};
 		fill: currentColor;
 		pointer-events: none;
 	}
@@ -30,7 +30,6 @@ export const FieldWrapper = styled.div`
 
 	:not(.field__group--multiple) {
 		.field__control {
-			padding-right: ${tokens.sizes.xxl};
 			appearance: none;
 
 			&:disabled {
