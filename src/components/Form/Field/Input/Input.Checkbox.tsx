@@ -5,7 +5,43 @@ import { InputProps } from './Input';
 
 import { Icon } from '../../../Icon/Icon';
 
-import * as S from './Input.Inline.style';
+import styled from 'styled-components';
+import { InlineStyle } from '../Field.style';
+import tokens from '../../../../tokens';
+
+export const SCheckbox = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>`
+	span:before,
+	span:after {
+		border-radius: ${tokens.radii.inputBorderRadius};
+	}
+
+	span:after {
+		background-color: transparent;
+	}
+
+	label {
+		position: relative;
+	}
+
+	svg {
+		position: absolute;
+		top: 1px;
+		left: 1px;
+		width: 1rem;
+		cursor: pointer;
+	}
+
+	// FIXME
+	svg {
+		circle {
+			display: none;
+		}
+
+		path {
+			fill: ${({ readOnly, theme }) => (readOnly ? 'currentColor' : theme.colors.backgroundColor)};
+		}
+	}
+`;
 
 const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
 	({ id = `checkbox--${Date.now()}`, label, indeterminate, checked, readOnly, ...rest }, ref) => {
@@ -19,7 +55,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
 			);
 
 		return (
-			<S.Checkbox readOnly={readOnly} checked={checked}>
+			<SCheckbox readOnly={readOnly} checked={checked}>
 				<label htmlFor={id}>
 					{!readOnly && (
 						<>
@@ -31,7 +67,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
 					<span>{label}</span>
 					{icon}
 				</label>
-			</S.Checkbox>
+			</SCheckbox>
 		);
 	},
 );
