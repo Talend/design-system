@@ -1,15 +1,18 @@
 import React from 'react';
 import { isElement } from 'react-is';
+import classnames from 'classnames';
 
 import * as S from './InputGroup.style';
 
-export type InputGroupProps = React.PropsWithChildren<any> & {
+export type InputGroupProps = React.ReactNode & {
+	label: string;
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
 };
 
-const InputGroup = React.forwardRef<HTMLInputElement, InputGroupProps>(
+const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 	({ label, prefix, suffix, children }, ref) => {
+		// @ts-ignore
 		const fieldRef = React.useRef<HTMLInputElement>(ref);
 		const labelId = `input-group--${Date.now()}`;
 		function focusField() {
@@ -17,15 +20,15 @@ const InputGroup = React.forwardRef<HTMLInputElement, InputGroupProps>(
 		}
 		return (
 			<S.InputGroup
-				className={`input-group ${prefix ? 'input-group--has-prefix' : ''} ${
-					suffix ? 'input-group--has-suffix' : ''
-				}`}
-				aria-labelledby={labelId}
+				className={classnames('input-group', {
+					'input-group--has-prefix': prefix,
+					'input-group--has-suffix': suffix,
+				})}
 			>
 				<S.InputGroupLabel id={labelId} onClick={focusField}>
 					{label}
 				</S.InputGroupLabel>
-				<S.InputGroupRow>
+				<S.InputGroupRow aria-labelledby={labelId}>
 					{prefix && (
 						<div className="input-group__item input-group__item--prefix">
 							{!isElement(prefix) ? <S.SpanPrefix>{prefix}</S.SpanPrefix> : prefix}

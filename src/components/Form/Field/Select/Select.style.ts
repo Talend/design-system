@@ -5,42 +5,38 @@ import tokens from '../../../../tokens';
 export const FieldWrapper = styled.div`
 	position: relative;
 
-	.field__group--select {
-		position: relative;
+	svg {
+		position: absolute;
+		top: auto;
+		left: auto;
+		right: 0;
+		width: ${tokens.sizes.s};
+		fill: currentColor;
+		pointer-events: none;
+	}
 
-		svg {
-			position: absolute;
-			top: auto;
-			left: auto;
-			right: 0;
-			width: ${tokens.sizes.s};
-			fill: currentColor;
-			pointer-events: none;
-		}
-
-		.field__control {
-			overflow: auto;
-			cursor: pointer;
-			border-color: ${({ theme }) => theme.colors.inputBorderColor};
-			background: ${({ theme }) => theme.colors.inputBackgroundColor};
-		}
+	.field__control {
+		overflow: auto;
+		cursor: pointer;
+		border-color: ${({ theme }) => theme.colors.inputBorderColor};
+		background: ${({ theme }) => theme.colors.inputBackgroundColor};
 
 		&:hover {
-			.field__control:not(:disabled) {
+			&:not(:disabled) {
 				border: 1px solid ${({ theme }) => theme.colors.inputHoverBorderColor};
 			}
 		}
+	}
 
-		&:not(.field__group--multiple) {
-			.field__control {
-				padding-right: ${tokens.sizes.xxl};
-				appearance: none;
+	:not(.field__group--multiple) {
+		.field__control {
+			padding-right: ${tokens.sizes.xxl};
+			appearance: none;
 
-				&:disabled {
-					border: 1px solid ${({ theme }) => theme.colors.inputDisabledBorderColor};
-					opacity: ${tokens.opacity.disabled};
-					cursor: not-allowed;
-				}
+			&:disabled {
+				border: 1px solid ${({ theme }) => theme.colors.inputDisabledBorderColor};
+				opacity: ${tokens.opacity.disabled};
+				cursor: not-allowed;
 			}
 		}
 	}
