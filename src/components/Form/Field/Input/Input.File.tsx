@@ -131,7 +131,7 @@ function getFileSize(size) {
 	}
 }
 
-function InputFile(props) {
+const InputFile = React.forwardRef((props, ref) => {
 	const [drag, setDrag] = React.useState(false);
 	const [files, setFiles] = React.useState(props.files);
 
@@ -181,7 +181,7 @@ function InputFile(props) {
 	const id = `info-${Math.round(Math.random() * 1e5)}`;
 
 	return (
-		<FileField aria-describedby={id}>
+		<FileField aria-describedby={id} ref={ref}>
 			{props.readOnly ? (
 				<Input
 					{...props}
@@ -225,7 +225,7 @@ function InputFile(props) {
 			)}
 		</FileField>
 	);
-}
+});
 
 const File = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	return <InputFile {...props} ref={ref} />;
