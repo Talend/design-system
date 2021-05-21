@@ -74,7 +74,7 @@ export const InputGroupRow = styled.div`
 
 	.input-group__item.input-group__item--prefix,
 	.input-group__item.input-group__item--suffix {
-		max-width: 20%;
+		max-width: 33%;
 
 		.field__group,
 		.field__control,
