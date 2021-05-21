@@ -1,6 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { FigmaImage, WithSelector } from '../../../docs';
-
+import { FigmaImage, FigmaLink, FigmaIframe, WithSelector } from '../../../docs';
 import Form from '../';
 import Button from '../../Button';
 
@@ -18,6 +17,15 @@ An input group allows to extend the form controls by adding simple text, select 
 />
 
 ## Style
+
+### Variations
+
+#### Preffix
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A1"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A18"
+/>
 
 <Canvas>
 	<Story name="select">
@@ -39,6 +47,13 @@ An input group allows to extend the form controls by adding simple text, select 
 	</Story>
 </Canvas>
 
+#### Suffix
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A50"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A84"
+/>
+
 <Canvas>
 	<Story name="button">
 		<Form.InputGroup label="Input" suffix={<Button.Secondary>Button</Button.Secondary>}>
@@ -47,9 +62,29 @@ An input group allows to extend the form controls by adding simple text, select 
 	</Story>
 </Canvas>
 
+#### Icon
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A112"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A354"
+/>
+
+#### Select
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A1010"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A1040"
+/>
+
+
 ## States
 
 ### Default
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A406"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A699"
+/>
 
 <Canvas>
 	<Story name="default">
@@ -60,6 +95,11 @@ An input group allows to extend the form controls by adding simple text, select 
 </Canvas>
 
 ### Hover
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A449"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A701"
+/>
 
 <Canvas withSource="none">
 	<Story
@@ -74,6 +114,11 @@ An input group allows to extend the form controls by adding simple text, select 
 
 ### Focus
 
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A501"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A703"
+/>
+
 <Canvas withSource="none">
 	<Story
 		name="focus"
@@ -87,6 +132,11 @@ An input group allows to extend the form controls by adding simple text, select 
 
 ### Filled
 
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A553"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A705"
+/>
+
 <Canvas>
 	<Story name="filled">
 		<Form.InputGroup label="Input" prefix="$" suffix=".00">
@@ -97,6 +147,11 @@ An input group allows to extend the form controls by adding simple text, select 
 
 ### Disabled
 
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A605"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A707"
+/>
+
 <Canvas>
 	<Story name="disabled">
 		<Form.InputGroup label="Input" prefix="$" suffix=".00">
@@ -106,6 +161,11 @@ An input group allows to extend the form controls by adding simple text, select 
 </Canvas>
 
 ### Read only
+
+<FigmaIframe
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A657"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A709"
+/>
 
 <Canvas>
 	<Story name="read-only">
@@ -130,9 +190,3 @@ To do
 ## Accessibility
 
 To do
-
-## Changelog
-
-| Date       | Author     | Description |
-| ---------- | ---------- | ----------- |
-| 07/22/2020 | Monia Huet | Init page   |
