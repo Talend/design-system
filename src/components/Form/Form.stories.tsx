@@ -92,117 +92,83 @@ Error.parameters = {};
 
 export const Disabled = () => (
 	<Form>
-		<Form.Fieldset legend="Fieldset">
-			<Form.Text label="Input" disabled />
+		<Form.Fieldset legend="Complete your registration">
+			<Form.Row>
+				<Form.Text label="First Name" required disabled />
+				<Form.Text label="Last Name" required disabled />
+			</Form.Row>
+			<Form.Text label="Company" value="Talend" required disabled />
 			<Form.InputGroup
 				label="Phone"
 				disabled
 				prefix={
-					<Form.Select label="Phone prefix" value="France (+33)">
-						{getCountryCodes().map(countryCode => (
-							<option>{countryCode}</option>
+					<Form.Select label="Phone prefix" value="France (+33)" disabled>
+						{getCountryCodes().map((countryCode, key) => (
+							<option key={key}>{countryCode}</option>
 						))}
 					</Form.Select>
 				}
+				hasError
+				description="Phone number is invalid"
+				required
 			>
-				<Form.Tel disabled label="Phone number" />
+				<Form.Tel label="Phone number" value="6121314k" />
 			</Form.InputGroup>
-			<Form.InputGroup
-				label="Column"
-				disabled
-				suffix={
-					<Form.Select label="Column type" value="Date">
-						{getColumnTypes().map(columnType => (
-							<option>{columnType}</option>
-						))}
-					</Form.Select>
-				}
-			>
-				<Form.Text disabled label="Column name" />
-			</Form.InputGroup>
-			<Form.InputGroup label="Amount" prefix="$" suffix=".00" disabled>
-				<Form.Number label="Amount without decimal" min="1" step="1" />
-			</Form.InputGroup>
-			<Form.File disabled label="File" />
-			<Form.Password disabled label="Password" />
-			<Form.Datalist disabled label="Datalist" values={['foo', 'bar']} />
-			<Form.Search disabled label="Search" />
-			<Form.Textarea disabled label="Textarea" />
-			<Form.Range disabled label="Range" />
-			<Form.Select disabled label="Select">
-				<option selected>Foo</option>
-				<option>Bar</option>
+			<Form.Select label="Industry" disabled>
+				<option selected>IT</option>
 			</Form.Select>
-			<Form.Select disabled label="Select multiple" multiple>
-				<option selected>Foo</option>
-				<option>Bar</option>
-			</Form.Select>
-			<Form.Checkbox disabled label="Checkbox" checked />
-			<Form.Radio disabled label="Radio" checked />
-			<Form.Switch disabled label="Switch" checked />
+			<Form.Password label="Password" disabled />
+			<Form.Password label="Repeat password" disabled />
+			<Form.Checkbox checked required disabled>
+				I have read and accept the <Link href="#">terms of use</Link>
+			</Form.Checkbox>
+			<Form.Buttons>
+				<Button.Primary onClick={action('submit')} disabled>
+					Complete Registration
+				</Button.Primary>
+			</Form.Buttons>
 		</Form.Fieldset>
-		<Form.Buttons>
-			<Button.Secondary type="reset" disabled onClick={action('clicked')}>
-				Reset
-			</Button.Secondary>
-			<Button.Primary disabled onClick={action('clicked')}>
-				Submit
-			</Button.Primary>
-		</Form.Buttons>
 	</Form>
 );
 Disabled.parameters = {};
 
 export const ReadOnly = () => (
 	<Form>
-		<Form.Fieldset legend="Fieldset">
-			<Form.Text label="Input" readOnly />
+		<Form.Fieldset legend="Complete your registration">
+			<Form.Row>
+				<Form.Text label="First Name" required readOnly />
+				<Form.Text label="Last Name" required readOnly />
+			</Form.Row>
+			<Form.Text label="Company" value="Talend" required readOnly />
 			<Form.InputGroup
 				label="Phone"
 				readOnly
 				prefix={
-					<Form.Select label="Phone prefix" value="France (+33)">
-						{getCountryCodes().map(countryCode => (
-							<option>{countryCode}</option>
+					<Form.Select label="Phone prefix" value="France (+33)" readOnly>
+						{getCountryCodes().map((countryCode, key) => (
+							<option key={key}>{countryCode}</option>
 						))}
 					</Form.Select>
 				}
+				hasError
+				description="Phone number is invalid"
+				required
 			>
-				<Form.Tel readOnly label="Phone number" />
+				<Form.Tel label="Phone number" value="6121314k" readOnly />
 			</Form.InputGroup>
-			<Form.InputGroup
-				label="Column"
-				readOnly
-				suffix={
-					<Form.Select label="Column type" value="Date">
-						{getColumnTypes().map(columnType => (
-							<option>{columnType}</option>
-						))}
-					</Form.Select>
-				}
-			>
-				<Form.Text readOnly label="Column name" />
-			</Form.InputGroup>
-			<Form.InputGroup label="Amount" prefix="$" suffix=".00" readOnly>
-				<Form.Number label="Amount without decimal" min="1" step="1" />
-			</Form.InputGroup>
-			<Form.File readOnly label="File" />
-			<Form.Password readOnly label="Password" />
-			<Form.Datalist readOnly label="Datalist" values={['foo', 'bar']} />
-			<Form.Search readOnly label="Search" />
-			<Form.Textarea readOnly label="Textarea" />
-			<Form.Range readOnlylabel="Range" />
-			<Form.Select readOnly label="Select">
-				<option selected>Foo</option>
-				<option>Bar</option>
+			<Form.Select label="Industry" readOnly>
+				<option selected>IT</option>
 			</Form.Select>
-			<Form.Select readOnly label="Select multiple" multiple>
-				<option selected>Foo</option>
-				<option>Bar</option>
-			</Form.Select>
-			<Form.Checkbox readOnly label="Checkbox" checked />
-			<Form.Radio readOnly label="Radio" checked />
-			<Form.Switch readOnly label="Switch" checked />
+			<Form.Password label="Password" readOnly />
+			<Form.Password label="Repeat password" readOnly />
+			<Form.Checkbox checked required readOnly>
+				I have read and accept the <Link href="#">terms of use</Link>
+			</Form.Checkbox>
+			<Form.Buttons>
+				<Button.Primary onClick={action('submit')} readOnly>
+					Complete Registration
+				</Button.Primary>
+			</Form.Buttons>
 		</Form.Fieldset>
 	</Form>
 );
