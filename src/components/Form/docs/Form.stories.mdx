@@ -1,6 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
 import { FigmaIframe, FigmaImage, FigmaLink } from '../../../docs';
 import * as stories from '../Form.stories';
+import { Confirm } from '../../Modal/Modal.stories';
 
 <Meta title="Components/Form/Form" />
 
@@ -47,8 +48,8 @@ Forms can be horizontal or vertical. They are vertical by default. For horizonta
 ### Default
 
 <FigmaIframe
-    light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=362%3A699"
-    dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=362%3A717"
+	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=362%3A699"
+	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=362%3A717"
 />
 
 <Canvas>
@@ -114,6 +115,10 @@ When the user clicks on the cancel button or go back to the previous page, provi
 	src="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=232%3A39"
 	alt="example for data loss message"
 />
+
+<Canvas>
+	<Story story={Confirm} />
+</Canvas>
 
 ### Error focus
 
