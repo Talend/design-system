@@ -42,7 +42,8 @@ export const InputGroupRow = styled.div`
 		border-color: ${({ theme }) => theme.colors.inputFocusBorderColor};
 	}
 
-	.field {
+	.field,
+	.field__group {
 		margin-bottom: 0;
 	}
 
@@ -54,8 +55,8 @@ export const InputGroupRow = styled.div`
 		border-radius: ${tokens.radii.inputBorderRadius};
 	}
 
-	.input-group__item.input-group__item--prefix,
-	.input-group__item.input-group__item--suffix {
+	.input-group__item--prefix,
+	.input-group__item--suffix {
 		max-width: 20%;
 
 		.field__group,
@@ -129,5 +130,13 @@ export const InputGroup = styled.div`
 
 	&.input-group--has-error ${InputGroupRow} {
 		border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
+	}
+
+	&.input-group--disabled ${InputGroupRow} {
+		border-color: ${({ theme }) => theme.colors.inputDisabledBorderColor};
+	}
+
+	&.input-group--read-only ${InputGroupRow} {
+		border-color: ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
 	}
 `;

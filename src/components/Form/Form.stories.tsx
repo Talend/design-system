@@ -98,12 +98,7 @@ export const Disabled = () => (
 				label="Phone"
 				disabled
 				prefix={
-					<Form.Select
-						disabled
-						label="Phone prefix"
-						value="France (+33)"
-						style={{ width: '13rem' }}
-					>
+					<Form.Select label="Phone prefix" value="France (+33)">
 						{getCountryCodes().map(countryCode => (
 							<option>{countryCode}</option>
 						))}
@@ -114,8 +109,9 @@ export const Disabled = () => (
 			</Form.InputGroup>
 			<Form.InputGroup
 				label="Column"
+				disabled
 				suffix={
-					<Form.Select disabledlabel="Column type" value="Date">
+					<Form.Select label="Column type" value="Date">
 						{getColumnTypes().map(columnType => (
 							<option>{columnType}</option>
 						))}
@@ -124,8 +120,8 @@ export const Disabled = () => (
 			>
 				<Form.Text disabled label="Column name" />
 			</Form.InputGroup>
-			<Form.InputGroup label="Amount" prefix="$" suffix=".00">
-				<Form.Number disabled label="Amount without decimal" min="1" step="1" />
+			<Form.InputGroup label="Amount" prefix="$" suffix=".00" disabled>
+				<Form.Number label="Amount without decimal" min="1" step="1" />
 			</Form.InputGroup>
 			<Form.File disabled label="File" />
 			<Form.Password disabled label="Password" />
@@ -165,12 +161,7 @@ export const ReadOnly = () => (
 				label="Phone"
 				readOnly
 				prefix={
-					<Form.Select
-						label="Phone prefix"
-						readOnly
-						value="France (+33)"
-						style={{ width: '13rem' }}
-					>
+					<Form.Select label="Phone prefix" value="France (+33)">
 						{getCountryCodes().map(countryCode => (
 							<option>{countryCode}</option>
 						))}
@@ -181,8 +172,9 @@ export const ReadOnly = () => (
 			</Form.InputGroup>
 			<Form.InputGroup
 				label="Column"
+				readOnly
 				suffix={
-					<Form.Select readOnly label="Column type" value="Date">
+					<Form.Select label="Column type" value="Date">
 						{getColumnTypes().map(columnType => (
 							<option>{columnType}</option>
 						))}
@@ -191,8 +183,8 @@ export const ReadOnly = () => (
 			>
 				<Form.Text readOnly label="Column name" />
 			</Form.InputGroup>
-			<Form.InputGroup label="Amount" prefix="$" suffix=".00">
-				<Form.Number readOnly label="Amount without decimal" min="1" step="1" />
+			<Form.InputGroup label="Amount" prefix="$" suffix=".00" readOnly>
+				<Form.Number label="Amount without decimal" min="1" step="1" />
 			</Form.InputGroup>
 			<Form.File readOnly label="File" />
 			<Form.Password readOnly label="Password" />

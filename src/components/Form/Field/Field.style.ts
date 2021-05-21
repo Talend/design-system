@@ -59,7 +59,7 @@ export const Field = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
-	margin-bottom: ${tokens.space.m};
+	margin-bottom: ${tokens.space.s};
 	width: 100%;
 	min-width: 8rem;
 	color: ${({ theme }) => theme.colors.textColor};
@@ -79,25 +79,17 @@ export const Field = styled.div`
 		}
 	}
 
-	.field__group--has-error {
-		${FieldControl} {
-			border-width: 2px;
-			border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
-		}
-
-		+ [role='status'] {
-			padding-top: ${tokens.space.xs};
-		}
-	}
-
 	.field__group--has-warning {
 		${FieldControl} {
 			border-width: 2px;
 			border-color: ${({ theme }) => theme.colors.warningColor[500]};
 		}
+	}
 
-		+ [role='status'] {
-			padding-top: ${tokens.space.xs};
+	.field__group--has-error {
+		${FieldControl} {
+			border-width: 2px;
+			border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
 		}
 	}
 
@@ -193,6 +185,7 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 
 export const FieldGroup = styled.div<{ after: React.ReactNode }>`
 	position: relative;
+	margin-bottom: ${tokens.space.xs};
 	display: inline-flex;
 	align-items: center;
 	width: 100%;
