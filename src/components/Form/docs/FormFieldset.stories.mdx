@@ -26,24 +26,24 @@ Group logical blocks into fieldset. If the fields are related, display them on t
 />
 
 <Canvas>
-    <Story name="default">
-        <Form>
-            <Form.Fieldset legend="Frequency">
-                <Form.Select label="Repeat" />
-                <Form.Row>
-                    <Form.InputGroup label="Minutes" suffix="minutes">
-                        <Form.Number />
-                    </Form.InputGroup>
-                    <Form.Time label="Repeat from" required />
-                    <Form.Time label="Repeat to" required />
-                </Form.Row>
-            </Form.Fieldset>
-            <Form.Buttons>
-                <Button.Secondary>Cancel</Button.Secondary>
-                <Button.Primary>Submit</Button.Primary>
-            </Form.Buttons>
-        </Form>
-    </Story>
+	<Story name="default">
+		<Form>
+			<Form.Fieldset legend="Frequency">
+				<Form.Select label="Repeat" />
+				<Form.Row>
+					<Form.InputGroup label="Minutes" suffix="minutes">
+						<Form.Number />
+					</Form.InputGroup>
+					<Form.Time label="Repeat from" required />
+					<Form.Time label="Repeat to" required />
+				</Form.Row>
+			</Form.Fieldset>
+			<Form.Buttons>
+				<Button.Secondary>Cancel</Button.Secondary>
+				<Button.Primary>Submit</Button.Primary>
+			</Form.Buttons>
+		</Form>
+	</Story>
 </Canvas>
 
 ## States
@@ -59,8 +59,6 @@ _add demo_
 
 ### Error
 
-_Non applicaple_
-
 Only individual fields could be errored, not the full fieldset.
 
 <FigmaIframe
@@ -74,10 +72,16 @@ Only individual fields could be errored, not the full fieldset.
 			<Form.Fieldset legend="Frequency">
 				<Form.Select label="Repeat" />
 				<Form.Row>
-                    <Form.InputGroup label="Minutes" suffix="minutes">
-                        <Form.Number />
-                    </Form.InputGroup>
-					<Form.Time label="Repeat from" required value="14:k" hasError description="Repeat from is invalid" />
+					<Form.InputGroup label="Minutes" suffix="minutes">
+						<Form.Number />
+					</Form.InputGroup>
+					<Form.Time
+						label="Repeat from"
+						required
+						value="14:k"
+						hasError
+						description="Repeat from is invalid"
+					/>
 					<Form.Time label="Repeat to" required />
 				</Form.Row>
 			</Form.Fieldset>
@@ -97,24 +101,36 @@ In case of more than one error or a horizontal fieldset, display the errors unde
 />
 
 <Canvas>
-    <Story name="errors">
-        <Form>
-            <Form.Fieldset legend="Frequency">
-                <Form.Select label="Repeat" />
-                <Form.Row>
-                    <Form.InputGroup label="Minutes" suffix="minutes">
-                        <Form.Number />
-                    </Form.InputGroup>
-                    <Form.Time label="Repeat from" required value="14:k" hasError description="Repeat from is invalid" />
-                    <Form.Time label="Repeat to" required value="k" hasError description="Repeat to is invalid" />
-                </Form.Row>
-            </Form.Fieldset>
-            <Form.Buttons>
-                <Button.Secondary>Cancel</Button.Secondary>
-                <Button.Primary>Submit</Button.Primary>
-            </Form.Buttons>
-        </Form>
-    </Story>
+	<Story name="errors">
+		<Form>
+			<Form.Fieldset legend="Frequency">
+				<Form.Select label="Repeat" />
+				<Form.Row>
+					<Form.InputGroup label="Minutes" suffix="minutes">
+						<Form.Number />
+					</Form.InputGroup>
+					<Form.Time
+						label="Repeat from"
+						required
+						value="14:k"
+						hasError
+						description="Repeat from is invalid"
+					/>
+					<Form.Time
+						label="Repeat to"
+						required
+						value="k"
+						hasError
+						description="Repeat to is invalid"
+					/>
+				</Form.Row>
+			</Form.Fieldset>
+			<Form.Buttons>
+				<Button.Secondary>Cancel</Button.Secondary>
+				<Button.Primary>Submit</Button.Primary>
+			</Form.Buttons>
+		</Form>
+	</Story>
 </Canvas>
 
 ## Content
@@ -146,8 +162,8 @@ Conditional fields can appear following:
 
 ## Usage
 
-_to do_
+N/A
 
 ## Accessibility
 
-_to do_
+N/A
