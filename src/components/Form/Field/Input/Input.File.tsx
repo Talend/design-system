@@ -228,7 +228,7 @@ function InputFile(props) {
 }
 
 const File = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <Input {...props} as={InputFile} ref={ref} />;
+	return <InputFile {...props} ref={ref} />;
 });
 
 export default File;
