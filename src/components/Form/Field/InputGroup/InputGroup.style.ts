@@ -20,24 +20,6 @@ export const SpanSuffix = styled(Span)`
 	border-bottom-right-radius: ${tokens.radii.inputBorderRadius};
 `;
 
-export const InputGroup = styled.div`
-	display: flex;
-	flex-direction: column;
-
-	.input-group__item--input {
-		flex: 1;
-	}
-
-	.field__label {
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
-	}
-`;
 export const InputGroupLabel = styled.span`
 	margin-bottom: ${tokens.space.xs};
 	font-size: ${tokens.fontSizes.small};
@@ -74,7 +56,7 @@ export const InputGroupRow = styled.div`
 
 	.input-group__item.input-group__item--prefix,
 	.input-group__item.input-group__item--suffix {
-		max-width: 33%;
+		max-width: 20%;
 
 		.field__group,
 		.field__control,
@@ -117,5 +99,35 @@ export const InputGroupRow = styled.div`
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
 		}
+	}
+`;
+export const InputGroup = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	.input-group__item--input {
+		flex: 1;
+	}
+
+	.field__label {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+
+	&.input-group--has-error ${InputGroupRow}, &.input-group--has-error ${InputGroupRow} {
+		border-width: 2px;
+	}
+
+	&.input-group--has-warning ${InputGroupRow} {
+		border-color: ${({ theme }) => theme.colors.warningColor[500]};
+	}
+
+	&.input-group--has-error ${InputGroupRow} {
+		border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
 	}
 `;

@@ -129,7 +129,7 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 		margin-left: -9999px;
 	}
 
-	span {
+	label > span {
 		position: relative;
 		padding: 0 ${tokens.space.l};
 		font-size: ${tokens.fontSizes.normal};

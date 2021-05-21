@@ -62,7 +62,10 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 					'input-group--has-prefix': prefix,
 					'input-group--has-suffix': suffix,
 					'input-group--required': required,
-					'input-group--disabled': disabled,
+					'input-group--has-information': hasInformation,
+					'input-group--has-success': hasSuccess,
+					'input-group--has-warning': hasWarning,
+					'input-group--has-error': hasError,
 					'input-group--read-only': readOnly,
 				})}
 			>
