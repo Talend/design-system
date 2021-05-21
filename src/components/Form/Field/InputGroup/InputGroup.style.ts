@@ -93,6 +93,14 @@ export const InputGroupRow = styled.div`
 				background: ${({ theme }) => theme.colors.inputGroupInteractiveActiveBackgroundColor};
 			}
 		}
+
+		.btn {
+			padding: 0 ${tokens.space.s};
+			height: ${tokens.sizes.xxl};
+			background: ${({ theme }) => theme.colors.inputGroupInteractiveBackgroundColor};
+			border-color: ${({ theme }) => theme.colors.inputBorderColor};
+			border-radius: 0 ${tokens.radii.inputBorderRadius} ${tokens.radii.inputBorderRadius} 0;
+		}
 	}
 
 	.input-group__item.input-group__item--suffix {

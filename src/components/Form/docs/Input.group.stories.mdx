@@ -1,5 +1,5 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { FigmaImage, FigmaLink, FigmaIframe, WithSelector } from '../../../docs';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { FigmaImage, FigmaIframe, WithSelector } from '../../../docs';
 import Form from '../';
 import Button from '../../Button';
 
@@ -20,7 +20,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 ### Variations
 
-#### Preffix
+#### Prefix
 
 <FigmaIframe
 	light="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A1"
@@ -69,6 +69,17 @@ An input group allows to extend the form controls by adding simple text, select 
 	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A354"
 />
 
+<Canvas>
+	<Story name="button--icon">
+		<Form.InputGroup
+			label="Expression builder"
+			suffix={<Button.Icon icon={'talend-wrench'}>Open expression builder</Button.Icon>}
+		>
+			<Form.Text placeholder="Write your expression or drag element" />
+		</Form.InputGroup>
+	</Story>
+</Canvas>
+
 #### Select
 
 <FigmaIframe
@@ -76,6 +87,26 @@ An input group allows to extend the form controls by adding simple text, select 
 	dark="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/Forms?node-id=2008%3A1040"
 />
 
+<Canvas>
+	<Story name="select--select">
+		<Form.InputGroup
+			label="Input"
+			prefix={
+				<Form.Select label="Type">
+					<option>Value</option>
+					<option selected>Column</option>
+				</Form.Select>
+			}
+		>
+			<Form.Select label="Column">
+				<option>Id</option>
+				<option>Name</option>
+				<option selected>Country</option>
+				<option>Age</option>
+			</Form.Select>
+		</Form.InputGroup>
+	</Story>
+</Canvas>
 
 ## States
 
@@ -102,10 +133,7 @@ An input group allows to extend the form controls by adding simple text, select 
 />
 
 <Canvas withSource="none">
-	<Story
-		name="hover"
-		decorators={[storyFn => <WithSelector selector=":hover">{storyFn()}</WithSelector>]}
-	>
+	<Story name="hover" decorators={[WithSelector.decorator(':hover')]}>
 		<Form.InputGroup label="Input" prefix="$" suffix=".00">
 			<Form.Text />
 		</Form.InputGroup>
@@ -120,10 +148,7 @@ An input group allows to extend the form controls by adding simple text, select 
 />
 
 <Canvas withSource="none">
-	<Story
-		name="focus"
-		decorators={[storyFn => <WithSelector selector=":focus">{storyFn()}</WithSelector>]}
-	>
+	<Story name="focus" decorators={[WithSelector.decorator(':focus-within')]}>
 		<Form.InputGroup label="Input" prefix="$" suffix=".00">
 			<Form.Text />
 		</Form.InputGroup>
@@ -140,7 +165,7 @@ An input group allows to extend the form controls by adding simple text, select 
 <Canvas>
 	<Story name="filled">
 		<Form.InputGroup label="Input" prefix="$" suffix=".00">
-			<Form.Text />
+			<Form.Number value="100" />
 		</Form.InputGroup>
 	</Story>
 </Canvas>
@@ -154,8 +179,8 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="disabled">
-		<Form.InputGroup label="Input" prefix="$" suffix=".00">
-			<Form.Text />
+		<Form.InputGroup label="Input" prefix="$" suffix=".00" disabled>
+			<Form.Number value="100" />
 		</Form.InputGroup>
 	</Story>
 </Canvas>
@@ -169,24 +194,105 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="read-only">
-		<Form.InputGroup label="Input" prefix="$" suffix=".00">
-			<Form.Text />
+		<Form.InputGroup label="Input" prefix="$" suffix=".00" readOnly>
+			<Form.Number value="100" />
 		</Form.InputGroup>
 	</Story>
 </Canvas>
 
 ## Content
 
-N/C
+Use lower case on prefix and suffix except if it's an interactive element.
 
 ## Interactions
 
-N/C
+- The visible label will be linked to the principal field, click on it to access to the field (:focus)
 
 ## Usage
 
-To do
+<Canvas>
+	<Story
+		name="usage"
+		args={{
+			label: 'Repeat',
+			prefix: 'until',
+			field: 'Date',
+			suffix: 'Button',
+			required: false,
+			disabled: false,
+			readOnly: false,
+		}}
+		argTypes={{
+			prefix: {
+				description: 'Prefix',
+				control: {
+					type: 'select',
+					options: ['', 'until', 'Select'],
+				},
+			},
+			field: {
+				description: 'Field',
+				control: {
+					type: 'select',
+					options: ['Text', 'Number', 'Date', 'Select', 'Datalist', 'Textarea'],
+				},
+			},
+			suffix: {
+				description: 'Suffix',
+				control: {
+					type: 'select',
+					options: ['', 'each day at 8:00', 'Button'],
+				},
+			},
+			required: {
+				description: 'Field is required or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+			disabled: {
+				description: 'Field is disabled or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+			readOnly: {
+				description: 'Field is read only or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+		}}
+	>
+		{({ prefix, field, suffix, ...rest }) => {
+			const getComponent = name => {
+				switch (name) {
+					case 'Select':
+						return (
+							<Form.Select>
+								<option>Before</option>
+								<option>After</option>
+							</Form.Select>
+						);
+					case 'Button':
+						return <Button>Next week</Button>;
+					default:
+						return name;
+				}
+			};
+			const Component = Form[field];
+			return (
+				<Form.InputGroup prefix={getComponent(prefix)} suffix={getComponent(suffix)} {...rest}>
+					<Component />
+				</Form.InputGroup>
+			);
+		}}
+	</Story>
+</Canvas>
+
+<ArgsTable story="usage" />
 
 ## Accessibility
 
-To do
+- The visible label describes the whole group.
+- The invisible labels describe the direct input they are linked to.

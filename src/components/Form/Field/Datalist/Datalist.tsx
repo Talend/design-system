@@ -11,7 +11,7 @@ const Datalist = React.forwardRef<HTMLInputElement, DatalistProps>(
 		return (
 			<>
 				<Field {...rest} id={id} list={listId} ref={ref} />
-				{values.length && (
+				{!!values.length && (
 					<datalist id={listId}>
 						{values.map((value: string, index: React.Key) => (
 							// eslint-disable-next-line jsx-a11y/control-has-associated-label

@@ -6,11 +6,10 @@ import InlineMessage from '../../../InlineMessage';
 
 import * as S from './InputGroup.style';
 
-export type InputGroupProps = React.ReactNode & {
+export type InputGroupProps = HTMLInputElement & {
 	label: string;
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;
-	required?: boolean;
 	hasError?: boolean;
 	hasWarning?: boolean;
 	hasSuccess?: boolean;
@@ -25,6 +24,8 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 			prefix,
 			suffix,
 			required,
+			disabled,
+			readOnly,
 			hasError,
 			hasWarning,
 			hasSuccess,
@@ -34,12 +35,10 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 		},
 		ref,
 	) => {
-		// @ts-ignore
-		const fieldRef = React.useRef<HTMLInputElement>(ref);
+		const fieldRef = React.useRef<HTMLInputElement>();
 		const labelId = `input-group--${Date.now()}`;
-		function focusField() {
-			return fieldRef.current?.focus();
-		}
+
+		const focusField = () => fieldRef.current?.focus();
 
 		const Description = () => {
 			if (hasError) {
@@ -62,20 +61,24 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 				className={classnames('input-group', {
 					'input-group--has-prefix': prefix,
 					'input-group--has-suffix': suffix,
+					'input-group--required': required,
+					'input-group--disabled': disabled,
+					'input-group--read-only': readOnly,
 				})}
 			>
 				<S.InputGroupLabel id={labelId} onClick={focusField}>
 					{label}
 					{required && '*'}
 				</S.InputGroupLabel>
-				<S.InputGroupRow aria-labelledby={labelId}>
+				<S.InputGroupRow aria-labelledby={labelId} ref={ref}>
 					{prefix && (
 						<div className="input-group__item input-group__item--prefix">
 							{!isElement(prefix) ? <S.SpanPrefix>{prefix}</S.SpanPrefix> : prefix}
 						</div>
 					)}
 					<div className="input-group__item input-group__item--input">
-						{isElement(children) && React.cloneElement(children, { ref: fieldRef })}
+						{isElement(children) &&
+							React.cloneElement(children, { disabled, readOnly, ref: fieldRef })}
 					</div>
 					{suffix && (
 						<div className="input-group__item input-group__item--suffix">

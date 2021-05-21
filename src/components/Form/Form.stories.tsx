@@ -4,13 +4,10 @@ import { action } from '@storybook/addon-actions';
 import Form from './Form';
 import Button from '../Button';
 import InlineMessage from '../InlineMessage';
-import Modal from '../Modal';
 import Skeleton from '../Skeleton';
 import Link from '../Link';
 
 import CountryCodes from './docs/data/CountryCodes.json';
-import * as S from '../Modal/Modal.style';
-import { Icon } from '../Icon';
 
 function getCountryCodes() {
 	// eslint-disable-next-line @typescript-eslint/camelcase
