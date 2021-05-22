@@ -26,8 +26,8 @@ const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(
 				}
 				readOnly={!disabled}
 				disabled={disabled}
-				hasError={state.error}
-				hasSuccess={state.value}
+				hasError={!!state.error}
+				hasSuccess={!!state.value}
 				description={state.error ? state.error.message : state.value && 'Copied to clipboard'}
 			>
 				<Text

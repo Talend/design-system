@@ -7,18 +7,16 @@ export type DatalistProps = HTMLInputElement & {
 
 const Datalist = React.forwardRef<HTMLInputElement, DatalistProps>(
 	({ id = `datalist--${Date.now()}`, values = [], ...rest }, ref) => {
-		const listId = `datalist-${id}`;
+		const listId = `list-${id}`;
 		return (
 			<>
 				<Field {...rest} id={id} list={listId} ref={ref} />
-				{!!values.length && (
-					<datalist id={listId}>
-						{values.map((value: string, index: React.Key) => (
-							// eslint-disable-next-line jsx-a11y/control-has-associated-label
-							<option key={index} value={value} />
-						))}
-					</datalist>
-				)}
+				<datalist id={listId}>
+					{values.map((value: string, index: React.Key) => (
+						// eslint-disable-next-line jsx-a11y/control-has-associated-label
+						<option key={index} value={value} />
+					))}
+				</datalist>
 			</>
 		);
 	},

@@ -1,25 +1,26 @@
 import React from 'react';
 import classnames from 'classnames';
-import { StyledProps } from 'styled-components';
 
 import Loading from '../../Loading';
 import InlineMessage from '../../InlineMessage';
 
 import * as S from './Field.style';
 
-export type FieldProps = HTMLInputElement &
-	StyledProps<HTMLInputElement> & {
-		label?: string;
-		before?: React.ReactNode;
-		after?: React.ReactNode;
-		loading: boolean;
-		link?: React.ReactNode;
-		hasError?: boolean;
-		hasWarning?: boolean;
-		hasSuccess?: boolean;
-		hasInformation?: boolean;
-		description?: string;
-	};
+export type FieldProps = React.HTMLProps<
+	HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+> & {
+	as?: React.ElementType;
+	label?: string;
+	before?: React.ReactNode;
+	after?: React.ReactNode;
+	loading?: boolean;
+	link?: React.ReactNode;
+	hasError?: boolean;
+	hasWarning?: boolean;
+	hasSuccess?: boolean;
+	hasInformation?: boolean;
+	description?: string;
+};
 
 const Field = React.forwardRef<React.ReactNode, FieldProps>(
 	(
@@ -29,6 +30,7 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 			label,
 			before,
 			after,
+			id = `field--${new Date()}`,
 			loading,
 			link,
 			hasError,
@@ -39,14 +41,14 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 			required,
 			disabled,
 			...rest
-		},
+		}: FieldProps,
 		ref,
 	) => {
-		const { multiple, type } = rest;
+		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
 
 		const Label = () => (
-			<S.FieldLabel className="field__label" htmlFor={label} disabled={disabled}>
+			<S.FieldLabel className="field__label" htmlFor={id} disabled={disabled}>
 				{label}
 				{required && '*'}
 			</S.FieldLabel>
@@ -89,7 +91,7 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 					<S.FieldControl
 						{...rest}
 						as={as}
-						id={label}
+						id={id}
 						className={classnames(className, 'field__control', {
 							[`field__control--${as}`]: typeof as === 'string',
 						})}

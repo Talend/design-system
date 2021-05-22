@@ -121,7 +121,7 @@ const FileField = styled.div`
 	}
 `;
 
-function getFileSize(size) {
+function getFileSize(size: number) {
 	if (size < 1024) {
 		return `${size}bytes`;
 	} else if (size > 1024 && size < 1048576) {
@@ -129,6 +129,7 @@ function getFileSize(size) {
 	} else if (size > 1048576) {
 		return `${(size / 1048576).toFixed(1)}MB`;
 	}
+	return '';
 }
 
 const InputFile = React.forwardRef((props, ref) => {
@@ -136,22 +137,6 @@ const InputFile = React.forwardRef((props, ref) => {
 	const [files, setFiles] = React.useState(props.files);
 
 	const inputRef = React.useRef();
-
-	React.useEffect(() => {
-		const input = inputRef.current;
-		input?.addEventListener('dragenter', handleDragIn);
-		input?.addEventListener('dragleave', handleDragOut);
-		input?.addEventListener('drop', handleDrop);
-		input?.addEventListener('change', handleChange);
-
-		return () => {
-			const input = inputRef.current;
-			input?.removeEventListener('dragenter', handleDragIn);
-			input?.removeEventListener('dragleave', handleDragOut);
-			input?.removeEventListener('drop', handleDrop);
-			input?.removeEventListener('change', handleChange);
-		};
-	}, []);
 
 	function handleChange() {
 		const input = inputRef.current;
@@ -164,19 +149,35 @@ const InputFile = React.forwardRef((props, ref) => {
 		setFiles(() => null);
 	}
 
-	function handleDragIn(e) {
+	function handleDragIn(e: DragEvent) {
 		if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
 			setDrag(() => true);
 		}
 	}
 
-	function handleDragOut(e) {
+	function handleDragOut() {
 		setDrag(() => false);
 	}
 
-	function handleDrop(e) {
+	function handleDrop() {
 		setDrag(() => false);
 	}
+
+	React.useEffect(() => {
+		const input = inputRef.current;
+		input.addEventListener('dragenter', handleDragIn);
+		input.addEventListener('dragleave', handleDragOut);
+		input.addEventListener('drop', handleDrop);
+		input.addEventListener('change', handleChange);
+
+		return () => {
+			const input = inputRef.current;
+			input?.removeEventListener('dragenter', handleDragIn);
+			input?.removeEventListener('dragleave', handleDragOut);
+			input?.removeEventListener('drop', handleDrop);
+			input?.removeEventListener('change', handleChange);
+		};
+	}, []);
 
 	const id = `info-${Math.round(Math.random() * 1e5)}`;
 
@@ -209,8 +210,9 @@ const InputFile = React.forwardRef((props, ref) => {
 					) : (
 						<div className="input-file__preview preview">
 							<VisuallyHidden>You have selected:</VisuallyHidden>
+							{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
 							<ol role="list" className="preview__list">
-								{files.map((file, index) => (
+								{files.map((file, index: React.Key) => (
 									<li key={index} className="preview__list-item">
 										{typeof file === 'string' ? file : `${file.name} (${getFileSize(file.size)})`}
 									</li>

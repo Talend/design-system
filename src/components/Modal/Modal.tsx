@@ -43,7 +43,7 @@ const Modal = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>
 					</S.DialogDisclosure>
 				)}
 				<S.DialogBackdrop {...dialog}>
-					<S.Dialog as={ReakitDialog} {...dialog} {...props}>
+					<S.Dialog {...dialog} {...props} as={ReakitDialog} ref={ref}>
 						<S.DialogHeading>
 							{icon && <Icon name={icon} />}
 							<div>
@@ -70,9 +70,9 @@ export const ModalDisclosure = React.forwardRef<React.ReactElement, React.PropsW
 );
 
 export const ModalDialog = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
-	({ children, ...rest }, ref) => (
+	({ children, ...rest }: React.PropsWithChildren<any>, ref) => (
 		<S.DialogBackdrop {...rest}>
-			<S.Dialog as={ReakitDialog} ref={ref} {...rest}>
+			<S.Dialog {...rest} as={ReakitDialog} ref={ref}>
 				{children}
 			</S.Dialog>
 		</S.DialogBackdrop>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import Form from './Form';
+import Form from '.';
 import Button from '../Button';
 import InlineMessage from '../InlineMessage';
 import Skeleton from '../Skeleton';
@@ -12,10 +12,6 @@ import CountryCodes from './docs/data/CountryCodes.json';
 function getCountryCodes() {
 	// eslint-disable-next-line @typescript-eslint/camelcase
 	return CountryCodes.map(({ name, dial_code }) => `${name} (${dial_code})`);
-}
-
-function getColumnTypes() {
-	return ['String', 'Long', 'Date', 'Boolean', 'Decimal'];
 }
 
 export const FormSkeleton = () => (
