@@ -132,25 +132,29 @@ function getFileSize(size: number) {
 	return '';
 }
 
-const InputFile = React.forwardRef((props, ref) => {
+const InputFile = React.forwardRef<HTMLInputElement>((props, ref) => {
 	const [drag, setDrag] = React.useState(false);
 	const [files, setFiles] = React.useState(props.files);
 
-	const inputRef = React.useRef();
+	const inputRef = React.useRef<HTMLInputElement>();
 
 	function handleChange() {
 		const input = inputRef.current;
-		setFiles(() => [...input.files]);
+		if (input) {
+			setFiles(() => [...Array.from(input.files)]);
+		}
 	}
 
 	function clear() {
 		const input = inputRef.current;
-		input.value = '';
+		if (input) {
+			input.value = '';
+		}
 		setFiles(() => null);
 	}
 
 	function handleDragIn(e: DragEvent) {
-		if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+		if (e.dataTransfer && e.dataTransfer.items && e.dataTransfer.items.length > 0) {
 			setDrag(() => true);
 		}
 	}
@@ -165,21 +169,24 @@ const InputFile = React.forwardRef((props, ref) => {
 
 	React.useEffect(() => {
 		const input = inputRef.current;
-		input.addEventListener('dragenter', handleDragIn);
-		input.addEventListener('dragleave', handleDragOut);
-		input.addEventListener('drop', handleDrop);
-		input.addEventListener('change', handleChange);
+		if (input) {
+			input.addEventListener('dragenter', handleDragIn);
+			input.addEventListener('dragleave', handleDragOut);
+			input.addEventListener('drop', handleDrop);
+			input.addEventListener('change', handleChange);
+		}
 
 		return () => {
-			const input = inputRef.current;
-			input?.removeEventListener('dragenter', handleDragIn);
-			input?.removeEventListener('dragleave', handleDragOut);
-			input?.removeEventListener('drop', handleDrop);
-			input?.removeEventListener('change', handleChange);
+			if (input) {
+				input.removeEventListener('dragenter', handleDragIn);
+				input.removeEventListener('dragleave', handleDragOut);
+				input.removeEventListener('drop', handleDrop);
+				input.removeEventListener('change', handleChange);
+			}
 		};
 	}, []);
 
-	const id = `info-${Math.round(Math.random() * 1e5)}`;
+	const id = `info--${new Date()}`;
 
 	return (
 		<FileField aria-describedby={id} ref={ref}>
@@ -195,8 +202,8 @@ const InputFile = React.forwardRef((props, ref) => {
 			) : (
 				<div id={id} className={`input-file ${drag ? 'input-file--dragging' : ''}`}>
 					<input
-						type="file"
 						{...props}
+						type="file"
 						className={`input-file__input input ${files ? 'input--filled' : ''}`}
 						ref={inputRef}
 					/>
@@ -204,7 +211,10 @@ const InputFile = React.forwardRef((props, ref) => {
 						<div className="input-file__text text">
 							<Icon className="text__icon" name="talend-upload" />{' '}
 							<span className="text__span">
-								Drop your files or <Link className="text__link">browse</Link>
+								Drop your files or {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+								<Link className="text__link" href="#">
+									browse
+								</Link>
 							</span>
 						</div>
 					) : (
