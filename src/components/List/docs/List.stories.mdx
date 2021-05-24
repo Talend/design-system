@@ -1,0 +1,119 @@
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { FigmaImage, FigmaLink, Use, WithSelector } from '../../../docs';
+import { IconsProvider } from '../../IconsProvider';
+
+<Meta title="Components/List/List"/>
+
+<FigmaLink href="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=700%3A75639" />
+
+# List
+
+
+## Zoning
+
+## Style
+
+### Density
+
+In order to improve the content readibility we allow the user to change the list density. 
+
+The **default** density is 5rem 
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=691%3A75433"
+	alt="list default density"
+/>
+
+The **compact** density is 4.2 rem 
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=691%3A75437"
+	alt="list compact density"
+/>
+
+## States
+
+### Default
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=802%3A0"
+	alt="list states default"
+/>
+
+### Hover
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=802%3A78"
+	alt="list states hover"
+/>
+
+### Selected
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=802%3A192"
+	alt="list states selected"
+/>
+
+### Loading
+
+_to do_
+
+### Empty 
+
+_to do_
+
+
+## Content
+
+### Text too long 
+
+When the content is longer than the cell width, display an ellipsis at the end. On hover, the full text is displayed in a tooltip.
+
+_add demo_
+
+### Highlighting items
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=788%3A18132"
+	alt="Highlight new items - Default"
+/>
+
+
+## Interaction
+
+### Sorting
+
+Not all columns can be used for sorting, it should be optional to allow sorting by column.
+If the column has multiple values in a cell, the content of the cells should be in alphabetical, numerical, or in date order depending on the content type unless there is a special order to use “state/defined order".
+If the content of the cell is integers, then the content should be ordered numerically.
+
+### Resizing columns
+
+When a column is resizable, it's visible while mouse hovering an header cells intersection.The cursor is changing when the user mouse over between two column.
+- The resize must respect the min-width
+- Not all the columns are resizable, for example there is no interest to enlarge a column with only one icon inside
+- If columns are enlarged more than the screen container width, then an horizontal scrollbar is displayed to ensure a better navigation in the screen
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=917%3A8"
+	alt="Resizing columns - flow"
+/>
+
+### Reordering columns
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=917%3A4"
+	alt="Reordering columns - flow"
+/>
+
+Not all the columns can be reordered. If so, there is no hover effect on the locked column header.
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=788%3A16714"
+	alt="Reordering columns - locked"
+/>
+
+## Accessibility
+
+## Usage
+
