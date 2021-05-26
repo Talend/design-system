@@ -1,4 +1,4 @@
-import React, { ReactElement, RefObject, createRef, useState, useEffect } from 'react';
+import React, { ReactElement, RefObject, useState, useEffect, useRef } from 'react';
 
 type GenericObject = { [key: string]: Promise<Response> };
 
@@ -110,7 +110,7 @@ function isRootProvider(ref: RefObject<any>) {
  */
 export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, icons = {} }) {
 	const iconset: IconSet = { ...defaultIcons, ...icons };
-	const ref = createRef<SVGSVGElement>();
+	const ref = useRef<SVGSVGElement>(null);
 	const [shouldRender, setShouldRender] = useState(true);
 
 	useEffect(() => {
