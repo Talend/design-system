@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import tokens from '../../tokens';
-import { ellipsis } from '../ThemeProvider/mixins';
+import { ellipsis } from '../ThemeProvider/ThemeProvider.style';
 
 export const Tag = styled.span.attrs({
 	className: 'tag',
@@ -17,6 +17,9 @@ export const Tag = styled.span.attrs({
 	vertical-align: middle;
 	${ellipsis};
 
-	color: ${props => props.theme.colors.tagDefaultColor};
-	background-color: ${props => props.theme.colors.tagDefaultBackgroundColor};
+	color: var(--t-tag-color, ${({ theme }) => theme.colors?.tagDefaultColor});
+	background-color: var(
+		--t-tag-background-color,
+		${({ theme }) => theme.colors?.tagDefaultBackgroundColor}
+	);
 `;
