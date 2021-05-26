@@ -3,17 +3,14 @@ import { isElement } from 'react-is';
 
 import { Icon } from '../../../Icon/Icon';
 
-import Field from '../Field';
+import Field, { FieldProps } from '../Field';
 import Input from '../Input';
 
 import * as S from './Select.style';
 
-export type SelectProps = HTMLSelectElement & {
-	readOnly?: boolean;
-	placeholder?: string;
-};
+export type SelectProps = FieldProps;
 
-const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+const Select = React.forwardRef<HTMLInputElement, SelectProps>(
 	({ children, multiple, readOnly, required, placeholder, ...rest }: SelectProps, ref) => {
 		if (readOnly) {
 			const values = React.Children.toArray(children).reduce((acc: string[], current) => {
@@ -43,7 +40,10 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 					{...rest}
 					as="select"
 					multiple={multiple}
-					before={!multiple && <Icon name="talend-caret-down" className="talend-caret-down" />}
+					// @ts-ignore
+					before={
+						!multiple ? <Icon name="talend-caret-down" className="talend-caret-down" /> : undefined
+					}
 					ref={ref}
 				>
 					{placeholder && (

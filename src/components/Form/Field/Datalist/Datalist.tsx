@@ -1,7 +1,7 @@
 import React from 'react';
-import Field from '../Field';
+import Field, { FieldProps } from '../Field';
 
-export type DatalistProps = HTMLInputElement & {
+export type DatalistProps = FieldProps & {
 	values: string[];
 };
 
@@ -11,7 +11,13 @@ const Datalist = React.forwardRef<HTMLInputElement, DatalistProps>(
 
 		return (
 			<>
-				<Field {...rest} id={id} list={listId} ref={ref} />
+				<Field
+					{...rest}
+					id={id}
+					// @ts-ignore
+					list={listId}
+					ref={ref}
+				/>
 				<datalist id={listId}>
 					{values.map((value: string, index: React.Key) => (
 						// eslint-disable-next-line jsx-a11y/control-has-associated-label

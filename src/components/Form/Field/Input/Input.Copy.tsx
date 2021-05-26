@@ -6,8 +6,8 @@ import Text from './Input.Text';
 import { InputProps } from './Input';
 
 const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(
-	({ label, value, disabled, readOnly, ...rest }, ref) => {
-		const [text, setText] = React.useState(value);
+	({ label, value = '', disabled, readOnly, ...rest }: InputProps, ref) => {
+		const [text, setText] = React.useState<string>(value.toString());
 		const [state, copyToClipboard] = useCopyToClipboard();
 
 		return (
@@ -25,16 +25,16 @@ const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(
 					)
 				}
 				readOnly={!disabled}
-				disabled={disabled}
+				disabled={!!disabled}
 				hasError={!!state.error}
 				hasSuccess={!!state.value}
 				description={state.error ? state.error.message : state.value && 'Copied to clipboard'}
 			>
 				<Text
+					{...rest}
 					label="Copy to clipboard"
 					value={text}
 					onChange={(event: React.ChangeEvent<HTMLInputElement>) => setText(event.target.value)}
-					{...rest}
 					ref={ref}
 				/>
 			</InputGroup>

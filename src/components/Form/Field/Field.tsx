@@ -6,11 +6,9 @@ import InlineMessage from '../../InlineMessage';
 
 import * as S from './Field.style';
 
-export type FieldProps = React.HTMLProps<
-	HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-> & {
+export type FieldProps = HTMLInputElement & {
 	as?: React.ElementType;
-	label?: string;
+	label: string;
 	before?: React.ReactNode;
 	after?: React.ReactNode;
 	indeterminate?: boolean;
@@ -23,7 +21,7 @@ export type FieldProps = React.HTMLProps<
 	description?: string;
 };
 
-const Field = React.forwardRef<React.ReactNode, FieldProps>(
+const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 	(
 		{
 			as = 'input',

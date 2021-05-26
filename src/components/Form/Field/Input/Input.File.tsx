@@ -5,8 +5,9 @@ import { VisuallyHidden } from 'reakit';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import { Icon } from '../../../Icon';
-import Input, { InputProps } from './Input';
+import Input from './Input';
 import tokens from '../../../../tokens';
+import { FieldProps } from '../Field';
 
 const FileField = styled.div`
 	width: 100%;
@@ -132,16 +133,16 @@ function getFileSize(size: number) {
 	return '';
 }
 
-const InputFile = React.forwardRef<HTMLInputElement>((props, ref) => {
+const InputFile = React.forwardRef<HTMLInputElement, FieldProps>((props: FieldProps, ref) => {
 	const [drag, setDrag] = React.useState(false);
-	const [files, setFiles] = React.useState(props.files);
+	const [files, setFiles] = React.useState<FileList | null>(props.files);
 
 	const inputRef = React.useRef<HTMLInputElement>();
 
 	function handleChange() {
 		const input = inputRef.current;
 		if (input) {
-			setFiles(() => [...Array.from(input.files)]);
+			setFiles(() => input.files);
 		}
 	}
 
@@ -193,11 +194,15 @@ const InputFile = React.forwardRef<HTMLInputElement>((props, ref) => {
 			{props.readOnly ? (
 				<Input
 					{...props}
-					value={files
-						?.map(file =>
-							typeof file === 'string' ? file : `${file.name} (${getFileSize(file.size)})`,
-						)
-						.join(';')}
+					value={
+						files
+							? Array.from(files)
+									.map((file: File | string) =>
+										typeof file === 'string' ? file : `${file.name} (${getFileSize(file.size)})`,
+									)
+									.join(';')
+							: ''
+					}
 				/>
 			) : (
 				<div id={id} className={`input-file ${drag ? 'input-file--dragging' : ''}`}>
@@ -205,6 +210,7 @@ const InputFile = React.forwardRef<HTMLInputElement>((props, ref) => {
 						{...props}
 						type="file"
 						className={`input-file__input input ${files ? 'input--filled' : ''}`}
+						// @ts-ignore
 						ref={inputRef}
 					/>
 					{!files ? (
@@ -222,11 +228,12 @@ const InputFile = React.forwardRef<HTMLInputElement>((props, ref) => {
 							<VisuallyHidden>You have selected:</VisuallyHidden>
 							{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
 							<ol role="list" className="preview__list">
-								{files.map((file, index: React.Key) => (
-									<li key={index} className="preview__list-item">
-										{typeof file === 'string' ? file : `${file.name} (${getFileSize(file.size)})`}
-									</li>
-								))}
+								{files &&
+									Array.from(files).map((file: File | string, index: React.Key) => (
+										<li key={index} className="preview__list-item">
+											{typeof file === 'string' ? file : `${file.name} (${getFileSize(file.size)})`}
+										</li>
+									))}
 							</ol>
 							<Button.Icon icon="talend-cross-circle" className="preview__button" onClick={clear}>
 								Clear selection
@@ -239,8 +246,4 @@ const InputFile = React.forwardRef<HTMLInputElement>((props, ref) => {
 	);
 });
 
-const File = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <InputFile {...props} ref={ref} />;
-});
-
-export default File;
+export default InputFile;

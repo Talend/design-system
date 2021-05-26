@@ -5,8 +5,9 @@ import useRevealPassword from './hooks/useRevealPassword';
 
 const Password = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const { currentType, onReset, RevealPasswordButton } = useRevealPassword();
-	const isInitialMount = useRef(true);
-	const inputRef = useRef(ref);
+	const isInitialMount = useRef<boolean>(true);
+	// @ts-ignore
+	const inputRef = useRef<HTMLInputElement | null>(ref);
 
 	useEffect(() => {
 		if (isInitialMount.current) {
