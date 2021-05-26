@@ -105,6 +105,7 @@ export const InputGroupRow = styled.div`
 export const InputGroup = styled.div`
 	display: flex;
 	flex-direction: column;
+	margin-bottom: ${tokens.space.s};
 
 	.input-group__item--input {
 		flex: 1;

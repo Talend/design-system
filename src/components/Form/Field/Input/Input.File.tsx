@@ -7,7 +7,7 @@ import Link from '../../../Link';
 import { Icon } from '../../../Icon';
 import Input from './Input';
 import tokens from '../../../../tokens';
-import { FieldProps } from '../Field';
+import Field, { FieldProps } from '../Field';
 
 const FileField = styled.div`
 	width: 100%;
@@ -246,4 +246,13 @@ const InputFile = React.forwardRef<HTMLInputElement, FieldProps>((props: FieldPr
 	);
 });
 
-export default InputFile;
+const FieldFile = React.forwardRef((props, ref) => (
+	<Field
+		as={InputFile}
+		{...props}
+		// @ts-ignore
+		ref={ref}
+	/>
+));
+
+export default FieldFile;
