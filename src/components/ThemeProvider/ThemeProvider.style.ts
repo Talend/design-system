@@ -3,10 +3,9 @@ import { hideVisually } from 'polished';
 
 import 'typeface-source-sans-pro';
 import 'typeface-inconsolata';
+import 'modern-css-reset';
 
 import tokens from '../../tokens';
-
-import 'modern-css-reset/dist/reset.min.css';
 
 export const GlobalStyle = createGlobalStyle`  
 	html {
