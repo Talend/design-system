@@ -74,7 +74,11 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 					{label}
 					{required && '*'}
 				</S.InputGroupLabel>
-				<S.InputGroupRow aria-labelledby={labelId} ref={ref}>
+				<S.InputGroupRow
+					aria-labelledby={labelId}
+					// @ts-ignore
+					ref={ref}
+				>
 					{prefix && (
 						<div className="input-group__item input-group__item--prefix">
 							{!isElement(prefix) ? <S.SpanPrefix>{prefix}</S.SpanPrefix> : prefix}

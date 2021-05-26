@@ -10,6 +10,10 @@ const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(
 		const [text, setText] = React.useState<string>(value.toString());
 		const [state, copyToClipboard] = useCopyToClipboard();
 
+		React.useEffect(() => {
+			setText(value);
+		}, [value]);
+
 		return (
 			<InputGroup
 				label={label}
@@ -30,13 +34,9 @@ const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(
 				hasSuccess={!!state.value}
 				description={state.error ? state.error.message : state.value && 'Copied to clipboard'}
 			>
-				<Text
-					{...rest}
-					label="Copy to clipboard"
-					value={text}
-					onChange={(event: React.ChangeEvent<HTMLInputElement>) => setText(event.target.value)}
-					ref={ref}
-				/>
+				{/*
+				// @ts-ignore */}
+				<Text {...rest} label="Copy to clipboard" value={text} ref={ref} />
 			</InputGroup>
 		);
 	},
