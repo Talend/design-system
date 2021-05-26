@@ -6,8 +6,8 @@ import {Icon} from './Icon';
 describe('Icon', () => {
 
 	it('should render from svg', () => {
-		const wrapper = render(<Icon name="svg-dd" />);
-		expect(wrapper.getElement()).toMatchSnapshot();
+		const { container } = render(<Icon name="svg-dd" />);
+		expect(container.firstChild).toMatchSnapshot();
 	});
 
 	it('should render from src', () => {
