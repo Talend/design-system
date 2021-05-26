@@ -58,15 +58,21 @@ declare module 'styled-components' {
 			inputBorderColor: string;
 			inputHoverBorderColor: string;
 			inputFocusBorderColor: string;
+			inputCheckedBorderColor: string;
 			inputDisabledBorderColor: string;
-			inputReadOnlyBorderColor: string;
+			inputReadOnlyColor: string;
 			inputReadOnlyBackgroundColor: string;
+			inputReadOnlyBorderColor: string;
 			inputPlaceholderColor: string;
 			inputRadioBackgroundColor: string;
 			inputGroupColor: string;
 			inputGroupBackgroundColor: string;
 			inputGroupInteractiveColor: string;
 			inputGroupInteractiveBackgroundColor: string;
+			inputGroupInteractiveHoverColor: string;
+			inputGroupInteractiveHoverBackgroundColor: string;
+			inputGroupInteractiveActiveColor: string;
+			inputGroupInteractiveActiveBackgroundColor: string;
 
 			// Links
 			linkColor: string;
