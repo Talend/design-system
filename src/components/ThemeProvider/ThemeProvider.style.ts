@@ -1,9 +1,9 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { hideVisually } from 'polished';
 
-import 'typeface-source-sans-pro';
-import 'typeface-inconsolata';
-import 'modern-css-reset';
+import 'typeface-source-sans-pro/index.css';
+import 'typeface-inconsolata/index.css';
+import 'modern-css-reset/dist/reset.min.css';
 
 import tokens from '../../tokens';
 
