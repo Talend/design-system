@@ -16,21 +16,18 @@ export const Button = styled(ReakitButton)`
 	&:after {
 		content: '';
 		position: absolute;
-		top: ${tokens.space.xs};
-		right: ${tokens.space.xs};
-		bottom: ${tokens.space.xs};
-		left: ${tokens.space.xs};
+		top: -1 * ${tokens.space.xs};
+		right: -1 * ${tokens.space.xs};
+		bottom: -1 * ${tokens.space.xs};
+		left: -1 * ${tokens.space.xs};
 		border-radius: ${tokens.radii.rectRadius};
 	}
 
-	svg {
+	.btn__icon {
 		flex-grow: 0;
 		flex-shrink: 0;
-	}
-
-	.btn__loading {
-		width: ${tokens.sizes.l};
 		height: ${tokens.sizes.l};
+		max-width: 100%;
 	}
 
 	.btn__loading,
@@ -58,20 +55,5 @@ export const Button = styled(ReakitButton)`
 		position: absolute;
 		white-space: nowrap;
 		width: 1px;
-	}
-
-	&.btn--small {
-		min-height: ${tokens.sizes.xl};
-
-		.btn__loading,
-		.btn__icon {
-			+ .btn__text {
-				margin-left: ${tokens.space.xs};
-			}
-		}
-
-		&.btn--has-text {
-			padding: ${tokens.space.none} ${tokens.space.s};
-		}
 	}
 `;

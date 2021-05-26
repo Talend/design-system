@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FigmaIcon = () => (
+import tokens from '../tokens';
+
+const FigmaIcon = React.memo(() => (
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
 		<g fill="none">
 			<path
@@ -30,20 +32,32 @@ const FigmaIcon = () => (
 			/>
 		</g>
 	</svg>
-);
+));
 
-const Link = styled.a`
-	position: relative;
-	float: right;
+const Link = styled.a.attrs({
+	target: '_blank',
+	rel: 'noopener noreferrer',
+})`
 	display: inline-flex;
-	padding: 1rem;
-	text-decoration: none;
-	color: #000;
-	background: #ffffff;
-	box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.25);
-	border-radius: 3rem;
+	align-items: center;
+	justify-content: center;
+	float: right;
 	cursor: pointer;
-	z-index: 1;
+	padding: 0.8rem;
+	color: ${tokens.colors.lochmara[500]};
+	border: 1px solid ${tokens.colors.lochmara[500]};
+	border-radius: ${tokens.radii.rectRadius} 0 0 ${tokens.radii.rectRadius};
+
+	&:hover,
+	&:focus,
+	&:active {
+		background: ${tokens.colors.paleCyan[100]};
+	}
+
+	&:active {
+		color: ${tokens.colors.lochmara[600]};
+		cursor: grabbing;
+	}
 
 	svg {
 		margin-right: 0.5rem;
@@ -54,11 +68,11 @@ const Link = styled.a`
 
 const FigmaLink = props => {
 	return (
-		<Link target="_blank" {...props}>
-			<FigmaIcon />
-			See in Figma
+		<Link {...props}>
+			<FigmaIcon aria-hidden />
+			<span>Figma</span>
 		</Link>
 	);
 };
 
-export default FigmaLink;
+export default React.memo(FigmaLink);

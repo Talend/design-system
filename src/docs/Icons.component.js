@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { IconGallery, IconItem } from '@storybook/components';
 import { Form, Icon, IconsProvider, ThemeProvider, tokens } from '../index';
 
@@ -6,6 +7,7 @@ export const Icons = () => {
 	const [icons, setIds] = React.useState([]);
 	const [query, setQuery] = React.useState('');
 	const [size, setSize] = React.useState(2);
+	const [filter, setFilter] = React.useState();
 	const [transform, setTransform] = React.useState('');
 	const [useCurrentColor, setUseCurrentColor] = React.useState();
 	const [currentColor, setCurrentColor] = React.useState(tokens.colors.gray[800]);
@@ -30,7 +32,7 @@ export const Icons = () => {
 	return (
 		<>
 			<ThemeProvider>
-				<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
+				<ThemeProvider.GlobalStyle />
 				<Form>
 					<Form.Search label="Search" onChange={onChangeQuery} />
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -70,6 +72,11 @@ export const Icons = () => {
 							onChange={() => setBorder(!border)}
 							checked={!!border}
 						/>
+						<Form.Switch
+							label="Use grayscale filter"
+							onChange={() => setFilter(!filter)}
+							checked={!!filter}
+						/>
 					</div>
 				</Form>
 			</ThemeProvider>
@@ -80,7 +87,11 @@ export const Icons = () => {
 						<IconItem key={index} name={iconName}>
 							<Icon
 								name={iconName}
-								style={{ width: size + 'rem', height: size + 'rem' }}
+								style={{
+									width: `${size}rem`,
+									height: `${size}rem`,
+									filter: filter ? "url('#talend-grayscale')" : 'none',
+								}}
 								transform={transform}
 								preserveColor={!useCurrentColor}
 								border={border}

@@ -1,16 +1,17 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, RefObject, createRef, useState, useEffect } from 'react';
 
 type GenericObject = { [key: string]: Promise<Response> };
 
 const DEFAULT_BUNDLES = ['/all.svg'];
 const FETCHING_BUNDLES: GenericObject = {};
+const ICONS_PROVIDER_CLASS = '.tc-iconsprovider';
 
 function hasBundle(url: string) {
 	if (FETCHING_BUNDLES[url]) {
 		return true;
 	}
 
-	const results = document.querySelectorAll('.tc-iconsprovider');
+	const results = document.querySelectorAll(ICONS_PROVIDER_CLASS);
 	return (
 		Array.prototype.slice.call(results).filter(e => {
 			return e.getAttribute('data-url') === url;
@@ -23,7 +24,7 @@ function hasBundle(url: string) {
  * @returns <Array<string>> Array of id if available icons
  */
 function getCurrentIconIds() {
-	const symbols = document.querySelectorAll('.tc-iconsprovider symbol');
+	const symbols = document.querySelectorAll(`${ICONS_PROVIDER_CLASS} symbol`);
 	return Array.from(symbols)
 		.map(symbol => symbol.getAttribute('id'))
 		.filter(Boolean);
@@ -42,7 +43,7 @@ function getAllIconIds() {
  * @returns {Array<string>} Array of id if available filters
  */
 function getAllFilterIds() {
-	const symbols = document.querySelectorAll('.tc-iconsprovider filter');
+	const symbols = document.querySelectorAll(`${ICONS_PROVIDER_CLASS} filter`);
 	return Array.from(symbols)
 		.map(symbol => symbol.getAttribute('id'))
 		.filter(Boolean);
@@ -54,7 +55,7 @@ function getAllFilterIds() {
  * @param {Element} container
  */
 function injectIcon(id: string, container: Element) {
-	const element = document.querySelector(`.tc-iconsprovider #${id}`);
+	const element = document.querySelector(`${ICONS_PROVIDER_CLASS} #${id}`);
 	if (element) {
 		while (container.hasChildNodes()) {
 			// @ts-ignores
@@ -67,15 +68,14 @@ function injectIcon(id: string, container: Element) {
 }
 
 /**
- * add the content of the reponse into the dom if it starts with SVG
+ * add the content of the response into the dom if it starts with SVG
  */
 function addBundle(response: Response) {
 	if (response.status === 200 && response.ok) {
 		return response.text().then(content => {
 			if (content.startsWith('<svg')) {
 				const container = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-				container.setAttribute('class', 'tc-iconsprovider');
-				container.setAttribute('style', 'display: none');
+				container.setAttribute('class', 'tc-iconsprovider sr-only');
 				container.setAttribute('aria-hidden', 'true');
 				container.setAttribute('focusable', 'false');
 				container.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -91,6 +91,14 @@ function addBundle(response: Response) {
 
 type IconSet = Record<string, ReactElement>;
 
+function isRootProvider(ref: RefObject<any>) {
+	const providers = document.querySelectorAll(ICONS_PROVIDER_CLASS);
+	if (ref !== null && ref.current && providers.length > 0) {
+		return providers[0] === ref.current;
+	}
+	return providers.length === 1;
+}
+
 /**
  * If you want to use Icon with SVG you have to load this
  * component in your app.
@@ -102,8 +110,10 @@ type IconSet = Record<string, ReactElement>;
  */
 export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, icons = {} }) {
 	const iconset: IconSet = { ...defaultIcons, ...icons };
-	const ref = React.useRef<SVGSVGElement>();
-	React.useEffect(() => {
+	const ref = createRef<SVGSVGElement>();
+	const [ shouldRender, setShouldRender ] = useState(true);
+
+	useEffect(() => {
 		if (!Array.isArray(bundles)) {
 			return;
 		}
@@ -118,17 +128,18 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 			});
 	}, [bundles]);
 
-	if (ref.current) {
-		console.warn('IconsProvider Error: multiple instance escape, return null');
-		return null;
-	}
+	useEffect(() => {
+		if (!isRootProvider(ref)) {
+			console.warn('IconsProvider Error: multiple instance escape');
+			setShouldRender(false);
+		}
+	}, [ ref ]);
 
-	return (
+	return shouldRender && (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			focusable="false"
-			className="tc-iconsprovider"
-			style={{ display: 'none' }}
+			className="tc-iconsprovider sr-only"
 			ref={ref}
 		>
 			{Object.keys(iconset).map((id, index) => (
@@ -137,7 +148,7 @@ export function IconsProvider({ bundles = DEFAULT_BUNDLES, defaultIcons = {}, ic
 				</symbol>
 			))}
 		</svg>
-	);
+	) || null;
 }
 
 IconsProvider.displayName = 'IconsProvider';
