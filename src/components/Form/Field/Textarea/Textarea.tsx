@@ -4,7 +4,7 @@ import Field, { FieldProps } from '../Field';
 
 import * as S from './Textarea.style';
 
-const Textarea = React.forwardRef<HTMLElement, FieldProps>((props, ref) => {
+const Textarea = React.forwardRef<HTMLInputElement, FieldProps>((props, ref) => {
 	return <Field {...props} as={S.Textarea} ref={ref} />;
 });
 

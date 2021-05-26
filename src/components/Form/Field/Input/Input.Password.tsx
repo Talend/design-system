@@ -26,6 +26,7 @@ const Password = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => 
 				inputRef.current = null;
 				onReset();
 			}}
+			// @ts-ignore
 			after={<RevealPasswordButton />}
 		/>
 	);
