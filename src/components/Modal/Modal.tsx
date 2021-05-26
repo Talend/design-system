@@ -43,7 +43,7 @@ const Modal = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>
 					</S.DialogDisclosure>
 				)}
 				<S.DialogBackdrop {...dialog}>
-					<S.Dialog {...dialog} {...props} as={ReakitDialog} ref={ref}>
+					<ReakitDialog {...dialog} {...props} as={S.Dialog} ref={ref}>
 						<S.DialogHeading>
 							{icon && <Icon name={icon} />}
 							<div>
@@ -56,7 +56,7 @@ const Modal = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>
 							<Button.Secondary onClick={onCloseHandler}>Cancel</Button.Secondary>
 							<Button.Primary onClick={onValidateHandler}>Validate</Button.Primary>
 						</S.DialogButtons>
-					</S.Dialog>
+					</ReakitDialog>
 				</S.DialogBackdrop>
 			</>
 		);

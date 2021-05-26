@@ -32,7 +32,7 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 			hasInformation,
 			description,
 			children,
-		},
+		}: InputGroupProps,
 		ref,
 	) => {
 		const fieldRef = React.useRef<HTMLInputElement>();

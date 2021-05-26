@@ -13,6 +13,7 @@ export type FieldProps = React.HTMLProps<
 	label?: string;
 	before?: React.ReactNode;
 	after?: React.ReactNode;
+	indeterminate?: boolean;
 	loading?: boolean;
 	link?: React.ReactNode;
 	hasError?: boolean;
@@ -48,7 +49,7 @@ const Field = React.forwardRef<React.ReactNode, FieldProps>(
 		const inline = ['checkbox', 'radio'].includes(type);
 
 		const Label = () => (
-			<S.FieldLabel className="field__label" htmlFor={id} disabled={disabled}>
+			<S.FieldLabel className="field__label" htmlFor={id} disabled={!!disabled}>
 				{label}
 				{required && '*'}
 			</S.FieldLabel>

@@ -71,7 +71,7 @@ const Switch = React.forwardRef<HTMLInputElement, InputProps>(
 	({ id = `switch--${Date.now()}`, label, checked, readOnly, ...rest }, ref) => {
 		const checkbox = useCheckboxState({ state: checked });
 		return (
-			<SSwitch readOnly={readOnly} checked={checkbox.state} ref={ref}>
+			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} ref={ref}>
 				<label htmlFor={id}>
 					{!readOnly && (
 						// @ts-ignore

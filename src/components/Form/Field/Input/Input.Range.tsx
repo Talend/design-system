@@ -110,7 +110,7 @@ const SRange = styled.div`
 const Range = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	return (
 		<SRange>
-			<Input {...props} type="range" />
+			<Input {...props} type="range" ref={ref} />
 		</SRange>
 	);
 });

@@ -2,7 +2,6 @@ import React from 'react';
 import Field, { FieldProps } from '../Field';
 
 export type InputProps = FieldProps & {
-	label: string;
 	before?: any;
 	after?: any;
 };

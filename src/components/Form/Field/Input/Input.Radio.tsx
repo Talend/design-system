@@ -28,7 +28,7 @@ export const SRadio = styled(InlineStyle)<{ readOnly: boolean; checked: boolean 
 
 const Radio = React.forwardRef<HTMLInputElement, InputProps>(
 	({ id = `radio--${Date.now()}`, label, checked, readOnly, required, children, ...rest }, ref) => (
-		<SRadio readOnly={readOnly} checked={checked}>
+		<SRadio readOnly={!!readOnly} checked={!!checked}>
 			<label htmlFor={id}>
 				{!readOnly && (
 					// @ts-ignore

@@ -67,7 +67,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
 			);
 
 		return (
-			<SCheckbox readOnly={readOnly} checked={checked}>
+			<SCheckbox readOnly={!!readOnly} checked={!!checked}>
 				<label htmlFor={id}>
 					{!readOnly && (
 						// @ts-ignore

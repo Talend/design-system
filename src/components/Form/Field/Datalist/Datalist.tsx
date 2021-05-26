@@ -6,8 +6,9 @@ export type DatalistProps = HTMLInputElement & {
 };
 
 const Datalist = React.forwardRef<HTMLInputElement, DatalistProps>(
-	({ id = `datalist--${Date.now()}`, values = [], ...rest }, ref) => {
+	({ id = `datalist--${Date.now()}`, values = [], ...rest }: DatalistProps, ref) => {
 		const listId = `list-${id}`;
+
 		return (
 			<>
 				<Field {...rest} id={id} list={listId} ref={ref} />

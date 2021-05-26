@@ -8,7 +8,10 @@ import Input from '../Input';
 
 import * as S from './Select.style';
 
-export type SelectProps = HTMLInputElement & {};
+export type SelectProps = HTMLSelectElement & {
+	readOnly?: boolean;
+	placeholder?: string;
+};
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 	({ children, multiple, readOnly, required, placeholder, ...rest }: SelectProps, ref) => {
@@ -37,9 +40,9 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 		return (
 			<S.FieldWrapper>
 				<Field
+					{...rest}
 					as="select"
 					multiple={multiple}
-					{...rest}
 					before={!multiple && <Icon name="talend-caret-down" className="talend-caret-down" />}
 					ref={ref}
 				>
