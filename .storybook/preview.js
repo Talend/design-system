@@ -34,6 +34,9 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 
 addParameters({
 	docs: {
+		source: {
+			state: 'open',
+		},
 		container: props => {
 			const [hasDarkMode, setDarkMode] = useLocalStorage('talend-coral--has-dark-mode', false);
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage(
@@ -57,5 +60,40 @@ addParameters({
 				</>
 			);
 		},
+	},
+	options: {
+		storySort: {
+			order: [
+				'Welcome',
+				'Getting Started',
+				'Component catalog',
+				'Design Tokens',
+				'Themes',
+				'Content',
+				'Components',
+				[
+					'Accordion',
+					'Button',
+					'Combobox',
+					'Divider',
+					'Dropdown',
+					'Form',
+					['Form', 'Form Fieldset', 'Form Field', 'Form Field Group', 'Fields', 'Form Buttons'],
+					'HeaderBar',
+					'Icon',
+					'Inline Editing',
+					'Inline Message',
+					'Layout',
+					'Link',
+					'Loading',
+					'Menu',
+					'Modal',
+					'Popover',
+					'Skeleton',
+					'Stepper',
+					['Stepper', 'Step'],
+				],
+			],
+		} /**/,
 	},
 });
