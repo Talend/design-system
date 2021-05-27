@@ -15118,11 +15118,6 @@ storybook-addon-mdx-embed@^0.0.19:
   resolved "https://registry.yarnpkg.com/storybook-addon-mdx-embed/-/storybook-addon-mdx-embed-0.0.19.tgz#200307ffcf700b776ffb8146085f035ca3d883bd"
   integrity sha512-xYvLALtxPl21rony/ODBs4RFhjMBEHKCBxYyALbzcM8vUwoM0HsvjhMFFfh1pqH+tKfp+as5Ool3fBF+mggSdw==
 
-storybook-addon-pseudo-states@^1.1.0-canary.8.ee5c388.0:
-  version "1.1.0-canary.8.ee5c388.0"
-  resolved "https://registry.yarnpkg.com/storybook-addon-pseudo-states/-/storybook-addon-pseudo-states-1.1.0-canary.8.ee5c388.0.tgz#63d44985781a6f1b8549e65f2781eaf67a717a2a"
-  integrity sha512-OsiTYqrDJvrr1Bnk4YS4jkToyolp05F0sPqeI69VPhTvLeuaEDrq1Ivcv2SyUMqyqlzF920bKnHYE9Udxpu3cA==
-
 storybook-docs-toc@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/storybook-docs-toc/-/storybook-docs-toc-1.4.1.tgz#21c10b4d27df7305717fc02ded75f63810d0daa9"
