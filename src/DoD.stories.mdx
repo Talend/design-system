@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Definition of Done" />
+
+export const TrafficLight = () => {
+	const [position, setPosition] = React.useState(3);
+	const common = {
+		r: 7,
+		stroke: '#C5C5C5',
+		style: {
+			cursor: 'pointer',
+		},
+	};
+	return (
+		<svg width="33" height="75" viewBox="0 0 33 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="0.5" y="0.5" width="32" height="74" rx="16" stroke="#C5C5C5" />
+			<circle
+				cx="16.5"
+				cy="18.5"
+				{...common}
+				fill={(position === 3 && '#cc5759') || 'white'}
+				onClick={() => setPosition(3)}
+			/>
+			<circle
+				cx="16.5"
+				cy="37.5"
+				{...common}
+				fill={(position === 2 && '#EA8330') || 'white'}
+				onClick={() => setPosition(2)}
+			/>
+			<circle
+				cx="16.5"
+				cy="56.5"
+				{...common}
+				fill={(position === 1 && '#82BD41') || 'white'}
+				onClick={() => setPosition(1)}
+			/>
+		</svg>
+	);
+};
+
+export const ChecklistItem = ({ title, description }) => (
+	<div style={{ display: 'flex', marginBottom: '2rem' }}>
+		<TrafficLight style={{ flexShrink: '0' }} />
+		<div style={{ paddingLeft: '2rem', flex: '1' }}>
+			<h2>{title}</h2>
+			<p>{description}</p>
+		</div>
+	</div>
+);
+
+export const Checklist = props => (
+	<ul role="list" style={{ padding: 0 }}>
+		{props.children.map((child, key) => (
+			<li key={key}>{child}</li>
+		))}
+	</ul>
+);
+
+# Ready to go?
+
+DoD - Get all lights green before HD design & implementation
+
+<Checklist>
+	<ChecklistItem
+		title={'Exhausting use cases'}
+		description={
+			'Are we covering all use-cases here? Errors, empty screens, mandatory steps in interactions, breaks in completion, display resolution, permission?'
+		}
+	/>
+	<ChecklistItem
+		title={'Consistency'}
+		description={
+			'Is it consistent regarding other similar components across all our products, is it compliant with our design tokens?'
+		}
+	/>
+	<ChecklistItem
+		title={'Accessibility'}
+		description={
+			'Are we providing sufficient contrast? Full keyboard support? What about <alt> tags? Predictable navigation, clear titles and labels? Clear idle, hover and focus states?'
+		}
+	/>
+	<ChecklistItem
+		title={'Discoverability'}
+		description={
+			'Are we making it easy to find? Is the use of UI layers relevant considering users’ needs and product strategy?'
+		}
+	/>
+	<ChecklistItem
+		title={'Learnability'}
+		description={
+			'Are we providing enough information, tips and links to tutorials so users are able to learn how to use the feature if needed?'
+		}
+	/>
+	<ChecklistItem
+		title={'Copy'}
+		description={
+			'Are all interactions clearly described and labeled? What about documentation excerpts and links? Are we compliant with our tone of voice?'
+		}
+	/>
+	<ChecklistItem
+		title={'Test'}
+		description={
+			'How confident are we about the solution? Did we run user tests? Do we still have doubts?'
+		}
+	/>
+	<ChecklistItem
+		title={'Security'}
+		description={
+			'Are we allowing users to run sensitive operations here? How to avoid misbehavior? Is there specific risks? Do user actions need prior confirmations? Do we choose a protocol here? Do we manage credentials?'
+		}
+	/>
+	<ChecklistItem
+		title={'Privacy'}
+		description={
+			'Is the data PII? Do we need to encrypt it? Is there information to be masked? What about permissions? '
+		}
+	/>
+</Checklist>

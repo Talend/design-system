@@ -1,0 +1,120 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Definition of Ready" />
+
+export const TrafficLight = () => {
+	const [position, setPosition] = React.useState(3);
+	const common = {
+		r: 7,
+		stroke: '#C5C5C5',
+		style: {
+			cursor: 'pointer',
+		},
+	};
+	return (
+		<svg width="33" height="75" viewBox="0 0 33 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<rect x="0.5" y="0.5" width="32" height="74" rx="16" stroke="#C5C5C5" />
+			<circle
+				cx="16.5"
+				cy="18.5"
+				{...common}
+				fill={(position === 3 && '#cc5759') || 'white'}
+				onClick={() => setPosition(3)}
+			/>
+			<circle
+				cx="16.5"
+				cy="37.5"
+				{...common}
+				fill={(position === 2 && '#EA8330') || 'white'}
+				onClick={() => setPosition(2)}
+			/>
+			<circle
+				cx="16.5"
+				cy="56.5"
+				{...common}
+				fill={(position === 1 && '#82BD41') || 'white'}
+				onClick={() => setPosition(1)}
+			/>
+		</svg>
+	);
+};
+
+export const ChecklistItem = ({ title, description }) => (
+	<div style={{ display: 'flex', marginBottom: '2rem' }}>
+		<TrafficLight style={{ flexShrink: '0' }} />
+		<div style={{ paddingLeft: '2rem', flex: '1' }}>
+			<h2>{title}</h2>
+			<p>{description}</p>
+		</div>
+	</div>
+);
+
+export const Checklist = props => (
+	<ul role="list" style={{ padding: 0 }}>
+		{props.children.map((child, key) => (
+			<li key={key}>{child}</li>
+		))}
+	</ul>
+);
+
+# Let's kick it off
+
+DoR - Get all lights green before ideation
+
+<Checklist>
+	<ChecklistItem
+		title={'Information'}
+		description={
+			'What do we know? Any relevant information available? User research reports? Product metrics? Previous usability tests conclusions? Competitive review?'
+		}
+	/>
+	<ChecklistItem title={'Personas'} description={'Are we aligned on the personas to address?'} />
+	<ChecklistItem
+		title={'User stories'}
+		description={'Are we ready to write user stories? Is it already done?'}
+	/>
+	<ChecklistItem
+		title={'Use cases'}
+		description={'Do we already have some use cases? Permissions? Error cases?'}
+	/>
+	<ChecklistItem
+		title={'User flows'}
+		description={'Are we confident designing user flows or do we need more information?'}
+	/>
+	<ChecklistItem
+		title={'Usability test plan'}
+		description={
+			'Are we considering usability tests at some point? What would be the timeline to open a window for it? Are User Researchers in the loop already?'
+		}
+	/>
+	<ChecklistItem
+		title={'Volume'}
+		description={
+			'Do we have an idea of the volume of content here already? How much content and/or information? How many datasets, how many tasks in plans, how many connectors, how many processors? '
+		}
+	/>
+	<ChecklistItem
+		title={'Low fidelity'}
+		description={
+			'Is there low fidelity material already designed? Are we confident moving forward designing wireframes?'
+		}
+	/>
+	<ChecklistItem
+		title={'Copy'}
+		description={
+			'Who’s the Writer in charge here? To save time and improve quality of the UX, is that person involved at early stage?'
+		}
+	/>
+	<ChecklistItem
+		title={'Security'}
+		description={
+			'Are we allowing users to run sensitive operations here? How to avoid misbehavior? Could user actions need prior confirmations here? Do we choose a protocol here? Do we manage credentials?'
+		}
+	/>
+	<ChecklistItem
+		title={'Privacy'}
+		description={
+			'Would the data be PII here? Do we have to encrypt it? Would there be information to be masked? What about permissions?'
+		}
+	/>
+</Checklist>
