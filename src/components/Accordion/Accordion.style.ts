@@ -13,6 +13,7 @@ export const AccordionItem = styled.div`
 	min-width: 25rem;
 	border: 1px solid ${({ theme }) => theme.colors.accordionBorderColor};
 	border-radius: ${tokens.radii.rectRadius};
+	overflow: hidden;
 
 	&:hover {
 		border-color: ${tokens.colors.gray[200]};
@@ -43,20 +44,21 @@ export const DisclosureArrow = styled.span`
 `;
 
 export const DisclosureContent = styled(ReakitDisclosureContent)`
-	padding: 0;
-	height: 0;
+	position: relative;
+	padding: ${tokens.space.m};
+	transition: max-height 500ms linear;
 	border-radius: 0 0 ${tokens.radii.rectRadius} ${tokens.radii.rectRadius};
-	transition: opacity ${tokens.transitions.slow};
-	opacity: 0;
 
 	&[data-enter] {
-		padding: ${tokens.space.m};
-		height: auto;
-		opacity: 1;
+		max-height: 37rem;
+	}
+
+	&:not([data-enter]) {
+		max-height: 0;
 	}
 
 	@media (min-width: ${tokens.breakpoints.l}) {
 		max-height: 37rem;
-		overflow: auto;
+		overflow: autoyarn;
 	}
 `;
