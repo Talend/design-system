@@ -37,6 +37,26 @@ export const gradients = {
 		toDirection: '133deg',
 		fallback: deepBlue,
 	}),
+	indigoNight: linearGradient({
+		colorStops: ['#3C4857 0%', '#1D2024 100%'],
+		toDirection: '135deg',
+	}),
+	dusk: linearGradient({
+		colorStops: [`${coral} 0%`, `${russianViolet} 100%`],
+		toDirection: '135deg',
+	}),
+	cottonCandy: linearGradient({
+		colorStops: ['#FFA7A9 4.29%', '#BDE6F6 93.86%'],
+		toDirection: '315deg',
+	}),
+	dawn: linearGradient({
+		colorStops: [`${paleCyan} -1.47%`, `${deepBlue} 101.64%`],
+		toDirection: '135deg',
+	}),
+	blueBird: linearGradient({
+		colorStops: ['#F8F3EF 1.23%', `${paleCyan} 96.04%`],
+		toDirection: '135deg',
+	}),
 };
 
 function getColorSwatch(color: string): ColorSwatch {
