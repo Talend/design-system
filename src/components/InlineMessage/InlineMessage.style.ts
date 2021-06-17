@@ -16,7 +16,7 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	${({ small }) => (small ? `font-size: ${tokens.fontSizes?.small};` : '')}
 	border-radius: ${tokens.radii?.inputBorderRadius};
 
-	color: var(--t-inline-message-icon-color, ${({ theme }) => theme.colors?.textColor});
+	color: var(--t-inline-message-icon-color, ${({ theme }) => theme.colors?.textColor || 'initial'});
 	background: var(
 		--t-inline-message-background,
 		${({ theme }) => theme.colors?.backgroundColor || 'transparent'}
@@ -51,7 +51,7 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 
 	.inline-message__title,
 	.inline-message__description {
-		color: var(--t-inline-message-color, ${({ theme }) => theme.colors?.textColor});
+		color: var(--t-inline-message-color, ${({ theme }) => theme.colors?.textColor || 'initial'});
 	}
 
 	.inline-message__title,
