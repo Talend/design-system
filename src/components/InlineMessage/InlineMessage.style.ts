@@ -8,6 +8,11 @@ export type InlineMessageProps = {
 };
 
 export const InlineMessage = styled.div<InlineMessageProps>`
+	--inline-message-color: ${({ theme }) => theme.colors.textColor};
+	--inline-message-icon-color: ${({ theme }) => theme.colors.textColor};
+	--inline-message-background: ${({ theme }) => theme.colors.backgroundColor};
+	--inline-message-box-shadow: ${({ theme }) => theme.colors.backgroundColor};
+
 	display: ${({ withBackground }) => (withBackground ? 'inline-flex' : 'inline')};
 	margin-bottom: ${tokens.space.m};
 	${({ withBackground }) =>
@@ -15,6 +20,10 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	font-family: ${tokens.fonts.sansSerif};
 	${({ small }) => (small ? `font-size: ${tokens.fontSizes.small};` : '')}
 	border-radius: ${tokens.radii.inputBorderRadius};
+
+	color: var(--inline-message-icon-color);
+	background: var(--inline-message-background);
+	box-shadow: var(--inline-message-box-shadow);
 
 	.inline-message__icon {
 		padding-right: ${tokens.space.xs};
@@ -41,8 +50,7 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 
 	.inline-message__title,
 	.inline-message__description {
-		color: ${({ withBackground, theme }) =>
-			withBackground ? tokens.colors.gray[900] : theme.colors.textColor};
+		color: var(--inline-message-color);
 	}
 
 	.inline-message__title,
