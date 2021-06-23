@@ -65,10 +65,13 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 export const parameters = {
 	docs: {
 		transformSource: input =>
-			prettier.format(input, {
-				parser: 'babel',
-				plugins: [prettierBabel],
-			}),
+			prettier
+				.format(input, {
+					parser: 'babel',
+					plugins: [prettierBabel],
+				})
+				.trim()
+				.slice(0, -1),
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
 
