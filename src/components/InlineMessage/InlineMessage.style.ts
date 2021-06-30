@@ -45,7 +45,7 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 
 	.inline-message__title,
 	.inline-message__description {
-		color: var(--t-inline-message-color, ${({ theme }) => theme.colors?.textColor || 'initial'});
+		color: var(--t-inline-message-color, ${({ theme }) => theme.colors?.textColor});
 	}
 
 	.inline-message__title,
