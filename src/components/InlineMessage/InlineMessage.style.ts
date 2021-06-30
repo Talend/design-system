@@ -16,15 +16,9 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	${({ small }) => (small ? `font-size: ${tokens.fontSizes?.small};` : '')}
 	border-radius: ${tokens.radii?.inputBorderRadius};
 
-	color: var(--t-inline-message-icon-color, ${({ theme }) => theme.colors?.textColor || 'initial'});
-	background: var(
-		--t-inline-message-background,
-		${({ theme }) => theme.colors?.backgroundColor || 'transparent'}
-	);
-	box-shadow: var(
-		--t-inline-message-box-shadow,
-		${({ theme }) => theme.colors?.backgroundColor || 'transparent'}
-	);
+	color: var(--t-inline-message-icon-color, ${({ theme }) => theme.colors?.textColor});
+	background: var(--t-inline-message-background, transparent);
+	box-shadow: var(--t-inline-message-box-shadow, transparent);
 
 	.inline-message__icon {
 		padding-right: ${tokens.space?.xs};
