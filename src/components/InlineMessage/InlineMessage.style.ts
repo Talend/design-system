@@ -16,7 +16,11 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	${({ small }) => (small ? `font-size: ${tokens.fontSizes?.small};` : '')}
 	border-radius: ${tokens.radii?.inputBorderRadius};
 
-	color: var(--t-inline-message-icon-color, ${({ theme }) => theme.colors?.textColor});
+	color: var(
+		--t-inline-message-icon-color,
+		${({ theme, withBackground }) =>
+			withBackground ? theme.colors?.backgroundColor : theme.colors?.textColor}
+	);
 	background: var(--t-inline-message-background, transparent);
 	box-shadow: var(--t-inline-message-box-shadow, transparent);
 
@@ -26,12 +30,16 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 		svg {
 			height: ${({ small }) => (small ? tokens.sizes?.s : tokens.sizes?.l)};
 			width: ${({ small }) => (small ? tokens.sizes?.s : tokens.sizes?.l)};
-			vertical-align: middle;
 		}
 
 		path {
 			fill: currentColor;
 		}
+	}
+
+	.inline-message__icon,
+	p {
+		vertical-align: middle;
 	}
 
 	p {
@@ -46,11 +54,5 @@ export const InlineMessage = styled.div<InlineMessageProps>`
 	.inline-message__title,
 	.inline-message__description {
 		color: var(--t-inline-message-color, ${({ theme }) => theme.colors?.textColor});
-	}
-
-	.inline-message__title,
-	.inline-message__description,
-	.inline-message__link {
-		vertical-align: middle;
 	}
 `;
