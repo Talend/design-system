@@ -106,31 +106,40 @@ Checkboxes appear as a list on UI so it's important to make their labels as para
 
 ## Usage
 
+export const Template = args => <Form.CheckboxGroup {...args} />;
+
 <Canvas>
 	<Story
 		name="basic"
 		args={{
-			label: 'Checkbox',
-			indeterminate: false,
-			checked: false,
+			label: 'Checkbox group',
+			values: ['Option A', 'Option B', 'Option C'],
+			defaultValues: ['Option B', 'Option C'],
+			required: false,
 			readOnly: false,
 			disabled: false,
 		}}
 		argTypes={{
 			label: {
-				description: 'Checkbox label',
+				description: 'Checkbox group label',
 				control: {
 					type: 'text',
 				},
 			},
-			indeterminate: {
-				description: 'Checkbox is indeterminate or  not',
+			values: {
+				description: 'Checkbox group values',
 				control: {
-					type: 'boolean',
+					type: 'array',
 				},
 			},
-			checked: {
-				description: 'Checkbox is checked or not',
+			defaultValues: {
+				description: 'Checkbox group default values',
+				control: {
+					type: 'array',
+				},
+			},
+			required: {
+				description: 'Checkbox group is required or not',
 				control: {
 					type: 'boolean',
 				},
@@ -149,7 +158,7 @@ Checkboxes appear as a list on UI so it's important to make their labels as para
 			},
 		}}
 	>
-		{props => <Form.Checkbox {...props} />}
+		{Template.bind({})}
 	</Story>
 </Canvas>
 

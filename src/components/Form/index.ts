@@ -1,3 +1,4 @@
+import CheckboxGroup from './Field/CheckboxGroup';
 import Datalist from './Field/Datalist';
 import Fieldset from './Fieldset';
 import Form from './Form';
@@ -14,6 +15,7 @@ export const FormComponent = Form as typeof Form & {
 	Row: typeof S.Row;
 	Color: typeof Input.Color;
 	Checkbox: typeof Input.Checkbox;
+	CheckboxGroup: typeof CheckboxGroup;
 	Datalist: typeof Datalist;
 	Date: typeof Input.Date;
 	DatetimeLocal: typeof Input.DatetimeLocal;
@@ -45,6 +47,7 @@ FormComponent.Row = S.Row;
 
 FormComponent.Color = Input.Color;
 FormComponent.Checkbox = Input.Checkbox;
+FormComponent.CheckboxGroup = CheckboxGroup;
 FormComponent.Datalist = Datalist;
 FormComponent.Date = Input.Date;
 FormComponent.DatetimeLocal = Input.DatetimeLocal;
