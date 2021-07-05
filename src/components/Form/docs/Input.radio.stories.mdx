@@ -65,6 +65,31 @@ Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-stor
 	</Story>
 </Canvas>
 
+### Radio group
+
+<Canvas>
+	<Story name="radio-group">
+		<Form.RadioGroup
+			label="Radio Group"
+			values={['Option A', 'Option B', 'Option C']}
+			defaultValue={'Option B'}
+		/>
+	</Story>
+</Canvas>
+
+### Disabled Radio group
+
+<Canvas>
+	<Story name="radio-group--disabled">
+		<Form.RadioGroup
+			label="Disabled Radio Group"
+			values={['Option A', 'Option B', 'Option C']}
+			defaultValue={'Option B'}
+			disabled
+		/>
+	</Story>
+</Canvas>
+
 ## Content
 
 Radio buttons appear as a list of two or more options on UI where users can select only one option, so it's important to make their labels comprehensive and clearly distinct.

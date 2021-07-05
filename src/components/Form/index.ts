@@ -5,6 +5,7 @@ import Buttons from './Buttons';
 import Input from './Field/Input';
 import InputGroup from './Field/InputGroup';
 import Label from './Label';
+import RadioGroup from './Field/RadioGroup';
 import Select from './Field/Select';
 import Textarea from './Field/Textarea';
 
@@ -28,6 +29,7 @@ export const FormComponent = Form as typeof Form & {
 	Number: typeof Input.Number;
 	Password: typeof Input.Password;
 	Radio: typeof Input.Radio;
+	RadioGroup: typeof RadioGroup;
 	Range: typeof Input.Range;
 	Search: typeof Input.Search;
 	Select: typeof Select;
@@ -59,6 +61,7 @@ FormComponent.Month = Input.Month;
 FormComponent.Number = Input.Number;
 FormComponent.Password = Input.Password;
 FormComponent.Radio = Input.Radio;
+FormComponent.RadioGroup = RadioGroup;
 FormComponent.Range = Input.Range;
 FormComponent.Search = Input.Search;
 FormComponent.Select = Select;
