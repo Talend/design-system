@@ -1,20 +1,45 @@
 import React from 'react';
-import { useRadioState, Radio as ReakitRadio, RadioGroup as ReakitRadioGroup } from 'reakit';
+import {
+	useRadioState,
+	Radio as ReakitRadio,
+	RadioGroup as ReakitRadioGroup,
+	RadioGroupProps as ReakitRadioGroupProps,
+} from 'reakit';
 
 import Fieldset from '../../Fieldset';
 import Radio from '../Input/Input.Radio';
 
-const RadioGroup = React.forwardRef(({ label, values, disabled, defaultValue, ...rest }, ref) => {
-	const radio = useRadioState({ state: defaultValue });
-	return (
-		values && (
-			<ReakitRadioGroup as={Fieldset} legend={label} {...radio} {...rest} ref={ref}>
-				{values.map(value => (
-					<ReakitRadio as={Radio} {...radio} label={value} disabled={disabled} value={value} />
-				))}
-			</ReakitRadioGroup>
-		)
-	);
-});
+export type RadioGroupProps = ReakitRadioGroupProps & {
+	label?: string;
+	values?: string[];
+	value?: string;
+	defaultValue?: string;
+	readOnly: boolean;
+};
+
+const RadioGroup = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
+	// @ts-ignore
+	({ label, values, disabled, defaultValue, readOnly, ...rest }: RadioGroupProps, ref) => {
+		const radio = useRadioState({ state: defaultValue });
+		return (
+			values && (
+				// @ts-ignore
+				<ReakitRadioGroup as={Fieldset} legend={label} {...radio} {...rest} ref={ref}>
+					{values.map(value => (
+						// @ts-ignore
+						<ReakitRadio
+							as={Radio}
+							{...radio}
+							disabled={disabled}
+							label={value}
+							readOnly={readOnly}
+							value={value}
+						/>
+					))}
+				</ReakitRadioGroup>
+			)
+		);
+	},
+);
 
 export default RadioGroup;
