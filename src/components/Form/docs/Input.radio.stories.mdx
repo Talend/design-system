@@ -84,8 +84,21 @@ Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-stor
 		<Form.RadioGroup
 			label="Disabled Radio Group"
 			values={['Option A', 'Option B', 'Option C']}
-			defaultValue={'Option B'}
+			value={'Option B'}
 			disabled
+		/>
+	</Story>
+</Canvas>
+
+### Read only Radio group
+
+<Canvas>
+	<Story name="radio-group--readonly">
+		<Form.RadioGroup
+			label="Read only Radio Group"
+			values={['Option A', 'Option B', 'Option C']}
+			value={'Option B'}
+			readOnly
 		/>
 	</Story>
 </Canvas>
@@ -121,43 +134,52 @@ Radio buttons appear as a list of two or more options on UI where users can sele
 
 ## Usage
 
+export const Template = args => <Form.RadioGroup {...args} />;
+
 <Canvas>
 	<Story
 		name="basic"
 		args={{
-			label: 'Radio',
-			checked: false,
+			label: 'Radio  group',
+			values: ['Option A', 'Option B', 'Option C'],
+			defaultValue: 'Option C',
 			readOnly: false,
 			disabled: false,
 		}}
 		argTypes={{
 			label: {
-				description: 'Radio label',
+				description: 'Radio group label',
 				control: {
 					type: 'text',
 				},
 			},
-			checked: {
-				description: 'Radio is checked or  not',
+			values: {
+				description: 'Radio group values',
 				control: {
-					type: 'boolean',
+					type: 'array',
+				},
+			},
+			defaultValue: {
+				description: 'Radio group default value',
+				control: {
+					type: 'text',
 				},
 			},
 			readOnly: {
-				description: 'Radio is read only or not',
+				description: 'Radio group is read only or not',
 				control: {
 					type: 'boolean',
 				},
 			},
 			disabled: {
-				description: 'Radio is disabled or not',
+				description: 'Radio group is disabled or not',
 				control: {
 					type: 'boolean',
 				},
 			},
 		}}
 	>
-		{props => <Form.Radio {...props} />}
+		{Template.bind({})}
 	</Story>
 </Canvas>
 

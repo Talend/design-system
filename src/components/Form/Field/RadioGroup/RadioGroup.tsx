@@ -19,21 +19,21 @@ export type RadioGroupProps = ReakitRadioGroupProps & {
 
 const RadioGroup = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
 	// @ts-ignore
-	({ label, values, disabled, defaultValue, readOnly, ...rest }: RadioGroupProps, ref) => {
-		const radio = useRadioState({ state: defaultValue });
+	({ label, values, disabled, defaultValue, readOnly, value, ...rest }: RadioGroupProps, ref) => {
+		const radio = useRadioState({ state: value || defaultValue });
 		return (
 			values && (
 				// @ts-ignore
 				<ReakitRadioGroup as={Fieldset} legend={label} {...radio} {...rest} ref={ref}>
-					{values.map(value => (
+					{values.map(v => (
 						// @ts-ignore
 						<ReakitRadio
 							as={Radio}
 							{...radio}
 							disabled={disabled}
-							label={value}
+							label={v}
 							readOnly={readOnly}
-							value={value}
+							value={v}
 						/>
 					))}
 				</ReakitRadioGroup>
