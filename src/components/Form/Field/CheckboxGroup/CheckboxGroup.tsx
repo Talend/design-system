@@ -4,17 +4,19 @@ import { useCheckboxState, Checkbox as ReakitCheckbox } from 'reakit';
 import Fieldset from '../../Fieldset';
 import Checkbox from '../Input/Input.Checkbox';
 
-export type CheckboxGroupProps = {
+export type CheckboxGroupValues = (string | number)[];
+
+export type CheckboxGroupProps = React.PropsWithRef<any> & {
 	label?: string;
 	required?: boolean;
-	values?: string[];
-	defaultValues?: string[];
+	values?: CheckboxGroupValues;
+	defaultValues?: CheckboxGroupValues;
+	onChange?: (values: CheckboxGroupValues) => void;
 	disabled?: boolean;
 	readOnly?: boolean;
 };
 
-const CheckboxGroup = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
-	// @ts-ignore
+const CheckboxGroup = React.forwardRef<React.ReactElement, CheckboxGroupProps>(
 	(
 		{
 			defaultValues,
@@ -31,14 +33,16 @@ const CheckboxGroup = React.forwardRef<React.ReactElement, React.PropsWithChildr
 		const checkbox = useCheckboxState({ state: defaultValues });
 
 		React.useEffect(() => {
-			if (onChange) onChange(checkbox.state);
+			if (onChange && Array.isArray(checkbox.state)) {
+				onChange(checkbox.state);
+			}
 		}, [checkbox.state]);
 
 		return (
 			values && (
-				// @ts-ignore
 				<Fieldset legend={`${label}${required ? '*' : ''}`} {...rest} ref={ref}>
-					{values.map(v => (
+					{values.map((v: string | number) => (
+						// @ts-ignore
 						<ReakitCheckbox
 							as={Checkbox}
 							{...checkbox}
