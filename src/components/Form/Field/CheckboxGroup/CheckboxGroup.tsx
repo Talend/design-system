@@ -16,10 +16,24 @@ export type CheckboxGroupProps = {
 const CheckboxGroup = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
 	// @ts-ignore
 	(
-		{ defaultValues, disabled, label, readOnly, values, required, ...rest }: CheckboxGroupProps,
+		{
+			defaultValues,
+			disabled,
+			label,
+			readOnly,
+			values,
+			required,
+			onChange,
+			...rest
+		}: CheckboxGroupProps,
 		ref,
 	) => {
 		const checkbox = useCheckboxState({ state: defaultValues });
+
+		React.useEffect(() => {
+			if (onChange) onChange(checkbox.state);
+		}, [checkbox.state]);
+
 		return (
 			values && (
 				// @ts-ignore

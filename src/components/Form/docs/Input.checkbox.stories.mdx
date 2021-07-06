@@ -74,6 +74,29 @@ Use a checkbox when you want to give your recipients the opportunity to select m
 	</Story>
 </Canvas>
 
+### Checkbox group
+
+<Canvas>
+	<Story name="checkbox-group">
+		{() => {
+			const values = ['Option A', 'Option B', 'Option C'];
+			const defaultValues = ['Option B', 'Option C'];
+			const [selectedValues, setSelectedValues] = React.useState(defaultValues);
+			return (
+				<>
+					<p>Selected values: {selectedValues.join(', ')}</p>
+					<Form.CheckboxGroup
+						label="Checkbox Group"
+						values={values}
+						defaultValues={defaultValues}
+						onChange={setSelectedValues}
+					/>
+				</>
+			);
+		}}
+	</Story>
+</Canvas>
+
 ## Content
 
 Checkboxes appear as a list on UI so it's important to make their labels as parallel as possible without twisting the language too much. It’s important to have parallelism, but not at the expense of comprehension.
