@@ -1,5 +1,6 @@
 const visit = require('unist-util-visit');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 
 const tokens = require('../lib/tokens').default;
 
@@ -110,6 +111,7 @@ module.exports = {
 				codeSync: false,
 			}),
 		);
+		config.plugins.push(new VanillaExtractPlugin());
 		return config;
 	},
 };
