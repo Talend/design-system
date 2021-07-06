@@ -69,37 +69,22 @@ Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-stor
 
 <Canvas>
 	<Story name="radio-group">
-		<Form.RadioGroup
-			label="Radio Group"
-			values={['Option A', 'Option B', 'Option C']}
-			defaultValue={'Option B'}
-		/>
-	</Story>
-</Canvas>
-
-### Disabled Radio group
-
-<Canvas>
-	<Story name="radio-group--disabled">
-		<Form.RadioGroup
-			label="Disabled Radio Group"
-			values={['Option A', 'Option B', 'Option C']}
-			value={'Option B'}
-			disabled
-		/>
-	</Story>
-</Canvas>
-
-### Read only Radio group
-
-<Canvas>
-	<Story name="radio-group--readonly">
-		<Form.RadioGroup
-			label="Read only Radio Group"
-			values={['Option A', 'Option B', 'Option C']}
-			value={'Option B'}
-			readOnly
-		/>
+		{() => {
+			const values = ['Option A', 'Option B', 'Option C'];
+			const defaultValue = 'Option B';
+			const [selectedValue, setSelectedValue] = React.useState(defaultValue);
+			return (
+				<>
+					<p>Selected value: {selectedValue}</p>
+					<Form.RadioGroup
+						label="Radio Group"
+						values={values}
+						defaultValue={defaultValue}
+						onChange={setSelectedValue}
+					/>
+				</>
+			);
+		}}
 	</Story>
 </Canvas>
 

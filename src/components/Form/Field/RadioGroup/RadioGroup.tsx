@@ -9,23 +9,33 @@ import {
 import Fieldset from '../../Fieldset';
 import Radio from '../Input/Input.Radio';
 
-export type RadioGroupProps = ReakitRadioGroupProps & {
-	label?: string;
-	values?: string[];
-	value?: string;
-	defaultValue?: string;
-	readOnly: boolean;
-};
+export type RadioValue = string | number | undefined;
 
-const RadioGroup = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
-	// @ts-ignore
-	({ label, values, disabled, defaultValue, readOnly, value, ...rest }: RadioGroupProps, ref) => {
+export type RadioGroupProps = React.PropsWithRef<any> &
+	ReakitRadioGroupProps & {
+		label?: string;
+		values?: RadioValue[];
+		value?: RadioValue;
+		defaultValue?: RadioValue;
+		readOnly: boolean;
+		onChange?: (value: RadioValue) => void;
+	};
+
+const RadioGroup = React.forwardRef<React.ReactElement, RadioGroupProps>(
+	(
+		{ label, values, disabled, defaultValue, readOnly, value, onChange, ...rest }: RadioGroupProps,
+		ref,
+	) => {
 		const radio = useRadioState({ state: value || defaultValue });
+		React.useEffect(() => {
+			if (onChange) {
+				onChange(radio.state);
+			}
+		}, [radio.state]);
 		return (
 			values && (
-				// @ts-ignore
 				<ReakitRadioGroup as={Fieldset} legend={label} {...radio} {...rest} ref={ref}>
-					{values.map(v => (
+					{values.map((v: RadioValue) => (
 						// @ts-ignore
 						<ReakitRadio
 							as={Radio}
