@@ -4,6 +4,9 @@ import * as S from './Fieldset.style';
 
 export type FieldsetProps = React.PropsWithChildren<HTMLFieldSetElement> & {
 	legend?: string;
+	required?: boolean;
+	disabled?: boolean;
+	readOnly?: boolean;
 };
 
 const Fieldset = React.forwardRef<HTMLFieldSetElement, FieldsetProps>(
