@@ -1,6 +1,9 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../../docs';
+import InlineMessage from '../../InlineMessage';
+import Button from '../../Button';
 import Form from '../';
+import { useForm } from 'react-hook-form';
 
 <Meta title="Components/Form/Fields/Radio" />
 
@@ -65,24 +68,59 @@ Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-stor
 	</Story>
 </Canvas>
 
-### Radio group
+### Multiple radios
 
 <Canvas>
-	<Story name="radio-group">
+	<Story name="radios">
 		{() => {
-			const values = ['Option A', 'Option B', 'Option C'];
-			const defaultValue = 'Option B';
-			const [selectedValue, setSelectedValue] = React.useState(defaultValue);
+			const { register, handleSubmit } = useForm();
+			const [formData, setFormData] = React.useState();
 			return (
-				<>
-					<p>Selected value: {selectedValue}</p>
-					<Form.RadioGroup
-						label="Radio Group"
-						values={values}
-						defaultValue={defaultValue}
-						onChange={setSelectedValue}
-					/>
-				</>
+				<Form onSubmit={handleSubmit(setFormData)}>
+					{formData && (
+						<InlineMessage.Information
+							title={'Form data'}
+							description={JSON.stringify(formData, null, 2)}
+							withBackground
+						/>
+					)}
+					<Form.Fieldset legend="Pick one option" required>
+						<Form.Radio label="Option A" value="option-a" {...register('option')} />
+						<Form.Radio label="Option B" value="option-b" defaultChecked {...register('option')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Pick one inline option" required>
+						<Form.Row>
+							<Form.Radio label="Inline option A" value="option-a" {...register('inline-option')} />
+							<Form.Radio
+								label="Inline option B"
+								value="option-b"
+								defaultChecked
+								{...register('inline-option')}
+							/>
+						</Form.Row>
+					</Form.Fieldset>
+					<Form.Fieldset legend="Read only are sent" required readOnly>
+						<Form.Radio label="Option C" value="option-c" {...register('readonly-option')} />
+						<Form.Radio
+							label="Option D"
+							value="option-d"
+							checked
+							{...register('readonly-option')}
+						/>
+					</Form.Fieldset>
+					<Form.Fieldset legend="Disabled are not sent" required disabled>
+						<Form.Radio label="Option E" value="option-e" {...register('disabled-inline-option')} />
+						<Form.Radio
+							label="Option F"
+							value="option-f"
+							checked
+							{...register('disabled-inline-option')}
+						/>
+					</Form.Fieldset>
+					<Form.Buttons>
+						<Button.Primary type="submit">Submit</Button.Primary>
+					</Form.Buttons>
+				</Form>
 			);
 		}}
 	</Story>
@@ -119,45 +157,38 @@ Radio buttons appear as a list of two or more options on UI where users can sele
 
 ## Usage
 
-export const Template = args => <Form.RadioGroup {...args} />;
+export const Template = args => <Form.Radio {...args} />;
 
 <Canvas>
 	<Story
 		name="basic"
 		args={{
-			label: 'Radio group',
-			values: ['Option A', 'Option B', 'Option C'],
-			defaultValue: 'Option C',
+			label: 'Radio',
+			checked: false,
 			readOnly: false,
 			disabled: false,
 		}}
 		argTypes={{
 			label: {
-				description: 'Radio group label',
+				description: 'Radio label',
 				control: {
 					type: 'text',
 				},
 			},
-			values: {
-				description: 'Radio group values',
+			checked: {
+				description: 'Radio is checked or  not',
 				control: {
-					type: 'array',
-				},
-			},
-			defaultValue: {
-				description: 'Radio group default value',
-				control: {
-					type: 'text',
+					type: 'boolean',
 				},
 			},
 			readOnly: {
-				description: 'Radio group is read only or not',
+				description: 'Radio is read only or not',
 				control: {
 					type: 'boolean',
 				},
 			},
 			disabled: {
-				description: 'Radio group is disabled or not',
+				description: 'Radio is disabled or not',
 				control: {
 					type: 'boolean',
 				},
