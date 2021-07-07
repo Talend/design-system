@@ -157,7 +157,11 @@ Radio buttons appear as a list of two or more options on UI where users can sele
 
 ## Usage
 
-export const Template = args => <Form.Radio {...args} />;
+export const Template = args => {
+	const Component = Form.Radio;
+	Component.displayName = 'Form.Radio';
+	return <Component {...args} />;
+};
 
 <Canvas>
 	<Story
