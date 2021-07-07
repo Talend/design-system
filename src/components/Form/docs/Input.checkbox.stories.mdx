@@ -1,6 +1,9 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../../docs';
+import InlineMessage from '../../InlineMessage';
+import Button from '../../Button';
 import Form from '../';
+import { useForm } from 'react-hook-form';
 
 <Meta title="Components/Form/Fields/Checkbox" />
 
@@ -74,24 +77,44 @@ Use a checkbox when you want to give your recipients the opportunity to select m
 	</Story>
 </Canvas>
 
-### Checkbox group
+### Multiple checkboxes
 
 <Canvas>
-	<Story name="checkbox-group">
+	<Story name="checkboxes">
 		{() => {
-			const values = ['Option A', 'Option B', 'Option C'];
-			const defaultValues = ['Option B', 'Option C'];
-			const [selectedValues, setSelectedValues] = React.useState(defaultValues);
+			const { register, handleSubmit } = useForm();
+			const [formData, setFormData] = React.useState();
 			return (
-				<>
-					<p>Selected values: {selectedValues.join(', ')}</p>
-					<Form.CheckboxGroup
-						label="Checkbox Group"
-						values={values}
-						defaultValues={defaultValues}
-						onChange={setSelectedValues}
-					/>
-				</>
+				<Form onSubmit={handleSubmit(setFormData)}>
+					{formData && (
+						<InlineMessage.Information
+							title={'Form data'}
+							description={JSON.stringify(formData, null, 2)}
+							withBackground
+						/>
+					)}
+					<Form.Fieldset legend="Pick one or multiple options" required>
+						<Form.Checkbox label="Option A" {...register('option-a')} />
+						<Form.Checkbox label="Option B" checked {...register('option-b')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Pick one or multiple inline options" required>
+						<Form.Row>
+							<Form.Checkbox label="Inline option A" {...register('inline-option-a')} />
+							<Form.Checkbox label="Inline option B" checked {...register('inline-option-b')} />
+						</Form.Row>
+					</Form.Fieldset>
+					<Form.Fieldset legend="Read only are sent" required readOnly>
+						<Form.Checkbox label="Option C" {...register('option-c')} />
+						<Form.Checkbox label="Option D" checked {...register('option-d')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Disabled are not sent" required disabled>
+						<Form.Checkbox label="Option E" {...register('inline-option-e')} />
+						<Form.Checkbox label="Option F" checked {...register('inline-option-f')} />
+					</Form.Fieldset>
+					<Form.Buttons>
+						<Button.Primary type="submit">Submit</Button.Primary>
+					</Form.Buttons>
+				</Form>
 			);
 		}}
 	</Story>
@@ -129,40 +152,36 @@ Checkboxes appear as a list on UI so it's important to make their labels as para
 
 ## Usage
 
-export const Template = args => <Form.CheckboxGroup {...args} />;
+export const Template = args => {
+	const Component = Form.Checkbox;
+	Component.displayName = 'Form.Checkbox';
+	return <Component {...args} />;
+};
 
 <Canvas>
 	<Story
 		name="basic"
 		args={{
-			label: 'Checkbox group',
-			values: ['Option A', 'Option B', 'Option C'],
-			defaultValues: ['Option B', 'Option C'],
-			required: false,
+			label: 'Checkbox',
+			indeterminate: false,
 			readOnly: false,
 			disabled: false,
 		}}
 		argTypes={{
 			label: {
-				description: 'Checkbox group label',
+				description: 'Checkbox label',
 				control: {
 					type: 'text',
 				},
 			},
-			values: {
-				description: 'Checkbox group values',
+			indeterminate: {
+				description: 'Checkbox is indeterminate or  not',
 				control: {
-					type: 'array',
+					type: 'boolean',
 				},
 			},
-			defaultValues: {
-				description: 'Checkbox group default values',
-				control: {
-					type: 'array',
-				},
-			},
-			required: {
-				description: 'Checkbox group is required or not',
+			checked: {
+				description: 'Checkbox is checked or not',
 				control: {
 					type: 'boolean',
 				},
