@@ -8,14 +8,12 @@ export const defaultProps = {
 export const Default = {
 	args: defaultProps,
 };
-export const Default2 = {
-	args: defaultProps,
-};
 
 export const Hover = {
 	args: defaultProps,
 	decorators: [WithSelector.decorator(':hover')],
 };
+
 export const Active = { args: defaultProps, decorators: [WithSelector.decorator(':active')] };
 
 export const WithIcon = {
