@@ -1,0 +1,69 @@
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
+import { FigmaImage, FigmaLink, Use, WithSelector } from '../../../docs';
+import { IconsProvider } from '../../IconsProvider';
+
+<Meta title="Components/List/List behaviors/List resizing"/>
+
+<FigmaLink href="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/?node-id=700%3A75639" />
+
+# List resizing
+
+The user can resize a column width for more comfort. 
+
+## Zoning
+
+<FigmaImage
+	src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=555%3A433"
+	alt="List resizing - zoning"
+/>
+
+## Style
+
+## States
+
+### Hover
+
+When a column is resizable, it's visible while mouse hovering an header cells intersection.The cursor is changing when the user mouse over between two column.
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=700%3A122579"
+	alt="List resizing - hover state"
+/>
+
+### Pressed 
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=700%3A123484"
+	alt="List resizing - pressed state"
+/>
+
+### Dragging
+
+<FigmaImage
+	src="https://www.figma.com/file/YOFfHsT7Gf3FUUm74i4thw/List?node-id=700%3A124375"
+	alt="List resizing - zoning"
+/>
+
+### Not available
+
+Not all the columns are resizable, for example there is no interest to enlarge a column with only one icon inside
+
+
+## Content
+
+N/A
+
+## Interaction
+
+### Horizontal scrollbar
+
+If columns are enlarged more than the screen container width, then an horizontal scrollbar is displayed to ensure a better navigation in the screen
+
+
+## Accessibility
+
+The resize must respect the min-width
+
+
+## Usage
+
