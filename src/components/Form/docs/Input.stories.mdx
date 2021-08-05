@@ -1,13 +1,136 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import { FigmaIframe, FigmaImage } from '../../../docs';
 
 import Form from '../';
 
 <Meta title="Components/Form/Fields/Text" />
 
-# Input text
+#### Components / Forms
 
-An input enables the user to interact with and input short content and data.
+# Text input
+
+The default way of collection information through user input.
+
+<Canvas>
+	<Story name="Default">
+		<Form.Text label="Dataset name" />
+	</Story>
+</Canvas>
+
+## When to use this component
+
+Use this component when a user needs to enter a some information that is short in length and of a non-specific type.
+
+## When not to use this component
+
+Do not use this component if you expect the user to enter a large amount of content.
+
+Do not use this component if the type of content to be entered is known and can be handled with a specific, typed input component.
+
+## Using this component
+
+### Input length
+
+An input should be of a size that matches the length of the content you expect the user to enter. Correctly sized inputs give a user extra contextual clues as to what they need to do.
+
+### Consistent use of restrictions
+
+Input components provide options for restricting their use. Be consistent when using these options and understand that each option has a specific behaviour. Where possible, design your forms so that input restriction is not required. Where this is not possible, avoid situations where inputs may move frequently between open and restricted states. Always ensure that it is clear to the user why an input is restricted or why its state has changed.
+
+## Component states
+
+### With text input
+
+<Canvas>
+	<Story name="Filled">
+		<Form.Text label="Dataset name" value="Customer Data" />
+	</Story>
+</Canvas>
+
+### Disabled
+
+An input that can not be edited and is removed from the normal interaction flow of the page. Disabled inputs can not be accessed via a click, touch or <kbd>TAB</kbd> interaction. Disabled inputs may not be read out by some assistive technologies and their values are not submitted as part of the form.
+
+<Canvas>
+	<Story name="Disabled">
+		<Form.Text label="Dataset name" disabled value="Customer Data" />
+	</Story>
+</Canvas>
+
+### Read only
+
+Read-only inputs are still an interactive form element and can be accessed in the usual ways, though their values can not yet be changed. Read-only inputs afford the user with the understanding that they may become editable within the current interaction. Their values are submitted as part of the form.
+
+<Canvas>
+	<Story name="Read-only">
+		<Form.Text label="Dataset name" readOnly value="Customer Data" />
+	</Story>
+</Canvas>
+
+## Content
+
+Input labels should be written in sentence case and should always be aligned to the input that they refer to.
+
+Don't use extra punctuation at the end of labels such as colons, periods or hyphens.
+
+If your label needs to be a question, add a question mark at the end. Avoid mixing question and statement label types within the same form where possible.
+
+Do not include links within labels or add extra visual styles/treatments.
+
+Only use an acronym in a label if it has been described separately, before the form. Avoid the introduction and description of new acronyms within a form label where possible. If an acronym has not been previously described, us its full form in the input label and describe it later if relevant.
+
+## Handling errors
+
+<Canvas>
+	<Story name="Error state">
+		<Form.Text required label="Dataset name" description="Enter a dataset name" hasError value="" />
+	</Story>
+</Canvas>
+
+Error messages should follow [error message guidance](). Be concise, consistent and specific.
+
+## Try this component
+
+<Canvas>
+	<Story
+		name="Playground"
+		args={{
+			required: false,
+			disabled: false,
+			readOnly: false,
+			hasError: false,
+			hasWarning: false,
+			label: 'Dataset name',
+			description: '',
+			value: 'Customer Data',
+		}}
+	>
+		{({
+			description,
+			disabled,
+			hasError,
+			hasWarning,
+			label,
+			readOnly,
+			required,
+			value,
+			...rest
+		}) => (
+			<Form.Text
+				disabled={disabled}
+				readOnly={readOnly}
+				hasError={hasError}
+				hasWarning={hasWarning}
+				required={required}
+				label={label}
+				value={value}
+				description={description}
+			/>
+		)}
+	</Story>
+</Canvas>
+
+<ArgsTable story="Playground" />
 
 ## Zoning
 
@@ -16,65 +139,19 @@ An input enables the user to interact with and input short content and data.
 	alt="zoning image for inputs"
 />
 
-## Style
-
-<FigmaIframe
-	light="https://www.figma.com/file/610Qgbz9dEHyTTkGeYHZh4/Inputs?node-id=0%3A132"
-	dark="https://www.figma.com/file/610Qgbz9dEHyTTkGeYHZh4/Inputs?node-id=0%3A68"
-/>
-
-## States
-
-### Default
-
-<Canvas>
-	<Story name="default">
-		<Form.Text label="Default input" placeholder="Lorem ipsum" />
-	</Story>
-</Canvas>
-
-### Filled
-
-<Canvas>
-	<Story name="filled">
-		<Form.Text label="Filled input" value="Lorem ipsum" />
-	</Story>
-</Canvas>
-
-### Disabled
-
-<Canvas>
-	<Story name="disabled">
-		<Form.Text label="Disabled input" disabled value="Lorem ipsum" />
-	</Story>
-</Canvas>
-
-### Read only
-
-<Canvas>
-	<Story name="read-only">
-		<Form.Text label="Read-only input" readOnly value="Lorem ipsum" />
-	</Story>
-</Canvas>
-
-## Content
-
-N/C
-
-## Interactions
-
-N/C
-
-## Usage
-
-N/C
-
 ## Accessibility
 
-Press <kbd>TABS</kbd> to focus on an input
+### Features
 
-## Changelog
+Input descriptions include the `aria-live` property and will request that screen readers announce changes to their content. Changes are given the `polite` status and so will only be announced when the screen reader next becomes idle.
 
-| Date       | Author     | Description |
-| ---------- | ---------- | ----------- |
-| 06/15/2020 | Monia Huet | Init page   |
+### Considerations
+
+Large groups of text inputs can become visually overwhelming, especially when they share a consistent length. While large groups of inputs should generally be avoided, it is advised to use content hierarchy and relevant input lengths to overcome this issue.
+
+## Research on this component
+
+## Related patterns
+
+- [Account creation]()
+- [Log in]()
