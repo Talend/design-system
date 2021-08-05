@@ -89,6 +89,18 @@ Only use an acronym in a label if it has been described separately, before the f
 
 Error messages should follow [error message guidance](). Be concise, consistent and specific.
 
+#### If the input is empty
+
+"Enter a dataset name"
+
+#### If the input is too long
+
+"Dataset name must be 50 characters or fewer"
+
+#### If the input includes characters that are not allowed
+
+"Dataset name must only include letter, number, hyphens and spaces"
+
 ## Try this component
 
 <Canvas>
@@ -150,6 +162,8 @@ Input descriptions include the `aria-live` property and will request that screen
 Large groups of text inputs can become visually overwhelming, especially when they share a consistent length. While large groups of inputs should generally be avoided, it is advised to use content hierarchy and relevant input lengths to overcome this issue.
 
 ## Research on this component
+
+As an input for non-specific information, you should be prepared for your users to enter a diverse range of content in this type of input. It can help to provide a description or example of common usage but you should not expect your user to follow this content.
 
 ## Related patterns
 
