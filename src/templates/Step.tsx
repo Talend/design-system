@@ -24,7 +24,7 @@ const Row = styled(Box)`
 const Step: React.FC<StepByStepProps> = ({ header, children, stepper }: StepByStepProps) => (
 	<Layout hasScreenHeight header={header}>
 		<Row background={tokens.colors.gray[0]}>
-			<Box width={20}>{stepper}</Box>
+			<Box width={25}>{stepper}</Box>
 			<Box>{children}</Box>
 		</Row>
 	</Layout>
