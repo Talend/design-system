@@ -10,9 +10,10 @@ export const Nav = styled.nav.attrs({
 	className: 'c-menu',
 })<{ isCollapsed: boolean; variant: string }>`
 	position: relative;
-	flex: 0 1 ${({ isCollapsed }) => (isCollapsed ? '6rem' : '20rem')};
+	flex: 0 1 auto;
 	max-width: ${({ isCollapsed }) => (isCollapsed ? '6rem' : 'auto')};
 	min-height: 100%;
+	width: ${({ isCollapsed }) => (isCollapsed ? '6rem' : '20rem')};
 	color: ${tokens.colors.gray[0]};
 	background: ${tokens.colors.twilight.backgroundImage};
 	transition: flex-basis ${tokens.transitions.normal};
