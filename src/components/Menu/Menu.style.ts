@@ -12,7 +12,7 @@ export const Nav = styled.nav.attrs({
 	position: relative;
 	flex: 0 1 auto;
 	min-width: ${({ isCollapsed }) => (isCollapsed ? '6rem' : '20rem')};
-	max-width: ${({ isCollapsed }) => (isCollapsed ? '6rem' : 'auto')};
+	max-width: ${({ isCollapsed }) => (isCollapsed ? '6rem' : '40rem')};
 	min-height: 100%;
 	color: ${tokens.colors.gray[0]};
 	background: ${tokens.colors.twilight.backgroundImage};
