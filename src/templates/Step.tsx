@@ -10,9 +10,9 @@ export type StepByStepProps = PropsWithChildren<any> & {
 	stepper?: StepperProps;
 };
 
-const Box = styled.div<{ width?: number }>`
+const Box = styled.div<{ background?: string; width?: number }>`
 	width: ${({ width }) => (width ? 'auto' : '100%')};
-	background: ${({ theme }) => theme.colors.backgroundColor || tokens.colors.transparent};
+	background: ${({ background }) => background || tokens.colors.transparent};
 `;
 
 const Row = styled(Box)`
@@ -23,7 +23,7 @@ const Row = styled(Box)`
 
 const Step: React.FC<StepByStepProps> = ({ header, children, stepper }: StepByStepProps) => (
 	<Layout hasScreenHeight header={header}>
-		<Row>
+		<Row background={tokens.colors.gray[0]}>
 			<Box width={25}>{stepper}</Box>
 			<Box>{children}</Box>
 		</Row>
