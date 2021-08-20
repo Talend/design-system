@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build Storybook
-        run: npm run build:lib && npm build-storybook -s static
+        run: npm run build:lib && npm run build-storybook -s static
       - name: Serve Storybook
         run: npx serve storybook-static &
       - name: Test using Applitools
