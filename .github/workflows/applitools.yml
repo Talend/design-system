@@ -20,4 +20,4 @@ jobs:
         with:
           node-version: '14'
       - name: Test using Applitools
-        run: npx @applitools/eyes-storybook -u https://deploy-preview-{{ github.event.number }}--gifted-tesla-96fe2e.netlify.app
+        run: npx @applitools/eyes-storybook
