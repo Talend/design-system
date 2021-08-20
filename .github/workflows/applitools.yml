@@ -1,4 +1,4 @@
-name: [Applitools] Visual regression testing
+name: Visual regression testing using Applitools
 
 on:
   push:
