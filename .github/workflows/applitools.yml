@@ -17,11 +17,5 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Install dependencies
-        run: npm install
-      - name: Build Storybook
-        run: npm run build:lib && npm run build-storybook -s static
-      - name: Serve Storybook
-        run: npx serve storybook-static &
-      - name: Test using Applitools
-        run: sleep 5 && npx @applitools/eyes-storybook -u http://localhost:5000/
+      - name: Visual regression testing using Applitools
+        run: npx @applitools/eyes-storybook -u https://deploy-preview-201--gifted-tesla-96fe2e.netlify.app
