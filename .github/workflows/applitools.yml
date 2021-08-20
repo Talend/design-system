@@ -1,0 +1,25 @@
+name: [Applitools] Visual regression testing
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+env:
+  APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_TOKEN }}
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+     - uses: actions/setup-node@v2
+       with:
+         node-version: '14'
+      - name: Install dependencies
+        run: yarn
+      - name: Test using Applitools
+        run: npx eyes-storybook
