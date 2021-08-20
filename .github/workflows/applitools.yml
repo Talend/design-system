@@ -18,4 +18,4 @@ jobs:
         with:
           node-version: '14'
       - name: Visual regression testing using Applitools
-        run: npx @applitools/eyes-storybook -u https://deploy-preview-${{ github.event.pull_request.number }}--gifted-tesla-96fe2e.netlify.app/
+        run: npx @applitools/eyes-storybook
