@@ -8,6 +8,7 @@ on:
 
 env:
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_TOKEN }}
+  APPLITOOLS_BATCH_ID: ${{ github.sha }}
 
 jobs:
   run-tests:
@@ -17,5 +18,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: Log Git SHA
+        run: echo "$GITHUB_SHA"
       - name: Visual regression testing using Applitools
         run: npx @applitools/eyes-storybook
