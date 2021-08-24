@@ -20,10 +20,10 @@ jobs:
           node-version: '14'
       - name: Log Git SHA
         run: echo "$GITHUB_SHA"
+      - name: Install dependencies
+        run: yarn
       - name: Build Storybook
-        run: |
-          yarn
-          yarn build-storybook
+        run: yarn build-storybook
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
