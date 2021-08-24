@@ -20,10 +20,17 @@ jobs:
           node-version: '14'
       - name: Log Git SHA
         run: echo "$GITHUB_SHA"
-      - run: cd $GITHUB_WORKSPACE
-      - run: npm i --legacy-peer-deps
+      - name: Build Storybook
+        run: |
+          yarn
+          yarn build-storybook
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3yarn
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./storybook-static
       - name: Visual regression testing using Applitools
-        run: npx eyes-storybook --conf applitools.config.js
+        run: npx eyes-storybook
   batch-completion-notification:
     needs: run-tests
     if: always()
