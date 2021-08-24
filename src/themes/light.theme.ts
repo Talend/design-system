@@ -5,7 +5,7 @@ import tokens from '../tokens';
 const colors = tokens.colors;
 
 const palette = {
-	primaryColor: colors.deepBlue,
+	primaryColor: colors.moodyPurple,
 	informationColor: colors.lochmara,
 	warningColor: colors.jaffa,
 	successColor: colors.rioGrande,
