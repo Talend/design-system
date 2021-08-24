@@ -4,5 +4,5 @@ module.exports = {
 	batchId: process.env.APPLITOOLS_BATCH_ID,
 	batchName: 'Design System - Storybook',
 	showLogs: false,
-	waitBeforeScreenshot: '.tc-iconsprovider #talend-logo',
+	waitBeforeScreenshot: 250,
 };
