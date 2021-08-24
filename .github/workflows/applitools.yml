@@ -20,9 +20,10 @@ jobs:
           node-version: '14'
       - name: Log Git SHA
         run: echo "$GITHUB_SHA"
+      - run: cd $GITHUB_WORKSPACE
+      - run: npm i --legacy-peer-deps
       - name: Visual regression testing using Applitools
-        run: npx @applitools/eyes-storybook
-  
+        run: npx eyes-storybook --conf applitools.config.js
   batch-completion-notification:
     needs: run-tests
     if: always()
