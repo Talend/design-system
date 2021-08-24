@@ -20,23 +20,11 @@ jobs:
           node-version: '14'
       - name: Log Git SHA
         run: echo "$GITHUB_SHA"
+      - name: View files
+        run: tree -h -L 1
       - name: Install dependencies
-        run: yarn
+        run: npm i
       - name: Build Storybook
-        run: yarn build-storybook
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./storybook-static
+        run: npm run build-storybook
       - name: Visual regression testing using Applitools
         run: npx eyes-storybook
-  batch-completion-notification:
-    needs: run-tests
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Update Applitools batch status 
-        uses: wei/curl@v1.1.1
-        with:
-          args: -d "" -X POST https://eyesapi.applitools.com/api/externals/github/servers/github.com/commit/${{ env.APPLITOOLS_BATCH_ID }}/complete?apiKey=${{ secrets.APPLITOOLS_API_KEY }}
