@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><title>Storybook</title><meta name="viewport" content="width=device-width,initial-scale=1"/><style>html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }</style><script>/* globals window */
+  /* eslint-disable no-underscore-dangle */
+  try {
+    if (window.top !== window) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.top.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('unable to connect to top frame for connecting dev tools');
+  }
+
+  window.onerror = function onerror(message, source, line, column, err) {
+    if (window.CONFIG_TYPE !== 'DEVELOPMENT') return;
+    // eslint-disable-next-line no-var, vars-on-top
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('POST', '/runtime-error');
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.send(
+      JSON.stringify({
+        /* eslint-disable object-shorthand */
+        message: message,
+        source: source,
+        line: line,
+        column: column,
+        error: err && { message: err.message, name: err.name, stack: err.stack },
+        origin: 'manager',
+        /* eslint-enable object-shorthand */
+      })
+    );
+  };</script><meta name="description" content="Coral, the Talend Design System"><link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"><link rel="manifest" href="/favicon/site.webmanifest"><link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ff6d70"><meta name="msapplication-TileColor" content="#19426c"><meta name="theme-color" content="#19426c"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Talend Coral"><meta name="twitter:description" content="Coral, the Talend Design System"><meta name="twitter:image:src" content="https://design.talend.com/coral_small.jpg"><meta name="og:title" content="Talend Coral"><meta name="og:description" content="Coral, the Talend Design System"><meta name="og:image" content="https://design.talend.com/coral.jpg"><meta name="og:url" content="https://design.talend.com"><meta name="og:type" content="website"><link rel="preconnect" href="https://fonts.gstatic.com"/><link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"/><style>.sidebar-subheading.sidebar-subheading {
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: normal;
+		text-transform: none;
+		color: #202020;
+	}
+
+	.sidebar-item.sidebar-item {
+		font-size: 14px;
+	}
+
+	button.sidebar-item.sidebar-item svg {
+		color: #19426c;
+	}
+
+	a.sidebar-item.sidebar-item svg {
+		color: #0675c1;
+	}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-SKZ28FFREW"></script><script>window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+
+	gtag('config', 'G-SKZ28FFREW');</script><style>#root[hidden],
+      #docs-root[hidden] {
+        display: none !important;
+      }</style></head><body><div id="root"></div><div id="docs-root"></div><script>window['CONFIG_TYPE'] = "PRODUCTION";
+            
+        
+            
+              window['LOGLEVEL'] = "info";
+            
+        
+            
+        
+            
+        
+            
+              window['DOCS_MODE'] = true;</script><script src="runtime~main.7f6ee06b8453a9f645ab.manager.bundle.js"></script><script src="vendors~main.bd5b4ce5c09d496acc22.manager.bundle.js"></script><script src="main.7f9f26ca7960303e036d.manager.bundle.js"></script></body></html>
