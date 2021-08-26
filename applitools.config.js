@@ -13,7 +13,7 @@ module.exports = {
 		{ width: 1366, height: 768, name: 'edgechromium' },
 		{ width: 1366, height: 768, name: 'edgechromium-one-version-back' },
 	],
-	showLogs: false,
-	testConcurrency: 10,
-	waitBeforeScreenshot: 250,
+	showLogs: true,
+	testConcurrency: 50,
+	waitBeforeScreenshot: '.tc-iconsprovider #talend-logo',
 };
