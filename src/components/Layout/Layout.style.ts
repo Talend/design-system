@@ -37,6 +37,13 @@ export const Nav = styled.nav.attrs({
 	flex-direction: column;
 `;
 
+export const Content = styled.div.attrs({})`
+	position: relative;
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+`;
+
 export const Main = styled.main.attrs({
 	role: 'main',
 })<LayoutProps>`
@@ -54,40 +61,12 @@ export const Main = styled.main.attrs({
 			: ''};
 `;
 
-export const AsideOverlay = styled.div`
-	position: relative;
-	display: flex;
-	flex: 1;
-
-	main {
-		&:before,
-		&:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-		}
-
-		&::before {
-			pointer-events: none;
-		}
-
-		&::after {
-			background: ${transparentize(0.3, tokens.colors.gray[900])};
-			cursor: pointer;
-		}
-	}
-`;
-
 export const Aside = styled.aside`
 	position: absolute;
 	display: flex;
 	top: 0;
 	right: 0;
 	bottom: 0;
-	width: 50rem;
 	max-width: 100vw;
 	background: ${({ theme }) => theme.colors.backgroundColor};
 	box-shadow: -5px 0px 20px 5px ${tokens.colors.gray[500]};

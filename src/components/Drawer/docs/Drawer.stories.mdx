@@ -1,0 +1,79 @@
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
+import { FigmaImage, FigmaLink, Use } from '../../../docs';
+
+import Drawer from '../';
+
+import * as Stories from '../Drawer.stories';
+
+<Meta title="Components/Drawer" component={Drawer} />
+
+# Drawer
+
+Drawer slides into the screen from the right side and is placed visually over the content of the page.
+It aims to display extra information while keeping the navigation enabled on the main content.
+
+## Zoning
+
+<FigmaImage
+	src="https://www.figma.com/file/qc8oUSyVJM67gSsbTShftt/%F0%9F%93%90-Zoning?node-id=744%3A263"
+	alt="zoning image for drawers"
+/>
+
+## Style
+
+<FigmaIframe
+	light="https://www.figma.com/file/x0RxG7E0CzVWDycXtNgq7H/Drawer?node-id=1%3A83"
+	dark="https://www.figma.com/file/x0RxG7E0CzVWDycXtNgq7H/Drawer?node-id=1%3A105"
+/>
+
+### Variations
+
+<Canvas>
+	<Story story={Stories.Simple} />
+</Canvas>
+
+## States
+
+TODO
+
+## Content
+
+TODO
+
+## Interaction
+
+TODO
+
+## Accessibility
+
+TODO
+
+## Usage
+
+<Canvas>
+	<Story
+		name="usage"
+		args={{
+			visible: true,
+			children: 'Lorem ipsum',
+		}}
+		argTypes={{
+			size: {
+			visible: {
+				name: 'Drawer is visible or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+                title: {},
+			children: {
+				name: 'Drawer content',
+			},
+                footer: {},
+		}}
+	>
+		{args => <Drawer {...args} />}
+	</Story>
+</Canvas>
+
+<ArgsTable story="usage" />

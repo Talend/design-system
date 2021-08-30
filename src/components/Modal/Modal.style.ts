@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import {
-	Dialog as ReakitDialog,
 	DialogDisclosure as ReakitDialogDisclosure,
 	DialogBackdrop as ReakitDialogBackdrop,
 } from 'reakit';

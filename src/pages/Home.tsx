@@ -5,8 +5,8 @@ import Menu from './blocks/Menu';
 
 import Template from '../templates';
 
-const Home = ({ children }) => (
-	<Template.List header={<Header />} nav={<Menu />}>
+const Home = ({ children, ...rest }) => (
+	<Template.List header={<Header />} nav={<Menu />} {...rest}>
 		{children}
 	</Template.List>
 );
