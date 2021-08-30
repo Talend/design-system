@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { transparentize } from 'polished';
+
 import tokens from '../../tokens';
 
 export type LayoutProps = {
@@ -38,15 +38,15 @@ export const Nav = styled.nav.attrs({
 `;
 
 export const Content = styled.div.attrs({})`
-	position: relative;
 	display: flex;
 	flex: 1;
-	overflow: hidden;
 `;
 
 export const Main = styled.main.attrs({
 	role: 'main',
 })<LayoutProps>`
+	flex-shrink: 0;
+	flex-basis: 100%;
 	display: flex;
 	color: ${({ theme }) => theme.colors.textColor};
 	background: ${tokens.colors.deepBlue[100]};
@@ -62,14 +62,11 @@ export const Main = styled.main.attrs({
 `;
 
 export const Aside = styled.aside`
-	position: absolute;
+	position: relative;
+	flex-shrink: 0;
+	flex-basis: 30vw;
 	display: flex;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	max-width: 100vw;
-	background: ${({ theme }) => theme.colors.backgroundColor};
-	box-shadow: -5px 0px 20px 5px ${tokens.colors.gray[500]};
+	flex-direction: column;
 `;
 
 export const Footer = styled.footer.attrs({

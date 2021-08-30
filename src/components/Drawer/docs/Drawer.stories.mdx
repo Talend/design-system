@@ -1,11 +1,22 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
-import { FigmaImage, FigmaLink, Use } from '../../../docs';
+import { FigmaImage, FigmaIframe, FigmaLink, Use } from '../../../docs';
 
 import Drawer from '../';
 
 import * as Stories from '../Drawer.stories';
 
-<Meta title="Components/Drawer" component={Drawer} />
+<Meta
+	title="Components/Drawer"
+	component={Drawer}
+	decorators={[
+		storyFn => (
+			<div style={{ display: 'flex', height: '20vh', border: '1px solid', overflow: 'hidden' }}>
+				<div style={{ flexShrink: 0, flexBasis: '100%' }}></div>
+				<div style={{ position: 'relative', flexShrink: 0, flexBasis: '40%' }}>{storyFn()}</div>
+			</div>
+		),
+	]}
+/>
 
 # Drawer
 
@@ -55,21 +66,22 @@ TODO
 		name="usage"
 		args={{
 			visible: true,
-			children: 'Lorem ipsum',
+			title: 'Title',
+			children: 'Content',
 		}}
 		argTypes={{
-			size: {
 			visible: {
 				name: 'Drawer is visible or not',
 				control: {
 					type: 'boolean',
 				},
 			},
-                title: {},
+			title: {
+				name: 'Drawer title',
+			},
 			children: {
 				name: 'Drawer content',
 			},
-                footer: {},
 		}}
 	>
 		{args => <Drawer {...args} />}
