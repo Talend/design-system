@@ -5,12 +5,21 @@ import Drawer from '../';
 
 import * as Stories from '../Drawer.stories';
 
+import tokens from '../../../tokens';
+
 <Meta
 	title="Components/Drawer"
 	component={Drawer}
 	decorators={[
 		storyFn => (
-			<div style={{ display: 'flex', height: '20vh', border: '1px solid', overflow: 'hidden' }}>
+			<div
+				style={{
+					display: 'flex',
+					height: '20vh',
+					border: `1px solid ${tokens.colors.gray[400]}`,
+					overflow: 'hidden',
+				}}
+			>
 				<div style={{ flexShrink: 0, flexBasis: '100%' }}></div>
 				<div style={{ position: 'relative', flexShrink: 0, flexBasis: '40%' }}>{storyFn()}</div>
 			</div>
