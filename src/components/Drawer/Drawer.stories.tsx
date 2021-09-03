@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const defaultProps = {
 	title: 'Drawer title',
 	children: 'Drawer content',
