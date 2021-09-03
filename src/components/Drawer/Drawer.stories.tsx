@@ -1,7 +1,10 @@
+import React from 'react';
+import { Area } from '../../docs';
+
 export const defaultProps = {
-	title: 'Drawer title',
-	children: 'Drawer content',
-	footer: 'Drawer footer',
+	title: <Area>Heading</Area>,
+	children: <Area>Body</Area>,
+	footer: <Area>Footer</Area>,
 	visible: true,
 };
 
