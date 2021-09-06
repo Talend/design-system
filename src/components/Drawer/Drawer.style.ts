@@ -29,7 +29,7 @@ export const Drawer = styled.div.attrs({
 	bottom: 0;
 	color: var(--c-drawer--color);
 	background: var(--c-drawer--background);
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: ${tokens.shadows.above};
 	z-index: ${tokens.zIndices.above};
 	transition: ${tokens.transitions.normal};
 	transform: translateX(100%);
