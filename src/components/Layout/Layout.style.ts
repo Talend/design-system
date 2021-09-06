@@ -45,6 +45,7 @@ export const Content = styled.div.attrs({})`
 export const Main = styled.main.attrs({
 	role: 'main',
 })<LayoutProps>`
+	position: relative;
 	flex-shrink: 0;
 	flex-basis: 100%;
 	display: flex;
@@ -56,18 +57,11 @@ export const Main = styled.main.attrs({
 			? `
 		flex-grow: 1; 
 		min-height: 0; 
-		overflow: auto;
     `
 			: ''};
 `;
 
-export const Aside = styled.aside`
-	position: relative;
-	flex-shrink: 0;
-	flex-basis: 30vw;
-	display: flex;
-	flex-direction: column;
-`;
+export const Aside = styled.aside``;
 
 export const Footer = styled.footer.attrs({
 	role: 'contentinfo',

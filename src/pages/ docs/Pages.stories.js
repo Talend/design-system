@@ -9,6 +9,11 @@ import Drawer from '../../components/Drawer';
 
 export default {
 	title: 'Pages/Pages',
+	parameters: {
+		docs: {
+			iframeHeight: 500,
+		},
+	},
 };
 
 const LoginPageWith = ({ children }) => (
@@ -70,45 +75,24 @@ export const PasswordRecovery = () => (
 	</LoginPageWith>
 );
 
-const Table = ({ onTitleClick }) => (
-	<table>
-		{Array(10)
-			.fill()
-			.map((_, rowIndex) => (
-				<tr key={rowIndex}>
-					{Array(10)
-						.fill()
-						.map((_, cellIndex) =>
-							cellIndex === 0 ? (
-								<td key={`title-${rowIndex}`}>
-									<Button onClick={() => onTitleClick(rowIndex)}>Resource {rowIndex + 1}</Button>
-								</td>
-							) : (
-								<td key={`cell-${rowIndex}-${cellIndex}`}>Cell {cellIndex + 1}</td>
-							),
-						)}
-				</tr>
-			))}
-	</table>
-);
-
-const ResourceDrawer = ({ resourceId }) => {
-	const [visible, setVisible] = React.useState();
+const ItemDrawer = ({ itemId, isActive, onToggle }) => {
+	const [visible, setVisible] = React.useState(false);
 
 	React.useEffect(() => {
-		if (resourceId >= 0) {
-			setVisible(true);
-		}
-	}, [resourceId]);
+		setVisible(isActive);
+	}, [isActive]);
 
 	return (
-		<Drawer
-			visible={visible}
-			title={<h3>Resource {resourceId + 1}</h3>}
-			footer={<Button.Secondary onClick={() => setVisible(false)}>Close</Button.Secondary>}
-		>
-			Resource {resourceId + 1} details
-		</Drawer>
+		<>
+			<Drawer
+				disclosure={<Button onClick={() => onToggle(itemId)}>Item {itemId + 1}</Button>}
+				title={<h3>Item {itemId + 1}</h3>}
+				footer={<Button.Secondary onClick={() => setVisible(false)}>Close</Button.Secondary>}
+				visible={visible}
+			>
+				Item {itemId + 1} details
+			</Drawer>
+		</>
 	);
 };
 
@@ -116,8 +100,30 @@ export const Home = () => {
 	const [selected, setSelected] = React.useState();
 
 	return (
-		<Page.Home aside={<ResourceDrawer resourceId={selected} />}>
-			<Table onTitleClick={setSelected} />
+		<Page.Home>
+			<table>
+				{Array(10)
+					.fill()
+					.map((_, rowIndex) => (
+						<tr key={rowIndex}>
+							{Array(10)
+								.fill()
+								.map((_, cellIndex) =>
+									cellIndex === 0 ? (
+										<td key={`title-${rowIndex}`}>
+											<ItemDrawer
+												itemId={rowIndex}
+												isActive={selected === rowIndex}
+												onToggle={setSelected}
+											/>
+										</td>
+									) : (
+										<td key={`cell-${rowIndex}-${cellIndex}`}>Cell {cellIndex + 1}</td>
+									),
+								)}
+						</tr>
+					))}
+			</table>
 		</Page.Home>
 	);
 };

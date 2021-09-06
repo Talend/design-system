@@ -14,14 +14,13 @@ import tokens from '../../../tokens';
 		storyFn => (
 			<div
 				style={{
-					display: 'flex',
-					height: '40vh',
+					position: 'relative',
+					height: '500px',
 					border: `1px solid ${tokens.colors.gray[400]}`,
 					overflow: 'hidden',
 				}}
 			>
-				<div style={{ flexShrink: 0, flexBasis: '100%' }}></div>
-				<div style={{ position: 'relative', flexShrink: 0, flexBasis: '40%' }}>{storyFn()}</div>
+				{storyFn()}
 			</div>
 		),
 	]}
@@ -49,7 +48,9 @@ It aims to display extra information while keeping the navigation enabled on the
 
 ### Variations
 
-<Story story={Stories.Simple} />
+<Canvas withSource="none">
+	<Story story={Stories.Simple} height="500px" />
+</Canvas>
 
 ## States
 
@@ -61,11 +62,9 @@ Drawers are “optional” content living on top of primary content. Since they 
 
 If you need more space, use [full-page layout]().
 
-Footer can contain
+Footer can contain only calls to action.
 
 ## Interaction
-
-Close button is mandatory to hide the current Drawer.
 
 Drawer Heading and Footer zones are fixed; the Content zone can display a scrollbar when its content overflows.
 
@@ -80,6 +79,7 @@ When Drawer is visible, disclosure has `aria-expanded` set to `true`. When Drawe
 <Canvas>
 	<Story
 		name="usage"
+		height="500px"
 		args={{
 			visible: true,
 			title: 'Title',

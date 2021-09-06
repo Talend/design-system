@@ -1,36 +1,42 @@
 import React from 'react';
-import { Dialog as ReakitDialog, DialogProps, useDialogState } from 'reakit';
+import { DisclosureProps, Disclosure, DisclosureContent, useDisclosureState } from 'reakit';
 
 import * as S from './Drawer.style';
 
-export type DrawerProps = DialogProps & {
+export type DrawerProps = DisclosureProps & {
 	disclosure: React.ComponentPropsWithRef<any>;
-	title?: string;
-	subtitle?: string;
-	footer: React.ComponentPropsWithRef<any>;
-	onClose?: () => void;
-	onValidate?: () => void;
+	title?: React.ComponentPropsWithRef<any>;
+	footer?: React.ComponentPropsWithRef<any>;
+	visible: boolean;
 };
 
 export const Drawer = React.forwardRef<React.ReactElement, React.PropsWithChildren<any>>(
-	(
-		{ disclosure, children, title, subtitle, onClose, onValidate, footer, ...props }: DrawerProps,
-		ref,
-	) => {
-		const dialog = useDialogState({ animated: true, modal: false });
+	({ disclosure, children, title, footer, visible, ...props }: DrawerProps, ref) => {
+		const state = useDisclosureState({ animated: true, visible });
+
+		React.useEffect(() => {
+			state.setVisible(visible);
+		}, [visible]);
 
 		return (
 			<>
 				{disclosure && (
-					<S.DrawerDisclosure {...dialog} ref={disclosure.ref} {...disclosure.props}>
+					<Disclosure
+						as={S.DrawerDisclosure}
+						{...disclosure}
+						ref={disclosure.ref}
+						{...disclosure.props}
+					>
 						{disclosureProps => React.cloneElement(disclosure, disclosureProps)}
-					</S.DrawerDisclosure>
+					</Disclosure>
 				)}
-				<ReakitDialog {...dialog} hideOnClickOutside={false} {...props} as={S.Drawer} ref={ref}>
-					{title && <S.Heading>{title}</S.Heading>}
-					{children && <S.Body>{children}</S.Body>}
-					{footer && <S.Footer>{footer}</S.Footer>}
-				</ReakitDialog>
+				{state.visible && (
+					<DisclosureContent {...state} {...props} as={S.Drawer} ref={ref}>
+						{title && <S.DrawerHeading>{title}</S.DrawerHeading>}
+						{children && <S.DrawerBody>{children}</S.DrawerBody>}
+						{footer && <S.DrawerFooter>{footer}</S.DrawerFooter>}
+					</DisclosureContent>
+				)}
 			</>
 		);
 	},

@@ -8,44 +8,54 @@ export const DrawerDisclosure = ReakitDialogDisclosure;
 export const Drawer = styled.div.attrs({
 	className: 'c-drawer',
 })`
+	--c-drawer--color: var(--drawer--color, ${({ theme }) => theme.colors.textColor});
+	--c-drawer--background: var(--drawer--background, ${({ theme }) => theme.colors.modalBackground});
+	--c-drawer--heading--background: var(
+		--drawer--heading--background,
+		${({ theme }) => theme.colors.modalHeadingBackground}
+	);
+	--c-drawer--heading--border-color: var(
+		--drawer-heading--border-color,
+		${({ theme }) => theme.colors.modalHeadingBorderColor}
+	);
+
 	position: absolute;
+	flex-shrink: 0;
+	width: 30vw;
+	display: flex;
+	flex-direction: column;
 	top: 0;
 	right: 0;
 	bottom: 0;
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	color: ${({ theme }) => theme.colors.textColor};
-	background: ${({ theme }) => theme.colors.backgroundColor};
-	box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.25);
+	color: var(--c-drawer--color);
+	background: var(--c-drawer--background);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 	z-index: ${tokens.zIndices.above};
 	transition: ${tokens.transitions.normal};
-	transform: translateX(0);
+	transform: translateX(100%);
 
 	&[data-enter] {
-		transform: translateX(-100%);
+		transform: translateX(0);
 	}
 `;
-export const Area = styled.div`
+export const DrawerArea = styled.div`
 	flex-grow: 0;
 	flex-basis: 5.5rem;
-	padding: 3rem;
-	color: ${({ theme }) => theme.colors.textColor};
-	background-color: ${({ theme }) => theme.colors.modalBackground};
+	padding: ${tokens.space.xl};
 `;
-export const Heading = styled(Area).attrs({
-	className: 'c-drawer--heading',
+export const DrawerHeading = styled(DrawerArea).attrs({
+	className: 'c-drawer__heading',
 })`
-	padding: 1.5rem 3rem;
-	background: ${({ theme }) => theme.colors.modalHeadingBackground};
-	border-bottom: 1px solid ${({ theme }) => theme.colors.modalHeadingBorderColor};
+	padding: ${tokens.space.m} ${tokens.space.xl};
+	background: var(--c-drawer--heading--background);
+	border-bottom: 1px solid var(--c-drawer--heading--border-color);
 `;
-export const Body = styled(Area).attrs({
-	className: 'c-drawer--body',
+export const DrawerBody = styled(DrawerArea).attrs({
+	className: 'c-drawer__body',
 })`
 	flex-grow: 1;
+	overflow: auto;
 `;
-export const Footer = styled(Area).attrs({
-	className: 'c-drawer--footer',
+export const DrawerFooter = styled(DrawerArea).attrs({
+	className: 'c-drawer__footer',
 })``;
