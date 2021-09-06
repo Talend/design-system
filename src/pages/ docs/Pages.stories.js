@@ -75,7 +75,7 @@ export const PasswordRecovery = () => (
 	</LoginPageWith>
 );
 
-const ItemDrawer = ({ itemId, isActive, onToggle }) => {
+const ItemWithDetails = ({ itemId, isActive, onClick }) => {
 	const [visible, setVisible] = React.useState(false);
 
 	React.useEffect(() => {
@@ -85,8 +85,8 @@ const ItemDrawer = ({ itemId, isActive, onToggle }) => {
 	return (
 		<>
 			<Drawer
-				disclosure={<Button onClick={() => onToggle(itemId)}>Item {itemId + 1}</Button>}
-				title={<h3>Item {itemId + 1}</h3>}
+				disclosure={<Button onClick={() => onClick(itemId)}>Item {itemId + 1}</Button>}
+				heading={<h3>Item {itemId + 1}</h3>}
 				footer={<Button.Secondary onClick={() => setVisible(false)}>Close</Button.Secondary>}
 				visible={visible}
 			>
@@ -111,10 +111,10 @@ export const Home = () => {
 								.map((_, cellIndex) =>
 									cellIndex === 0 ? (
 										<td key={`title-${rowIndex}`}>
-											<ItemDrawer
+											<ItemWithDetails
 												itemId={rowIndex}
 												isActive={selected === rowIndex}
-												onToggle={setSelected}
+												onClick={setSelected}
 											/>
 										</td>
 									) : (

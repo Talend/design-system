@@ -82,21 +82,21 @@ When Drawer is visible, disclosure has `aria-expanded` set to `true`. When Drawe
 		height="500px"
 		args={{
 			visible: true,
-			title: 'Title',
-			children: 'Content',
+			heading: 'Heading',
+			children: 'Body',
 		}}
 		argTypes={{
 			visible: {
-				name: 'Drawer is visible or not',
+				name: 'Drawer visibility',
 				control: {
 					type: 'boolean',
 				},
 			},
-			title: {
-				name: 'Drawer title',
+			heading: {
+				name: 'Drawer heading',
 			},
 			children: {
-				name: 'Drawer content',
+				name: 'Drawer body',
 			},
 		}}
 		parameters={{
