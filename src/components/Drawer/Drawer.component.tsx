@@ -1,10 +1,11 @@
 import React from 'react';
 import { DisclosureProps, Disclosure, DisclosureContent, useDisclosureState } from 'reakit';
+import { ButtonProps } from '../Button/Button';
 
 import * as S from './Drawer.style';
 
 export type DrawerProps = DisclosureProps & {
-	disclosure: React.ComponentPropsWithRef<any>;
+	disclosure: ButtonProps;
 	heading?: React.ComponentPropsWithRef<any>;
 	footer?: React.ComponentPropsWithRef<any>;
 	visible: boolean;
@@ -21,7 +22,7 @@ export const Drawer = React.forwardRef<React.ReactElement, React.PropsWithChildr
 		return (
 			<>
 				{disclosure && (
-					<Disclosure as={S.DrawerDisclosure} {...disclosure} {...disclosure.props}>
+					<Disclosure {...state} {...disclosure.props}>
 						{disclosureProps => React.cloneElement(disclosure, disclosureProps)}
 					</Disclosure>
 				)}
