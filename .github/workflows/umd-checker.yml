@@ -17,19 +17,19 @@ jobs:
         run: |
           rm -rf test-that-umd-for-god-sake.js
           cat <<EOT >> test-that-umd-for-god-sake.js
-          global.React = require('react');
-          global.ReactDOM = require('react-dom');
-          global.ReactIs = require('react-is');
-          global.Reakit = require('reakit');
-          global.styled = require('styled-components');
-          global.classNames = require('classnames');
-          global.TalendDesignSystem = require('./dist/TalendDesignSystem.min.js');
-
-          const UMD = Object.keys(global.TalendDesignSystem);
-          if (UMD.length > 0) {
-            console.log(UMD);
-            process.exit(0);
+          Object.values(require(`./dist/$UMD_NAME.min.js.dependencies.json`)).forEach(
+          	function requireDependency(dependency) {
+          		global[dependency.var] = require(dependency.name);
+          	},
+          );
+          global[UMDName] = require(`./dist/$UMD_NAME.min.js`);
+          const UMDContent = Object.keys(global[UMDName]);
+          if (UMDContent.length > 0) {
+          	console.log(UMDContent);
+          	process.exit(0);
           }
           process.exit(1);
           EOT
           node ./test-that-umd-for-god-sake.js
+        env:
+          UMD_NAME: TalendDesignSystem
