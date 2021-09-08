@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyledProps } from 'styled-components';
 import { IconName } from '@talend/icons';
+import { ClickableProps } from 'reakit';
 
 import { Icon } from '../Icon/Icon';
 import Loading from '../Loading';
 
 import * as S from './Button.style';
 
-export type ButtonProps = StyledProps<any> & {
+type BaseProps = {
 	/** The icon of the button */
 	icon?: IconName | React.ReactElement;
 	/** If the button is small or not */
@@ -18,7 +19,9 @@ export type ButtonProps = StyledProps<any> & {
 	hideText?: boolean;
 };
 
-const Button: React.FC<ButtonProps> = React.forwardRef(
+export type ButtonProps = ClickableProps & BaseProps;
+
+const Button: React.FC<StyledProps<ButtonProps>> = React.forwardRef(
 	({ className, icon, small, hideText, loading, children, ...rest }: ButtonProps, ref) => (
 		<S.Button
 			ref={ref}
