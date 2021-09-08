@@ -22,10 +22,10 @@ jobs:
           		global[dependency.var] = require(dependency.name);
           	},
           );
-          global[UMDName] = require('./dist/$UMD_NAME.min.js');
-          const UMDContent = Object.keys(global[UMDName]);
-          if (UMDContent.length > 0) {
-          	console.log(UMDContent);
+          global.$UMD_NAME = require('./dist/$UMD_NAME.min.js');
+          const UMD = Object.keys(global.$UMD_NAME);
+          if (UMD.length > 0) {
+          	console.log(UMD);
           	process.exit(0);
           }
           process.exit(1);
