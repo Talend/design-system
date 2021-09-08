@@ -17,12 +17,12 @@ jobs:
         run: |
           rm -rf test-that-umd-for-god-sake.js
           cat <<EOT >> test-that-umd-for-god-sake.js
-          Object.values(require(`./dist/$UMD_NAME.min.js.dependencies.json`)).forEach(
+          Object.values(require(`./dist/TalendDesignSystem.min.js.dependencies.json`)).forEach(
           	function requireDependency(dependency) {
           		global[dependency.var] = require(dependency.name);
           	},
           );
-          global[UMDName] = require(`./dist/$UMD_NAME.min.js`);
+          global[UMDName] = require(`./dist/TalendDesignSystem.min.js`);
           const UMDContent = Object.keys(global[UMDName]);
           if (UMDContent.length > 0) {
           	console.log(UMDContent);
