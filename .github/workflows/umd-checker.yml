@@ -1,0 +1,35 @@
+name: UMD checker
+
+on: [pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Check UMD size
+        uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          exclude: "{./dist/*.report.html,**/*.map,**/node_modules/**}"
+      - name: Check UMD
+        run: |
+          rm -rf test-that-umd-for-god-sake.js
+          cat <<EOT >> test-that-umd-for-god-sake.js
+          global.React = require('react');
+          global.ReactDOM = require('react-dom');
+          global.ReactIs = require('react-is');
+          global.Reakit = require('reakit');
+          global.styled = require('styled-components');
+          global.classNames = require('classnames');
+          global.TalendDesignSystem = require('./dist/TalendDesignSystem.min.js');
+
+          const UMD = Object.keys(global.TalendDesignSystem);
+          if (UMD.length > 0) {
+            console.log(UMD);
+            process.exit(0);
+          }
+          process.exit(1);
+          EOT
+          node ./test-that-umd-for-god-sake.js
