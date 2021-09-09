@@ -1,4 +1,5 @@
 import React from 'react';
+import { Story } from '@storybook/react';
 
 import Button from '.';
 import Tooltip from '../Tooltip';
@@ -8,7 +9,7 @@ export default {
 };
 
 export const Loading = {
-	render: props => {
+	render: (props: Story) => {
 		const [loading, isLoading] = React.useState(false);
 		return (
 			<Tooltip title="Relevant description of the basic button">

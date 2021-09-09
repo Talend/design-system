@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyledProps } from 'styled-components';
 import { IconName } from '@talend/icons';
 import { ClickableProps } from 'reakit';
 
@@ -21,8 +20,11 @@ type BaseProps = {
 
 export type ButtonProps = ClickableProps & BaseProps;
 
-const Button: React.FC<StyledProps<ButtonProps>> = React.forwardRef(
-	({ className, icon, small, hideText, loading, children, ...rest }: ButtonProps, ref) => (
+const Button = React.forwardRef(
+	(
+		{ className, icon, small, hideText, loading, children, ...rest }: ButtonProps,
+		ref: React.Ref<HTMLButtonElement>,
+	) => (
 		<S.Button
 			ref={ref}
 			{...rest}
