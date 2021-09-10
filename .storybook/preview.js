@@ -168,6 +168,30 @@ export const parameters = {
 			],
 		} /**/,
 	},
+	multiTheme: {
+		list: [
+			{
+				name: 'Light',
+				class: 'light-theme',
+				iconColor: '#fff',
+				backgroundColor: `#fff`,
+				selectedByDefault: true,
+				wrapperComponent: ({ children }) => {
+					return <ThemeProvider theme={light}> {children} </ThemeProvider>;
+				},
+			},
+			{
+				name: 'Dark',
+				class: 'dark-theme',
+				iconColor: '#323E48',
+				backgroundColor: `#323E48`,
+				selectedByDefault: true,
+				wrapperComponent: ({ children }) => {
+					return <ThemeProvider theme={dark}> {children} </ThemeProvider>;
+				},
+			},
+		],
+	},
 };
 
 export const decorators = [
