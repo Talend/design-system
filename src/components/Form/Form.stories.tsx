@@ -1,5 +1,4 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
 
 import Form from '.';
 import Button from '../Button';
@@ -59,7 +58,7 @@ export const Default = () => (
 				I have read and accept the <Link href="#">terms of use</Link>
 			</Form.Checkbox>
 			<Form.Buttons>
-				<Button.Primary onClick={action('submit')}>Complete Registration</Button.Primary>
+				<Button.Primary>Complete Registration</Button.Primary>
 			</Form.Buttons>
 		</Form.Fieldset>
 	</Form>
@@ -79,7 +78,7 @@ export const Error = () => (
 				<Form.Password label="Password" required value="password" />
 			</Form.Fieldset>
 			<Form.Buttons style={{ justifyContent: 'center' }}>
-				<Button.Primary onClick={action('clicked')}>Login</Button.Primary>
+				<Button.Primary>Login</Button.Primary>
 			</Form.Buttons>
 		</Form>
 	</div>
@@ -119,9 +118,7 @@ export const Disabled = () => (
 				I have read and accept the <Link href="#">terms of use</Link>
 			</Form.Checkbox>
 			<Form.Buttons>
-				<Button.Primary onClick={action('submit')} disabled>
-					Complete Registration
-				</Button.Primary>
+				<Button.Primary disabled>Complete Registration</Button.Primary>
 			</Form.Buttons>
 		</Form.Fieldset>
 	</Form>
@@ -161,9 +158,7 @@ export const ReadOnly = () => (
 				I have read and accept the <Link href="#">terms of use</Link>
 			</Form.Checkbox>
 			<Form.Buttons>
-				<Button.Primary onClick={action('submit')} readOnly>
-					Complete Registration
-				</Button.Primary>
+				<Button.Primary readOnly>Complete Registration</Button.Primary>
 			</Form.Buttons>
 		</Form.Fieldset>
 	</Form>
@@ -182,8 +177,8 @@ export const InlineHelp = () => (
 				<Form.Password label="Re-enter new password" required />
 			</Form.Fieldset>
 			<Form.Buttons>
-				<Button.Secondary onClick={action('clicked')}>Cancel</Button.Secondary>
-				<Button.Primary onClick={action('clicked')}>Save</Button.Primary>
+				<Button.Secondary>Cancel</Button.Secondary>
+				<Button.Primary>Save</Button.Primary>
 			</Form.Buttons>
 		</Form>
 	</div>
