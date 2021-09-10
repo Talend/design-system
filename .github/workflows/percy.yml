@@ -25,5 +25,7 @@ jobs:
         run: yarn
       - name: Build Storybook
         run: yarn build-storybook
+      - name: Check percy bin
+        run: ls node_modules/.bin
       - name: Visual regression testing using Applitools
-        run: percy storybook ./storybook-static
+        run: yarn percy storybook ./storybook-static
