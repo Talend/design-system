@@ -47,6 +47,7 @@
     "@cypress/react": "^5.4.0",
     "@cypress/webpack-dev-server": "^1.1.5",
     "@storybook/addon-a11y": "^6.4.0-alpha.32",
+    "@storybook/addon-actions": "^6.4.0-alpha.34",
     "@storybook/addon-essentials": "6.4.0-alpha.32",
     "@storybook/addon-links": "6.4.0-alpha.32",
     "@storybook/addons": "6.4.0-alpha.32",
