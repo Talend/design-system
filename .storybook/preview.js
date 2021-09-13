@@ -37,12 +37,6 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		left:  ${theme?.id === 'dark' && hasFigmaIframe ? 'auto' : '-9999rem'};
 	}
 	
-	.sbdocs.sbdocs-preview .docs-story {
-		background: linear-gradient(to right, ${light.colors.backgroundColor} 0%, ${
-			light.colors.backgroundColor
-		} 50%, ${dark.colors.backgroundColor} 50% , ${dark.colors.backgroundColor} 100%);
-	}
-	
 	.sbdocs.sbdocs-preview .innerZoomElementWrapper {
 		text-align: center;
 	}
@@ -57,6 +51,10 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		flex-direction: row;
 	}
 	
+	.sbdocs.sbdocs-preview .themes--full-width {
+		flex-direction: column;
+	}
+	
 	.sbdocs.sbdocs-preview .theme {
 		flex: 0 0 50%;
 		padding: 1rem;
@@ -69,7 +67,7 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		background: ${light.colors.backgroundColor};
 	}
 	
-	.sbdocs.sbdocs-preview .theme--dark{
+	.sbdocs.sbdocs-preview .theme--dark {
 		color: ${dark.colors.textColor};
 		background: ${dark.colors.backgroundColor};
 	}
@@ -162,12 +160,13 @@ export const parameters = {
 
 export const decorators = [
 	(Story, context) => {
+		const isFullWidth = !!context.parameters.full;
 		return (
 			<>
 				<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 				<ThemeProvider.GlobalStyle />
 				<StorybookGlobalStyle />
-				<div className="themes">
+				<div className={`themes ${isFullWidth && 'themes--full-width'}`}>
 					<div className="theme theme--light">
 						<ThemeProvider theme={light}>
 							<Story {...context} />

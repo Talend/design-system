@@ -13,6 +13,7 @@ export default {
 		docs: {
 			iframeHeight: 500,
 		},
+		full: true,
 	},
 };
 
