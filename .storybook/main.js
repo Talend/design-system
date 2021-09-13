@@ -75,7 +75,12 @@ module.exports = {
 			},
 		},
 		'@storybook/addon-a11y',
-		'@storybook/addon-essentials',
+		{
+			name: '@storybook/addon-essentials',
+			options: {
+				backgrounds: false,
+			},
+		},
 		'@storybook/addon-links',
 		'storybook-addon-mdx-embed',
 	],

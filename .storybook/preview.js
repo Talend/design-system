@@ -16,25 +16,20 @@ import { IconsProvider } from '../src/components/IconsProvider';
 import light, { dark } from '../src/themes';
 
 const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
-	({ theme, hasFigmaIframe }) =>
+	({ hasFigmaIframe }) =>
 		`
 	.sb-show-main.sb-main-padded {
 		padding: 0;
 	}
 	
-	.sbdocs.sbdocs-preview {
-		color: ${theme?.colors.textColor};
-		background: ${theme?.colors.backgroundColor};
+	.sbdocs.sbdocs-h1::after {
+		content: '${hasFigmaIframe}';
 	}
 	
-	.sbdocs .figma-iframe--light {
-		position: ${theme?.id === 'light' && hasFigmaIframe ? 'relative' : 'absolute'};
-		left:  ${theme?.id === 'light' && hasFigmaIframe ? 'auto' : '-9999rem'};
-	}
-	
+	.sbdocs .figma-iframe--light,
 	.sbdocs .figma-iframe--dark {
-		position: ${theme?.id === 'dark' && hasFigmaIframe ? 'relative' : 'absolute'};
-		left:  ${theme?.id === 'dark' && hasFigmaIframe ? 'auto' : '-9999rem'};
+		position: ${!hasFigmaIframe ? 'absolute' : 'relative'};
+		left:  ${!hasFigmaIframe ? '-9999rem' : 'auto'};
 	}
 	
 	.sbdocs.sbdocs-preview .innerZoomElementWrapper {
@@ -46,28 +41,33 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		border: 0 !important;
 	}
 	
-	.sbdocs.sbdocs-preview .themes {
+	.themes {
 		display: flex;
 		flex-direction: row;
+		height: 100vh;
 	}
 	
-	.sbdocs.sbdocs-preview .themes--full-width {
+	.sbdocs .themes {
+		height: auto;
+	}
+	
+	.themes--full-width {
 		flex-direction: column;
 	}
 	
-	.sbdocs.sbdocs-preview .theme {
+	.theme {
 		flex: 0 0 50%;
 		padding: 1rem;
 		text-align: start;
 		overflow: hidden;
 	}
 	
-	.sbdocs.sbdocs-preview .theme--light {
+	.theme--light {
 		color: ${light.colors.textColor};
 		background: ${light.colors.backgroundColor};
 	}
 	
-	.sbdocs.sbdocs-preview .theme--dark {
+	.theme--dark {
 		color: ${dark.colors.textColor};
 		background: ${dark.colors.backgroundColor};
 	}
@@ -86,7 +86,20 @@ export const parameters = {
 						<ThemeProvider.GlobalStyle />
 						<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					</ThemeProvider>
-					<TableOfContents />
+					<TableOfContents>
+						{['component', 'template', 'page'].find(term =>
+							props.context.kind.split('/')[0].toLocaleLowerCase().includes(term),
+						) && (
+							<ThemeProvider>
+								<Divider />
+								<Form.Switch
+									label={'Figma'}
+									onChange={() => setFigmaIframe(!hasFigmaIframe)}
+									checked={!!hasFigmaIframe}
+								/>
+							</ThemeProvider>
+						)}
+					</TableOfContents>
 					<DocsContainer {...props} />
 					<BackToTop />
 				</>
@@ -160,13 +173,18 @@ export const parameters = {
 
 export const decorators = [
 	(Story, context) => {
+		const isDocsMode = context.viewMode === 'docs';
 		const isFullWidth = !!context.parameters.full;
 		return (
 			<>
-				<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-				<ThemeProvider.GlobalStyle />
-				<StorybookGlobalStyle />
-				<div className={`themes ${isFullWidth && 'themes--full-width'}`}>
+				{!isDocsMode && (
+					<>
+						<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
+						<ThemeProvider.GlobalStyle />
+						<StorybookGlobalStyle />
+					</>
+				)}
+				<div className={`themes ${isFullWidth ? 'themes--full-width' : ''}`}>
 					<div className="theme theme--light">
 						<ThemeProvider theme={light}>
 							<Story {...context} />

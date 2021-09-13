@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const IframeRow = styled.div`
+	display: flex;
+`;
+
+const IframeCell = styled.div`
+	flex: 1 1 50%;
+`;
+
 const Iframe = styled.iframe`
 	border-radius: 0.4rem;
 	box-shadow: rgb(0 0 0 / 10%) 0 1px 3px 0;
@@ -14,26 +22,28 @@ const iframeProps = {
 };
 
 const FigmaIframe = ({ light, dark, ...rest }) => (
-	<>
+	<IframeRow>
 		{light && (
-			<Iframe
-				{...iframeProps}
-				{...rest}
-				className="figma-iframe figma-iframe--light"
-				src={`https://www.figma.com/embed?embed_host=storybook&url=\
+			<IframeCell className="figma-iframe figma-iframe--light">
+				<Iframe
+					{...iframeProps}
+					{...rest}
+					src={`https://www.figma.com/embed?embed_host=storybook&url=\
                   ${light}`}
-			/>
+				/>
+			</IframeCell>
 		)}
 		{dark && (
-			<Iframe
-				{...iframeProps}
-				{...rest}
-				className="figma-iframe figma-iframe--dark"
-				src={`https://www.figma.com/embed?embed_host=storybook&url=\
+			<IframeCell className="figma-iframe figma-iframe--dark">
+				<Iframe
+					{...iframeProps}
+					{...rest}
+					src={`https://www.figma.com/embed?embed_host=storybook&url=\
 				  ${dark}`}
-			/>
+				/>
+			</IframeCell>
 		)}
-	</>
+	</IframeRow>
 );
 
 export default FigmaIframe;
