@@ -22,14 +22,10 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		padding: 0;
 	}
 	
-	.sbdocs.sbdocs-h1::after {
-		content: '${hasFigmaIframe}';
-	}
-	
 	.sbdocs .figma-iframe--light,
 	.sbdocs .figma-iframe--dark {
-		position: ${!hasFigmaIframe ? 'absolute' : 'relative'};
-		left:  ${!hasFigmaIframe ? '-9999rem' : 'auto'};
+		position: ${hasFigmaIframe ? 'relative' : 'absolute'};
+		left:  ${hasFigmaIframe ? 'auto' : '-9999rem'};
 	}
 	
 	.sbdocs.sbdocs-preview .innerZoomElementWrapper {
@@ -80,29 +76,27 @@ export const parameters = {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
 
 			return (
-				<>
+				<ThemeProvider>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-					<ThemeProvider theme={light}>
-						<ThemeProvider.GlobalStyle />
-						<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
-					</ThemeProvider>
+					<ThemeProvider.GlobalStyle />
+					<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					<TableOfContents>
 						{['component', 'template', 'page'].find(term =>
 							props.context.kind.split('/')[0].toLocaleLowerCase().includes(term),
 						) && (
-							<ThemeProvider>
+							<>
 								<Divider />
 								<Form.Switch
 									label={'Figma'}
 									onChange={() => setFigmaIframe(!hasFigmaIframe)}
 									checked={!!hasFigmaIframe}
 								/>
-							</ThemeProvider>
+							</>
 						)}
 					</TableOfContents>
 					<DocsContainer {...props} />
 					<BackToTop />
-				</>
+				</ThemeProvider>
 			);
 		},
 		source: {
