@@ -208,7 +208,7 @@ export const SkeletonButton = () => {
 	return <Skeleton.Button />;
 };
 export const SkeletonButtonSmall = () => {
-	return <Skeleton.Button small={true} />;
+	return <Skeleton.Button small />;
 };
 export const SkeletonButtonIcon = () => {
 	return <Skeleton.Icon />;

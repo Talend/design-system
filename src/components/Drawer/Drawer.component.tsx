@@ -1,6 +1,6 @@
 import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'reakit';
-import Button, { ButtonComponentType } from '../Button';
+import { ButtonComponentType } from '../Button';
 
 import * as S from './Drawer.style';
 import { ButtonProps } from '../Button/Button';
@@ -24,7 +24,7 @@ export const Drawer = React.forwardRef(
 		return (
 			<>
 				{toggleButton && (
-					<Disclosure {...state} {...toggleButton.props}>
+					<Disclosure {...state}>
 						{disclosureProps => React.cloneElement(toggleButton, disclosureProps)}
 					</Disclosure>
 				)}

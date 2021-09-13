@@ -1,6 +1,6 @@
-import React, { ComponentType, FunctionComponent, ReactNode, ReactNodeArray } from 'react';
+import React from 'react';
 import { IconName } from '@talend/icons';
-import { ButtonProps as ReakitButtonProps } from 'reakit';
+import { ClickableProps } from 'reakit';
 
 import { Icon } from '../Icon/Icon';
 import Loading from '../Loading';
@@ -16,25 +16,19 @@ type BaseProps = {
 	loading?: boolean;
 	/** If the button should not display text */
 	hideText?: boolean;
-	/** The button's contents */
-	children: ReactNode | ReactNodeArray;
+	/** All buttons must have contents */
+	children: React.ReactNode | React.ReactNodeArray;
+	/** Use these if the button should be an anchor or router link */
+	as?: React.ElementType;
+	href?: string;
+	target?: string;
 };
 
-type ButtonAsAnchor = {
-	as?: React.ElementType<HTMLAnchorElement>;
-	href: string;
-	target: string;
-};
-
-type ButtonAsElement = {
-	as?: React.ElementType<any>;
-};
-
-export type ButtonProps = ReakitButtonProps & BaseProps & (ButtonAsAnchor | ButtonAsElement);
+export type ButtonProps = ClickableProps & BaseProps;
 
 const Button = React.forwardRef(
 	(
-		{ className, icon, small, hideText, loading, children, as = 'button', ...rest }: ButtonProps,
+		{ className, icon, small, hideText, loading, children, ...rest }: ButtonProps,
 		ref: React.Ref<any>,
 	) => (
 		<S.Button
@@ -46,7 +40,6 @@ const Button = React.forwardRef(
 			} ${loading ? 'btn--loading' : ''}
 			`}
 			aria-busy={!!loading}
-			as={as || 'button'}
 		>
 			{loading && <Loading className="btn__loading btn__icon" name={icon} aria-hidden />}
 			{!loading &&
