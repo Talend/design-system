@@ -2,9 +2,7 @@ import React from 'react';
 import prettier from 'prettier/standalone';
 import prettierBabel from 'prettier/parser-babel';
 
-import { addons } from '@storybook/addons';
 import { DocsContainer } from '@storybook/addon-docs';
-import { UPDATE_GLOBALS } from '@storybook/core-events';
 import { TableOfContents, BackToTop } from 'storybook-docs-toc';
 import { useLocalStorage } from 'react-use';
 
@@ -16,22 +14,6 @@ import ThemeProvider from '../src/components/ThemeProvider';
 import { IconsProvider } from '../src/components/IconsProvider';
 
 import light, { dark } from '../src/themes';
-
-export const globalTypes = {
-	theme: {
-		name: 'Theme',
-		description: 'Choose a theme to apply to the design system',
-		toolbar: {
-			icon: 'paintbrush',
-			items: [
-				{ value: 'light', left: '⚪️', title: 'Default theme' },
-				{ value: 'dark', left: '⚫️', title: 'Dark theme' },
-			],
-		},
-	},
-};
-
-const getTheme = themeKey => (themeKey === 'dark' ? dark : light);
 
 const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	({ theme, hasFigmaIframe }) =>
@@ -54,6 +36,35 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		position: ${theme?.id === 'dark' && hasFigmaIframe ? 'relative' : 'absolute'};
 		left:  ${theme?.id === 'dark' && hasFigmaIframe ? 'auto' : '-9999rem'};
 	}
+	
+	.sbdocs .docs-story {
+		background: linear-gradient(to right, ${light.colors.backgroundColor} 0%, ${
+			light.colors.backgroundColor
+		} 50%, ${dark.colors.backgroundColor} 50% , ${dark.colors.backgroundColor} 100%);
+	}
+	
+	.sbdocs.sbdocs-preview .innerZoomElementWrapper {
+		text-align: center;
+	}
+	
+	.sbdocs.sbdocs-preview .innerZoomElementWrapper > * {
+		width: 100%;
+		border: 0 !important;
+	}
+	
+	.sbdocs .light-theme {
+		color: ${light.colors.textColor};
+		background: ${light.colors.backgroundColor};
+	}
+	.sbdocs .dark-theme {
+		color: ${dark.colors.textColor};
+		background: ${dark.colors.backgroundColor};
+	}
+	
+	.sbdocs .light-theme > div,
+	.sbdocs .dark-theme > div {
+		width: 100%;
+	}
 	`,
 );
 
@@ -62,43 +73,14 @@ export const parameters = {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
 
-			const channel = addons.getChannel();
-
-			const hasDarkMode = props.context.globals.theme === 'dark';
-
 			return (
 				<>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-					<ThemeProvider theme={hasDarkMode ? dark : light}>
+					<ThemeProvider theme={light}>
 						<ThemeProvider.GlobalStyle />
 						<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					</ThemeProvider>
-					<TableOfContents>
-						{['component', 'template', 'page'].find(term =>
-							props.context.kind.split('/')[0].toLocaleLowerCase().includes(term),
-						) && (
-							<ThemeProvider>
-								<Divider />
-								<Form.Switch
-									label={'Dark mode'}
-									onChange={() => {
-										channel.emit(UPDATE_GLOBALS, {
-											globals: { theme: hasDarkMode ? 'light' : 'dark' },
-										});
-									}}
-									checked={hasDarkMode}
-								/>
-								{/*
-								<Divider />
-								<Form.Switch
-									label={'Figma iframes'}
-									onChange={() => setFigmaIframe(!hasFigmaIframe)}
-									checked={!!hasFigmaIframe}
-								/>
-								*/}
-							</ThemeProvider>
-						)}
-					</TableOfContents>
+					<TableOfContents />
 					<DocsContainer {...props} />
 					<BackToTop />
 				</>
@@ -173,21 +155,19 @@ export const parameters = {
 			{
 				name: 'Light',
 				class: 'light-theme',
-				iconColor: '#fff',
-				backgroundColor: `#fff`,
+				iconColor: light.colors.backgroundColor,
 				selectedByDefault: true,
 				wrapperComponent: ({ children }) => {
-					return <ThemeProvider theme={light}> {children} </ThemeProvider>;
+					return <ThemeProvider theme={light}>{children}</ThemeProvider>;
 				},
 			},
 			{
 				name: 'Dark',
 				class: 'dark-theme',
-				iconColor: '#323E48',
-				backgroundColor: `#323E48`,
+				iconColor: dark.colors.backgroundColor,
 				selectedByDefault: true,
 				wrapperComponent: ({ children }) => {
-					return <ThemeProvider theme={dark}> {children} </ThemeProvider>;
+					return <ThemeProvider theme={dark}>{children}</ThemeProvider>;
 				},
 			},
 		],
@@ -196,11 +176,10 @@ export const parameters = {
 
 export const decorators = [
 	(Story, context) => {
-		const theme = getTheme(context.globals.theme);
 		return (
 			<>
 				<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-				<ThemeProvider theme={theme}>
+				<ThemeProvider theme={light}>
 					<ThemeProvider.GlobalStyle />
 					<StorybookGlobalStyle />
 					<Story {...context} />
