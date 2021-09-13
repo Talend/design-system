@@ -37,7 +37,7 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		left:  ${theme?.id === 'dark' && hasFigmaIframe ? 'auto' : '-9999rem'};
 	}
 	
-	.sbdocs .docs-story {
+	.sbdocs.sbdocs-preview .docs-story {
 		background: linear-gradient(to right, ${light.colors.backgroundColor} 0%, ${
 			light.colors.backgroundColor
 		} 50%, ${dark.colors.backgroundColor} 50% , ${dark.colors.backgroundColor} 100%);
@@ -52,18 +52,26 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		border: 0 !important;
 	}
 	
-	.sbdocs .light-theme {
+	.sbdocs.sbdocs-preview .themes {
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.sbdocs.sbdocs-preview .theme {
+		flex: 0 0 50%;
+		padding: 1rem;
+		text-align: start;
+		overflow: hidden;
+	}
+	
+	.sbdocs.sbdocs-preview .theme--light {
 		color: ${light.colors.textColor};
 		background: ${light.colors.backgroundColor};
 	}
-	.sbdocs .dark-theme {
+	
+	.sbdocs.sbdocs-preview .theme--dark{
 		color: ${dark.colors.textColor};
 		background: ${dark.colors.backgroundColor};
-	}
-	
-	.sbdocs .light-theme > div,
-	.sbdocs .dark-theme > div {
-		width: 100%;
 	}
 	`,
 );
@@ -150,28 +158,6 @@ export const parameters = {
 			],
 		} /**/,
 	},
-	multiTheme: {
-		list: [
-			{
-				name: 'Light',
-				class: 'light-theme',
-				iconColor: light.colors.backgroundColor,
-				selectedByDefault: true,
-				wrapperComponent: ({ children }) => {
-					return <ThemeProvider theme={light}>{children}</ThemeProvider>;
-				},
-			},
-			{
-				name: 'Dark',
-				class: 'dark-theme',
-				iconColor: dark.colors.backgroundColor,
-				selectedByDefault: true,
-				wrapperComponent: ({ children }) => {
-					return <ThemeProvider theme={dark}>{children}</ThemeProvider>;
-				},
-			},
-		],
-	},
 };
 
 export const decorators = [
@@ -179,11 +165,20 @@ export const decorators = [
 		return (
 			<>
 				<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-				<ThemeProvider theme={light}>
-					<ThemeProvider.GlobalStyle />
-					<StorybookGlobalStyle />
-					<Story {...context} />
-				</ThemeProvider>
+				<ThemeProvider.GlobalStyle />
+				<StorybookGlobalStyle />
+				<div className="themes">
+					<div className="theme theme--light">
+						<ThemeProvider theme={light}>
+							<Story {...context} />
+						</ThemeProvider>
+					</div>
+					<div className="theme theme--dark">
+						<ThemeProvider theme={dark}>
+							<Story {...context} />
+						</ThemeProvider>
+					</div>
+				</div>
 			</>
 		);
 	},

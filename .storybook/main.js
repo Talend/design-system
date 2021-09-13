@@ -78,7 +78,6 @@ module.exports = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-links',
 		'storybook-addon-mdx-embed',
-		'storybook-addon-multi-theme',
 	],
 	typescript: {
 		check: false,
