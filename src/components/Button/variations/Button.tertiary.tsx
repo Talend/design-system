@@ -16,4 +16,6 @@ const ButtonTertiary: React.FC<ButtonProps> = button.attrs({
 	}
 `;
 
+ButtonTertiary.displayName = 'Button.Tertiary';
+
 export default ButtonTertiary;

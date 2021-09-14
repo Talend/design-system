@@ -22,4 +22,6 @@ const ButtonSecondary: React.FC<ButtonProps> = button.attrs({
 	}
 `;
 
+ButtonSecondary.displayName = 'Button.Secondary';
+
 export default ButtonSecondary;

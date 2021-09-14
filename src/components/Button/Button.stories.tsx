@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import Button from '.';
 import Skeleton from '../Skeleton';
@@ -8,6 +7,9 @@ import Tooltip from '../Tooltip';
 
 export default {
 	component: Button,
+	parameters: {
+		actions: { argTypesRegex: '^on[A-Z].*' },
+	},
 };
 
 export const defaultProps = {
@@ -19,213 +21,213 @@ export const defaultProps = {
 	icon: '',
 };
 
-export const Primary = () => {
-	return <Button.Primary onClick={action('clicked')}>Basic Button</Button.Primary>;
+export const Primary = (props: Story) => {
+	return <Button.Primary {...props}>Basic Button</Button.Primary>;
 };
-export const PrimaryIcon = () => {
+
+export const PrimaryIcon = (props: Story) => {
 	return (
-		<Button.Primary onClick={action('clicked')} icon="talend-plus">
+		<Button.Primary icon="talend-plus" {...props}>
 			Button with icon
 		</Button.Primary>
 	);
 };
-export const PrimarySmall = () => {
+export const PrimarySmall = (props: Story) => {
 	return (
-		<Button.Primary small onClick={action('clicked')}>
+		<Button.Primary small {...props}>
 			Small Button
 		</Button.Primary>
 	);
 };
-export const PrimaryDisabled = () => {
+export const PrimaryDisabled = (props: Story) => {
 	return (
-		<Button.Primary disabled onClick={action('clicked')}>
+		<Button.Primary disabled {...props}>
 			Disabled Button
 		</Button.Primary>
 	);
 };
-export const PrimaryDisabledFocusable = () => {
+export const PrimaryDisabledFocusable = (props: Story) => {
 	return (
-		<Button.Primary disabled focusable onClick={action('clicked')}>
+		<Button.Primary disabled focusable {...props}>
 			Disabled Focusable Button
 		</Button.Primary>
 	);
 };
-export const PrimaryAsLink = () => {
+export const PrimaryAsLink = (props: Story) => {
 	return (
-		<Button.Primary onClick={action('clicked')} as="a" href="pouet">
+		<Button.Primary as="a" href="pouet" {...props}>
 			This is an anchor
 		</Button.Primary>
 	);
 };
 
-export const Destructive = () => {
-	return <Button.Destructive onClick={action('clicked')}>Basic Button</Button.Destructive>;
+export const Destructive = (props: Story) => {
+	return <Button.Destructive {...props}>Basic Button</Button.Destructive>;
 };
-export const DestructiveIcon = () => {
+export const DestructiveIcon = (props: Story) => {
 	return (
-		<Button.Destructive onClick={action('clicked')} icon="talend-plus">
+		<Button.Destructive icon="talend-plus" {...props}>
 			Button with icon
 		</Button.Destructive>
 	);
 };
-export const DestructiveSmall = () => {
+export const DestructiveSmall = (props: Story) => {
 	return (
-		<Button.Destructive small onClick={action('clicked')}>
+		<Button.Destructive small {...props}>
 			Small Button
 		</Button.Destructive>
 	);
 };
-export const DestructiveDisabled = () => {
+export const DestructiveDisabled = (props: Story) => {
 	return (
-		<Button.Destructive disabled onClick={action('clicked')}>
+		<Button.Destructive disabled {...props}>
 			Disabled Button
 		</Button.Destructive>
 	);
 };
-export const DestructiveDisabledFocusable = () => {
+export const DestructiveDisabledFocusable = (props: Story) => {
 	return (
-		<Button.Destructive disabled focusable onClick={action('clicked')}>
+		<Button.Destructive disabled focusable {...props}>
 			Disabled Focusable Button
 		</Button.Destructive>
 	);
 };
-export const DestructiveAsLink = () => {
+export const DestructiveAsLink = (props: Story) => {
 	return (
-		<Button.Destructive onClick={action('clicked')} as="a" href="pouet">
+		<Button.Destructive as="a" href="pouet" {...props}>
 			This is an anchor
 		</Button.Destructive>
 	);
 };
 
-export const Secondary = () => {
-	return <Button.Secondary onClick={action('clicked')}>Basic Button</Button.Secondary>;
+export const Secondary = (props: Story) => {
+	return <Button.Secondary {...props}>Basic Button</Button.Secondary>;
 };
-export const SecondaryIcon = () => {
+export const SecondaryIcon = (props: Story) => {
 	return (
-		<Button.Secondary onClick={action('clicked')} icon="talend-plus">
+		<Button.Secondary icon="talend-plus" {...props}>
 			Button with icon
 		</Button.Secondary>
 	);
 };
-export const SecondarySmall = () => {
+export const SecondarySmall = (props: Story) => {
 	return (
-		<Button.Secondary small onClick={action('clicked')}>
+		<Button.Secondary small {...props}>
 			Small Button
 		</Button.Secondary>
 	);
 };
-export const SecondaryDisabled = () => {
+export const SecondaryDisabled = (props: Story) => {
 	return (
-		<Button.Secondary disabled onClick={action('clicked')}>
+		<Button.Secondary disabled {...props}>
 			Disabled Button
 		</Button.Secondary>
 	);
 };
-export const SecondaryDisabledFocusable = () => {
+export const SecondaryDisabledFocusable = (props: Story) => {
 	return (
-		<Button.Secondary disabled focusable onClick={action('clicked')}>
+		<Button.Secondary disabled focusable {...props}>
 			Disabled Focusable Button
 		</Button.Secondary>
 	);
 };
-export const SecondaryAsLink = () => {
+export const SecondaryAsLink = (props: Story) => {
 	return (
-		<Button.Secondary onClick={action('clicked')} as="a" href="pouet">
+		<Button.Secondary as="a" href="pouet" {...props}>
 			This is an anchor
 		</Button.Secondary>
 	);
 };
 
-export const Tertiary = () => {
-	return <Button.Tertiary onClick={action('clicked')}>Basic Button</Button.Tertiary>;
+export const Tertiary = (props: Story) => {
+	return <Button.Tertiary {...props}>Basic Button</Button.Tertiary>;
 };
-export const TertiaryIcon = () => {
+export const TertiaryIcon = (props: Story) => {
 	return (
-		<Button.Tertiary onClick={action('clicked')} icon="talend-plus">
+		<Button.Tertiary icon="talend-plus" {...props}>
 			Button with icon
 		</Button.Tertiary>
 	);
 };
-export const TertiarySmall = () => {
+export const TertiarySmall = (props: Story) => {
 	return (
-		<Button.Tertiary small onClick={action('clicked')}>
+		<Button.Tertiary small {...props}>
 			Small Button
 		</Button.Tertiary>
 	);
 };
-export const TertiaryDisabled = () => {
+export const TertiaryDisabled = (props: Story) => {
 	return (
-		<Button.Tertiary disabled onClick={action('clicked')}>
+		<Button.Tertiary disabled {...props}>
 			Disabled Button
 		</Button.Tertiary>
 	);
 };
-export const TertiaryDisabledFocusable = () => {
+export const TertiaryDisabledFocusable = (props: Story) => {
 	return (
-		<Button.Tertiary disabled focusable onClick={action('clicked')}>
+		<Button.Tertiary disabled focusable {...props}>
 			Disabled Focusable Button
 		</Button.Tertiary>
 	);
 };
-export const TertiaryAsLink = () => {
+export const TertiaryAsLink = (props: Story) => {
 	return (
-		<Button.Tertiary onClick={action('clicked')} as="a" href="pouet">
+		<Button.Tertiary as="a" href="pouet" {...props}>
 			This is an anchor
 		</Button.Tertiary>
 	);
 };
 
-export const Icon = () => {
+export const Icon = (props: Story) => {
 	return (
-		<Button.Icon onClick={action('clicked')} icon="talend-plus">
+		<Button.Icon icon="talend-plus" {...props}>
 			Button with icon
 		</Button.Icon>
 	);
 };
-export const IconDisabled = () => {
+export const IconDisabled = (props: Story) => {
 	return (
-		<Button.Icon disabled onClick={action('clicked')} icon="talend-plus">
+		<Button.Icon disabled icon="talend-plus" {...props}>
 			Disabled Button
 		</Button.Icon>
 	);
 };
-export const IconDisabledFocusable = () => {
+export const IconDisabledFocusable = (props: Story) => {
 	return (
-		<Button.Icon disabled focusable onClick={action('clicked')} icon="talend-plus">
+		<Button.Icon disabled focusable icon="talend-plus" {...props}>
 			Disabled Focusable Button
 		</Button.Icon>
 	);
 };
-export const IconAsLink = () => {
+export const IconAsLink = (props: Story) => {
 	return (
-		<Button.Icon onClick={action('clicked')} as="a" href="pouet" icon="talend-plus">
+		<Button.Icon as="a" href="pouet" icon="talend-plus" {...props}>
 			This is an anchor
 		</Button.Icon>
 	);
 };
 
-export const SkeletonButton = () => {
-	return <Skeleton.Button />;
+export const SkeletonButton = (props: Story) => {
+	return <Skeleton.Button {...props} />;
 };
-export const SkeletonButtonSmall = () => {
-	return <Skeleton.Button small />;
+export const SkeletonButtonSmall = (props: Story) => {
+	return <Skeleton.Button small {...props} />;
 };
-export const SkeletonButtonIcon = () => {
-	return <Skeleton.Icon />;
+export const SkeletonButtonIcon = (props: Story) => {
+	return <Skeleton.Icon {...props} />;
 };
 
-export const TooltipButton = () => {
-	return (
-		<Tooltip title="Relevant information about contacting the support">
-			<Button.Primary onClick={action('clicked')} icon="talend-bubbles">
-				Contact support
-			</Button.Primary>
-		</Tooltip>
-	);
-};
+export const TooltipButton = (props: Story) => (
+	<Tooltip title="Relevant information about contacting the support">
+		<Button.Primary icon="talend-bubbles" {...props}>
+			Contact support
+		</Button.Primary>
+	</Tooltip>
+);
 
 export const Loading = {
 	render: (props: Story) => {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
 		const [loading, isLoading] = React.useState(false);
 		return (
 			<Tooltip title="Relevant description of the basic button">

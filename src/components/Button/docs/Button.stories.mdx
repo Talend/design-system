@@ -1,5 +1,4 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
-import { action } from '@storybook/addon-actions';
 import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../../docs';
 import Button from '../';
 import * as Stories from '../Button.stories';
@@ -47,24 +46,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 #### Primary
 
-<Canvas
-	mdxSource={`
-<Button.Primary onClick={() => {}}>Basic Button</Button.Primary>
-<Button.Primary onClick={() => {}} icon="talend-plus">
-    Button with icon
-</Button.Primary>
-<Button.Primary small onClick={() => {}}>
-    Small Button
-</Button.Primary>
-<Button.Primary disabled onClick={() => {}}>
-    Disabled Button
-</Button.Primary>
-<Button.Primary disabled focusable onClick={() => {}}>
-    Disabled Focusable Button
-</Button.Primary>
-`}
-	withSource="open"
->
+<Canvas withSource="open">
 	<Story story={Stories.Primary} />
 	<Story story={Stories.PrimaryIcon} />
 	<Story story={Stories.PrimarySmall} />
@@ -75,24 +57,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 #### Destructive
 
-<Canvas
-	mdxSource={`
-<Button.Destructive onClick={() => {}}>Basic Button</Button.Destructive>
-<Button.Destructive onClick={() => {}} icon="talend-plus">
-    Button with icon
-</Button.Destructive>
-<Button.Destructive small onClick={() => {}}>
-    Small Button
-</Button.Destructive>
-<Button.Destructive disabled onClick={() => {}}>
-    Disabled Button
-</Button.Destructive>
-<Button.Destructive disabled focusable onClick={() => {}}>
-    Disabled Focusable Button
-</Button.Destructive>
-`}
-	withSource="open"
->
+<Canvas>
 	<Story story={Stories.Destructive} />
 	<Story story={Stories.DestructiveIcon} />
 	<Story story={Stories.DestructiveSmall} />
@@ -103,24 +68,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 #### Secondary
 
-<Canvas
-	mdxSource={`
-<Button.Secondary onClick={() => {}}>Basic Button</Button.Secondary>
-<Button.Secondary onClick={() => {}} icon="talend-plus">
-    Button with icon
-</Button.Secondary>
-<Button.Secondary small onClick={() => {}}>
-    Small Button
-</Button.Secondary>
-<Button.Secondary disabled onClick={() => {}}>
-    Disabled Button
-</Button.Secondary>
-<Button.Secondary disabled focusable onClick={() => {}}>
-    Disabled Focusable Button
-</Button.Secondary>
-`}
-	withSource="open"
->
+<Canvas>
 	<Story story={Stories.Secondary} />
 	<Story story={Stories.SecondaryIcon} />
 	<Story story={Stories.SecondarySmall} />
@@ -131,24 +79,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 #### Tertiary
 
-<Canvas
-	mdxSource={`
-<Button.Tertiary onClick={() => {}}>Basic Button</Button.Tertiary>
-<Button.Tertiary onClick={() => {}} icon="talend-plus">
-    Button with icon
-</Button.Tertiary>
-<Button.Tertiary small onClick={() => {}}>
-    Small Button
-</Button.Tertiary>
-<Button.Tertiary disabled onClick={() => {}}>
-    Disabled Button
-</Button.Tertiary>
-<Button.Tertiary disabled focusable onClick={() => {}}>
-    Disabled Focusable Button
-</Button.Tertiary>
-`}
-	withSource="open"
->
+<Canvas>
 	<Story story={Stories.Tertiary} />
 	<Story story={Stories.TertiaryIcon} />
 	<Story story={Stories.TertiarySmall} />
@@ -159,20 +90,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 #### Icon button
 
-<Canvas
-	mdxSource={`
-<Button.Icon onClick={() => {}} icon="talend-plus">
-    Button with icon
-</Button.Icon>
-<Button.Icon disabled onClick={() => {}} icon="talend-plus">
-    Disabled Button
-</Button.Icon>
-<Button.Icon disabled focusable onClick={() => {}} icon="talend-plus">
-    Disabled Focusable Button
-</Button.Icon>
-`}
-	withSource="open"
->
+<Canvas>
 	<Story story={Stories.Icon} />
 	<Story story={Stories.IconDisabled} />
 	<Story story={Stories.IconDisabledFocusable} />
@@ -183,14 +101,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 ### Button skeletons
 
-<Canvas
-	mdxSource={`
-<Skeleton.Button />
-<Skeleton.Button small />
-<Skeleton.Icon />
-`}
-	withSource="open"
->
+<Canvas>
 	<Story story={Stories.SkeletonButton} />
 	<Story story={Stories.SkeletonButtonSmall} />
 	<Story story={Stories.SkeletonButtonIcon} />
@@ -200,16 +111,7 @@ Icon buttons can be used as dropdown but without the caret icon.
 
 Buttons should all have a tooltip on hover displaying the description.
 
-<Canvas
-	mdxSource={`
-<Tooltip title="Relevant information about contacting the support">
-    <Button.Primary onClick={action('clicked')} icon={'talend-bubbles'}>
-        Contact support
-    </Button.Primary>
-</Tooltip>
-`}
-	withSource="open"
->
+<Canvas>
 	<Story story={Stories.TooltipButton} />
 </Canvas>
 
@@ -310,7 +212,7 @@ Name that action instead.
 	>
 		{props => {
 			const Component = Button[props.variant] || Button;
-			return <Component {...props} onClick={action('clicked')} />;
+			return <Component {...props} />;
 		}}
 	</Story>
 </Canvas>

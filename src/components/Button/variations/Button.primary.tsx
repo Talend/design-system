@@ -23,4 +23,6 @@ const ButtonPrimary: React.FC<ButtonProps> = button.attrs({
 	}
 `;
 
+ButtonPrimary.displayName = 'Button.Primary';
+
 export default ButtonPrimary;

@@ -53,4 +53,6 @@ const ButtonBase: React.FC<ButtonProps> = button`
 	}
 `;
 
+ButtonBase.displayName = 'Button.Base';
+
 export default ButtonBase;

@@ -19,4 +19,6 @@ const ButtonSkeleton: React.FC<ButtonSkeletonTypes> = StyledSkeleton.attrs(
 	width: ${({ small }) => (small ? '8rem' : '10rem')};
 `;
 
+ButtonSkeleton.displayName = 'Skeleton.Button';
+
 export default ButtonSkeleton;

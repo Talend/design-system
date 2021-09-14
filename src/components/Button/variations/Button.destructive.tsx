@@ -22,4 +22,6 @@ const ButtonDestructive: React.FC<ButtonProps> = button.attrs({
 	}
 `;
 
+ButtonDestructive.displayName = 'Button.Destructive';
+
 export default ButtonDestructive;
