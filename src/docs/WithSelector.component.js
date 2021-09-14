@@ -40,7 +40,7 @@ const WithSelector = ({ children, selector }) => {
 
 	React.useEffect(() => {
 		if (!ref.current) return;
-		ref.current.className = ref.current.className + ' ' + className;
+		ref.current.className = `${ref.current.className  } ${  className}`;
 	}, [ref, className]);
 
 	return (

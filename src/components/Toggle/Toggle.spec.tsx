@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Toggle from './';
+import Toggle from '.';
 
 context('<Toggle />', () => {
 	it('should toggle', () => {
