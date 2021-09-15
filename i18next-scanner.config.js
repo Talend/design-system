@@ -9,7 +9,7 @@ module.exports = {
 			extensions: ['.js'],
 		},
 		lngs: ['en'],
-		defaultNs: 'tui-design-system',
+		defaultNs: 'design-system',
 		defaultValue: '__STRING_NOT_TRANSLATED__',
 		resource: {
 			savePath: 'i18n-extract/{{ns}}.json',
