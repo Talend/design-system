@@ -2,8 +2,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 // FIXME
-// import { namespaces as designSystemNamespaces } from '@talend/locales-tui-design-system/namespaces';
-// import { locales as designSystemLocales } from '@talend/locales-tui-design-system/locales';
+// import { namespaces as designSystemNamespaces } from '@talend/locales-design-system/namespaces';
+// import { locales as designSystemLocales } from '@talend/locales-design-system/locales';
 
 const designSystemNamespaces = [];
 const designSystemLocales = {};
