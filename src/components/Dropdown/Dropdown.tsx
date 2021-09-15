@@ -1,17 +1,17 @@
 import React from 'react';
-import { StyledProps } from 'styled-components';
 import * as ReactIs from 'react-is';
 import { BoxProps, useMenuState } from 'reakit';
 
 import Button from '../Button';
 
-import * as S from './Dropdown.style';
+import * as S from './private/Dropdown.style';
 
-export type DropdownProps = BoxProps &
-	StyledProps<any> & {
-		/** Dropdown menu items */
-		items: any;
-	};
+export type DropdownProps = BoxProps & {
+	/** Dropdown menu items */
+	items: any[];
+	/* Label of the dropdown button */
+	children: string | React.ReactElement;
+};
 
 const Dropdown: React.FC<DropdownProps> = React.forwardRef(
 	({ children, items = [], ...props }: DropdownProps, ref) => {

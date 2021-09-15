@@ -5,6 +5,8 @@ import Button from '../../Button';
 import Link from '../../Link';
 import Dropdown from '../';
 
+import * as Stories from '../Dropdown.stories';
+
 <Meta title="Components/Dropdown" component={Dropdown} />
 
 <FigmaLink href="https://www.figma.com/file/IUeLBwjDCMkpdO7OtZ29u1/Dropdown" />
@@ -89,6 +91,10 @@ This rule is not applicable for the header-bar dropdowns.
 </Canvas>
 
 **Dropdown menu items should all have a tooltip on hover displaying the description**
+
+<Canvas>
+	<Story story={Stories.test} />
+</Canvas>
 
 // To Do Add story
 
