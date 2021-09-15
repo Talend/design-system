@@ -4180,6 +4180,11 @@
   resolved "https://registry.yarnpkg.com/@talend/icons/-/icons-6.36.0.tgz#bb8526a50efa0085e9c16ea247d3f7bede9b168a"
   integrity sha512-T8xPgs29cFZ13ndZnsjY6p0i0elodUAZT3chtsG9XsG+BwinI9V76TGV7VeUOD67rLt0wxEKJscne05v4hLhAQ==
 
+"@talend/locales-design-system@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@talend/locales-design-system/-/locales-design-system-1.4.0.tgz#5bf8b4febe90cd1a0d5ce366a320bdf439a3cf11"
+  integrity sha512-DeOkhJQAHH/jCPItdTwFXbRd0udDsiGzJwgju7bN5RayMGFcZPp+35Hv9JQANLb4XE24JisFWktpa0EQocc0Qg==
+
 "@talend/module-to-cdn@^9.6.2":
   version "9.6.2"
   resolved "https://registry.yarnpkg.com/@talend/module-to-cdn/-/module-to-cdn-9.6.2.tgz#04dc7dd5830aa8aaf7afe5787e9a6fd80e050e3c"
