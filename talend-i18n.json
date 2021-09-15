@@ -6,7 +6,7 @@
     "transform": "flatten"
   },
   "load": {
-    "project": "tui-design-system"
+    "project": "design-system"
   },
   "module": {
     "type": "npm",
