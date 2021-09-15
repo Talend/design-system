@@ -38,10 +38,11 @@ export const globalTypes = {
 		toolbar: {
 			icon: 'globe',
 			items: [
+				{ value: 'zh', title: 'Chinese' },
 				{ value: 'en', title: 'English' },
 				{ value: 'fr', title: 'French' },
+				{ value: 'de', title: 'German' },
 				{ value: 'ja', title: 'Japanese' },
-				{ value: 'zh', title: 'Chinese' },
 			],
 		},
 	},
