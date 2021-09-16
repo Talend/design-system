@@ -64,8 +64,8 @@ export const External = {
 
 export const AsButton = (props: Story) => {
 	return (
-		<Link onClick={() => console.log('pouet')} as="button" {...props}>
-			Test
+		<Link onClick={() => {}} as="button" {...props}>
+			Button styled as a link
 		</Link>
 	);
 };
