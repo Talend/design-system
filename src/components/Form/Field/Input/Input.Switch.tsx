@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 import { useCheckboxState, Checkbox } from 'reakit';
 
-import { InputProps } from './Input';
+import { InputProps } from './InputBase';
 import tokens from '../../../../tokens';
 import { InlineStyle } from '../Field.style';
 

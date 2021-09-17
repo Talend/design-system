@@ -5,7 +5,7 @@ import { VisuallyHidden } from 'reakit';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import { Icon } from '../../../Icon';
-import Input from './Input';
+import InputBase from './InputBase';
 import tokens from '../../../../tokens';
 import Field, { FieldProps } from '../Field';
 
@@ -192,7 +192,7 @@ const InputFile = React.forwardRef<HTMLInputElement, FieldProps>((props: FieldPr
 	return (
 		<FileField aria-describedby={id} ref={ref}>
 			{props.readOnly ? (
-				<Input
+				<InputBase
 					{...props}
 					value={
 						files

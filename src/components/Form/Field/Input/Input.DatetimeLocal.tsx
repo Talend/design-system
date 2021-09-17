@@ -1,8 +1,8 @@
 import React from 'react';
-import Input, { InputProps } from './Input';
+import InputBase, { InputProps } from './InputBase';
 
 const DatetimeLocal = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <Input {...props} type="datetime-local" ref={ref} />;
+	return <InputBase {...props} type="datetime-local" ref={ref} />;
 });
 
 export default DatetimeLocal;

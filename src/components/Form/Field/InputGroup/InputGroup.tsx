@@ -6,7 +6,7 @@ import InlineMessage from '../../../InlineMessage';
 
 import * as S from './InputGroup.style';
 
-export type InputGroupProps = HTMLInputElement & {
+export type InputGroupProps = React.InputHTMLAttributes<HTMLInputElement> & {
 	label: string;
 	prefix?: React.ReactNode;
 	suffix?: React.ReactNode;

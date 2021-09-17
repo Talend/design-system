@@ -30,21 +30,16 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 				}
 				return acc;
 			}, []);
-			// @ts-ignore
 			return <Input readOnly value={values.join('; ')} {...rest} />;
 		}
 
 		return (
 			<S.FieldWrapper>
-				{/*
-				// @ts-ignore */}
 				<Field
 					{...rest}
 					as="select"
 					multiple={multiple}
-					// @ts-ignore
 					before={!multiple && <Icon name="talend-caret-down" className="talend-caret-down" />}
-					// @ts-ignore
 					ref={ref}
 				>
 					{placeholder && (

@@ -5,7 +5,7 @@ import Button from '../../Button';
 
 <Meta title="Components/Form/Form Field Group" />
 
-# Input group
+# InputBase group
 
 An input group allows to extend the form controls by adding simple text, select or buttons on either side of the default input.
 
@@ -30,7 +30,7 @@ An input group allows to extend the form controls by adding simple text, select 
 <Canvas>
 	<Story name="select">
 		<Form.InputGroup
-			label="Input"
+			label="InputBase"
 			prefix={
 				<Form.Select label="Protocol">
 					<option selected>http://</option>
@@ -56,7 +56,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="button">
-		<Form.InputGroup label="Input" suffix={<Button.Secondary>Button</Button.Secondary>}>
+		<Form.InputGroup label="InputBase" suffix={<Button.Secondary>Button</Button.Secondary>}>
 			<Form.Text />
 		</Form.InputGroup>
 	</Story>
@@ -90,7 +90,7 @@ An input group allows to extend the form controls by adding simple text, select 
 <Canvas>
 	<Story name="select--select">
 		<Form.InputGroup
-			label="Input"
+			label="InputBase"
 			prefix={
 				<Form.Select label="Type">
 					<option>Value</option>
@@ -119,7 +119,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="default">
-		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+		<Form.InputGroup label="InputBase" prefix="$" suffix=".00">
 			<Form.Text />
 		</Form.InputGroup>
 	</Story>
@@ -134,7 +134,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas withSource="none">
 	<Story name="hover" decorators={[WithSelector.decorator(':hover')]}>
-		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+		<Form.InputGroup label="InputBase" prefix="$" suffix=".00">
 			<Form.Text />
 		</Form.InputGroup>
 	</Story>
@@ -149,7 +149,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas withSource="none">
 	<Story name="focus" decorators={[WithSelector.decorator(':focus-within')]}>
-		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+		<Form.InputGroup label="InputBase" prefix="$" suffix=".00">
 			<Form.Text />
 		</Form.InputGroup>
 	</Story>
@@ -164,7 +164,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="filled">
-		<Form.InputGroup label="Input" prefix="$" suffix=".00">
+		<Form.InputGroup label="InputBase" prefix="$" suffix=".00">
 			<Form.Number value="100" />
 		</Form.InputGroup>
 	</Story>
@@ -179,7 +179,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="disabled">
-		<Form.InputGroup label="Input" prefix="$" suffix=".00" disabled>
+		<Form.InputGroup label="InputBase" prefix="$" suffix=".00" disabled>
 			<Form.Number value="100" />
 		</Form.InputGroup>
 	</Story>
@@ -194,7 +194,7 @@ An input group allows to extend the form controls by adding simple text, select 
 
 <Canvas>
 	<Story name="read-only">
-		<Form.InputGroup label="Input" prefix="$" suffix=".00" readOnly>
+		<Form.InputGroup label="InputBase" prefix="$" suffix=".00" readOnly>
 			<Form.Number value="100" />
 		</Form.InputGroup>
 	</Story>

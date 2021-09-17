@@ -1,8 +1,8 @@
 import React from 'react';
-import Input, { InputProps } from './Input';
+import InputBase, { InputProps } from './InputBase';
 
 const Date = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <Input {...props} type="date" ref={ref} />;
+	return <InputBase {...props} type="date" ref={ref} />;
 });
 
 export default Date;

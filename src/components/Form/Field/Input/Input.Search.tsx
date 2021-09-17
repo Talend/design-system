@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Input, { InputProps } from './Input';
+import InputBase, { InputProps } from './InputBase';
 import { Icon } from '../../../Icon';
 
 const Search = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	return (
-		<Input
+		<InputBase
 			{...props}
 			type="search"
 			// @ts-ignore

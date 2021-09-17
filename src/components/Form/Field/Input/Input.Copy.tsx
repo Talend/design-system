@@ -3,7 +3,7 @@ import { useCopyToClipboard } from 'react-use';
 import Button from '../../../Button';
 import InputGroup from '../InputGroup';
 import Text from './Input.Text';
-import { InputProps } from './Input';
+import { InputProps } from './InputBase';
 
 const InputCopy = React.forwardRef<HTMLInputElement, InputProps>(
 	({ label, value = '', disabled, readOnly, ...rest }: InputProps, ref) => {

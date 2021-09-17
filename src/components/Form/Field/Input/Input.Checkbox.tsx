@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
 import styled from 'styled-components';
 
-import { InputProps } from './Input';
+import { InputProps } from './InputBase';
 import { Icon } from '../../../Icon/Icon';
 
 import { InlineStyle } from '../Field.style';

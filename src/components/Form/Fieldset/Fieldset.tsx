@@ -1,8 +1,7 @@
 import React from 'react';
-import { isElement } from 'react-is';
 import * as S from './Fieldset.style';
 
-export type FieldsetProps = React.PropsWithChildren<HTMLFieldSetElement> & {
+export type FieldsetProps = React.FieldsetHTMLAttributes<HTMLFieldSetElement> & {
 	legend?: string;
 	required?: boolean;
 	disabled?: boolean;
@@ -10,9 +9,8 @@ export type FieldsetProps = React.PropsWithChildren<HTMLFieldSetElement> & {
 };
 
 const Fieldset = React.forwardRef<HTMLFieldSetElement, FieldsetProps>(
-	({ legend, children, disabled, readOnly, required, ...rest }: FieldsetProps, ref) => {
+	({ legend, children, required, ...rest }: FieldsetProps, ref) => {
 		return (
-			// @ts-ignore
 			<S.Fieldset {...rest} ref={ref}>
 				{legend && (
 					<S.Legend>
@@ -20,15 +18,7 @@ const Fieldset = React.forwardRef<HTMLFieldSetElement, FieldsetProps>(
 						{required && '*'}
 					</S.Legend>
 				)}
-				{React.Children.toArray(children).map((child, key: number) =>
-					isElement(child)
-						? React.cloneElement(child, {
-								key: `fieldset-${key}`,
-								disabled,
-								readOnly,
-						  })
-						: child,
-				)}
+				{children}
 			</S.Fieldset>
 		);
 	},

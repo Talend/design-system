@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Input, { InputProps } from './Input';
+import InputBase, { InputProps } from './InputBase';
 
 import useRevealPassword from './hooks/useRevealPassword';
 
@@ -18,7 +18,7 @@ const Password = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => 
 	});
 
 	return (
-		<Input
+		<InputBase
 			{...props}
 			type={currentType}
 			ref={inputRef}

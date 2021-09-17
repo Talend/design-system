@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { shade } from 'polished';
-import Input, { InputProps } from './Input';
+import InputBase, { InputProps } from './InputBase';
 import tokens from '../../../../tokens';
 
 const SRange = styled.div`
@@ -110,7 +110,7 @@ const SRange = styled.div`
 const Range = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	return (
 		<SRange>
-			<Input {...props} type="range" ref={ref} />
+			<InputBase {...props} type="range" ref={ref} />
 		</SRange>
 	);
 });

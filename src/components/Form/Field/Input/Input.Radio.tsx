@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { InputProps } from './Input';
+import { InputProps } from './InputBase';
 import { InlineStyle } from '../Field.style';
 
 import tokens from '../../../../tokens';

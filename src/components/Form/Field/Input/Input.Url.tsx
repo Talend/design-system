@@ -1,8 +1,8 @@
 import React from 'react';
-import Input, { InputProps } from './Input';
+import InputBase, { InputProps } from './InputBase';
 
 const Url = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <Input {...props} type="url" ref={ref} />;
+	return <InputBase {...props} type="url" ref={ref} />;
 });
 
 export default Url;
