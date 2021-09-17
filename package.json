@@ -85,7 +85,7 @@
     "react-dom": "^16.14.0",
     "react-hook-form": "^7.10.1",
     "react-i18next": "^11.8.13",
-    "react-is": "^16.13.1",
+    "react-is": "^17.0.2",
     "storybook-addon-mdx-embed": "^0.0.19",
     "storybook-docs-toc": "^1.6.0",
     "styled-components": "^5.2.1",
@@ -99,7 +99,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-i18next": "^11.8.13",
-    "react-is": "^16.13.1",
+    "react-is": "^17.0.2",
     "styled-components": "^5.2.1"
   },
   "resolutions": {
