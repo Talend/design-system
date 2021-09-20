@@ -1,6 +1,7 @@
 import React from 'react';
-import { useCompositeState } from 'reakit';
-import * as S from './Accordion.style';
+import { Composite, useCompositeState } from 'reakit';
+
+import * as styles from './Accordion.css';
 
 export type AccordionProps = React.PropsWithChildren<any> & {
 	selectedId?: string;
@@ -11,7 +12,7 @@ const Accordion = React.forwardRef<React.ReactElement, React.PropsWithChildren<a
 		const composite = useCompositeState({});
 
 		return (
-			<S.Accordion {...composite} ref={ref} {...rest}>
+			<Composite className={styles.accordion} {...composite} ref={ref} {...rest}>
 				{children.map((child: React.ReactElement, key: number) =>
 					React.cloneElement(child, {
 						id: `${composite.baseId}-${key + 1}`,
@@ -20,7 +21,7 @@ const Accordion = React.forwardRef<React.ReactElement, React.PropsWithChildren<a
 						...child.props,
 					}),
 				)}
-			</S.Accordion>
+			</Composite>
 		);
 	},
 );
