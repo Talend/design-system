@@ -7,5 +7,11 @@
   "exclude": [
     "dist",
     "node_modules"
-  ]
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "jsx": "react",
+    "target": "ES5",
+    "module": "CommonJs"
+  }
 }

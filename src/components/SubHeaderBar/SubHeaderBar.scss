@@ -13,15 +13,15 @@
 		color: #797979;
 		background: #e8e8e8;
 
-        &:hover,
-        &:focus {
-            color: #626262;
-            background: #d2d2d2;
-        }
+		&:hover,
+		&:focus {
+			color: #626262;
+			background: #d2d2d2;
+		}
 
-        &:active {
-            color: #4c4c4c;
-        }
+		&:active {
+			color: #4c4c4c;
+		}
 
 		:global(.btn__text) {
 			justify-content: center;
