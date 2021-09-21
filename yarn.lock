@@ -3381,6 +3381,19 @@
   dependencies:
     semver "^7.3.5"
 
+"@talend/bootstrap-sass@^3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@talend/bootstrap-sass/-/bootstrap-sass-3.4.5.tgz#3ff72f7c4cce2502577336fd18eb24110ae75726"
+  integrity sha512-RB9ELJAuZXry3iD1D+DmhkArhxyHlRvKksiKkWVywCJDkOniMk5egXwujyQSjqAUY9eoUbPvSiq9clVaDpMbWA==
+
+"@talend/bootstrap-theme@^6.38.1":
+  version "6.38.1"
+  resolved "https://registry.yarnpkg.com/@talend/bootstrap-theme/-/bootstrap-theme-6.38.1.tgz#9ca444b45253cbc0239d8e7f94951a12036b1505"
+  integrity sha512-3X3PWromHQ8PJjBikIG2enC2hNFGV+JuAq2fb8Cp58JZG+Plf3YeuH9m7iN13xGDbfAyxW1x/hR4L0TfDZ1sNA==
+  dependencies:
+    "@talend/bootstrap-sass" "^3.4.5"
+    "@talend/icons" "^6.36.1"
+
 "@talend/dynamic-cdn-webpack-plugin@^9.7.7":
   version "9.7.9"
   resolved "https://registry.yarnpkg.com/@talend/dynamic-cdn-webpack-plugin/-/dynamic-cdn-webpack-plugin-9.7.9.tgz#8b495372ee2aecb17cee8274522370ea9f3da62a"
@@ -3402,6 +3415,11 @@
   version "6.36.0"
   resolved "https://registry.yarnpkg.com/@talend/icons/-/icons-6.36.0.tgz#bb8526a50efa0085e9c16ea247d3f7bede9b168a"
   integrity sha512-T8xPgs29cFZ13ndZnsjY6p0i0elodUAZT3chtsG9XsG+BwinI9V76TGV7VeUOD67rLt0wxEKJscne05v4hLhAQ==
+
+"@talend/icons@^6.36.1":
+  version "6.36.1"
+  resolved "https://registry.yarnpkg.com/@talend/icons/-/icons-6.36.1.tgz#d8878b5adea934d685da7e77435e170f139a346b"
+  integrity sha512-oQA5AvPu+7hI1FusBJpT3Hwxruv1Xa5e4OZr+5aqUcXVvhfZAtTBKmKUoTTFLj0nspDvzAvZxodKCd+anPb42w==
 
 "@talend/locales-design-system@^1.4.0":
   version "1.4.0"
