@@ -108,6 +108,10 @@ module.exports = {
 			}
 			return rule;
 		});
+		config.module.rules.push({
+			test: /\.scss$/,
+			use: ['style-loader', 'css-loader?modules&importLoaders', 'sass-loader'],
+		});
 		config.plugins.push(
 			new BrowserSyncPlugin({
 				host: 'localhost',
