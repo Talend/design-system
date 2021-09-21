@@ -1,20 +1,11 @@
 import React from 'react';
-import styled, { StyledFunction } from 'styled-components';
-import ButtonSecondary from './Button.secondary';
-import { ButtonProps } from '../Button';
-import tokens from '../../../tokens';
+import ButtonBase, { ButtonProps } from '../Button';
 
-const button: StyledFunction<typeof ButtonSecondary> = styled(ButtonSecondary);
-
-const ButtonTertiary: React.FC<ButtonProps> = button.attrs({
-	className: 'btn--tertiary',
-})`
-	&,
-	&:hover,
-	&:active {
-		--t-button-border-color: ${tokens.colors?.transparent};
-	}
-`;
+const ButtonTertiary = React.forwardRef(
+	(props: Omit<ButtonProps, 'variant'>, ref: React.Ref<any>) => {
+		return <ButtonBase variant="tertiary" {...props} ref={ref} />;
+	},
+);
 
 ButtonTertiary.displayName = 'Button.Tertiary';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { IconName } from '@talend/icons';
-import { ClickableProps } from 'reakit';
+import classnames from 'classnames';
+import { Button, ClickableProps } from 'reakit';
 
 import { Icon } from '../Icon/Icon';
 import Loading from '../Loading';
-
-import * as S from './Button.style';
+import * as styles from './Button.css';
 
 type BaseProps = {
 	/** The icon of the button */
@@ -19,43 +19,53 @@ type BaseProps = {
 	/** All buttons must have contents */
 	children: React.ReactNode | React.ReactNodeArray;
 	/** Use these if the button should be an anchor or router link */
-	as?: React.ElementType;
+	as?: any;
 	href?: string;
 	target?: string;
+	variant?: keyof typeof styles.buttonVariant;
 };
 
 export type ButtonProps = ClickableProps & BaseProps;
 
-const Button = React.forwardRef(
+const ButtonComponentBase = React.forwardRef(
 	(
-		{ className, icon, small, hideText, loading, children, ...rest }: ButtonProps,
+		{ className, icon, small, hideText, loading, children, variant, ...rest }: ButtonProps,
 		ref: React.Ref<any>,
 	) => (
-		<S.Button
+		<Button
 			ref={ref}
 			{...rest}
-			className={`
-				btn ${className || ''} ${icon ? 'btn--has-icon' : ''} ${hideText ? '' : 'btn--has-text'} ${
-				small ? 'btn--small' : ''
-			} ${loading ? 'btn--loading' : ''}
-			`}
+			className={classnames(
+				'btn',
+				className,
+				styles.buttonBase,
+				variant ? styles.buttonVariant[variant] : '',
+				{
+					'btn--has-icon': icon,
+					[styles.buttonWithText]: !hideText,
+					[styles.smallButton]: small,
+					'btn--loading': loading,
+				},
+			)}
 			aria-busy={!!loading}
 		>
-			{loading && <Loading className="btn__loading btn__icon" name={icon} aria-hidden />}
+			{loading && (
+				<Loading className={`${styles.loading} ${styles.icon}`} name={icon} aria-hidden />
+			)}
 			{!loading &&
 				icon &&
 				(typeof icon === 'string' ? (
-					<Icon className="btn__icon" name={icon} />
+					<Icon className={styles.icon} name={icon} />
 				) : (
 					React.cloneElement(icon, {
-						className: `${icon.props?.className} btn__icon`,
+						className: `${icon.props?.className} ${styles.icon}`,
 					})
 				))}
-			<span className={`btn__text ${hideText ? 'btn__text--hidden' : ''}`}>{children}</span>
-		</S.Button>
+			<span className={`${styles.text} ${hideText ? styles.textHidden : ''}`}>{children}</span>
+		</Button>
 	),
 );
 
 Button.displayName = 'Button';
 
-export default Button;
+export default ButtonComponentBase;

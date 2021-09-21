@@ -1,26 +1,11 @@
 import React from 'react';
-import styled, { StyledFunction } from 'styled-components';
-import ButtonPrimary from './Button.primary';
-import { ButtonProps } from '../Button';
+import ButtonBase, { ButtonProps } from '../Button';
 
-const button: StyledFunction<typeof ButtonPrimary> = styled(ButtonPrimary);
-
-const ButtonDestructive: React.FC<ButtonProps> = button.attrs({
-	className: 'btn--destructive',
-})`
-	--t-button-background-color: ${({ theme }) => theme.colors?.buttonDestructiveBackgroundColor};
-	--t-button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveBackgroundColor};
-
-	&:hover {
-		--t-button-background-color: ${({ theme }) => theme.colors?.buttonDestructiveHoverBackgroundColor};
-		--t-button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveHoverBackgroundColor};
-	}
-
-	&:active {
-		--t-button-background-color: ${({ theme }) => theme.colors?.buttonDestructiveActiveBackgroundColor};
-		--t-button-border-color: ${({ theme }) => theme.colors?.buttonDestructiveActiveBackgroundColor};
-	}
-`;
+const ButtonDestructive = React.forwardRef(
+	(props: Omit<ButtonProps, 'variant'>, ref: React.Ref<any>) => {
+		return <ButtonBase variant="destructive" {...props} ref={ref} />;
+	},
+);
 
 ButtonDestructive.displayName = 'Button.Destructive';
 
