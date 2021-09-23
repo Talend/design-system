@@ -171,7 +171,7 @@ Name that action instead.
 	<Story
 		name="usage"
 		args={{
-			variant: 'Primary',
+			variant: 'primary',
 			icon: 'talend-upload',
 			children: 'Upload',
 		}}
@@ -180,7 +180,7 @@ Name that action instead.
 				description: 'Button variation',
 				control: {
 					type: 'select',
-					options: ['', 'Primary', 'Secondary', 'Tertiary', 'Destructive', 'Icon'],
+					options: ['default', 'primary', 'secondary', 'tertiary', 'destructive', 'icon'],
 				},
 			},
 			small: {
@@ -211,8 +211,7 @@ Name that action instead.
 		}}
 	>
 		{props => {
-			const Component = Button[props.variant] || Button;
-			return <Component {...props} />;
+			return <Button {...props} />;
 		}}
 	</Story>
 </Canvas>

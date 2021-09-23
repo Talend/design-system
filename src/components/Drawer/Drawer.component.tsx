@@ -3,7 +3,7 @@ import { Disclosure, DisclosureContent, useDisclosureState } from 'reakit';
 import { ButtonComponentType } from '../Button';
 
 import * as S from './Drawer.style';
-import { ButtonProps } from '../Button/Button';
+import { ButtonProps } from '../Button/private/ButtonPrimitive';
 
 export type DrawerProps = {
 	toggleButton?: React.ReactElement<ButtonProps, ButtonComponentType>;

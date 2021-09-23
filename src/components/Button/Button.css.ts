@@ -23,19 +23,8 @@ export const clickableBase = style({
 	},
 });
 
-export const smallButton = style({
-	minHeight: tokens.sizes.xl,
-	padding: `${tokens.space.none} ${tokens.space.s}`,
-});
-
-export const buttonWithText = style({
-	[`${smallButton} &`]: {
-		padding: 0,
-	},
-});
-
 const baseHoverStyles = {
-	color: `var(--t-button-color, ${theme.colors?.textColor})`,
+	color: theme.colors.textColor,
 	background: `var(--t-button-background-color)`,
 	borderColor: `var(--t-button-border-color)`,
 	textDecoration: 'none',
@@ -86,7 +75,7 @@ export const buttonVariant = styleVariants({
 			borderColor: theme.colors.buttonPrimaryBackgroundColor,
 
 			selectors: {
-				'&:hover': {
+				'&:hover, &:focus': {
 					color: theme.colors.buttonPrimaryColor,
 					backgroundColor: theme.colors.buttonPrimaryHoverBackgroundColor,
 					borderColor: theme.colors.buttonPrimaryHoverBackgroundColor,
@@ -107,14 +96,14 @@ export const buttonVariant = styleVariants({
 			borderColor: theme.colors.buttonPrimaryBackgroundColor,
 
 			selectors: {
-				'&:hover': {
-					color: theme.colors.buttonPrimaryHoverBackgroundColor,
+				'&:hover, &:focus': {
 					backgroundColor: theme.colors.buttonSecondaryHoverBackgroundColor,
+					color: theme.colors.buttonPrimaryHoverBackgroundColor,
 					borderColor: theme.colors.buttonPrimaryHoverBackgroundColor,
 				},
 				'&:active': {
-					color: theme.colors.buttonPrimaryHoverBackgroundColor,
 					backgroundColor: theme.colors.buttonSecondaryActiveBackgroundColor,
+					color: theme.colors.buttonPrimaryHoverBackgroundColor,
 					borderColor: theme.colors.buttonPrimaryActiveBackgroundColor,
 				},
 			},
@@ -128,7 +117,7 @@ export const buttonVariant = styleVariants({
 			borderColor: tokens.colors.transparent,
 
 			selectors: {
-				'&:hover': {
+				'&:hover, &:focus': {
 					color: theme.colors.buttonPrimaryHoverBackgroundColor,
 					backgroundColor: theme.colors.buttonSecondaryHoverBackgroundColor,
 					borderColor: tokens.colors.transparent,
@@ -149,7 +138,7 @@ export const buttonVariant = styleVariants({
 			borderColor: theme.colors.buttonDestructiveBackgroundColor,
 
 			selectors: {
-				'&:hover': {
+				'&:hover, &:focus': {
 					color: theme.colors.buttonPrimaryColor,
 					backgroundColor: theme.colors.buttonDestructiveHoverBackgroundColor,
 					borderColor: theme.colors.buttonDestructiveHoverBackgroundColor,
@@ -162,6 +151,43 @@ export const buttonVariant = styleVariants({
 			},
 		},
 	],
+	icon: [
+		defaultButton,
+		{
+			color: theme.colors.buttonPrimaryBackgroundColor,
+			backgroundColor: theme.colors.buttonSecondaryBackgroundColor,
+			borderColor: theme.colors.buttonPrimaryBackgroundColor,
+			padding: tokens.space.xs,
+			minHeight: 'unset',
+			borderRadius: tokens.radii.circleRadius,
+
+			selectors: {
+				'&:hover, &:focus': {
+					backgroundColor: tokens.colors.transparent,
+					color: theme.colors.buttonPrimaryHoverBackgroundColor,
+					borderColor: theme.colors.buttonPrimaryHoverBackgroundColor,
+				},
+				'&:active': {
+					backgroundColor: tokens.colors.transparent,
+					color: theme.colors.buttonPrimaryHoverBackgroundColor,
+					borderColor: theme.colors.buttonPrimaryActiveBackgroundColor,
+				},
+			},
+		},
+	],
+});
+
+export const smallButton = style({
+	minHeight: tokens.sizes.xl,
+	padding: `${tokens.space.none} ${tokens.space.s}`,
+});
+
+export const buttonWithText = style({
+	selectors: {
+		[`${smallButton} &`]: {
+			padding: 0,
+		},
+	},
 });
 
 export const loading = style({
@@ -185,6 +211,14 @@ export const icon = style({
 		},
 	},
 });
+
+export const iconSmall = style([
+	icon,
+	{
+		maxHeight: tokens.sizes.s,
+		maxWidth: tokens.sizes.s,
+	},
+]);
 
 export const text = style({
 	flex: 1,

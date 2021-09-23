@@ -86,7 +86,9 @@ module.exports = {
 				notify: false,
 				codeSync: false,
 			}),
-			new VanillaExtractPlugin(),
+			new VanillaExtractPlugin({
+				identifiers: 'debug',
+			}),
 		);
 		return config;
 	},
