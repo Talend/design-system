@@ -1,4 +1,5 @@
 import React from 'react';
+import { I18nextProvider } from 'react-i18next';
 import prettier from 'prettier/standalone';
 import prettierBabel from 'prettier/parser-babel';
 
@@ -9,6 +10,8 @@ import { TableOfContents, BackToTop } from 'storybook-docs-toc';
 import { useLocalStorage } from 'react-use';
 
 import 'focus-outline-manager';
+
+import i18n from './i18n';
 
 import Divider from '../src/components/Divider';
 import Form from '../src/components/Form';
@@ -26,6 +29,20 @@ export const globalTypes = {
 			items: [
 				{ value: 'light', left: '⚪️', title: 'Default theme' },
 				{ value: 'dark', left: '⚫️', title: 'Dark theme' },
+			],
+		},
+	},
+	locale: {
+		name: 'Locale',
+		defaultValue: 'en',
+		toolbar: {
+			icon: 'globe',
+			items: [
+				{ value: 'zh', title: 'Chinese' },
+				{ value: 'en', title: 'English' },
+				{ value: 'fr', title: 'French' },
+				{ value: 'de', title: 'German' },
+				{ value: 'ja', title: 'Japanese' },
 			],
 		},
 	},
@@ -64,7 +81,7 @@ export const parameters = {
 
 			const channel = addons.getChannel();
 
-			const hasDarkMode = props.context.globals.theme === 'dark';
+			const hasDarkMode = props.context.globals?.theme === 'dark';
 
 			return (
 				<>
@@ -75,7 +92,7 @@ export const parameters = {
 					</ThemeProvider>
 					<TableOfContents>
 						{['component', 'template', 'page'].find(term =>
-							props.context.kind.split('/')[0].toLocaleLowerCase().includes(term),
+							props.context.kind?.split('/')[0].toLocaleLowerCase().includes(term),
 						) && (
 							<ThemeProvider>
 								<Divider />
@@ -147,6 +164,7 @@ export const parameters = {
 					'Button',
 					'Combobox',
 					'Divider',
+					'Drawer',
 					'Dropdown',
 					'Form',
 					['Form', 'Form Fieldset', 'Form Field', 'Form Field Group', 'Fields', 'Form Buttons'],
@@ -171,16 +189,19 @@ export const parameters = {
 
 export const decorators = [
 	(Story, context) => {
-		const theme = getTheme(context.globals.theme);
+		i18n.changeLanguage(context.globals?.locale);
+		const theme = getTheme(context.globals?.theme);
 		return (
-			<>
+			<I18nextProvider i18n={i18n}>
 				<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 				<ThemeProvider theme={theme}>
 					<ThemeProvider.GlobalStyle />
 					<StorybookGlobalStyle />
-					<Story {...context} />
+					<React.Suspense fallback={null}>
+						<Story {...context} />
+					</React.Suspense>
 				</ThemeProvider>
-			</>
+			</I18nextProvider>
 		);
 	},
 ];

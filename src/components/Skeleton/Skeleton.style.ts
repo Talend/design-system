@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
 
-const ThemedSkeleton = styled.span(
-	({ theme }) => `
-    background: ${theme.colors.skeletonBackgroundColor};
-`,
-);
+const ThemedSkeleton = styled.span`
+	background: ${({ theme }) => theme.colors.skeletonBackgroundColor};
+`;
 
 export const Skeleton = styled(ThemedSkeleton).attrs({
 	className: 'skeleton',
@@ -18,3 +16,5 @@ export const Skeleton = styled(ThemedSkeleton).attrs({
 	cursor: progress;
 	animation: ${tokens.animations.heartbeat};
 `;
+
+Skeleton.displayName = 'Skeleton';

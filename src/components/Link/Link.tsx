@@ -1,24 +1,23 @@
 import React from 'react';
-import { StyledProps } from 'styled-components';
-import { BoxProps } from 'reakit';
+import { useTranslation } from 'react-i18next';
 import { IconName } from '@talend/icons';
 
 import { Icon } from '../Icon/Icon';
 
 import * as S from './Link.style';
 
-export type LinkProps = BoxProps &
-	StyledProps<any> &
-	React.AnchorHTMLAttributes<any> & {
-		/** The icon to display before */
-		iconBefore?: IconName | React.ReactElement;
-		/** The icon to display after */
-		iconAfter?: IconName | React.ReactElement;
-		/** if the link is disabled */
-		disabled?: boolean;
-		/** if the link is external but the icon must not be shown */
-		hideExternalIcon?: boolean;
-	};
+type LinkProps = React.AnchorHTMLAttributes<any> & {
+	/** The icon to display before */
+	iconBefore?: IconName | React.ReactElement;
+	/** The icon to display after */
+	iconAfter?: IconName | React.ReactElement;
+	/** if the link is disabled */
+	disabled?: boolean;
+	/** if the link is external but the icon must not be shown */
+	hideExternalIcon?: boolean;
+};
+
+export type StyledLink = { as?: React.ComponentType<any> | string } & React.PropsWithRef<LinkProps>;
 
 const Link = React.forwardRef(
 	(
@@ -32,33 +31,58 @@ const Link = React.forwardRef(
 			target,
 			title,
 			hideExternalIcon,
+			as = 'a',
 			...rest
-		}: LinkProps,
-		ref,
+		}: StyledLink,
+		ref: React.Ref<any>,
 	) => {
-		const isBlank = React.useMemo(() => target?.toLowerCase() === '_blank', [target]);
+		const { t } = useTranslation();
+		const isBlank: boolean = React.useMemo(() => target?.toLowerCase() === '_blank', [target]);
 
 		const isExternal = React.useMemo(() => {
+			if (!href) {
+				return false;
+			}
 			return /^https?:\/\//i.test(href) && new URL(href).host !== location.host;
-		}, [target]);
+		}, [href]);
 
 		const getTitle = React.useCallback(() => {
-			if (disabled && title) return `${title} (this link is disabled)`;
-			if (disabled) return 'This link is disabled';
-			if (isExternal && isBlank && title) return `${title} (open in a new tab)`;
-			if (isExternal && isBlank) return 'Open in a new tab';
+			if (disabled && title) {
+				return t('LINK_DISABLED_TITLE', {
+					title,
+					defaultValue: '{{title}} (this link is disabled)',
+				});
+			}
+			if (disabled) {
+				return t('LINK_DISABLED', {
+					defaultValue: 'This link is disabled',
+				});
+			}
+			if (isExternal && isBlank && title) {
+				return t('LINK_EXTERNAL_TITLE', {
+					title,
+					defaultValue: '{{title}} (open in a new tab)',
+				});
+			}
+			if (isExternal && isBlank) {
+				return t('LINK_EXTERNAL', {
+					defaultValue: 'Open in a new tab',
+				});
+			}
 			return title;
-		}, [disabled, title, isExternal]);
+		}, [disabled, title, isExternal, isBlank]);
 
 		return (
 			<S.Link
-				rel={isBlank ? 'noopener noreferrer' : null}
+				rel={isBlank ? 'noopener noreferrer' : undefined}
+				target={target}
 				{...rest}
-				href={!disabled ? href : null}
+				href={!disabled ? href : undefined}
 				className={`link ${disabled ? 'link--disabled' : ''} ${className || ''}`}
 				title={getTitle()}
-				ariaDisabled={disabled ? 'true' : null}
+				aria-disabled={disabled}
 				ref={ref}
+				as={as}
 			>
 				{iconBefore &&
 					(typeof iconBefore === 'string' ? (

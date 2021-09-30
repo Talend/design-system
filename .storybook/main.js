@@ -31,52 +31,25 @@ module.exports = {
 		'../src/Status.stories.@(js|tsx|mdx)',
 		'../src/Catalog.stories.@(js|tsx|mdx)',
 		'../src/tokens/docs/*.stories.@(js|tsx|mdx)',
-		'../src/content/docs/*.stories.@(js|tsx|mdx)',
+		'../src/content/docs/VoiceAndTone.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Internationalization.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Conventions.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Capitalization.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Wording.stories.@(js|tsx|mdx)',
 		'../src/themes/docs/Light.stories.@(js|tsx|mdx)',
 		'../src/themes/docs/*.stories.@(js|tsx|mdx)',
-		'../src/components/**/*.stories.@(js|tsx|mdx)',
+		'../src/components/**/*.stories.mdx',
 		'../src/templates/**/*.stories.@(js|tsx|mdx)',
 		'../src/pages/**/*.stories.@(js|tsx|mdx)',
 	],
 	addons: [
-		{
-			name: '@storybook/addon-docs',
-			options: {
-				transcludeMarkdown: true,
-				sourceLoaderOptions: {
-					prettierConfig: {
-						arrowParens: 'avoid',
-						printWidth: 100,
-						singleQuote: true,
-						trailingComma: 'all',
-						semi: true,
-						useTabs: true,
-						overrides: [
-							{
-								files: '**/*.json',
-								options: {
-									tabWidth: 2,
-									useTabs: false,
-								},
-							},
-							{
-								files: '**/*.scss',
-								options: {
-									printWidth: 1000,
-								},
-							},
-						],
-					},
-				},
-			},
-		},
 		'@storybook/addon-a11y',
 		'@storybook/addon-essentials',
 		'@storybook/addon-links',
 		'storybook-addon-mdx-embed',
 	],
 	typescript: {
-		check: false,
+		check: true,
 		checkOptions: {},
 		reactDocgen: 'react-docgen-typescript',
 		reactDocgenTypescriptOptions: {

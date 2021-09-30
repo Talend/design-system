@@ -1,4 +1,11 @@
+import React from 'react';
+import { Story } from '@storybook/react';
 import { WithSelector } from '../../docs';
+import Link from '.';
+
+export default {
+	component: Link,
+};
 
 export const defaultProps = {
 	href: '#',
@@ -53,4 +60,12 @@ export const External = {
 		target: '_blank',
 		children: 'talend.com',
 	},
+};
+
+export const AsButton = (props: Story) => {
+	return (
+		<Link onClick={() => {}} as="button" {...props}>
+			Button styled as a link
+		</Link>
+	);
 };
