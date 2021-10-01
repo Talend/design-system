@@ -18,7 +18,7 @@ const ButtonIcon: React.FC<ButtonIconProps> = button.attrs({
 	&& {
 		padding: ${tokens.space.xs};
 		min-height: unset;
-		border-radius: ${tokens.radii.circleRadius};
+		border: none;
 	}
 
 	&,
