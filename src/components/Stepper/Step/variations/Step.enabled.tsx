@@ -6,10 +6,15 @@ import tokens from '../../../../tokens';
 const StepEnabled = styled(Step).attrs({ className: 'step--enabled' })`
 	.step__icon {
 		background: radial-gradient(
-			${tokens.sizes.m} ${tokens.sizes.m} at ${tokens.space.s} ${tokens.space.s},
-			${({ theme }) => theme.colors?.activeColor[100]} 50%,
-			transparent 50%
-		);
+				${tokens.space.s} ${tokens.space.s} at ${tokens.space.s} ${tokens.space.s},
+				${({ theme }) => theme.colors?.activeColor[100]} 50%,
+				transparent 50%
+			),
+			radial-gradient(
+				${tokens.sizes.m} ${tokens.sizes.m} at ${tokens.space.s} ${tokens.space.s},
+				${({ theme }) => theme.colors?.activeColor[500]} 50%,
+				transparent 50%
+			);
 	}
 `;
 
