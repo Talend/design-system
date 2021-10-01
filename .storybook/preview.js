@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { I18nextProvider } from 'react-i18next';
 import prettier from 'prettier/standalone';
 import prettierBabel from 'prettier/parser-babel';
@@ -53,6 +54,10 @@ const getTheme = themeKey => (themeKey === 'dark' ? dark : light);
 const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	({ theme, hasFigmaIframe }) =>
 		`
+	.sb-docs--with-breadcrumb .sbdocs-content {
+		padding-top: 8rem;
+	}
+		
 	.sb-show-main.sb-main-padded {
 		padding: 0;
 	}
@@ -74,6 +79,60 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
+const PageBreadcrumb = styled.div`
+	position: relative;
+
+	ul {
+		display: flex;
+		position: absolute;
+		left: 50%;
+		top: 8rem;
+		margin: 0;
+		margin-left: 4rem;
+		padding: 0;
+		width: 100rem;
+		list-style: none;
+		transform: translateX(-50%);
+	}
+
+	li + li::before {
+		content: '/';
+		padding: 0 0.5ch;
+	}
+
+	li,
+	a {
+		color: #aaa;
+	}
+`;
+
+const Breadcrumb = props => {
+	const { kind = '', title = '' } = props.context;
+	const pages = (kind || title).split('/');
+	let path = '';
+	return (
+		<PageBreadcrumb>
+			<ul>
+				{pages.map((page, i) => {
+					if (i > 0) path += '-';
+					path += page.toLocaleLowerCase().replaceAll(' ', '-');
+					return (
+						<li key={`breadcrumb-${i}`}>
+							{i === pages.length - 1 ? (
+								page
+							) : (
+								<a className="sbdocs sbdocs-a" href={`/?path=/docs/${path}`}>
+									{page}
+								</a>
+							)}
+						</li>
+					);
+				})}
+			</ul>
+		</PageBreadcrumb>
+	);
+};
+
 export const parameters = {
 	docs: {
 		container: props => {
@@ -83,6 +142,15 @@ export const parameters = {
 
 			const hasDarkMode = props.context.globals?.theme === 'dark';
 
+			const hasBreadcrumb = ['component', 'template', 'page'].find(term =>
+				(props.context.kind || props.context.title)
+					?.split('/')[0]
+					.toLocaleLowerCase()
+					.includes(term),
+			);
+
+			console.log(props.context);
+
 			return (
 				<>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
@@ -91,9 +159,8 @@ export const parameters = {
 						<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					</ThemeProvider>
 					<TableOfContents>
-						{['component', 'template', 'page'].find(term =>
-							props.context.kind?.split('/')[0].toLocaleLowerCase().includes(term),
-						) && (
+						{'' + hasBreadcrumb}
+						{hasBreadcrumb && (
 							<ThemeProvider>
 								<Divider />
 								<Form.Switch
@@ -116,7 +183,10 @@ export const parameters = {
 							</ThemeProvider>
 						)}
 					</TableOfContents>
-					<DocsContainer {...props} />
+					{hasBreadcrumb && <Breadcrumb {...props} />}
+					<div className={hasBreadcrumb ? 'sb-docs--with-breadcrumb' : ''}>
+						<DocsContainer {...props} />
+					</div>
 					<BackToTop />
 				</>
 			);
