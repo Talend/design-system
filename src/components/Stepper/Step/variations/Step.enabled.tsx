@@ -5,11 +5,8 @@ import tokens from '../../../../tokens';
 
 const StepEnabled = styled(Step).attrs({ className: 'step--enabled' })`
 	.step__icon {
-		display: block;
-		height: ${tokens.space.l};
-		width: ${tokens.space.l};
 		background: radial-gradient(
-			${tokens.sizes.s} ${tokens.sizes.s} at ${tokens.space.s} ${tokens.space.s},
+			${tokens.sizes.m} ${tokens.sizes.m} at ${tokens.space.s} ${tokens.space.s},
 			${({ theme }) => theme.colors?.activeColor[100]} 50%,
 			transparent 50%
 		);

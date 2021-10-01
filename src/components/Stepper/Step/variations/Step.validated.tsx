@@ -7,9 +7,6 @@ const StepValidated = styled(Step).attrs({
 	className: 'step--validated',
 })`
 	.step__icon {
-		display: block;
-		height: ${tokens.space.l};
-		width: ${tokens.space.l};
 		background: radial-gradient(
 			${tokens.sizes.s} ${tokens.sizes.s} at ${tokens.space.s} ${tokens.space.s},
 			${({ theme }) => theme.colors?.activeColor[500]} 50%,
