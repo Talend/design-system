@@ -5,7 +5,6 @@ import Button from '../Button';
 export const Toggle = styled(Button.Icon)`
 	&& {
 		border: ${tokens.borders.normal};
-		border-radius: ${tokens.radii.circleRadius};
 	}
 
 	&.btn--is-active {
