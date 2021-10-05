@@ -57,33 +57,44 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 		border: 0 !important;
 	}
 	
-	.themes {
-		display: flex;
-		flex-direction: row;
-		height: 100vh;
+	.sbdocs .docs-story {
+		background: linear-gradient(to right, 
+									${light.colors.backgroundColor} 0%, 
+									${light.colors.backgroundColor} 50%, 
+									${dark.colors.backgroundColor} 50%, 
+									${dark.colors.backgroundColor} 100%);
+	}
+	
+	.sbdocs.sbdocs-wrapper--full-width-stories .docs-story {
+		background: linear-gradient(to bottom, 
+									${light.colors.backgroundColor} 0%, 
+									${light.colors.backgroundColor} 50%, 
+									${dark.colors.backgroundColor} 50%, 
+									${dark.colors.backgroundColor} 100%);
 	}
 	
 	.sbdocs .themes {
-		height: auto;
+		display: flex;
+		flex-direction: row;
 	}
 	
-	.themes--full-width {
+	.sbdocs .themes.themes--full-width {
 		flex-direction: column;
 	}
 	
-	.theme {
+	.sbdocs .theme {
 		flex: 0 0 50%;
 		padding: 1rem;
 		text-align: start;
 		overflow: hidden;
 	}
 	
-	.theme--light {
+	.sbdocs .theme.theme--light {
 		color: ${light.colors.textColor};
 		background: ${light.colors.backgroundColor};
 	}
 	
-	.theme--dark {
+	.sbdocs .theme.theme--dark {
 		color: ${dark.colors.textColor};
 		background: ${dark.colors.backgroundColor};
 	}
@@ -94,7 +105,8 @@ export const parameters = {
 	docs: {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
-
+			// FIXME
+			const isFullWidth = props.context.storyById(props.context.id)?.parameters?.full;
 			return (
 				<ThemeProvider>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
@@ -102,7 +114,10 @@ export const parameters = {
 					<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					<TableOfContents>
 						{['component', 'template', 'page'].find(term =>
-							props.context.kind?.split('/')[0].toLocaleLowerCase().includes(term),
+							(props.context.kind || props.context.title)
+								.split('/')[0]
+								.toLocaleLowerCase()
+								.includes(term),
 						) && (
 							<>
 								<Divider />
@@ -114,7 +129,9 @@ export const parameters = {
 							</>
 						)}
 					</TableOfContents>
-					<DocsContainer {...props} />
+					<div className={isFullWidth ? 'sbdocs sbdocs-wrapper--full-width-stories' : ''}>
+						<DocsContainer {...props} />
+					</div>
 					<BackToTop />
 				</ThemeProvider>
 			);
@@ -192,32 +209,33 @@ export const decorators = [
 		const isFullWidth = !!context.parameters.full;
 		return (
 			<I18nextProvider i18n={i18n}>
-				{!isDocsMode && (
-					<>
+				{isDocsMode ? (
+					<div className={`themes ${isFullWidth ? 'themes--full-width' : ''}`}>
+						<div className="theme theme--light">
+							<ThemeProvider theme={light}>
+								<React.Suspense fallback={null}>
+									<Story {...context} />
+								</React.Suspense>
+							</ThemeProvider>
+						</div>
+						<div className="theme theme--dark">
+							<ThemeProvider theme={dark}>
+								<React.Suspense fallback={null}>
+									<Story {...context} />
+								</React.Suspense>
+							</ThemeProvider>
+						</div>
+					</div>
+				) : (
+					<ThemeProvider>
 						<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 						<ThemeProvider.GlobalStyle />
-						<StorybookGlobalStyle />					<React.Suspense fallback={null}>
+						<StorybookGlobalStyle />
 						<React.Suspense fallback={null}>
 							<Story {...context} />
 						</React.Suspense>
-					</>
+					</ThemeProvider>
 				)}
-				<div className={`themes ${isFullWidth ? 'themes--full-width' : ''}`}>
-					<div className="theme theme--light">
-						<ThemeProvider theme={light}>
-							<React.Suspense fallback={null}>
-								<Story {...context} />
-							</React.Suspense>
-						</ThemeProvider>
-					</div>
-					<div className="theme theme--dark">
-						<ThemeProvider theme={dark}>
-							<React.Suspense fallback={null}>
-								<Story {...context} />
-							</React.Suspense>
-						</ThemeProvider>
-					</div>
-				</div>
 			</I18nextProvider>
 		);
 	},
