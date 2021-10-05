@@ -1,16 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledFunction } from 'styled-components';
+import { IconName } from '@talend/icons';
 import ButtonSecondary from './Button.secondary';
-import { ButtonProps } from '../Button';
 import tokens from '../../../tokens';
+import { ButtonProps } from '../Button';
 
-const ButtonIcon: React.FC<ButtonProps> = styled(ButtonSecondary).attrs({
+export type ButtonIconProps = Omit<ButtonProps, 'small'> & {
+	icon: IconName | React.ReactElement;
+};
+
+const button: StyledFunction<React.FC<ButtonIconProps>> = styled(ButtonSecondary);
+
+const ButtonIcon: React.FC<ButtonIconProps> = button.attrs({
 	className: 'btn--icon',
 	hideText: true,
 })`
 	&& {
 		padding: ${tokens.space.xs};
 		min-height: unset;
+		border: none;
 		border-radius: ${tokens.radii.circleRadius};
 	}
 
@@ -25,5 +33,7 @@ const ButtonIcon: React.FC<ButtonProps> = styled(ButtonSecondary).attrs({
 		width: ${tokens.sizes.s};
 	}
 `;
+
+ButtonIcon.displayName = 'Button.Icon';
 
 export default ButtonIcon;

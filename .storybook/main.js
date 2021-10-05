@@ -28,6 +28,7 @@ module.exports = {
 	stories: [
 		'../src/Welcome.stories.@(js|tsx|mdx)',
 		'../src/GettingStarted.stories.@(js|tsx|mdx)',
+		'../src/DesignSystem.stories.@(js|tsx|mdx)',
 		'../src/Status.stories.@(js|tsx|mdx)',
 		'../src/Catalog.stories.@(js|tsx|mdx)',
 		'../src/tokens/docs/*.stories.@(js|tsx|mdx)',
@@ -43,37 +44,6 @@ module.exports = {
 		'../src/pages/**/*.stories.@(js|tsx|mdx)',
 	],
 	addons: [
-		{
-			name: '@storybook/addon-docs',
-			options: {
-				transcludeMarkdown: true,
-				sourceLoaderOptions: {
-					prettierConfig: {
-						arrowParens: 'avoid',
-						printWidth: 100,
-						singleQuote: true,
-						trailingComma: 'all',
-						semi: true,
-						useTabs: true,
-						overrides: [
-							{
-								files: '**/*.json',
-								options: {
-									tabWidth: 2,
-									useTabs: false,
-								},
-							},
-							{
-								files: '**/*.scss',
-								options: {
-									printWidth: 1000,
-								},
-							},
-						],
-					},
-				},
-			},
-		},
 		'@storybook/addon-a11y',
 		{
 			name: '@storybook/addon-essentials',
@@ -85,7 +55,7 @@ module.exports = {
 		'storybook-addon-mdx-embed',
 	],
 	typescript: {
-		check: false,
+		check: true,
 		checkOptions: {},
 		reactDocgen: 'react-docgen-typescript',
 		reactDocgenTypescriptOptions: {

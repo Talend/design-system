@@ -1,4 +1,5 @@
 import React from 'react';
+import { I18nextProvider } from 'react-i18next';
 import prettier from 'prettier/standalone';
 import prettierBabel from 'prettier/parser-babel';
 
@@ -8,12 +9,31 @@ import { useLocalStorage } from 'react-use';
 
 import 'focus-outline-manager';
 
+import i18n from './i18n';
+
 import Divider from '../src/components/Divider';
 import Form from '../src/components/Form';
 import ThemeProvider from '../src/components/ThemeProvider';
 import { IconsProvider } from '../src/components/IconsProvider';
 
 import light, { dark } from '../src/themes';
+
+export const globalTypes = {
+	locale: {
+		name: 'Locale',
+		defaultValue: 'en',
+		toolbar: {
+			icon: 'globe',
+			items: [
+				{ value: 'zh', title: 'Chinese' },
+				{ value: 'en', title: 'English' },
+				{ value: 'fr', title: 'French' },
+				{ value: 'de', title: 'German' },
+				{ value: 'ja', title: 'Japanese' },
+			],
+		},
+	},
+};
 
 const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	({ hasFigmaIframe }) =>
@@ -82,7 +102,7 @@ export const parameters = {
 					<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					<TableOfContents>
 						{['component', 'template', 'page'].find(term =>
-							props.context.kind.split('/')[0].toLocaleLowerCase().includes(term),
+							props.context.kind?.split('/')[0].toLocaleLowerCase().includes(term),
 						) && (
 							<>
 								<Divider />
@@ -167,30 +187,38 @@ export const parameters = {
 
 export const decorators = [
 	(Story, context) => {
+		i18n.changeLanguage(context.globals?.locale);
 		const isDocsMode = context.viewMode === 'docs';
 		const isFullWidth = !!context.parameters.full;
 		return (
-			<>
+			<I18nextProvider i18n={i18n}>
 				{!isDocsMode && (
 					<>
 						<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 						<ThemeProvider.GlobalStyle />
-						<StorybookGlobalStyle />
+						<StorybookGlobalStyle />					<React.Suspense fallback={null}>
+						<React.Suspense fallback={null}>
+							<Story {...context} />
+						</React.Suspense>
 					</>
 				)}
 				<div className={`themes ${isFullWidth ? 'themes--full-width' : ''}`}>
 					<div className="theme theme--light">
 						<ThemeProvider theme={light}>
-							<Story {...context} />
+							<React.Suspense fallback={null}>
+								<Story {...context} />
+							</React.Suspense>
 						</ThemeProvider>
 					</div>
 					<div className="theme theme--dark">
 						<ThemeProvider theme={dark}>
-							<Story {...context} />
+							<React.Suspense fallback={null}>
+								<Story {...context} />
+							</React.Suspense>
 						</ThemeProvider>
 					</div>
 				</div>
-			</>
+			</I18nextProvider>
 		);
 	},
 ];
