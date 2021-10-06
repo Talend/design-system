@@ -35,11 +35,13 @@ const InlineEditing = React.forwardRef(
 			<S.InlineEditing>
 				{editing ? (
 					<div className="edit-inline--editing__field">
-						<Form.Text hideLabel label={label} required={required} value={value} />
-						<div className="edit-inline--editing__field__actions">
-							<Button.Icon icon="talend-cross-circle">{action}</Button.Icon>
-							<Button.Icon icon="talend-check-circle">{action}</Button.Icon>
-						</div>
+						<form>
+							<Form.Text hideLabel label={label} required={required} value={value} />
+							<div className="edit-inline--editing__field__actions">
+								<Button.Icon icon="talend-cross-circle">{action}</Button.Icon>
+								<Button.Icon icon="talend-check-circle">{action}</Button.Icon>
+							</div>
+						</form>
 					</div>
 				) : (
 					<div className="edit-inline--static">
