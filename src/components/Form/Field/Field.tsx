@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import Loading from '../../Loading';
+import VisuallyHidden from '../../VisuallyHidden';
 import InlineMessage from '../../InlineMessage';
 
 import * as S from './Field.style';
@@ -18,6 +19,7 @@ export type FieldProps = HTMLInputElement & {
 	hasWarning?: boolean;
 	hasSuccess?: boolean;
 	hasInformation?: boolean;
+	hideLabel?: boolean;
 	description?: string;
 };
 
@@ -27,6 +29,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 			as = 'input',
 			className = '',
 			label,
+			hideLabel,
 			before,
 			after,
 			id = `field--${Math.floor(Math.random() * 100)}`,
@@ -53,6 +56,8 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 			</S.FieldLabel>
 		);
 
+		const WrappedLabel = () => hideLabel ? <VisuallyHidden><Label /></VisuallyHidden> : <Label />;
+
 		const Description = () => {
 			if (hasError) {
 				return <InlineMessage.Destructive small description={description} />;
@@ -71,7 +76,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 
 		return (
 			<S.Field className={`field ${typeof as === 'string' ? `field--${as}` : ''}`}>
-				{!inline && label && <Label />}
+				{!inline && label && <WrappedLabel />}
 				<S.FieldGroup
 					className={classnames(
 						'field__group',
@@ -101,7 +106,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 					{after}
 				</S.FieldGroup>
 				{link}
-				{inline && label && <Label />}
+				{inline && label && <WrappedLabel />}
 				{description && <Description />}
 			</S.Field>
 		);
