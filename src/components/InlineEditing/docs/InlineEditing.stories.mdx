@@ -1,27 +1,23 @@
-import { Meta } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { FigmaImage, FigmaLink } from '../../../docs';
 import InlineEditing from '../InlineEditing';
 
-<Meta title="Components/Inline Editing" />
+<Meta
+	title="Components/Inline Editing"
+	decorators={[
+		Story => (
+			<div style={{ width: '300px' }}>
+				<Story />
+			</div>
+		),
+	]}
+/>
 
 <FigmaLink href="https://www.figma.com/file/FaYIWpJeP6LwjWr78L8eAr/?node-id=58%3A0" />
 
 # Inline Editing
 
 User can perform inline editing by using inline form.
-
-<Canvas>
-	<Story name="Editing">
-		<div style={{ width: '300px' }}>
-			<InlineEditing label="Crawler name" value="Lorem ipsum dolor sit amet" editing />
-		</div>
-	</Story>
-	<Story name="Not editing">
-		<div style={{ width: '300px' }}>
-			<InlineEditing label="Crawler name" value="Lorem ipsum dolor sit amet" />
-		</div>
-	</Story>
-</Canvas>
 
 ## Zoning
 
@@ -62,7 +58,14 @@ _to do_
 
 ## Usage
 
-_to do_
+<Canvas>
+	<Story name="Editing">
+		<InlineEditing label="Crawler name" value="Lorem ipsum dolor sit amet" editing />
+	</Story>
+	<Story name="Not editing">
+		<InlineEditing label="Crawler name" value="Lorem ipsum dolor sit amet" />
+	</Story>
+</Canvas>
 
 ## Accessibility
 
