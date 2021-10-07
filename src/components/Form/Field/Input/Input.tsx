@@ -3,7 +3,7 @@ import Field, { FieldProps } from '../Field';
 
 export type InputProps = FieldProps;
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+const Input = React.forwardRef((props: InputProps, ref: React.Ref<HTMLInputElement>) => {
 	return <Field {...props} as="input" ref={ref} />;
 });
 
