@@ -1,0 +1,23 @@
+{
+  "repository": "@talend/design-tokens",
+  "head": "specify/chore/tokens",
+  "rules": [
+    {
+      "name": "Design Tokens / Colors",
+      "path": "src/themes/scss/colors.scss",
+      "filter": {
+        "types": ["color"]
+      },
+      "parsers": [
+        {
+          "name": "to-css-custom-properties",
+          "options": {
+            "formatTokens": {
+              "color": "hsl"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
