@@ -7,10 +7,7 @@ export type DatalistProps = FieldProps & {
 };
 
 const Datalist = React.forwardRef(
-	(
-		{ id, values = [], ...rest }: DatalistProps,
-		ref: React.Ref<InputHTMLAttributes<HTMLInputElement>> | undefined,
-	) => {
+	({ id, values = [], ...rest }: DatalistProps, ref: React.Ref<HTMLInputElement> | undefined) => {
 		const { id: reakitId } = useId();
 		const listId = `list--${id || reakitId}`;
 

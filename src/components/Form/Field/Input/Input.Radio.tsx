@@ -36,7 +36,7 @@ const Radio = React.forwardRef(
 			children,
 			...rest
 		}: InputProps,
-		ref: React.Ref<React.InputHTMLAttributes<HTMLInputElement>>,
+		ref: React.Ref<HTMLInputElement>,
 	) => (
 		<SRadio readOnly={!!readOnly} checked={!!checked}>
 			<label htmlFor={id}>
