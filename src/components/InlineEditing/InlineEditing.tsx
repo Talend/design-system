@@ -45,11 +45,6 @@ const InlineEditing = React.forwardRef(
 		const [isEditing, edit] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
 
-		const onSubmit = () => {
-			edit(false);
-			onEdit(value);
-		};
-
 		const action = t('INLINE_EDITING_EDIT', 'Edit');
 		return (
 			<S.InlineEditing>
@@ -60,17 +55,25 @@ const InlineEditing = React.forwardRef(
 								hideLabel
 								label={label}
 								value={value}
-								onBlur={onSubmit}
 								required={required}
 								hasError={hasError}
 								onChange={({ target }) => setValue(target.value)}
 							/>
 							<div className="edit-inline--editing__field__actions">
-								<Button.Icon onClick={() => edit(false)} icon="talend-cross-circle">
+								<Button.Icon
+									onClick={() => {
+										setValue(defaultValue);
+										edit(false);
+									}}
+									icon="talend-cross-circle"
+								>
 									{t('INLINE_EDITING_CANCEL', 'Cancel')}
 								</Button.Icon>
 								<Button.Icon
-									onClick={onSubmit}
+									onClick={() => {
+										edit(false);
+										onEdit(value);
+									}}
 									icon="talend-check-circle"
 								>
 									{t('INLINE_EDITING_SUBMIT', 'Submit')}
