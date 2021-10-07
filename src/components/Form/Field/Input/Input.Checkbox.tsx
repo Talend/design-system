@@ -1,5 +1,6 @@
 import React from 'react';
-import { Checkbox as ReakitCheckbox, useCheckboxState } from 'reakit';
+import { Checkbox as ReakitCheckbox, useCheckboxState, unstable_useId as useId } from 'reakit';
+
 import styled from 'styled-components';
 
 import { InputProps } from './Input';
@@ -49,18 +50,11 @@ export type CheckboxProps = InputProps & {
 
 const Checkbox = React.forwardRef(
 	(
-		{
-			id = `checkbox--${Math.floor(Math.random() * 100)}`,
-			label,
-			indeterminate,
-			checked,
-			readOnly,
-			required,
-			children,
-			...rest
-		}: CheckboxProps,
+		{ id, label, indeterminate, checked, readOnly, required, children, ...rest }: CheckboxProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
+		const { id: reakitId } = useId();
+		const checkboxId = `checkbox--${id || reakitId}`;
 		const checkbox = useCheckboxState({ state: (indeterminate && 'indeterminate') || checked });
 
 		const icon =
@@ -76,13 +70,13 @@ const Checkbox = React.forwardRef(
 
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checked}>
-				<label htmlFor={id}>
+				<label htmlFor={checkboxId}>
 					{readOnly ? (
 						// @ts-ignore
-						<input type="hidden" id={id} {...rest} {...checkbox} ref={ref} />
+						<input type="hidden" id={checkboxId} {...rest} {...checkbox} ref={ref} />
 					) : (
 						// @ts-ignore
-						<ReakitCheckbox id={id} {...rest} {...checkbox} ref={ref} />
+						<ReakitCheckbox id={checkboxId} {...rest} {...checkbox} ref={ref} />
 					)}
 					<span>
 						{label || children}
