@@ -1,8 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
+import React from 'react';
 import { unstable_useId as useId } from 'reakit';
-import Field, { FieldProps } from '../Field';
+import Field from '../Field';
+import { InputProps } from '../Input/Input';
 
-export type DatalistProps = FieldProps & {
+export type DatalistProps = InputProps & {
 	values: string[];
 };
 

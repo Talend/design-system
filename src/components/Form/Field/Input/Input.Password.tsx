@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { FocusEventHandler, useEffect, useRef } from 'react';
 import Input, { InputProps } from './Input';
 
 import useRevealPassword from './hooks/useRevealPassword';
@@ -21,7 +21,7 @@ const Password = React.forwardRef((props: InputProps, ref: React.Ref<HTMLInputEl
 			{...props}
 			type={currentType}
 			ref={ref || inputRef}
-			onBlur={event => {
+			onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
 				if (props.onBlur) {
 					props.onBlur(event);
 				}

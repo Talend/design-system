@@ -8,12 +8,15 @@ import Input from '../Input';
 
 import * as S from './Select.style';
 
-export type SelectProps = FieldProps;
+export type SelectProps = FieldProps &
+	React.SelectHTMLAttributes<HTMLSelectElement> & {
+		readOnly?: boolean;
+	};
 
 const Select = React.forwardRef(
 	(
 		{ children, multiple, readOnly, required, placeholder, ...rest }: SelectProps,
-		ref: React.Ref<React.SelectHTMLAttributes<HTMLSelectElement>>,
+		ref: React.Ref<HTMLSelectElement>,
 	) => {
 		if (readOnly) {
 			const values = React.Children.toArray(children).reduce((acc: string[], current) => {
@@ -34,7 +37,7 @@ const Select = React.forwardRef(
 				return acc;
 			}, []);
 			// @ts-ignore
-			return <Input readOnly value={values.join('; ')} {...rest} />;
+			return <Input readOnly value={values.join('; ')} {...rest} ref={ref} />;
 		}
 
 		return (
@@ -47,7 +50,6 @@ const Select = React.forwardRef(
 					multiple={multiple}
 					// @ts-ignore
 					before={!multiple && <Icon name="talend-caret-down" className="talend-caret-down" />}
-					// @ts-ignore
 					ref={ref}
 				>
 					{placeholder && (
