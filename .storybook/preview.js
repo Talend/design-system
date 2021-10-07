@@ -159,7 +159,6 @@ export const parameters = {
 						<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
 					</ThemeProvider>
 					<TableOfContents>
-						{'' + hasBreadcrumb}
 						{hasBreadcrumb && (
 							<ThemeProvider>
 								<Divider />
