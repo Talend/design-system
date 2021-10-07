@@ -149,7 +149,6 @@ export const parameters = {
 					.includes(term),
 			);
 
-			console.log(props.context);
 
 			return (
 				<>
