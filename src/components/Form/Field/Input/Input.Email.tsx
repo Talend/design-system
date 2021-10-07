@@ -1,8 +1,10 @@
 import React from 'react';
 import Input, { InputProps } from './Input';
 
-const Email = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-	return <Input {...props} type="email" ref={ref} />;
-});
+const Email = React.forwardRef(
+	(props: InputProps, ref: React.Ref<React.InputHTMLAttributes<HTMLInputElement>>) => {
+		return <Input {...props} type="email" ref={ref} />;
+	},
+);
 
 export default Email;

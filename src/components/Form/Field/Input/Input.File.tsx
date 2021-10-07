@@ -5,9 +5,9 @@ import { VisuallyHidden } from 'reakit';
 import Button from '../../../Button';
 import Link from '../../../Link';
 import { Icon } from '../../../Icon';
-import Input from './Input';
+import Input, { InputProps } from './Input';
 import tokens from '../../../../tokens';
-import Field, { FieldProps } from '../Field';
+import Field from '../Field';
 
 const FileField = styled.div`
 	width: 100%;
@@ -133,7 +133,11 @@ function getFileSize(size: number) {
 	return '';
 }
 
-const InputFile = React.forwardRef<HTMLInputElement, FieldProps>((props: FieldProps, ref) => {
+type FileProps = InputProps & {
+	files: FileList | null;
+};
+
+const InputFile = React.forwardRef((props: FileProps, ref: React.Ref<HTMLInputElement>) => {
 	const [drag, setDrag] = React.useState(false);
 	const [files, setFiles] = React.useState<FileList | null>(props.files);
 

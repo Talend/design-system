@@ -25,7 +25,7 @@ export const SRadio = styled(InlineStyle)<{ readOnly: boolean; checked: boolean 
 	}
 `;
 
-const Radio = React.forwardRef<HTMLInputElement, InputProps>(
+const Radio = React.forwardRef(
 	(
 		{
 			id = `radio--${Math.floor(Math.random() * 100)}`,
@@ -35,8 +35,8 @@ const Radio = React.forwardRef<HTMLInputElement, InputProps>(
 			required,
 			children,
 			...rest
-		},
-		ref,
+		}: InputProps,
+		ref: React.Ref<React.InputHTMLAttributes<HTMLInputElement>>,
 	) => (
 		<SRadio readOnly={!!readOnly} checked={!!checked}>
 			<label htmlFor={id}>

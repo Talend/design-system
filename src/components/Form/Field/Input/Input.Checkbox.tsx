@@ -43,7 +43,11 @@ export const SCheckbox = styled(InlineStyle)<{ readOnly: boolean; checked: boole
 	}
 `;
 
-const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
+export type CheckboxProps = InputProps & {
+	checked: boolean | 'indeterminate' | (string | number)[];
+};
+
+const Checkbox = React.forwardRef(
 	(
 		{
 			id = `checkbox--${Math.floor(Math.random() * 100)}`,
@@ -54,8 +58,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, InputProps>(
 			required,
 			children,
 			...rest
-		},
-		ref,
+		}: CheckboxProps,
+		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const checkbox = useCheckboxState({ state: (indeterminate && 'indeterminate') || checked });
 

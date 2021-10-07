@@ -21,7 +21,7 @@ export type FieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
 	description?: string;
 };
 
-const Field = React.forwardRef<HTMLInputElement, FieldProps>(
+const Field = React.forwardRef(
 	(
 		{
 			as = 'input',
@@ -41,7 +41,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 			disabled,
 			...rest
 		}: FieldProps,
-		ref,
+		ref: React.Ref<React.InputHTMLAttributes<HTMLInputElement>>,
 	) => {
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);

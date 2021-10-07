@@ -10,8 +10,11 @@ import * as S from './Select.style';
 
 export type SelectProps = FieldProps;
 
-const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-	({ children, multiple, readOnly, required, placeholder, ...rest }: SelectProps, ref) => {
+const Select = React.forwardRef(
+	(
+		{ children, multiple, readOnly, required, placeholder, ...rest }: SelectProps,
+		ref: React.Ref<React.SelectHTMLAttributes<HTMLSelectElement>>,
+	) => {
 		if (readOnly) {
 			const values = React.Children.toArray(children).reduce((acc: string[], current) => {
 				if (!isElement(current)) {

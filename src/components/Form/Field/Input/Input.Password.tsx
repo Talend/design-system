@@ -3,12 +3,12 @@ import Input, { InputProps } from './Input';
 
 import useRevealPassword from './hooks/useRevealPassword';
 
-const Password = React.forwardRef<React.InputHTMLAttributes<HTMLInputElement>, InputProps>(
-	(props, ref) => {
+const Password = React.forwardRef(
+	(props: InputProps, ref: React.Ref<React.InputHTMLAttributes<HTMLInputElement>>) => {
 		const { currentType, onReset, RevealPasswordButton } = useRevealPassword();
 		const isInitialMount = useRef<boolean>(true);
 		// @ts-ignore
-		const inputRef = useRef<HTMLInputElement | null>(ref);
+		const inputRef = useRef<Ref<InputHTMLAttributes<HTMLInputElement>> | undefined>(ref);
 
 		useEffect(() => {
 			if (isInitialMount.current) {
