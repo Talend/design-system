@@ -2,6 +2,7 @@ import React from 'react';
 
 import Form from '../';
 import Link from '../../Link';
+import Tooltip from '../../Tooltip';
 
 export const FormFieldError = () => (
 	<Form.Text
@@ -52,3 +53,9 @@ export const FormFieldPassword = () => (
 	/>
 );
 FormFieldPassword.parameters = {};
+
+export const PasswordWithTooltip = () => (
+	<Tooltip title="Coucou">
+		<Form.Password label="Label" required placeholder="Placeholder" />
+	</Tooltip>
+);

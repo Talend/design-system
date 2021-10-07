@@ -41,7 +41,7 @@ const Field = React.forwardRef(
 			disabled,
 			...rest
 		}: FieldProps,
-		ref: React.Ref<React.InputHTMLAttributes<HTMLInputElement>>,
+		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
