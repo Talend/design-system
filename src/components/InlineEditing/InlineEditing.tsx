@@ -8,10 +8,8 @@ import { useTranslation } from 'react-i18next';
 import * as S from './InlineEditing.style';
 import classNames from 'classnames';
 
-type InlineEditingProps = PropsWithChildren<any> &
+export type InlineEditingProps = PropsWithChildren<any> &
 	StyledProps<any> & {
-		/** if the inline editing is in editing mode */
-		editing?: boolean;
 		/** if the inline editing is a required field */
 		required?: boolean;
 		/** the inline editing label */
@@ -22,6 +20,9 @@ type InlineEditingProps = PropsWithChildren<any> &
 		hasError?: boolean;
 		/** if the inline editing in in progress */
 		loading?: boolean;
+		/** called on submit with the new value */
+		onEdit?: (newValue: string) => void;
+		as?: React.ElementType;
 	};
 
 export type StyledInlineEditing = {
@@ -29,21 +30,15 @@ export type StyledInlineEditing = {
 } & React.PropsWithRef<InlineEditingProps>;
 
 const InlineEditing = React.forwardRef(
-	(
-		{
-			onEdit = () => {},
-			label,
-			required,
-			hasError,
-			defaultValue,
-			loading,
-			as,
-		}: StyledInlineEditing,
-		ref: React.Ref<any>,
-	) => {
+	({ defaultValue, required, hasError, loading, onEdit, label, as }: StyledInlineEditing) => {
 		const { t } = useTranslation();
-		const [isEditing, edit] = React.useState(false);
+		const [isEditing, setEditMode] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
+		const onSubmit = e => {
+			onEdit && onEdit(value);
+			setEditMode(false);
+			e.preventDefault();
+		};
 
 		const action = t('INLINE_EDITING_EDIT', 'Edit');
 		return (
@@ -57,25 +52,20 @@ const InlineEditing = React.forwardRef(
 								value={value}
 								required={required}
 								hasError={hasError}
+                                as="h1"
 								onChange={({ target }) => setValue(target.value)}
 							/>
 							<div className="edit-inline--editing__field__actions">
 								<Button.Icon
 									onClick={() => {
 										setValue(defaultValue);
-										edit(false);
+										setEditMode(false);
 									}}
 									icon="talend-cross-circle"
 								>
 									{t('INLINE_EDITING_CANCEL', 'Cancel')}
 								</Button.Icon>
-								<Button.Icon
-									onClick={() => {
-										edit(false);
-										onEdit(value);
-									}}
-									icon="talend-check-circle"
-								>
+								<Button.Icon onClick={onSubmit} icon="talend-check-circle">
 									{t('INLINE_EDITING_SUBMIT', 'Submit')}
 								</Button.Icon>
 							</div>
@@ -84,7 +74,7 @@ const InlineEditing = React.forwardRef(
 				) : (
 					<div
 						className={classNames('edit-inline--static', { loading })}
-						onDoubleClick={loading ? undefined : () => edit(true)}
+						onDoubleClick={loading ? undefined : () => setEditMode(true)}
 					>
 						<div className="edit-inline--static__field">
 							<S.InlineEditingValue className="edit-inline--static__field__value" as={as}>
@@ -93,9 +83,9 @@ const InlineEditing = React.forwardRef(
 							<Tooltip title={action} placement="top">
 								<Button.Icon
 									className="edit-inline--static__field__action"
-									onClick={() => edit(true)}
-									disabled={loading}
 									icon="talend-pencil"
+									onClick={() => setEditMode(true)}
+									disabled={loading}
 								>
 									{action}
 								</Button.Icon>

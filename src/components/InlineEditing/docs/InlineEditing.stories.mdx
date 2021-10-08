@@ -1,6 +1,6 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { FigmaImage, FigmaLink } from '../../../docs';
-import InlineEditing from '../InlineEditing';
+import InlineEditing from '../';
 
 <Meta
 	title="Components/Inline Editing"
@@ -59,10 +59,13 @@ _to do_
 ## Usage
 
 <Canvas>
-	<Story name="default">
-		<InlineEditing label="Crawler name" defaultValue="Lorem ipsum dolor sit amet" />
+	<Story name="multi test">
+		<InlineEditing.Multi label="Crawler name" defaultValue="Lorem ipsum dolor sit amet" />
 	</Story>
-	<Story name="with an ellipsis">
+	{/* {/* <Story name="default">
+		<InlineEditing label="Crawler name" defaultValue="Lorem ipsum dolor sit amet" />
+	</Story> */}
+	{/* <Story name="with an ellipsis">
 		<InlineEditing label="Crawler name" defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla augue, fermentum ac scelerisque quis, aliquet et arcu. Nullam quis sem pulvinar, venenatis nunc vel, lobortis libero" />
 	</Story>
 	<Story name="as H3">
@@ -70,7 +73,7 @@ _to do_
 	</Story>
 	<Story name="in loading mode">
 		<InlineEditing label="Crawler name" defaultValue="Lorem ipsum dolor sit amet" loading />
-	</Story>
+	</Story> */}
 </Canvas>
 
 ## Accessibility
