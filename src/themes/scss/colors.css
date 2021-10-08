@@ -1,0 +1,116 @@
+:root {
+  /* COLOR */
+  --coral-100: hsl(358, 100%, 94%);
+  --coral-200: hsl(359, 100%, 88%);
+  --coral-300: hsl(359, 100%, 83%);
+  --coral-400: hsl(359, 100%, 77%);
+  --coral-500: hsl(359, 100%, 71%);
+  --coral-600: hsl(359, 53%, 57%);
+  --coral-700: hsl(359, 40%, 43%);
+  --coral-800: hsl(359, 41%, 28%);
+  --coral-900: hsl(358, 42%, 14%);
+  --deep-blue-100: hsl(210, 21%, 85%);
+  --deep-blue-200: hsl(211, 22%, 70%);
+  --deep-blue-300: hsl(211, 22%, 55%);
+  --deep-blue-400: hsl(211, 32%, 41%);
+  --deep-blue-500: hsl(210, 62%, 26%);
+  --deep-blue-600: hsl(211, 62%, 21%);
+  --deep-blue-700: hsl(211, 62%, 15%);
+  --deep-blue-800: hsl(211, 62%, 10%);
+  --deep-blue-900: hsl(210, 62%, 5%);
+  --gray-000: hsl(0, 0%, 100%);
+  --gray-050: hsl(0, 0%, 96%);
+  --gray-075: hsl(0, 0%, 91%);
+  --gray-100: hsl(0, 0%, 82%);
+  --gray-200: hsl(0, 0%, 74%);
+  --gray-300: hsl(0, 0%, 65%);
+  --gray-400: hsl(0, 0%, 56%);
+  --gray-500: hsl(0, 0%, 47%);
+  --gray-600: hsl(0, 0%, 38%);
+  --gray-700: hsl(0, 0%, 30%);
+  --gray-800: hsl(0, 0%, 21%);
+  --gray-900: hsl(0, 0%, 13%);
+  --indigo-gray-500: hsl(207, 18%, 24%);
+  --jaffa-100: hsl(28, 79%, 91%);
+  --jaffa-200: hsl(27, 80%, 82%);
+  --jaffa-300: hsl(27, 81%, 73%);
+  --jaffa-400: hsl(27, 81%, 64%);
+  --jaffa-500: hsl(27, 82%, 55%);
+  --jaffa-600: hsl(27, 66%, 44%);
+  --jaffa-700: hsl(27, 67%, 33%);
+  --jaffa-800: hsl(26, 64%, 23%);
+  --jaffa-900: hsl(28, 67%, 11%);
+  --lightning-yellow-100: hsl(44, 85%, 92%);
+  --lightning-yellow-200: hsl(43, 87%, 85%);
+  --lightning-yellow-300: hsl(44, 87%, 77%);
+  --lightning-yellow-400: hsl(43, 87%, 69%);
+  --lightning-yellow-500: hsl(44, 88%, 61%);
+  --lightning-yellow-600: hsl(43, 55%, 49%);
+  --lightning-yellow-700: hsl(44, 55%, 37%);
+  --lightning-yellow-800: hsl(43, 55%, 25%);
+  --lightning-yellow-900: hsl(44, 55%, 12%);
+  --lochmara-100: hsl(204, 59%, 88%);
+  --lochmara-200: hsl(205, 60%, 75%);
+  --lochmara-300: hsl(204, 60%, 63%);
+  --lochmara-400: hsl(204, 60%, 51%);
+  --lochmara-500: hsl(204, 94%, 39%);
+  --lochmara-600: hsl(204, 95%, 31%);
+  --lochmara-700: hsl(204, 95%, 23%);
+  --lochmara-800: hsl(205, 95%, 15%);
+  --lochmara-900: hsl(204, 95%, 8%);
+  --moody-purple-500: hsl(241, 54%, 61%);
+  --pale-cyan-100: hsl(200, 69%, 95%);
+  --pale-cyan-200: hsl(198, 69%, 90%);
+  --pale-cyan-300: hsl(199, 71%, 85%);
+  --pale-cyan-400: hsl(198, 71%, 80%);
+  --pale-cyan-500: hsl(198, 72%, 75%);
+  --pale-cyan-600: hsl(198, 36%, 60%);
+  --pale-cyan-700: hsl(199, 24%, 45%);
+  --pale-cyan-800: hsl(198, 24%, 30%);
+  --pale-cyan-900: hsl(200, 24%, 15%);
+  --rio-grande-100: hsl(87, 46%, 90%);
+  --rio-grande-200: hsl(88, 48%, 80%);
+  --rio-grande-300: hsl(88, 48%, 70%);
+  --rio-grande-400: hsl(88, 48%, 60%);
+  --rio-grande-500: hsl(89, 49%, 50%);
+  --rio-grande-600: hsl(88, 49%, 40%);
+  --rio-grande-700: hsl(88, 49%, 30%);
+  --rio-grande-800: hsl(88, 49%, 20%);
+  --rio-grande-900: hsl(89, 51%, 10%);
+  --russian-violet-500: hsl(254, 47%, 23%);
+  --russian-violet-600: hsl(256, 48%, 9%);
+  --russian-violet-700: hsl(254, 49%, 7%);
+  --russian-violet-900: hsl(250, 50%, 2%);
+
+  /* GRADIENT */
+  --gradient-blue-bird: linear-gradient(
+    135deg,
+    rgb(248, 243, 239) 0%,
+    rgb(145, 209, 237) 100%
+  );
+  --gradient-cotton-candy: linear-gradient(
+    -45deg,
+    rgb(255, 167, 169) 0%,
+    rgb(189, 230, 246) 100%
+  );
+  --gradient-dawn: linear-gradient(
+    135deg,
+    rgb(145, 209, 237) 0%,
+    rgb(25, 66, 108) 100%
+  );
+  --gradient-dusk: linear-gradient(
+    135deg,
+    rgb(255, 109, 112) 0%,
+    rgb(44, 31, 86) 100%
+  );
+  --gradient-indigo-night: linear-gradient(
+    135deg,
+    rgb(60, 72, 87) 0%,
+    rgb(29, 32, 36) 100%
+  );
+  --gradient-twilight: linear-gradient(
+    90deg,
+    rgb(25, 66, 108) 0%,
+    rgb(44, 31, 86) 100%
+  );
+}
