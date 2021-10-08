@@ -39,37 +39,42 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 		const fieldRef = React.useRef<HTMLInputElement>();
 		const { id: reakitId } = useId();
 		const labelId = `input-group--${reakitId}`;
+		const descriptionId = `input-group__description--${reakitId}`;
 
 		const focusField = () => fieldRef.current?.focus();
 
 		const Description = () => {
+			const descriptionProps = {
+				small: true,
+				description,
+			};
 			if (hasError) {
-				return <InlineMessage.Destructive small description={description} />;
+				return <InlineMessage.Destructive {...descriptionProps} />;
 			}
 			if (hasWarning) {
-				return <InlineMessage.Warning small description={description} />;
+				return <InlineMessage.Warning {...descriptionProps} />;
 			}
 			if (hasSuccess) {
-				return <InlineMessage.Success small description={description} />;
+				return <InlineMessage.Success {...descriptionProps} />;
 			}
 			if (hasInformation) {
-				return <InlineMessage.Information small description={description} />;
+				return <InlineMessage.Information {...descriptionProps} />;
 			}
-			return <InlineMessage small description={description} />;
+			return <InlineMessage {...descriptionProps} />;
 		};
 
 		return (
 			<S.InputGroup
-				className={classnames('input-group', {
-					'input-group--has-prefix': prefix,
-					'input-group--has-suffix': suffix,
-					'input-group--required': required,
-					'input-group--has-information': hasInformation,
-					'input-group--has-success': hasSuccess,
-					'input-group--has-warning': hasWarning,
-					'input-group--has-error': hasError,
-					'input-group--disabled': disabled,
-					'input-group--read-only': readOnly,
+				className={classnames('c-input-group', {
+					'c-input-group--has-prefix': prefix,
+					'c-input-group--has-suffix': suffix,
+					'c-input-group--required': required,
+					'c-input-group--has-information': hasInformation,
+					'c-input-group--has-success': hasSuccess,
+					'c-input-group--has-warning': hasWarning,
+					'c-input-group--has-error': hasError,
+					'c-input-group--disabled': disabled,
+					'c-input-group--read-only': readOnly,
 				})}
 			>
 				<S.InputGroupLabel id={labelId} onClick={focusField}>
@@ -78,25 +83,32 @@ const InputGroup = React.forwardRef<React.ReactNode, InputGroupProps>(
 				</S.InputGroupLabel>
 				<S.InputGroupRow
 					aria-labelledby={labelId}
+					aria-describedby={description && descriptionId}
 					// @ts-ignore
 					ref={ref}
 				>
 					{prefix && (
-						<div className="input-group__item input-group__item--prefix">
+						<div className="c-input-group__item c-input-group__item--prefix">
 							{!isElement(prefix) ? <S.SpanPrefix>{prefix}</S.SpanPrefix> : prefix}
 						</div>
 					)}
-					<div className="input-group__item input-group__item--input">
+					<div className="c-input-group__item c-input-group__item--input">
 						{isElement(children) &&
 							React.cloneElement(children, { disabled, readOnly, ref: fieldRef })}
 					</div>
 					{suffix && (
-						<div className="input-group__item input-group__item--suffix">
+						<div className="c-input-group__item c-input-group__item--suffix">
 							{!isElement(suffix) ? <S.SpanSuffix>{suffix}</S.SpanSuffix> : suffix}
 						</div>
 					)}
 				</S.InputGroupRow>
-				{description && <Description />}
+				{description && (
+					<div id={descriptionId}>
+						<div className="c-input--group__description">
+							<Description />
+						</div>
+					</div>
+				)}
 			</S.InputGroup>
 		);
 	},

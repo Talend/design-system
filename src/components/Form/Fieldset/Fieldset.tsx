@@ -9,8 +9,11 @@ export type FieldsetProps = React.PropsWithChildren<HTMLFieldSetElement> & {
 	readOnly?: boolean;
 };
 
-const Fieldset = React.forwardRef<HTMLFieldSetElement, FieldsetProps>(
-	({ legend, children, disabled, readOnly, required, ...rest }: FieldsetProps, ref) => {
+const Fieldset = React.forwardRef(
+	(
+		{ legend, children, disabled, readOnly, required, ...rest }: FieldsetProps,
+		ref: React.Ref<HTMLFieldSetElement>,
+	) => {
 		return (
 			// @ts-ignore
 			<S.Fieldset {...rest} ref={ref}>

@@ -52,45 +52,50 @@ const Field = React.forwardRef(
 	) => {
 		const { id: reakitId } = useId();
 		const fieldId = `field--${id || reakitId}`;
+		const fieldDescriptionId = `field__description--${id || reakitId}`;
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
 
 		const Label = () => (
-			<S.FieldLabel className="field__label" htmlFor={fieldId} disabled={!!disabled}>
+			<S.FieldLabel className="c-field__label" htmlFor={fieldId} disabled={!!disabled}>
 				{label}
 				{required && '*'}
 			</S.FieldLabel>
 		);
 
 		const Description = () => {
+			const descProps = {
+				small: true,
+				description,
+			};
 			if (hasError) {
-				return <InlineMessage.Destructive small description={description} />;
+				return <InlineMessage.Destructive {...descProps} />;
 			}
 			if (hasWarning) {
-				return <InlineMessage.Warning small description={description} />;
+				return <InlineMessage.Warning {...descProps} />;
 			}
 			if (hasSuccess) {
-				return <InlineMessage.Success small description={description} />;
+				return <InlineMessage.Success {...descProps} />;
 			}
 			if (hasInformation) {
-				return <InlineMessage.Information small description={description} />;
+				return <InlineMessage.Information {...descProps} />;
 			}
-			return <InlineMessage small description={description} />;
+			return <InlineMessage {...descProps} />;
 		};
 
 		return (
-			<S.Field className={`field ${typeof as === 'string' ? `field--${as}` : ''}`}>
+			<S.Field className={`c-field ${typeof as === 'string' ? `c-field--${as}` : ''}`}>
 				{!inline && label && <Label />}
 				<S.FieldGroup
 					className={classnames(
-						'field__group',
-						{ [`field__group--${as}`]: typeof as === 'string' },
+						'c-field__group',
+						{ [`c-field__group--${as}`]: typeof as === 'string' },
 						{
-							'field__group--multiple': multiple,
-							'field__group--loading': loading,
-							'field__group--has-error': hasError,
-							'field__group--has-warning': hasWarning,
-							'field__group--has-information': hasInformation,
+							'c-field__group--multiple': multiple,
+							'c-field__group--loading': loading,
+							'c-field__group--has-error': hasError,
+							'c-field__group--has-warning': hasWarning,
+							'c-field__group--has-information': hasInformation,
 						},
 					)}
 					after={after}
@@ -100,18 +105,27 @@ const Field = React.forwardRef(
 						{...rest}
 						as={as}
 						id={fieldId}
-						className={classnames(className, 'field__control', {
-							[`field__control--${as}`]: typeof as === 'string',
+						className={classnames(className, 'c-field__control', {
+							[`c-field__control--${as}`]: typeof as === 'string',
+							// @ts-ignore
+							'input--read-only': rest.readOnly,
+							// @ts-ignore
+							'input--checked': rest.checked,
 						})}
+						aria-describedby={description && fieldDescriptionId}
 						disabled={disabled}
 						ref={ref}
 					/>
-					{loading && <Loading className="field__loading" />}
+					{loading && <Loading className="c-field__loading" />}
 					{after}
 				</S.FieldGroup>
 				{link}
 				{inline && label && <Label />}
-				{description && <Description />}
+				{description && (
+					<div id={fieldDescriptionId} className="c-field__description">
+						<Description />
+					</div>
+				)}
 			</S.Field>
 		);
 	},

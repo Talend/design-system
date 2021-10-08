@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import tokens from '../../tokens';
 
-export const Form = styled.form`
+export const Form = styled.form.attrs({
+	className: 'c-form',
+})`
 	margin: 0 auto;
 	width: 100%;
 	font-family: ${tokens.fonts.sansSerif};
@@ -18,9 +20,17 @@ export const Form = styled.form`
 	@media only screen and (min-width: ${tokens.breakpoints.xl}) {
 		max-width: 78rem;
 	}
+
+	.c-field,
+	.c-field-group,
+	.c-inline-message {
+		margin-bottom: ${tokens.space.s};
+	}
 `;
 
-export const Row = styled.div`
+export const Row = styled.div.attrs({
+	className: 'c-form__row',
+})`
 	display: inline-flex;
 	align-items: flex-start;
 	gap: ${tokens.space.l};

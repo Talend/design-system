@@ -42,25 +42,25 @@ export const InputGroupRow = styled.div`
 		border-color: ${({ theme }) => theme.colors.inputFocusBorderColor};
 	}
 
-	.field,
-	.field__group {
+	.c-field,
+	.c-field__group {
 		margin-bottom: 0;
 	}
 
-	.input-group__item .field__control,
-	.input-group__item .field__control:hover:not(:disabled),
-	.input-group__item .btn {
+	.c-input-group__item .c-field__control,
+	.c-input-group__item .c-field__control:hover:not(:disabled),
+	.c-input-group__item .btn {
 		margin: 0;
 		border: none;
 		border-radius: ${tokens.radii.inputBorderRadius};
 	}
 
-	.input-group__item--prefix,
-	.input-group__item--suffix {
+	.c-input-group__item--prefix,
+	.c-input-group__item--suffix {
 		max-width: 20%;
 
-		.field__group,
-		.field__control,
+		.c-field__group,
+		.c-field__control,
 		.btn {
 			color: ${({ theme }) => theme.colors.inputGroupInteractiveColor};
 			background: ${({ theme }) => theme.colors.inputGroupInteractiveBackgroundColor};
@@ -86,16 +86,16 @@ export const InputGroupRow = styled.div`
 		}
 	}
 
-	.input-group__item.input-group__item--suffix {
-		.field__control,
+	.c-input-group__item.c-input-group__item--suffix {
+		.c-field__control,
 		.btn {
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 		}
 	}
 
-	.input-group__item.input-group__item--prefix {
-		.field__control,
+	.c-input-group__item.c-input-group__item--prefix {
+		.c-field__control,
 		.btn {
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
@@ -105,13 +105,12 @@ export const InputGroupRow = styled.div`
 export const InputGroup = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-bottom: ${tokens.space.s};
 
-	.input-group__item--input {
+	.c-input-group__item--input {
 		flex: 1;
 	}
 
-	.field__label {
+	.c-field__label {
 		clip: rect(0 0 0 0);
 		clip-path: inset(50%);
 		height: 1px;
@@ -121,23 +120,27 @@ export const InputGroup = styled.div`
 		width: 1px;
 	}
 
-	&.input-group--has-error ${InputGroupRow}, &.input-group--has-error ${InputGroupRow} {
+	.c-input--group__description {
+		margin-bottom: ${tokens.space.m};
+	}
+
+	&.c-input-group--has-error ${InputGroupRow}, &.c-input-group--has-error ${InputGroupRow} {
 		border-width: 2px;
 	}
 
-	&.input-group--has-warning ${InputGroupRow} {
+	&.c-input-group--has-warning ${InputGroupRow} {
 		border-color: ${({ theme }) => theme.colors.warningColor[500]};
 	}
 
-	&.input-group--has-error ${InputGroupRow} {
+	&.c-input-group--has-error ${InputGroupRow} {
 		border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
 	}
 
-	&.input-group--disabled ${InputGroupRow} {
+	&.c-input-group--disabled ${InputGroupRow} {
 		border-color: ${({ theme }) => theme.colors.inputDisabledBorderColor};
 	}
 
-	&.input-group--read-only ${InputGroupRow} {
+	&.c-input-group--read-only ${InputGroupRow} {
 		border-color: ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
 	}
 `;

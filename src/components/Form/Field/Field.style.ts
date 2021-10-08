@@ -7,9 +7,7 @@ import tokens from '../../../tokens';
 
 export type FieldControlProps = { as: string; type: string; multiple: boolean };
 
-export const FieldControl = styled.input.attrs(({ readOnly, checked }) => ({
-	className: `${readOnly ? 'input--read-only' : ''} ${checked ? 'input--checked' : ''}`,
-}))`
+export const FieldControl = styled.input`
 	padding: ${tokens.space.none} ${tokens.space.s};
 	width: 100%;
 	color: ${({ theme }) => theme.colors.inputColor};
@@ -46,7 +44,7 @@ export const FieldControl = styled.input.attrs(({ readOnly, checked }) => ({
 		cursor: not-allowed;
 	}
 
-	&.input--read-only {
+	&.c-input--read-only {
 		border-color: ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
 		background: ${({ theme }) => theme.colors.inputReadOnlyBackgroundColor};
 	}
@@ -59,17 +57,24 @@ export const Field = styled.div`
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: center;
-	margin-bottom: ${tokens.space.s};
 	width: 100%;
 	min-width: 8rem;
 	color: ${({ theme }) => theme.colors.textColor};
 
-	.field__group--loading {
-		.field__control {
+	.c-field__label {
+		margin-bottom: ${tokens.space.xs};
+	}
+
+	.c-field__description {
+		margin: ${tokens.space.xs} ${tokens.space.none} ${tokens.space.m};
+	}
+
+	.c-field__group--loading {
+		.c-field__control {
 			padding-right: ${tokens.sizes.xxl};
 		}
 
-		.field__loading {
+		.c-field__loading {
 			position: absolute;
 			top: 0;
 			right: 0;
@@ -79,14 +84,14 @@ export const Field = styled.div`
 		}
 	}
 
-	.field__group--has-warning {
+	.c-field__group--has-warning {
 		${FieldControl} {
 			border-width: 2px;
 			border-color: ${({ theme }) => theme.colors.warningColor[500]};
 		}
 	}
 
-	.field__group--has-error {
+	.c-field__group--has-error {
 		${FieldControl} {
 			border-width: 2px;
 			border-color: ${({ theme }) => theme.colors.destructiveColor[500]};
@@ -111,11 +116,9 @@ export const Field = styled.div`
 
 export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolean }>(
 	({ readOnly, checked }) => ({
-		className: `${readOnly ? 'input--read-only' : ''} ${checked ? 'input--checked' : ''}`,
+		className: `${readOnly ? 'c-input--read-only' : ''} ${checked ? 'c-input--checked' : ''}`,
 	}),
 )`
-	margin-bottom: ${tokens.space.xs};
-
 	input {
 		position: absolute;
 		margin-left: -9999px;
@@ -184,8 +187,8 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 		cursor: not-allowed;
 	}
 
-	&.input--read-only span:before,
-	&.input--read-only span:after {
+	&.c-input--read-only span:before,
+	&.c-input--read-only span:after {
 		color: ${({ theme }) => theme.colors.inputReadOnlyColor};
 		background: ${({ theme }) => theme.colors.inputReadOnlyBackgroundColor};
 		box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
@@ -194,7 +197,6 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 
 export const FieldGroup = styled.div<{ after: React.ReactNode }>`
 	position: relative;
-	margin-bottom: ${tokens.space.xs};
 	display: inline-flex;
 	align-items: center;
 	width: 100%;
