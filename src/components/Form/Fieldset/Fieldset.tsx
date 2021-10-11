@@ -2,7 +2,7 @@ import React from 'react';
 import { isElement } from 'react-is';
 import * as S from './Fieldset.style';
 
-export type FieldsetProps = React.PropsWithChildren<HTMLFieldSetElement> & {
+export type FieldsetProps = React.FieldsetHTMLAttributes<HTMLFieldSetElement> & {
 	legend?: string;
 	required?: boolean;
 	disabled?: boolean;
@@ -15,10 +15,9 @@ const Fieldset = React.forwardRef(
 		ref: React.Ref<HTMLFieldSetElement>,
 	) => {
 		return (
-			// @ts-ignore
-			<S.Fieldset {...rest} ref={ref}>
+			<S.Fieldset className="c-form__fieldset" {...rest} ref={ref}>
 				{legend && (
-					<S.Legend>
+					<S.Legend className="c-form__legend">
 						{legend}
 						{required && '*'}
 					</S.Legend>

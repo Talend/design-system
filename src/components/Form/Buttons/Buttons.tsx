@@ -1,20 +1,15 @@
-import styled from 'styled-components';
+import React from 'react';
 
-import tokens from '../../../tokens';
+import * as S from './Buttons.style';
 
-const Buttons = styled.div`
-	display: flex;
-	justify-content: flex-end;
-	padding: ${tokens.space.xl} ${tokens.space.none};
+type ButtonsProps = React.PropsWithChildren<any>;
 
-	.btn + .btn {
-		margin-left: ${tokens.space.m};
-	}
-
-	.btn:first-child {
-		margin-left: 0;
-		margin-right: auto;
-	}
-`;
+const Buttons = React.forwardRef(({ children, ...rest }: ButtonsProps, ref) => {
+	return (
+		<S.Buttons className="c-form__buttons" {...rest} ref={ref}>
+			{children}
+		</S.Buttons>
+	);
+});
 
 export default Buttons;
