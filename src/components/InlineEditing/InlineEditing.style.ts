@@ -17,6 +17,7 @@ export const InlineEditing = styled.div`
 				&__actions {
 					position: absolute;
 					display: flex;
+					height: 2.2rem;
 					bottom: 0;
 					right: 0;
 					top: 0;
@@ -42,6 +43,7 @@ export const InlineEditing = styled.div`
 
 				&__action  {
 					flex: 0 0 auto;
+					height: 2.2.rem;
 					opacity: 0;
 				}
 

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import * as S from './InlineEditing.style';
 import classNames from 'classnames';
+import { createTypeReferenceDirectiveResolutionCache } from 'typescript';
 
 export type InlineEditingProps = PropsWithChildren<any> &
 	StyledProps<any> & {
@@ -22,15 +23,25 @@ export type InlineEditingProps = PropsWithChildren<any> &
 		loading?: boolean;
 		/** called on submit with the new value */
 		onEdit?: (newValue: string) => void;
-		as?: React.ElementType;
+		renderAs?: React.ElementType;
 	};
 
 export type StyledInlineEditing = {
-	as?: React.ComponentType<any> | string;
+	renderAs?: React.ComponentType<any> | string;
 } & React.PropsWithRef<InlineEditingProps>;
 
 const InlineEditing = React.forwardRef(
-	({ defaultValue, required, hasError, loading, onEdit, label, as }: StyledInlineEditing) => {
+	({
+		defaultValue,
+		required,
+		hasError,
+		loading,
+		onEdit,
+		label,
+		renderAs,
+		mode,
+		...rest
+	}: StyledInlineEditing) => {
 		const { t } = useTranslation();
 		const [isEditing, setEditMode] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
@@ -41,18 +52,18 @@ const InlineEditing = React.forwardRef(
 		};
 
 		const action = t('INLINE_EDITING_EDIT', 'Edit');
+		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
 		return (
-			<S.InlineEditing>
+			<S.InlineEditing {...rest}>
 				{isEditing ? (
 					<div className="edit-inline--editing__field">
 						<form>
-							<Form.Text
+							<Input
 								hideLabel
 								label={label}
 								value={value}
 								required={required}
 								hasError={hasError}
-                                as="h1"
 								onChange={({ target }) => setValue(target.value)}
 							/>
 							<div className="edit-inline--editing__field__actions">
@@ -77,7 +88,7 @@ const InlineEditing = React.forwardRef(
 						onDoubleClick={loading ? undefined : () => setEditMode(true)}
 					>
 						<div className="edit-inline--static__field">
-							<S.InlineEditingValue className="edit-inline--static__field__value" as={as}>
+							<S.InlineEditingValue className="edit-inline--static__field__value" as={renderAs}>
 								{value}
 							</S.InlineEditingValue>
 							<Tooltip title={action} placement="top">
