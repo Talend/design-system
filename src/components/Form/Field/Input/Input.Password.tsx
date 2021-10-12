@@ -11,10 +11,8 @@ const Password = React.forwardRef((props: InputProps, ref: React.Ref<HTMLInputEl
 	React.useEffect(() => {
 		if (fromClickRef.current) {
 			inputRef.current?.focus();
-			inputRef.current?.setSelectionRange(
-				inputRef.current?.value.length,
-				inputRef.current?.value.length,
-			);
+			const valueLength = inputRef.current?.value.length || 0;
+			inputRef.current?.setSelectionRange(valueLength, valueLength);
 		}
 	}, [currentType]);
 
