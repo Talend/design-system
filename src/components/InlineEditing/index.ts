@@ -1,15 +1,15 @@
 import InlineEditing from './InlineEditing';
-import InlineEditingSingle from './variations/InlineEditing.single';
-import InlineEditingMulti from './variations/InlineEditing.multi';
+import InlineEditingText from './variations/InlineEditing.text';
+import InlineEditingTextarea from './variations/InlineEditing.textarea';
 
 const InlineEditingComponent = InlineEditing as typeof InlineEditing & {
-	Single: typeof InlineEditingSingle;
-	Multi: typeof InlineEditingMulti;
+	Text: typeof InlineEditingText;
+	Textarea: typeof InlineEditingTextarea;
 };
 
-InlineEditingComponent.Single = InlineEditingSingle;
-InlineEditingComponent.Multi = InlineEditingMulti;
+InlineEditingComponent.Text = InlineEditingText;
+InlineEditingComponent.Textarea = InlineEditingTextarea;
 
-export type InlineEditingComponentType = typeof InlineEditingSingle | typeof InlineEditingMulti;
+export type InlineEditingComponentType = typeof InlineEditingText | typeof InlineEditingTextarea;
 
 export default InlineEditingComponent;

@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 
 import * as S from './InlineEditing.style';
 import classNames from 'classnames';
-import { createTypeReferenceDirectiveResolutionCache } from 'typescript';
+
+import useKey from 'react-use/lib/useKey';
 
 export type InlineEditingProps = PropsWithChildren<any> &
 	StyledProps<any> & {
@@ -38,6 +39,7 @@ const InlineEditing = React.forwardRef(
 		loading,
 		onEdit,
 		label,
+		renderValueAs,
 		renderAs,
 		mode,
 		...rest
@@ -45,11 +47,20 @@ const InlineEditing = React.forwardRef(
 		const { t } = useTranslation();
 		const [isEditing, setEditMode] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
+
 		const onSubmit = e => {
 			onEdit && onEdit(value);
 			setEditMode(false);
-			e.preventDefault();
+			e.stopPropagation();
 		};
+
+		const onCancel = e => {
+			isEditing && setValue(defaultValue);
+			setEditMode(false);
+		};
+
+		useKey('Escape', onCancel, {}, [isEditing]);
+		useKey('Enter', e => mode !== 'multi' && onSubmit(e), {}, [isEditing, value]);
 
 		const action = t('INLINE_EDITING_EDIT', 'Edit');
 		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
@@ -67,13 +78,7 @@ const InlineEditing = React.forwardRef(
 								onChange={({ target }) => setValue(target.value)}
 							/>
 							<div className="edit-inline--editing__field__actions">
-								<Button.Icon
-									onClick={() => {
-										setValue(defaultValue);
-										setEditMode(false);
-									}}
-									icon="talend-cross-circle"
-								>
+								<Button.Icon onClick={onCancel} icon="talend-cross-circle">
 									{t('INLINE_EDITING_CANCEL', 'Cancel')}
 								</Button.Icon>
 								<Button.Icon onClick={onSubmit} icon="talend-check-circle">
@@ -88,7 +93,10 @@ const InlineEditing = React.forwardRef(
 						onDoubleClick={loading ? undefined : () => setEditMode(true)}
 					>
 						<div className="edit-inline--static__field">
-							<S.InlineEditingValue className="edit-inline--static__field__value" as={renderAs}>
+							<S.InlineEditingValue
+								className="edit-inline--static__field__value"
+								as={renderValueAs || renderAs}
+							>
 								{value}
 							</S.InlineEditingValue>
 							<Tooltip title={action} placement="top">

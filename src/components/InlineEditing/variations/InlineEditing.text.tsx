@@ -7,7 +7,11 @@ export type InlineEditingSingleProps = InlineEditingProps;
 const InlineEditingSingle: React.FC<InlineEditingSingleProps> = styled(InlineEditing).attrs({
 	renderAs: 'p',
 	mode: 'single',
-})``;
+})`
+	.edit-inline--editing__field__actions {
+		height: 100%;
+	}
+`;
 
 InlineEditingSingle.displayName = 'InlineEditing.Single';
 

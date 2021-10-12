@@ -43,11 +43,13 @@ export const InlineEditing = styled.div`
 
 				&__action  {
 					flex: 0 0 auto;
-					height: 2.2.rem;
+					height: 2.2rem;
 					opacity: 0;
 				}
 
-				&:hover {
+				&:hover,
+				&:active ,
+				&:focus {
 					.edit-inline--static__field__action  {
 						opacity: 1;
 					}

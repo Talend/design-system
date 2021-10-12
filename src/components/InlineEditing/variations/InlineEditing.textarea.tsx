@@ -9,9 +9,17 @@ const InlineEditingMulti: React.FC<InlineEditingMultiProps> = styled(InlineEditi
 	renderAs: 'p',
 	mode: 'multi',
 })`
-	.edit-inline--editing__field  textarea {
-		padding: 0;
+	.edit-inline--editing__field__actions {
+		padding-top: 1rem;
+	}
+
+	.edit-inline--editing__field textarea {
+		padding: 1rem;
 		padding-right: 4rem;
+	}
+
+	.edit-inline--static__field__value {
+		white-space: inherit;
 	}
 `;
 
