@@ -24,10 +24,10 @@ const Password = React.forwardRef((props: InputProps, ref: React.Ref<HTMLInputEl
 				ref={inputRef}
 				onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
 					fromClickRef.current = false;
+					onReset();
 					if (props.onBlur) {
 						props.onBlur(event);
 					}
-					onReset();
 				}}
 				// @ts-ignore
 				after={
