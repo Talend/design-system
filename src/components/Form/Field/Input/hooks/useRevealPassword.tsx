@@ -7,7 +7,7 @@ export default function useRevealPassword() {
 	const [revealed, setRevealed] = useState(false);
 	const currentType = revealed ? 'text' : 'password';
 
-	function onReveal(event: MouseEvent) {
+	function onReveal(event: React.MouseEvent<any>) {
 		event.preventDefault();
 		setRevealed(prevState => !prevState);
 	}
@@ -20,7 +20,12 @@ export default function useRevealPassword() {
 		return (
 			<Button
 				className="reveal__button"
-				onMouseDown={onReveal}
+				onMouseDown={e => {
+					onReveal(e);
+					if (props.onClick) {
+						props.onClick(e);
+					}
+				}}
 				tabIndex={-1}
 				aria-hidden
 				{...props}
