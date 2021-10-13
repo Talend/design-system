@@ -54,7 +54,7 @@ const InlineEditing = React.forwardRef(
 			e.stopPropagation();
 		};
 
-		const onCancel = e => {
+		const onCancel = () => {
 			isEditing && setValue(defaultValue);
 			setEditMode(false);
 		};
@@ -62,7 +62,6 @@ const InlineEditing = React.forwardRef(
 		useKey('Escape', onCancel, {}, [isEditing]);
 		useKey('Enter', e => mode !== 'multi' && onSubmit(e), {}, [isEditing, value]);
 
-		const action = t('INLINE_EDITING_EDIT', 'Edit');
 		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
 		return (
 			<S.InlineEditing {...rest}>
@@ -99,16 +98,14 @@ const InlineEditing = React.forwardRef(
 							>
 								{value}
 							</S.InlineEditingValue>
-							<Tooltip title={action} placement="top">
-								<Button.Icon
-									className="edit-inline--static__field__action"
-									icon="talend-pencil"
-									onClick={() => setEditMode(true)}
-									disabled={loading}
-								>
-									{action}
-								</Button.Icon>
-							</Tooltip>
+							<Button.Icon
+								className="edit-inline--static__field__action"
+								icon="talend-pencil"
+								onClick={() => setEditMode(true)}
+								disabled={loading}
+							>
+								{t('INLINE_EDITING_EDIT', 'Edit')}
+							</Button.Icon>
 						</div>
 					</div>
 				)}
