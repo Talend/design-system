@@ -60,7 +60,7 @@ const Button = React.forwardRef(
 		);
 
 		return hideText ? (
-			<Tooltip title={children} placement={tooltipPlacement || 'auto'}>
+			<Tooltip title={children} placement={tooltipPlacement}>
 				{button}
 			</Tooltip>
 		) : (
