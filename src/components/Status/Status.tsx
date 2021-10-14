@@ -8,7 +8,6 @@ import * as S from './Status.style';
 
 export type StatusProps = React.PropsWithChildren<any>;
 
-// @see https://www.selbekk.io/blog/2020/05/forwarding-refs-in-typescript/
 const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
 	({ children, icon, inProgress, hideLabel, label, ...rest }, ref) => {
 		const text = <span className="status__text">{children || label}</span>;
