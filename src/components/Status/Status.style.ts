@@ -6,4 +6,20 @@ export const Status = styled.span.attrs({
 })`
 	font-weight: ${tokens.fontWeights.semiBold};
 	color: var(--t-status-color);
+
+	&,
+	.status__icon,
+	.status__text {
+		display: flex;
+		align-items: center;
+	}
+
+	.status__icon {
+		width: ${tokens.sizes.l};
+	}
+
+	.status__text {
+		white-space: nowrap;
+		margin-left: ${tokens.space.xs};
+	}
 `;
