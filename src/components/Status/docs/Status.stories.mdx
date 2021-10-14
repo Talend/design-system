@@ -1,5 +1,6 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
 import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../../docs';
+import Status from '../';
 
 
 <Meta title="Components/Status" />
@@ -31,6 +32,26 @@ The status component displays state information using semantic colors and icons.
 #### With label
 
 // add demo
+
+
+<Canvas>
+	<Story name="in progress">
+		<Status.InProgress>In progress</Status.InProgress>
+	</Story>
+	<Story name="successful">
+		<Status.Successful>Successful</Status.Successful>
+	</Story>
+	<Story name="failed">
+		<Status.Failed>Failed</Status.Failed>
+	</Story>
+	<Story name="warning">
+		<Status.Warning>Warning</Status.Warning>
+	</Story>
+	<Story name="canceled">
+		<Status.Canceled>Canceled</Status.Canceled>
+	</Story>
+</Canvas>
+
 
 #### Icon only
 
