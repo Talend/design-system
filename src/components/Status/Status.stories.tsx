@@ -41,7 +41,7 @@ export const Canceled = {
 export const Custom = {
 	args: {
 		variant: 'Successful',
-		children: 'Youpi',
+		children: 'Done',
 	},
 	render,
 };
