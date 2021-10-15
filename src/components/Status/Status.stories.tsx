@@ -1,93 +1,22 @@
 import React from 'react';
-import Status from './';
+import Status from '.';
 
-export const render = ({ variant, ...rest }) => {
-	const Component = Status[variant] || Status;
-	Component.displayName = variant ? `Status.${variant}` : 'Status';
-	return <Component {...rest} />;
+export default {
+	component: Status,
 };
 
-export const InProgress = {
-	args: {
-		variant: 'InProgress',
-	},
-	render,
-};
-export const Successful = {
-	args: {
-		variant: 'Successful',
-	},
-	render,
-};
-export const Failed = {
-	args: {
-		variant: 'Failed',
-	},
-	render,
-};
-export const Warning = {
-	args: {
-		variant: 'Warning',
-	},
-	render,
-};
-export const Canceled = {
-	args: {
-		variant: 'Canceled',
-	},
-	render,
-};
+export const InProgress = () => <Status.InProgress />;
+export const Successful = () => <Status.Successful />;
+export const Failed = () => <Status.Failed />;
+export const Canceled = () => <Status.Canceled />;
+export const Warning = () => <Status.Canceled />;
+export const CustomSuccessful = () => <Status.Successful>Done</Status.Successful>;
 
-export const Custom = {
-	args: {
-		variant: 'Successful',
-		children: 'Done',
-	},
-	render,
-};
-
-
-export const InProgressWithoutLabel = {
-	args: {
-		hideLabel: true,
-		variant: 'InProgress',
-	},
-	render,
-};
-export const SuccessfulWithoutLabel = {
-	args: {
-		hideLabel: true,
-		variant: 'Successful',
-	},
-	render,
-};
-export const FailedWithoutLabel = {
-	args: {
-		hideLabel: true,
-		variant: 'Failed',
-	},
-	render,
-};
-export const WarningWithoutLabel = {
-	args: {
-		hideLabel: true,
-		variant: 'Warning',
-	},
-	render,
-};
-export const CanceledWithoutLabel = {
-	args: {
-		hideLabel: true,
-		variant: 'Canceled',
-	},
-	render,
-};
-
-export const CustomWithoutLabel = {
-	args: {
-		hideLabel: true,
-		variant: 'InProgress',
-		children: 'Wait until it is loading',
-	},
-	render,
-};
+export const InProgressIcon = () => <Status.InProgress hideLabel />;
+export const SuccessfulIcon = () => <Status.Successful hideLabel />;
+export const FailedIcon = () => <Status.Failed hideLabel />;
+export const WarningIcon = () => <Status.Warning hideLabel />;
+export const CanceledIcon = () => <Status.Canceled hideLabel />;
+export const CustomInProgressIcon = () => (
+	<Status.InProgress hideLabel>Wait until it's loading</Status.InProgress>
+);

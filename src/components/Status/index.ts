@@ -1,6 +1,6 @@
 import StatusComponent from './Status';
 import StatusSuccessful from './variations/Status.successful';
-import StatusInProgress from './variations/Status.progress';
+import StatusInProgress from './variations/Status.inprogress';
 import StatusCanceled from './variations/Status.canceled';
 import StatusWarning from './variations/Status.warning';
 import StatusFailed from './variations/Status.failed';

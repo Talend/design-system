@@ -8,15 +8,17 @@ import * as S from './Status.style';
 
 export type StatusProps = React.PropsWithChildren<any> & {
 	icon?: IconName;
-	label?: string;
 	inProgress?: boolean;
-	hideLabel?: boolean;
-	children?: string;
+	hideText?: boolean;
+	children: string;
 };
 
-const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
-	({ children, icon, inProgress, hideLabel, label, ...rest }, ref) => {
-		const text = <span className="status__text">{children || label}</span>;
+const Status = React.forwardRef(
+	(
+		{ children, icon, inProgress, hideText, ...rest }: StatusProps,
+		ref: React.Ref<HTMLSpanElement>,
+	) => {
+		const text = <span className="status__text">{children}</span>;
 		const picto = (
 			<span className="status__icon" aria-hidden>
 				{!inProgress && icon && <Icon name={icon} />}
@@ -26,7 +28,7 @@ const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
 
 		return (
 			<S.Status ref={ref} {...rest}>
-				{hideLabel ? <Tooltip title={text}>{picto}</Tooltip> : [picto, text]}
+				{hideText ? <Tooltip title={children}>{picto}</Tooltip> : [picto, text]}
 			</S.Status>
 		);
 	},

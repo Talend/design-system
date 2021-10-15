@@ -10,7 +10,7 @@ export const Status = styled.span.attrs({
 	&,
 	.status__icon,
 	.status__text {
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 	}
 

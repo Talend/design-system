@@ -1,14 +1,14 @@
-import React from 'react';
 import i18n from 'i18next';
 import styled from 'styled-components';
 import Status from '../Status';
 
-const StyledStatus = styled(Status).attrs({
+const StyledStatus = styled(Status).attrs(props => ({
+	...props,
 	icon: 'talend-warning',
 	className: 'status--warning',
-	label: i18n.t('WARNING', 'Warning'),
-})`
+	children: props.children || i18n.t('WARNING', 'Warning'),
+}))`
 	--t-status-color: ${({ theme }) => theme.colors?.statusWarningColor};
 `;
 
-export default React.memo(StyledStatus);
+export default StyledStatus;

@@ -1,9 +1,9 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
-import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../../docs';
-import * as Stories from '../Status.stories';
+import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../docs';
+import Status from '.';
+import * as Stories from './Status.stories';
 
-
-<Meta title="Components/Status" />
+<Meta title="Components/Status" component={Status} />
 
 <Links>
 	<FigmaLink href="https://www.figma.com/file/joEoPYw910CgGO0DiKWRoD/Status?node-id=2%3A72" />
@@ -39,15 +39,14 @@ The status component displays state information using semantic colors and icons.
 	<Story story={Stories.Canceled} />
 </Canvas>
 
-
 #### Icon only
 
 <Canvas>
-	<Story story={Stories.InProgressWithoutLabel} />
-	<Story story={Stories.SuccessfulWithoutLabel} />
-	<Story story={Stories.FailedWithoutLabel} />
-	<Story story={Stories.WarningWithoutLabel} />
-	<Story story={Stories.CanceledWithoutLabel} />
+	<Story story={Stories.InProgressIcon} />
+	<Story story={Stories.SuccessfulIcon} />
+	<Story story={Stories.FailedIcon} />
+	<Story story={Stories.WarningIcon} />
+	<Story story={Stories.CanceledIcon} />
 </Canvas>
 
 ## States
@@ -61,9 +60,14 @@ The status component displays state information using semantic colors and icons.
 
 // TODO
 
+## Interaction
+
+N/C
+
 ## Content
 
 By default, each Status variants has a label:
+
 - In progress for `in_progress`
 - Successful for `success`
 - Failed for `failed`
@@ -73,18 +77,52 @@ By default, each Status variants has a label:
 Depending on the use case, it is possible to have another label instead but keeping the same meaning.
 
 <Canvas>
-	<Story story={Stories.Custom} />
-	<Story story={Stories.CustomWithoutLabel} />
+	<Story story={Stories.CustomSuccessful} />
+	<Story story={Stories.CustomInProgressIcon} />
 </Canvas>
 
+## Usage
 
-## Interaction
+<Canvas>
+	<Story
+		name="usage"
+		args={{
+			variant: 'Successful',
+			hideText: false,
+			children: 'Done',
+		}}
+		argTypes={{
+			variant: {
+				description: 'Status variation',
+				control: {
+					type: 'select',
+					options: [''].concat(Object.keys(Status).filter(key => /^[A-Z]/.test(key))),
+				},
+			},
+			hideText: {
+				description: 'If Status should hide text or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+			children: {
+				description: 'Status text',
+				control: {
+					type: 'text',
+				},
+			},
+		}}
+	>
+		{({ variant, ...rest }) => {
+			const Component = Status[variant] || Status;
+			Component.displayName = `Status${variant && `.${variant}`}`;
+			return <Component {...rest} />;
+		}}
+	</Story>
+</Canvas>
 
-N/C
+<ArgsTable story="usage" />
 
 ## Accessibility
 
 N/C
-
-## Usage
-
