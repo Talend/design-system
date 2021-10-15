@@ -1,5 +1,5 @@
 import React from 'react';
-import VisuallyHidden from '../VisuallyHidden';
+import { IconName } from '@talend/icons';
 import Tooltip from '../Tooltip';
 import { Icon } from '../Icon/Icon';
 import Loading from '../Loading';
@@ -7,9 +7,11 @@ import Loading from '../Loading';
 import * as S from './Status.style';
 
 export type StatusProps = React.PropsWithChildren<any> & {
-	icon: IconName;
-	inProgress: boolean;
-	hideLabel: boolean;
+	icon?: IconName;
+	label?: string;
+	inProgress?: boolean;
+	hideLabel?: boolean;
+	children?: string;
 };
 
 const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
@@ -24,16 +26,7 @@ const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
 
 		return (
 			<S.Status ref={ref} {...rest}>
-				{hideLabel ? (
-					<>
-						<Tooltip title={text}>{picto}</Tooltip>
-					</>
-				) : (
-					<>
-						{picto}
-						{text}
-					</>
-				)}
+				{hideLabel ? <Tooltip title={text}>{picto}</Tooltip> : [picto, text]}
 			</S.Status>
 		);
 	},
