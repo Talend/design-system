@@ -23,7 +23,6 @@ const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
 				{hideLabel ? (
 					<>
 						<Tooltip title={text}>{picto}</Tooltip>
-						<VisuallyHidden>{text}</VisuallyHidden>
 					</>
 				) : (
 					<>
