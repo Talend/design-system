@@ -13,7 +13,7 @@ const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
 		const text = <span className="status__text">{children || label}</span>;
 		const picto = (
 			<span className="status__icon" aria-hidden>
-				{icon && <Icon name={icon} />}
+				{!inProgress && icon && <Icon name={icon} />}
 				{inProgress && <Loading />}
 			</span>
 		);
