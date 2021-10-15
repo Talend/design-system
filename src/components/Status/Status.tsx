@@ -6,7 +6,11 @@ import Loading from '../Loading';
 
 import * as S from './Status.style';
 
-export type StatusProps = React.PropsWithChildren<any>;
+export type StatusProps = React.PropsWithChildren<any> & {
+	icon: IconName;
+	inProgress: boolean;
+	hideLabel: boolean;
+};
 
 const Status = React.forwardRef<HTMLSpanElement, StatusProps>(
 	({ children, icon, inProgress, hideLabel, label, ...rest }, ref) => {
