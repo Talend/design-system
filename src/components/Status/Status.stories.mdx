@@ -29,7 +29,7 @@ The status component displays state information using semantic colors and icons.
 	alt="variations image for status"
 />
 
-#### With label
+#### With text
 
 <Canvas>
 	<Story story={Stories.InProgress} />
@@ -39,7 +39,7 @@ The status component displays state information using semantic colors and icons.
 	<Story story={Stories.Canceled} />
 </Canvas>
 
-#### Icon only
+#### Without text
 
 <Canvas>
 	<Story story={Stories.InProgressIcon} />
@@ -68,11 +68,11 @@ N/C
 
 By default, each Status variants has a label:
 
-- In progress for `in_progress`
-- Successful for `success`
-- Failed for `failed`
-- Warning for `warning`
-- Canceled for `canceled`
+- In progress for `Status.InProgress`
+- Successful for `Status.Successful`
+- Failed for `Status.Failed`
+- Warning for `Status.Warning`
+- Canceled for `Status.Canceled`
 
 Depending on the use case, it is possible to have another label instead but keeping the same meaning.
 
