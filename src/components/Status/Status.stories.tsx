@@ -87,7 +87,7 @@ export const CustomWithoutLabel = {
 	args: {
 		hideLabel: true,
 		variant: 'InProgress',
-		children: 'Heyyyy',
+		children: 'Wait until it is loading',
 	},
 	render,
 };
