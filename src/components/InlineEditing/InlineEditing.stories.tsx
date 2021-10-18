@@ -1,5 +1,6 @@
 import React from 'react';
 import InlineEditing from '.';
+import InlineMessage from '../InlineMessage';
 
 export default {
 	component: InlineEditing,
@@ -56,13 +57,24 @@ export const InUse = () => {
 	};
 
 	return (
-		<InlineEditing.Text
-			label="Crawler name"
-			loading={loading}
-			defaultValue={data}
-			hasError={error}
-			onEdit={onEdit}
-			onCancel={onCancel}
-		/>
+		<>
+			<InlineEditing.Text
+				label="Crawler name"
+				loading={loading}
+				defaultValue={data}
+				hasError={error}
+				onEdit={onEdit}
+				onCancel={onCancel}
+				aria-describedby="inlinemessage-id"
+			/>
+			{error && (
+				<InlineMessage.Destructive
+					id="inlinemessage-id"
+					title="Oops"
+					description="An error occured"
+					withBackground
+				/>
+			)}
+		</>
 	);
 };

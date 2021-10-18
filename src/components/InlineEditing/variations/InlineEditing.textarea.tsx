@@ -25,6 +25,6 @@ const InlineEditingMulti: React.FC<InlineEditingMultiProps> = styled(InlineEditi
 	}
 `;
 
-InlineEditingMulti.displayName = 'InlineEditing.Multi';
+InlineEditingMulti.displayName = 'InlineEditing.Textarea';
 
 export default InlineEditingMulti;

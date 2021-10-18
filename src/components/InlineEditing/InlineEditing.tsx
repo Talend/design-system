@@ -1,10 +1,10 @@
 import React, { PropsWithChildren } from 'react';
 import { StyledProps } from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import useKey from 'react-use/lib/useKey';
 import classNames from 'classnames';
 import Button from '../Button';
 import Form from '../Form';
-import { useTranslation } from 'react-i18next';
 
 import * as S from './InlineEditing.style';
 
@@ -21,7 +21,7 @@ export type InlineEditingProps = PropsWithChildren<any> &
 		/** if the inline editing in in progress */
 		loading?: boolean;
 		/** called on submit with the new value */
-		onEdit?: (newValue: string) => void;
+		onEdit?: (event: React.MouseEvent<HTMLButtonElement> | KeyboardEvent, newValue: string) => void;
 		/** called on cancel */
 		onCancel?: () => void;
 		renderAs?: React.ElementType;
@@ -44,20 +44,23 @@ const InlineEditing = React.forwardRef(
 		renderAs,
 		mode,
 		...rest
-	}: StyledInlineEditing) => {
+	}: StyledInlineEditing, ref) => {
 		const { t } = useTranslation();
 		const [isEditing, setEditMode] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
 
 		const handleSubmit = (event: React.MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
-			onEdit && onEdit(value);
-			setEditMode(false);
 			event.stopPropagation();
+			if (onEdit) {
+				onEdit(event, value);
+			}
+			setEditMode(false);
 		};
 
 		const handleCancel = () => {
-			isEditing && setValue(defaultValue);
-			setEditMode(false);
+			if (isEditing) {
+				setValue(defaultValue);
+			}
 			setEditMode(false);
 			onCancel();
 		};
@@ -77,7 +80,7 @@ const InlineEditing = React.forwardRef(
 
 		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
 		return (
-			<S.InlineEditing {...rest}>
+			<S.InlineEditing ref={ref} {...rest}>
 				{isEditing ? (
 					<div className="edit-inline--editing__field">
 						<form>
