@@ -6,6 +6,7 @@ export type InlineEditingMultiProps = InlineEditingProps;
 
 
 const InlineEditingMulti: React.FC<InlineEditingMultiProps> = styled(InlineEditing).attrs({
+	className: 'edit-inline--textarea',
 	renderAs: 'p',
 	mode: 'multi',
 })`
