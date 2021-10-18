@@ -4,14 +4,7 @@ import InlineEditing, { InlineEditingProps } from '../InlineEditing';
 
 export type InlineEditingSingleProps = InlineEditingProps;
 
-const InlineEditingSingle: React.FC<InlineEditingSingleProps> = styled(InlineEditing).attrs({
-	renderAs: 'p',
-	mode: 'single',
-})`
-	.edit-inline--editing__field__actions {
-		height: 100%;
-	}
-`;
+const InlineEditingSingle: React.FC<InlineEditingSingleProps> = styled(InlineEditing)``;
 
 InlineEditingSingle.displayName = 'InlineEditing.Single';
 

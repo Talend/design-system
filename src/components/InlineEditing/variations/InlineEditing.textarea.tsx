@@ -11,6 +11,7 @@ const InlineEditingMulti: React.FC<InlineEditingMultiProps> = styled(InlineEditi
 })`
 	.edit-inline--editing__field__actions {
 		padding-top: 1rem;
+		height: 2.2rem;
 	}
 
 	.edit-inline--editing__field textarea {

@@ -10,7 +10,7 @@ export const Textarea = () => (
 	<InlineEditing.Textarea defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa velit. Duis vestibulum lectus id lacinia aliquam. Aliquam erat volutpat. Donec dignissim augue eu eros blandit faucibus eu quis nulla. In hac habitasse platea dictumst. Ut egestas viverra sem, et dictum elit lacinia interdum. Vivamus accumsan pulvinar faucibus. Donec vestibulum mauris vitae sem lacinia, eget fringilla leo efficitur. In hac habitasse platea dictumst. Nullam consectetur nunc quis tortor congue imperdiet. Ut lobortis suscipit enim, in aliquet sem viverra ut. Sed finibus ex elit, quis ultricies nulla tincidunt sit amet. Maecenas gravida diam ex, vel aliquam tortor elementum et. Duis vitae ligula tristique est iaculis consequat. Nullam in ipsum turpis. Cras aliquam tellus quis turpis convallis, ut faucibus quam tincidunt." />
 );
 export const Default = () => (
-	<InlineEditing.Text label="Crawler name" defaultValue="Lorem ipsum dolor sit amet" />
+	<InlineEditing label="Crawler name" defaultValue="Lorem ipsum dolor sit amet" />
 );
 export const WithEllipsis = () => (
 	<InlineEditing.Text

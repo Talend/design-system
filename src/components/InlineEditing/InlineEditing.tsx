@@ -41,8 +41,8 @@ const InlineEditing = React.forwardRef(
 		onCancel,
 		label,
 		renderValueAs,
-		renderAs,
-		mode,
+		renderAs = 'span',
+		mode = 'single',
 		...rest
 	}: StyledInlineEditing) => {
 		const { t } = useTranslation();
