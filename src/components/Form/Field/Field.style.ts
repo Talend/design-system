@@ -114,44 +114,94 @@ export const Field = styled.div`
 	}
 `;
 
-export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolean }>(
-	({ readOnly, checked }) => ({
-		className: `${readOnly ? 'c-input--read-only' : ''} ${checked ? 'c-input--checked' : ''}`,
-	}),
-)`
-	input {
-		position: absolute;
-		margin-left: -9999px;
-	}
+export const InlineStyle = styled.div.attrs<{
+	readOnly: boolean;
+	checked: boolean;
+	disabled: boolean;
+}>(({ readOnly, checked, disabled }) => ({
+	className: `${readOnly ? 'c-input--read-only' : ''} ${checked ? 'c-input--checked' : ''} ${
+		disabled ? 'c-input--disabled' : ''
+	}`,
+}))`
+	margin-top: 0;
 
-	label > span {
+	--t-form-color: ${tokens.colors.gray[900]};
+	--t-form-background-color: ${tokens.colors.gray[0]};
+	--t-form-border-color: ${tokens.colors.gray[500]};
+	--t-form-border-color--hover: ${tokens.colors.gray[900]};
+	--t-form-border-color--focus: ${tokens.colors.lochmara[500]};
+	--t-form-border-color--checked: ${tokens.colors.lochmara[600]};
+	--t-form-border-color--disabled: ${tokens.colors.gray[300]};
+
+	--t-form-color--readonly: ${tokens.colors.gray[600]};
+	--t-form-background-color--readonly: ${tokens.colors.gray[50]};
+	--t-form-border-color--readonly: transparent;
+
+	--t-form-placeholder-color: ${tokens.colors.gray[500]};
+
+	--t-form-radio-background-color: ${tokens.colors.gray[100]};
+
+	--t-form-group-color: ${tokens.colors.gray[700]};
+	--t-form-group-background-color: ${tokens.colors.gray[75]};
+	--t-form-group-interactive-color: ${tokens.colors.lochmara[600]};
+	--t-form-group-interactive-background-color: ${tokens.colors.lochmara[100]};
+	--t-form-group-interactive-color--hover: ${tokens.colors.paleCyan[700]};
+	--t-form-group-interactive-background-color--hover: ${tokens.colors.paleCyan[200]};
+	--t-form-group-interactive-color--active: ${tokens.colors.lochmara[800]};
+	--t-form-group-interactive-background-color--active: ${tokens.colors.paleCyan[300]};
+
+	label {
+		display: inline-block;
 		position: relative;
-		padding: 0 ${tokens.space.l};
-		font-size: ${tokens.fontSizes.normal};
-		color: ${({ theme }) => theme.colors.textColor};
-		cursor: pointer;
+		padding-left: calc(1.4rem + ${tokens.space.s});
+		margin-bottom: ${tokens.space.xs};
+		font-size: 1.4rem;
+		font-weight: 400;
+
+		&,
+		> * {
+			line-height: 1.5rem;
+			min-height: 1.5rem;
+		}
 	}
 
-	label > span:before,
-	label > span:after {
-		content: '';
-		position: absolute;
-		top: 0.3rem;
-		left: 0;
-		background: ${({ theme }) => theme.colors.inputBackgroundColor};
-		transition: ${tokens.transitions.fast};
+	&.c-input--disabled label {
+		opacity: 0.54;
 	}
 
-	label > span:before {
-		width: ${tokens.sizes.s};
-		height: ${tokens.sizes.s};
-		box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputBorderColor};
+	input {
+		margin: 0;
+		appearance: none;
+
+		&,
+		+ * {
+			display: inline-block;
+		}
+
+		&,
+		&::before,
+		&::after,
+		+ *::before,
+		+ *::after {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&::before,
+		&::after,
+		+ *::before,
+		+ *::after {
+			content: '';
+		}
 	}
 
-	label > span:after {
-		margin: calc((${tokens.sizes.s} - ${tokens.sizes.xs}) / 2);
-		width: ${tokens.sizes.xs};
-		height: ${tokens.sizes.xs};
+	+ & {
+		margin: 0;
+	}
+
+	&.c-input--disabled label {
+		opacity: 0.54;
 	}
 
 	input:not(:disabled) + span:hover,
@@ -174,23 +224,18 @@ export const InlineStyle = styled.div.attrs<{ readOnly: boolean; checked: boolea
 		outline: 0.3rem solid ${({ theme }) => theme.colors.focusColor[500]};
 	}
 
-	[aria-checked='true'] + span:before,
-	[aria-checked='mixed'] + span:before {
-		background: ${({ theme }) => theme.colors.activeColor[500]};
-		box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputCheckedBorderColor};
-	}
-
-	input:disabled + span,
-	input:disabled + span:before,
-	input:disabled + span:after {
+	.c-input--disabled input,
+	.c-input--disabled input + *::before,
+	.c-input--disabled input + *::after {
 		opacity: ${tokens.opacity.disabled};
 		cursor: not-allowed;
 	}
 
-	&.c-input--read-only span:before,
-	&.c-input--read-only span:after {
+	&.c-input--read-only input + *::before,
+	&.c-input--read-only input + *::after {
 		color: ${({ theme }) => theme.colors.inputReadOnlyColor};
 		background: ${({ theme }) => theme.colors.inputReadOnlyBackgroundColor};
+		border: none;
 		box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
 	}
 `;

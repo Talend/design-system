@@ -108,9 +108,11 @@ const Field = React.forwardRef(
 						className={classnames(className, 'c-field__control', {
 							[`c-field__control--${as}`]: typeof as === 'string',
 							// @ts-ignore
-							'input--read-only': rest.readOnly,
+							'c-input--read-only': rest.readOnly,
 							// @ts-ignore
-							'input--checked': rest.checked,
+							'c-input--checked': rest.checked,
+							// @ts-ignore
+							'c-input--disabled': rest.disabled,
 						})}
 						aria-describedby={description && fieldDescriptionId}
 						disabled={disabled}
