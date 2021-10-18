@@ -9,6 +9,7 @@ import * as S from './InlineEditing.style';
 import classNames from 'classnames';
 
 import useKey from 'react-use/lib/useKey';
+import { useEffect } from 'hoist-non-react-statics/node_modules/@types/react';
 
 export type InlineEditingProps = PropsWithChildren<any> &
 	StyledProps<any> & {
@@ -24,6 +25,8 @@ export type InlineEditingProps = PropsWithChildren<any> &
 		loading?: boolean;
 		/** called on submit with the new value */
 		onEdit?: (newValue: string) => void;
+		/** called on cancel */
+		onCancel?: () => void;
 		renderAs?: React.ElementType;
 	};
 
@@ -38,6 +41,7 @@ const InlineEditing = React.forwardRef(
 		hasError,
 		loading,
 		onEdit,
+		onCancel,
 		label,
 		renderValueAs,
 		renderAs,
@@ -48,19 +52,31 @@ const InlineEditing = React.forwardRef(
 		const [isEditing, setEditMode] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
 
-		const onSubmit = e => {
+		const handleSubmit = (event: React.MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
 			onEdit && onEdit(value);
 			setEditMode(false);
-			e.stopPropagation();
+			event.stopPropagation();
 		};
 
-		const onCancel = () => {
+		const handleCancel = () => {
 			isEditing && setValue(defaultValue);
 			setEditMode(false);
+			setEditMode(false);
+			onCancel();
 		};
+		React.useEffect(() => setEditMode(hasError), [hasError]);
 
-		useKey('Escape', onCancel, {}, [isEditing]);
-		useKey('Enter', e => mode !== 'multi' && onSubmit(e), {}, [isEditing, value]);
+		useKey('Escape', handleCancel, {}, [isEditing]);
+		useKey(
+			'Enter',
+			(event: KeyboardEvent): void => {
+				if (mode !== 'multi') {
+					handleSubmit(event);
+				}
+			},
+			{},
+			[isEditing, value],
+		);
 
 		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
 		return (
@@ -74,13 +90,13 @@ const InlineEditing = React.forwardRef(
 								value={value}
 								required={required}
 								hasError={hasError}
-								onChange={({ target }) => setValue(target.value)}
+								onChange={(ev: any): any => setValue(ev.target.value)}
 							/>
 							<div className="edit-inline--editing__field__actions">
-								<Button.Icon onClick={onCancel} icon="talend-cross-circle">
+								<Button.Icon onClick={handleCancel} icon="talend-cross-circle">
 									{t('INLINE_EDITING_CANCEL', 'Cancel')}
 								</Button.Icon>
-								<Button.Icon onClick={onSubmit} icon="talend-check-circle">
+								<Button.Icon onClick={handleSubmit} icon="talend-check-circle">
 									{t('INLINE_EDITING_SUBMIT', 'Submit')}
 								</Button.Icon>
 							</div>
