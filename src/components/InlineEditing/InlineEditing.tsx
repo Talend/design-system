@@ -33,16 +33,16 @@ export type StyledInlineEditing = {
 
 const InlineEditing = React.forwardRef(
 	({
-		defaultValue,
-		required,
-		hasError,
-		loading,
-		onEdit,
-		onCancel,
-		label,
-		renderValueAs,
-		renderAs,
 		mode,
+		label,
+		loading,
+		hasError,
+		required,
+		renderAs,
+		defaultValue,
+		renderValueAs,
+		onEdit = () => {},
+		onCancel = () => {},
 		...rest
 	}: StyledInlineEditing, ref) => {
 		const { t } = useTranslation();
