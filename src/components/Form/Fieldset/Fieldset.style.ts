@@ -10,4 +10,5 @@ export const Legend = styled.legend`
 	color: ${({ theme }) => theme.colors.textColor};
 	font-weight: ${tokens.fontWeights.bold};
 	padding: ${tokens.space.m} 0;
+	margin: 0;
 `;
