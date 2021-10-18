@@ -105,7 +105,7 @@
     jsesc "^2.5.1"
     source-map "^0.5.0"
 
-"@babel/helper-annotate-as-pure@^7.0.0", "@babel/helper-annotate-as-pure@^7.14.5", "@babel/helper-annotate-as-pure@^7.15.4":
+"@babel/helper-annotate-as-pure@^7.14.5", "@babel/helper-annotate-as-pure@^7.15.4":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.15.4.tgz#3d0e43b00c5e49fdb6c57e421601a7a658d5f835"
   integrity sha512-QwrtdNvUNsPCj2lfNQacsGSQvGX8ee1ttrBrcozUP2Sv/jylewBP/8QFe6ZkBsC8T/GYWonNAWJV4aRR9AL2DA==
@@ -4557,12 +4557,12 @@ babel-plugin-react-docgen@^4.2.1:
     react-docgen "^5.0.0"
 
 "babel-plugin-styled-components@>= 1.12.0", babel-plugin-styled-components@^1.12.0:
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.13.2.tgz#ebe0e6deff51d7f93fceda1819e9b96aeb88278d"
-  integrity sha512-Vb1R3d4g+MUfPQPVDMCGjm3cDocJEUTR7Xq7QS95JWWeksN1wdFRYpD2kulDgI3Huuaf1CZd+NK4KQmqUFh5dA==
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.13.3.tgz#1f1cb3927d4afa1e324695c78f690900e3d075bc"
+  integrity sha512-meGStRGv+VuKA/q0/jXxrPNWEm4LPfYIqxooDTdmh8kFsP/Ph7jJG5rUPwUPX3QHUvggwdbgdGpo88P/rRYsVw==
   dependencies:
-    "@babel/helper-annotate-as-pure" "^7.0.0"
-    "@babel/helper-module-imports" "^7.0.0"
+    "@babel/helper-annotate-as-pure" "^7.15.4"
+    "@babel/helper-module-imports" "^7.15.4"
     babel-plugin-syntax-jsx "^6.18.0"
     lodash "^4.17.11"
 
@@ -5364,9 +5364,9 @@ chownr@^2.0.0:
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
 chromatic@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-6.0.0.tgz#d07f12dc47edbbc678dafa3011aea859b996e7a7"
-  integrity sha512-aXgOEXK9r+tzV3H0ZCGL4iTAX8yAD8PXur2lBjoXCNGPDCOashFDHl9Bw8apKVs2Ec6+I5zdZ7GqEivWq92HCQ==
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-6.0.4.tgz#c666004d25f14208c94ef5afb048ae3f2e9adb04"
+  integrity sha512-kMoopZ9+7F/pumCgNoyTRHumVU0+alnccmt6n0inQcbcIc1REJ0ZHyjT47LBSwnQLjo/Vz0dGU7mFEc84bkNrQ==
 
 chrome-trace-event@^1.0.2:
   version "1.0.3"
@@ -5870,9 +5870,9 @@ core-js-pure@^3.0.0, core-js-pure@^3.8.1, core-js-pure@^3.8.2:
   integrity sha512-D42L7RYh1J2grW8ttxoY1+17Y4wXZeKe7uyplAI3FkNQyI5OgBIAjUfFiTPfL1rs0qLpxaabITNbjKl1Sp82tA==
 
 core-js@^3.0.4, core-js@^3.11.0, core-js@^3.17.1, core-js@^3.6.5, core-js@^3.8.2:
-  version "3.18.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.2.tgz#63a551e8a29f305cd4123754846e65896619ba5b"
-  integrity sha512-zNhPOUoSgoizoSQFdX1MeZO16ORRb9FFQLts8gSYbZU5FcgXhp24iMWMxnOQo5uIaIG7/6FA/IqJPwev1o9ZXQ==
+  version "3.18.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.3.tgz#86a0bba2d8ec3df860fefcc07a8d119779f01509"
+  integrity sha512-tReEhtMReZaPFVw7dajMx0vlsz3oOb8ajgPoHVYGxr8ErnZ6PcYEvvmjGmXlfpnxpkYSdOQttjB+MvVbCGfvLw==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -9081,9 +9081,9 @@ i18next-scanner-typescript@^1.0.6:
     typescript "^3.0.0"
 
 i18next-scanner@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/i18next-scanner/-/i18next-scanner-3.0.0.tgz#16024fa7f6dc5fd73d91545bd01566f86a76529a"
-  integrity sha512-cm4Ch3VqicGZS8y+4xSvXoOsnE/iWhHZi6AZEyAgLLm3EDZ/eY21gDbLfbnwKVY6wCghzAEO9LfRNlxwTo8KMQ==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/i18next-scanner/-/i18next-scanner-3.0.1.tgz#79cb8e256fe148816dc209d6a776e62ea4aea364"
+  integrity sha512-tkyPfurIz1XLDNJdGXdrXvJmKrbecjFR5DPLvW70OBqR0x2M2mHTkCFpiUjNdV9pEVf9NDQhDEXr0yzt1PQK4w==
   dependencies:
     acorn "^8.0.4"
     acorn-dynamic-import "^4.0.0"
@@ -15661,9 +15661,9 @@ typescript@^3.0.0:
   integrity sha512-w6fIxVE/H1PkLKcCPsFqKE7Kv7QUwhU8qQY2MueZXWx5cPZdwFupLgKK3vntcK98BtNHZtAF4LA/yl2a7k8R6Q==
 
 typescript@^4.4.2:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
-  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.4.tgz#2cd01a1a1f160704d3101fd5a58ff0f9fcb8030c"
+  integrity sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==
 
 ua-parser-js@^0.7.28:
   version "0.7.28"
