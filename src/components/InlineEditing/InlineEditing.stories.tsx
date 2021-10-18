@@ -5,8 +5,8 @@ export default {
 	component: InlineEditing,
 };
 
-export const SingleLine = () => <InlineEditing.Text defaultValue="Lorem Ipsum" />;
-export const Multiline = () => (
+export const Text = () => <InlineEditing.Text defaultValue="Lorem Ipsum" />;
+export const Textarea = () => (
 	<InlineEditing.Textarea defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in massa velit. Duis vestibulum lectus id lacinia aliquam. Aliquam erat volutpat. Donec dignissim augue eu eros blandit faucibus eu quis nulla. In hac habitasse platea dictumst. Ut egestas viverra sem, et dictum elit lacinia interdum. Vivamus accumsan pulvinar faucibus. Donec vestibulum mauris vitae sem lacinia, eget fringilla leo efficitur. In hac habitasse platea dictumst. Nullam consectetur nunc quis tortor congue imperdiet. Ut lobortis suscipit enim, in aliquet sem viverra ut. Sed finibus ex elit, quis ultricies nulla tincidunt sit amet. Maecenas gravida diam ex, vel aliquam tortor elementum et. Duis vitae ligula tristique est iaculis consequat. Nullam in ipsum turpis. Cras aliquam tellus quis turpis convallis, ut faucibus quam tincidunt." />
 );
 export const Default = () => (
@@ -27,7 +27,7 @@ export const LongTextInTextarea = () => (
 		defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla augue, fermentum ac scelerisque quis, aliquet et arcu. Nullam quis sem pulvinar, venenatis nunc vel, lobortis libero"
 	/>
 );
-export const AsH3 = () => (
+export const AsHeading = () => (
 	<InlineEditing.Text
 		label="AS H3 Crawler name"
 		defaultValue="Lorem ipsum dolor sit amet"

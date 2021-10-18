@@ -1,15 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 import { StyledProps } from 'styled-components';
+import useKey from 'react-use/lib/useKey';
+import classNames from 'classnames';
 import Button from '../Button';
-import Tooltip from '../Tooltip';
 import Form from '../Form';
 import { useTranslation } from 'react-i18next';
 
 import * as S from './InlineEditing.style';
-import classNames from 'classnames';
-
-import useKey from 'react-use/lib/useKey';
-import { useEffect } from 'hoist-non-react-statics/node_modules/@types/react';
 
 export type InlineEditingProps = PropsWithChildren<any> &
 	StyledProps<any> & {
@@ -90,7 +87,11 @@ const InlineEditing = React.forwardRef(
 								value={value}
 								required={required}
 								hasError={hasError}
-								onChange={(ev: any): any => setValue(ev.target.value)}
+								onChange={(
+									event:
+										| React.ChangeEvent<HTMLInputElement>
+										| React.ChangeEvent<HTMLTextAreaElement>,
+								): any => setValue(event.target.value)}
 							/>
 							<div className="edit-inline--editing__field__actions">
 								<Button.Icon onClick={handleCancel} icon="talend-cross-circle">
