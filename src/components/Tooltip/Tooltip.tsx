@@ -24,25 +24,70 @@ export type TooltipProps = React.PropsWithChildren<any> & {
 	title?: string;
 	placement?: Placement;
 	visible?: boolean;
+	optional?: boolean;
 };
 
-const Tooltip = React.forwardRef<React.ReactElement, TooltipProps>(
-	({ children, title, placement = 'auto', visible = false, ...rest }: TooltipProps, ref) => {
+const Tooltip = React.forwardRef(
+	(
+		{
+			children,
+			title,
+			placement = 'auto',
+			visible = false,
+			optional = false,
+			...rest
+		}: TooltipProps,
+		ref: React.Ref<any>,
+	) => {
 		const tooltipState = useTooltipState({
 			placement,
 			visible,
 			gutter: 15,
 		});
+
+		const textRef = React.useRef<React.PropsWithChildren<any>>(null);
+
+		const [isEllipsisActive, setIsEllipsisActive] = React.useState<boolean>(false);
+
+		React.useImperativeHandle(ref, () => textRef.current);
+
+		React.useEffect(() => {
+			if (optional && textRef.current?.offsetWidth < textRef.current?.scrollWidth) {
+				setIsEllipsisActive(true);
+			}
+		}, [textRef.current, children]);
+
 		return (
 			<>
-				<S.TooltipReference {...tooltipState} {...children.props} ref={ref}>
-					{referenceProps => React.cloneElement(children, referenceProps)}
-				</S.TooltipReference>
-				{title && (
-					<S.Tooltip {...tooltipState} {...rest}>
-						<S.TooltipArrow {...tooltipState} />
-						{title}
-					</S.Tooltip>
+				{optional && !isEllipsisActive ? (
+					React.cloneElement(children, { ref: textRef })
+				) : (
+					<>
+						{optional && isEllipsisActive ? (
+							<S.TooltipReference
+								{...tooltipState}
+								ref={textRef}
+								style={{
+									textOverflow: 'ellipsis',
+									whiteSpace: 'nowrap',
+									overflow: 'hidden',
+								}}
+							>
+								{referenceProps => React.cloneElement(children, referenceProps)}
+							</S.TooltipReference>
+						) : (
+							<S.TooltipReference {...tooltipState} {...children.props} ref={textRef}>
+								{referenceProps => React.cloneElement(children, referenceProps)}
+							</S.TooltipReference>
+						)}
+
+						{title && (
+							<S.Tooltip {...tooltipState} {...rest}>
+								<S.TooltipArrow {...tooltipState} />
+								{title}
+							</S.Tooltip>
+						)}
+					</>
 				)}
 			</>
 		);

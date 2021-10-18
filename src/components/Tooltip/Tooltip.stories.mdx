@@ -1,7 +1,7 @@
 import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
-import { FigmaIframe, FigmaImage, Use } from '../../../docs';
+import { FigmaIframe, FigmaImage, Use } from '../../docs';
 
-import * as Stories from '../Tooltip.stories';
+import * as Stories from './Tooltip.stories';
 
 <Meta title="Components/Tooltip" />
 
@@ -28,6 +28,15 @@ Tooltips provide helpful, additional content for their paired elements on hover.
 	<Story story={Stories.Left} />
 	<Story story={Stories.Bottom} />
 	<Story story={Stories.Right} />
+</Canvas>
+
+## Interactions
+
+Tooltip can be `optional` depending on its content length.
+
+<Canvas>
+	<Story story={Stories.ShortOptional} />
+	<Story story={Stories.LongOptional} />
 </Canvas>
 
 ## Content
