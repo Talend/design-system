@@ -51,35 +51,35 @@ User can perform inline editing by using inline form.
 	alt="states image for inline editing"
 />
 
-### Loading mode
+### Loading
 
 <Canvas>
 	<Story story={Stories.LoadingMode} />
+</Canvas>
+
+### Error
+
+In this example, async submit will always end up with an error.
+
+<Canvas>
+	<Story story={Stories.InUse} />
 </Canvas>
 
 ## Interactions
 
 The edit mode can be triggered by clicking on the pencil icon, or by double-clicking on the text.
 
-### Async error example
-
-In this example, submit will always end up with an error.
-
-<Canvas>
-	<Story story={Stories.InUse} />
-</Canvas>
-
 ### Quality Assurance
 
 Non-regression testing can be performed using:
 
-| data-testid                         | description                                                                   |
-| ----------------------------------- | ----------------------------------------------------------------------------- |
-| `inlineediting`                     | Container containing value and actions                                        |
-| `inlineediting.button.edit`         | Edit button to pass into "editing" mode                                       |
-| `inlineediting.<input or textarea>` | Control to change its value in "editing" mode depending on the variant in use |
-| `inlineediting.button.cancel`       | Cancel button to quit "editing" mode                                          |
-| `inlineediting.button.submit`       | Submit button to validate edition in "editing" mode                           |
+| data-testid                                       | description                                                                   |
+| ------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `inlineediting`                                   | Container containing value and actions                                        |
+| `inlineediting.button.edit`                       | Edit button to pass into "editing" mode                                       |
+| `inlineediting.input` or `inlineediting.textarea` | Control to change its value in "editing" mode depending on the variant in use |
+| `inlineediting.button.cancel`                     | Cancel button to quit "editing" mode                                          |
+| `inlineediting.button.submit`                     | Submit button to validate edition in "editing" mode                           |
 
 ## Usage
 
