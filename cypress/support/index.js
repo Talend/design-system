@@ -5,8 +5,8 @@ import * as globalStorybookConfig from '../../.storybook/preview'; // path of yo
 
 setGlobalConfig(globalStorybookConfig);
 
-Cypress.Commands.add('mount', reactElement => {
-	mount(reactElement);
+Cypress.Commands.add('mount', jsx => {
+	return mount(jsx);
 });
 
 Cypress.Commands.add('getByTestId', (selector, ...args) => {
