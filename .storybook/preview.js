@@ -78,6 +78,19 @@ export const parameters = {
 	docs: {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
+			const [hasStandaloneStyle, setStandaloneStyle] = useLocalStorage(
+				'coral--has-standalone-styles',
+				false,
+			);
+
+			React.useEffect(() => {
+				document
+					.querySelectorAll('#bootstrap-theme')
+					.forEach(link => (link.disabled = !!hasStandaloneStyle));
+				return () => {
+					document.querySelectorAll('#bootstrap-theme').forEach(link => (link.disabled = false));
+				};
+			}, [hasStandaloneStyle]);
 
 			const channel = addons.getChannel();
 
@@ -92,7 +105,7 @@ export const parameters = {
 					</ThemeProvider>
 					<TableOfContents>
 						{['component', 'template', 'page'].find(term =>
-							props.context.kind?.split('/')[0].toLocaleLowerCase().includes(term),
+							props.context.title?.split('/')[0].toLocaleLowerCase().includes(term),
 						) && (
 							<ThemeProvider>
 								<Divider />
@@ -105,8 +118,12 @@ export const parameters = {
 									}}
 									checked={hasDarkMode}
 								/>
+								<Form.Switch
+									label={'Standalone style'}
+									onChange={() => setStandaloneStyle(!hasStandaloneStyle)}
+									checked={!!hasStandaloneStyle}
+								/>
 								{/*
-								<Divider />
 								<Form.Switch
 									label={'Figma iframes'}
 									onChange={() => setFigmaIframe(!hasFigmaIframe)}
