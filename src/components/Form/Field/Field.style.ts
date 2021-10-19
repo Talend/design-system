@@ -123,32 +123,37 @@ export const InlineStyle = styled.div.attrs<{
 		disabled ? 'c-input--disabled' : ''
 	}`,
 }))`
+	--t-form-color: ${({ theme }) => theme.colors.inputColor};
+	--t-form-background-color: ${({ theme }) => theme.colors.inputBackgroundColor};
+	--t-form-border-color: ${({ theme }) => theme.colors.inputBorderColor};
+	--t-form-border-color--hover: ${({ theme }) => theme.colors.inputHoverBorderColor};
+	--t-form-border-color--focus: ${({ theme }) => theme.colors.inputFocusBorderColor};
+	--t-form-border-color--checked: ${({ theme }) => theme.colors.inputCheckedBorderColor};
+	--t-form-border-color--disabled: ${({ theme }) => theme.colors.inputDisabledBorderColor};
+
+	--t-form-color--readonly: ${({ theme }) => theme.colors.inputReadOnlyColor};
+	--t-form-background-color--readonly: ${({ theme }) => theme.colors.inputReadOnlyBackgroundColor};
+	--t-form-border-color--readonly: ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
+
+	--t-form-placeholder-color: ${({ theme }) => theme.colors.inputPlaceholderColor};
+
+	--t-form-radio-background-color: ${({ theme }) => theme.colors.inputRadioBackgroundColor};
+
+	--t-form-group-color: ${({ theme }) => theme.colors.inputGroupColor};
+	--t-form-group-background-color: ${({ theme }) => theme.colors.inputGroupBackgroundColor};
+	--t-form-group-interactive-color: ${({ theme }) => theme.colors.inputGroupInteractiveColor};
+	--t-form-group-interactive-background-color: ${({ theme }) =>
+		theme.colors.inputGroupInteractiveBackgroundColor};
+	--t-form-group-interactive-color--hover: ${({ theme }) =>
+		theme.colors.inputGroupInteractiveHoverColor};
+	--t-form-group-interactive-background-color--hover: ${({ theme }) =>
+		theme.colors.inputGroupInteractiveHoverBackgroundColor};
+	--t-form-group-interactive-color--active: ${({ theme }) =>
+		theme.colors.inputGroupInteractiveActiveColor};
+	--t-form-group-interactive-background-color--active: ${({ theme }) =>
+		theme.colors.inputGroupInteractiveActiveBackgroundColor};
+
 	margin-top: 0;
-
-	--t-form-color: ${tokens.colors.gray[900]};
-	--t-form-background-color: ${tokens.colors.gray[0]};
-	--t-form-border-color: ${tokens.colors.gray[500]};
-	--t-form-border-color--hover: ${tokens.colors.gray[900]};
-	--t-form-border-color--focus: ${tokens.colors.lochmara[500]};
-	--t-form-border-color--checked: ${tokens.colors.lochmara[600]};
-	--t-form-border-color--disabled: ${tokens.colors.gray[300]};
-
-	--t-form-color--readonly: ${tokens.colors.gray[600]};
-	--t-form-background-color--readonly: ${tokens.colors.gray[50]};
-	--t-form-border-color--readonly: transparent;
-
-	--t-form-placeholder-color: ${tokens.colors.gray[500]};
-
-	--t-form-radio-background-color: ${tokens.colors.gray[100]};
-
-	--t-form-group-color: ${tokens.colors.gray[700]};
-	--t-form-group-background-color: ${tokens.colors.gray[75]};
-	--t-form-group-interactive-color: ${tokens.colors.lochmara[600]};
-	--t-form-group-interactive-background-color: ${tokens.colors.lochmara[100]};
-	--t-form-group-interactive-color--hover: ${tokens.colors.paleCyan[700]};
-	--t-form-group-interactive-background-color--hover: ${tokens.colors.paleCyan[200]};
-	--t-form-group-interactive-color--active: ${tokens.colors.lochmara[800]};
-	--t-form-group-interactive-background-color--active: ${tokens.colors.paleCyan[300]};
 
 	label {
 		display: inline-block;
