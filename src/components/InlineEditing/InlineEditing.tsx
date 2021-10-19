@@ -8,6 +8,11 @@ import Form from '../Form';
 
 import * as S from './InlineEditing.style';
 
+export enum Mode {
+	Single,
+	Multi,
+}
+
 export type InlineEditingProps = PropsWithChildren<any> &
 	StyledProps<any> & {
 		/** if the inline editing is a required field */
@@ -24,6 +29,8 @@ export type InlineEditingProps = PropsWithChildren<any> &
 		onEdit?: (event: React.MouseEvent<HTMLButtonElement> | KeyboardEvent, newValue: string) => void;
 		/** called on cancel */
 		onCancel?: () => void;
+		/** the inline editing display mode */
+		mode: Mode;
 		renderAs?: React.ElementType;
 	};
 
@@ -78,7 +85,7 @@ const InlineEditing = React.forwardRef(
 			[isEditing, value],
 		);
 
-		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
+		const Input = mode === Mode.Multi ? Form.Textarea : Form.Text;
 		return (
 			<S.InlineEditing {...rest} ref={ref}>
 				{isEditing ? (

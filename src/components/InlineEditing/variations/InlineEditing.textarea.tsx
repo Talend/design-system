@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import InlineEditing, { InlineEditingProps } from '../InlineEditing';
+import InlineEditing, { InlineEditingProps, Mode } from '../InlineEditing';
 
 
 const InlineEditingMulti: React.FC<InlineEditingProps> = styled(InlineEditing).attrs({
 	className: 'c-inline-editing--textarea',
 	renderAs: 'p',
-	mode: 'multi',
+	mode: Mode.Multi,
 })`
 	.c-inline-editing--editing__field__actions {
 		padding-top: 1rem;
