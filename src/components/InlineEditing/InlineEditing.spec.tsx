@@ -16,7 +16,7 @@ context('<InlineEditing />', () => {
 
 	it('should go to edit mode when double clicking on the span', () => {
 		cy.mount(<Default />);
-		cy.get('.edit-inline--static').dblclick();
+		cy.get('.c-inline-editing--static').dblclick();
 		cy.get('input').should('have.attr', 'type', 'text');
 	});
 

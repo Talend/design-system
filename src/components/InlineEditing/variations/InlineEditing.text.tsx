@@ -5,7 +5,7 @@ import InlineEditing, { InlineEditingProps } from '../InlineEditing';
 export type InlineEditingSingleProps = InlineEditingProps;
 
 const InlineEditingSingle: React.FC<InlineEditingSingleProps> = styled(InlineEditing).attrs({
-	className: 'edit-inline--text',
+	className: 'c-inline-editing--text',
 	renderAs: 'span',
 	mode: 'single',
 })``;

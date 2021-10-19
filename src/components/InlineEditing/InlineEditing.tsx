@@ -82,7 +82,7 @@ const InlineEditing = React.forwardRef(
 		return (
 			<S.InlineEditing ref={ref} {...rest}>
 				{isEditing ? (
-					<div className="edit-inline--editing__field">
+					<div className="c-inline-editing--editing__field">
 						<form>
 							<Input
 								hideLabel
@@ -96,7 +96,7 @@ const InlineEditing = React.forwardRef(
 										| React.ChangeEvent<HTMLTextAreaElement>,
 								): any => setValue(event.target.value)}
 							/>
-							<div className="edit-inline--editing__field__actions">
+							<div className="c-inline-editing--editing__field__actions">
 								<Button.Icon onClick={handleCancel} icon="talend-cross-circle">
 									{t('INLINE_EDITING_CANCEL', 'Cancel')}
 								</Button.Icon>
@@ -108,18 +108,18 @@ const InlineEditing = React.forwardRef(
 					</div>
 				) : (
 					<div
-						className={classNames('edit-inline--static', { loading })}
+						className={classNames('c-inline-editing--static', { loading })}
 						onDoubleClick={loading ? undefined : () => setEditMode(true)}
 					>
-						<div className="edit-inline--static__field">
+						<div className="c-inline-editing--static__field">
 							<S.InlineEditingValue
-								className="edit-inline--static__field__value"
+								className="c-inline-editing--static__field__value"
 								as={renderValueAs || renderAs}
 							>
 								{value}
 							</S.InlineEditingValue>
 							<Button.Icon
-								className="edit-inline--static__field__action"
+								className="c-inline-editing--static__field__action"
 								icon="talend-pencil"
 								onClick={() => setEditMode(true)}
 								disabled={loading}

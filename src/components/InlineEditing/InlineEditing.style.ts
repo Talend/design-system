@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tokens from '../../tokens';
 
 export const InlineEditing = styled.div`
-	.edit-inline {
+	.c-inline-editing {
 		&--editing {
 			&__field {
 				position: relative;
@@ -56,7 +56,7 @@ export const InlineEditing = styled.div`
 				&:hover,
 				&:active,
 				&:focus {
-					.edit-inline--static__field__action {
+					.c-inline-editing--static__field__action {
 						opacity: 1;
 					}
 				}
