@@ -15,9 +15,9 @@ const Fieldset = React.forwardRef(
 		ref: React.Ref<HTMLFieldSetElement>,
 	) => {
 		return (
-			<S.Fieldset className="c-form__fieldset" {...rest} ref={ref}>
+			<S.Fieldset className="c-fieldset" {...rest} ref={ref}>
 				{legend && (
-					<S.Legend className="c-form__legend">
+					<S.Legend className="c-fieldset__legend">
 						{legend}
 						{required && '*'}
 					</S.Legend>
