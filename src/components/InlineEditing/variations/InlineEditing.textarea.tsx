@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import InlineEditing, { InlineEditingProps } from '../InlineEditing';
 
-export type InlineEditingMultiProps = InlineEditingProps;
 
-
-const InlineEditingMulti: React.FC<InlineEditingMultiProps> = styled(InlineEditing).attrs({
+const InlineEditingMulti: React.FC<InlineEditingProps> = styled(InlineEditing).attrs({
 	className: 'c-inline-editing--textarea',
 	renderAs: 'p',
 	mode: 'multi',

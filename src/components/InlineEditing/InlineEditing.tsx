@@ -80,7 +80,7 @@ const InlineEditing = React.forwardRef(
 
 		const Input = mode === 'multi' ? Form.Textarea : Form.Text;
 		return (
-			<S.InlineEditing ref={ref} {...rest}>
+			<S.InlineEditing {...rest} ref={ref}>
 				{isEditing ? (
 					<div className="c-inline-editing--editing__field">
 						<form>
@@ -94,7 +94,7 @@ const InlineEditing = React.forwardRef(
 									event:
 										| React.ChangeEvent<HTMLInputElement>
 										| React.ChangeEvent<HTMLTextAreaElement>,
-								): any => setValue(event.target.value)}
+								): void => setValue(event.target.value)}
 							/>
 							<div className="c-inline-editing--editing__field__actions">
 								<Button.Icon onClick={handleCancel} icon="talend-cross-circle">
