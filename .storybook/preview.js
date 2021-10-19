@@ -79,7 +79,7 @@ export const parameters = {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
 			const [hasStandaloneStyle, setStandaloneStyle] = useLocalStorage(
-				'coral--has-standalone-styles',
+				'coral--has-standalone-style',
 				false,
 			);
 
