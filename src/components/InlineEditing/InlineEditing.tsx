@@ -39,19 +39,22 @@ export type StyledInlineEditing = {
 } & React.PropsWithRef<InlineEditingProps>;
 
 const InlineEditing = React.forwardRef(
-	({
-		mode,
-		label,
-		loading,
-		hasError,
-		required,
-		renderAs,
-		defaultValue,
-		renderValueAs,
-		onEdit = () => {},
-		onCancel = () => {},
-		...rest
-	}: StyledInlineEditing, ref) => {
+	(
+		{
+			mode,
+			label,
+			loading,
+			hasError,
+			required,
+			renderAs,
+			defaultValue,
+			renderValueAs,
+			onEdit = () => {},
+			onCancel = () => {},
+			...rest
+		}: StyledInlineEditing,
+		ref,
+	) => {
 		const { t } = useTranslation();
 		const [isEditing, setEditMode] = React.useState(false);
 		const [value, setValue] = React.useState(defaultValue);
@@ -89,7 +92,7 @@ const InlineEditing = React.forwardRef(
 		return (
 			<S.InlineEditing {...rest} ref={ref}>
 				{isEditing ? (
-					<div className="c-inline-editing--editing c-inline-editing__field">
+					<div className="c-inline-editing--editing">
 						<form>
 							<Input
 								hideLabel
@@ -102,12 +105,21 @@ const InlineEditing = React.forwardRef(
 										| React.ChangeEvent<HTMLInputElement>
 										| React.ChangeEvent<HTMLTextAreaElement>,
 								): void => setValue(event.target.value)}
+								data-testid="inlineediting.input"
 							/>
 							<div className="c-inline-editing__actions">
-								<Button.Icon onClick={handleCancel} icon="talend-cross-circle">
+								<Button.Icon
+									onClick={handleCancel}
+									icon="talend-cross-circle"
+									data-testid="inlineediting.cancel"
+								>
 									{t('INLINE_EDITING_CANCEL', 'Cancel')}
 								</Button.Icon>
-								<Button.Icon onClick={handleSubmit} icon="talend-check-circle">
+								<Button.Icon
+									onClick={handleSubmit}
+									icon="talend-check-circle"
+									data-testid="inlineediting.submit"
+								>
 									{t('INLINE_EDITING_SUBMIT', 'Submit')}
 								</Button.Icon>
 							</div>
@@ -117,23 +129,23 @@ const InlineEditing = React.forwardRef(
 					<div
 						className={classNames('c-inline-editing--static', { loading })}
 						onDoubleClick={loading ? undefined : () => setEditMode(true)}
+						data-testid="inlineediting"
 					>
-						<div className="c-inline-editing--static c-inline-editing__field">
-							<S.InlineEditingValue
-								className="c-inline-editing__value"
-								as={renderValueAs || renderAs}
-							>
-								{value}
-							</S.InlineEditingValue>
-							<Button.Icon
-								className="c-inline-editing__action"
-								icon="talend-pencil"
-								onClick={() => setEditMode(true)}
-								disabled={loading}
-							>
-								{t('INLINE_EDITING_EDIT', 'Edit')}
-							</Button.Icon>
-						</div>
+						<S.InlineEditingValue
+							className="c-inline-editing__value"
+							as={renderValueAs || renderAs}
+						>
+							{value}
+						</S.InlineEditingValue>
+						<Button.Icon
+							className="c-inline-editing__action"
+							icon="talend-pencil"
+							onClick={() => setEditMode(true)}
+							disabled={loading}
+							data-testid="inlineediting.edit"
+						>
+							{t('INLINE_EDITING_EDIT', 'Edit')}
+						</Button.Icon>
 					</div>
 				)}
 			</S.InlineEditing>

@@ -8,3 +8,7 @@ setGlobalConfig(globalStorybookConfig);
 Cypress.Commands.add('mount', reactElement => {
 	mount(reactElement);
 });
+
+Cypress.Commands.add('getByTestId', (selector, ...args) => {
+	return cy.get(`[data-testid="${selector}"]`, ...args);
+});

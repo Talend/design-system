@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import tokens from '../../tokens';
 
 export const InlineEditing = styled.div`
-	.c-inline-editing--editing.c-inline-editing__field {
+	.c-inline-editing--editing {
 		position: relative;
+
 		.field__group--input {
 			margin: 0;
 
@@ -28,7 +29,7 @@ export const InlineEditing = styled.div`
 		}
 	}
 
-	.c-inline-editing--static.c-inline-editing__field {
+	.c-inline-editing--static {
 		display: flex;
 
 		.c-inline-editing__value {

@@ -10,41 +10,41 @@ const { Default, Textarea } = composeStories(Stories);
 context('<InlineEditing />', () => {
 	it('should go to edit mode when clicking on the button', () => {
 		cy.mount(<Default />);
-		cy.get('button').click();
-		cy.get('input').should('exist').should('have.attr', 'type', 'text');
+		cy.getByTestId('inlineediting.edit').click();
+		cy.getByTestId('inlineediting.input').should('exist').should('have.attr', 'type', 'text');
 	});
 
 	it('should go to edit mode when double clicking on the span', () => {
 		cy.mount(<Default />);
-		cy.get('.c-inline-editing--static').dblclick();
-		cy.get('input').should('exist').should('have.attr', 'type', 'text');
+		cy.getByTestId('inlineediting').dblclick();
+		cy.getByTestId('inlineediting.input').should('exist').should('have.attr', 'type', 'text');
 	});
 
 	it('should render Textarea', () => {
 		cy.mount(<Textarea />);
-		cy.get('button').click();
-		cy.get('textarea').should('exist');
+		cy.getByTestId('inlineediting.edit').click();
+		cy.getByTestId('inlineediting.input').should('exist');
 	});
 
 	it('should restore value on Esc', () => {
 		cy.mount(<Default />);
-		cy.get('button').click();
-		cy.get('input').focus();
-		cy.get('input').type('{selectall}{del}blah');
-		cy.get('input').should('have.value', 'blah');
-		cy.get('input').type('{esc}');
-		cy.get('span').should('exist');
-		cy.get('span').contains('Lorem ipsum dolor sit amet');
+		cy.getByTestId('inlineediting.edit').click();
+		cy.getByTestId('inlineediting.input')
+			.focus()
+			.type('{selectall}{del}blah')
+			.should('have.value', 'blah')
+			.type('{esc}');
+		cy.getByTestId('inlineediting').should('exist').contains('Lorem ipsum dolor sit amet');
 	});
 
 	it('should validate on Enter', () => {
 		cy.mount(<Default />);
-		cy.get('button').click();
-		cy.get('input').focus();
-		cy.get('input').type('{selectall}{del}blah');
-		cy.get('input').should('have.value', 'blah');
-		cy.get('input').type('{enter}');
-		cy.get('span').should('exist');
-		cy.get('span').contains('blah');
+		cy.getByTestId('inlineediting.edit').click();
+		cy.getByTestId('inlineediting.input')
+			.focus()
+			.type('{selectall}{del}blah')
+			.should('have.value', 'blah')
+			.type('{enter}');
+		cy.getByTestId('inlineediting').should('exist').contains('blah');
 	});
 });
