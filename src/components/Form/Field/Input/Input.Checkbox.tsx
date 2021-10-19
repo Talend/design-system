@@ -133,6 +133,12 @@ const Checkbox = React.forwardRef(
 			checkbox.setState((indeterminate && 'indeterminate') || checked);
 		}, [indeterminate, checked]);
 
+		const dataChecked = React.useMemo(() => {
+			if (indeterminate) return 1;
+			if (checked) return 2;
+			return 0;
+		}, [indeterminate, checked]);
+
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
 				<label htmlFor={checkboxId}>
@@ -141,7 +147,7 @@ const Checkbox = React.forwardRef(
 						<input
 							type="hidden"
 							id={checkboxId}
-							data-checked={indeterminate && 1}
+							data-checked={dataChecked}
 							{...rest}
 							{...checkbox}
 							ref={ref}
@@ -150,7 +156,7 @@ const Checkbox = React.forwardRef(
 						// @ts-ignore
 						<ReakitCheckbox
 							id={checkboxId}
-							data-checked={indeterminate && 1}
+							data-checked={dataChecked}
 							disabled={disabled}
 							{...rest}
 							{...checkbox}
