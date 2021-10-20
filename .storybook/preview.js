@@ -101,33 +101,16 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
-const channel = addons.getChannel();
-
 export const parameters = {
 	docs: {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
-			const [hasDarkMode, setDarkMode] = useLocalStorage('coral--has-dark-mode', false);
 			const [hasBootstrapStylesheet, setBootstrapStylesheet] = useLocalStorage(
 				'coral--has-bootstrap-stylesheet',
 				true,
 			);
 
 			const isFullWidth = props.context?.parameters?.full;
-
-			React.useEffect(() => {
-				channel.emit(UPDATE_GLOBALS, {
-					globals: { theme: hasDarkMode ? 'dark' : 'light' },
-				});
-			}, [hasDarkMode]);
-
-			React.useEffect(() => {
-				const { theme } = props.context.globals;
-				const hasDarkModeFromToolbar = theme === 'dark';
-				if (hasDarkModeFromToolbar != hasDarkMode) {
-					setDarkMode(hasDarkModeFromToolbar);
-				}
-			}, [props.context.globals.theme]);
 
 			React.useEffect(() => {
 				document
@@ -147,13 +130,6 @@ export const parameters = {
 							<ThemeProvider>
 								<Divider />
 								<Form.Switch
-									label={'Dark mode'}
-									onChange={() => {
-										setDarkMode(!hasDarkMode);
-									}}
-									checked={hasDarkMode}
-								/>
-								<Form.Switch
 									label={'Bootstrap stylesheet'}
 									onChange={() => setBootstrapStylesheet(!hasBootstrapStylesheet)}
 									checked={!!hasBootstrapStylesheet}
@@ -164,7 +140,8 @@ export const parameters = {
 									onChange={() => setFigmaIframe(!hasFigmaIframe)}
 									checked={!!hasFigmaIframe}
 								/>
-							</>
+								*/}
+							</ThemeProvider>
 						)}
 					</TableOfContents>
 					<div className={isFullWidth ? 'sbdocs sbdocs-wrapper--full-width-stories' : ''}>
