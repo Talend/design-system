@@ -20,6 +20,7 @@ import ThemeProvider from '../src/components/ThemeProvider';
 import { IconsProvider } from '../src/components/IconsProvider';
 
 import light, { dark } from '../src/themes';
+import { FigmaLink, GitHubLink, Links } from '../src/docs';
 
 export const globalTypes = {
 	theme: {
@@ -84,15 +85,9 @@ const PageBreadcrumb = styled.div`
 
 	ul {
 		display: flex;
-		position: absolute;
-		left: 50%;
-		top: 8rem;
 		margin: 0;
-		margin-left: 4rem;
 		padding: 0;
-		width: 100rem;
 		list-style: none;
-		transform: translateX(-50%);
 	}
 
 	li + li::before {
@@ -107,6 +102,22 @@ const PageBreadcrumb = styled.div`
 
 	a {
 		text-decoration: underline;
+	}
+`;
+
+const Metadata = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 4rem;
+	position: absolute;
+	width: 100rem;
+	left: 50%;
+	top: 5rem;
+	transform: translateX(-50%);
+
+	* + * {
+		margin-left: auto;
 	}
 `;
 
@@ -209,7 +220,24 @@ export const parameters = {
 							</ThemeProvider>
 						)}
 					</TableOfContents>
-					{hasBreadcrumb && <Breadcrumb {...props} />}
+					{hasBreadcrumb && (
+						<Metadata>
+							<Breadcrumb {...props} />
+							<Links>
+								<FigmaLink href={props.context.parameters.figmaLink} />
+								<GitHubLink
+									href={
+										'https://github.com/Talend/design-system/tree/master/' +
+										props.context.parameters.fileName
+											.split('/')
+											.slice(0, props.context.parameters.fileName.split('/').length - 1)
+											.join('/')
+									}
+								/>
+							</Links>
+						</Metadata>
+					)}
+
 					<div className={hasBreadcrumb ? 'sb-docs--with-breadcrumb' : ''}>
 						<DocsContainer {...props} />
 					</div>
