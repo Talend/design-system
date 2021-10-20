@@ -78,6 +78,7 @@ export const parameters = {
 	docs: {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
+			const [hasDarkMode, setDarkMode] = useLocalStorage('coral--has-dark-mode', false);
 			const [hasBootstrapStylesheet, setBootstrapStylesheet] = useLocalStorage(
 				'coral--has-bootstrap-stylesheet',
 				true,
@@ -86,12 +87,10 @@ export const parameters = {
 			React.useEffect(() => {
 				document
 					.querySelectorAll('#bootstrap-theme')
-					.forEach(link => (link.disabled = !!hasBootstrapStylesheet));
+					.forEach(link => (link.disabled = !hasBootstrapStylesheet));
 			}, [hasBootstrapStylesheet]);
 
 			const channel = addons.getChannel();
-
-			const hasDarkMode = props.context.globals?.theme === 'dark';
 
 			return (
 				<>
@@ -109,6 +108,7 @@ export const parameters = {
 								<Form.Switch
 									label={'Dark mode'}
 									onChange={() => {
+										setDarkMode(!hasDarkMode);
 										channel.emit(UPDATE_GLOBALS, {
 											globals: { theme: hasDarkMode ? 'light' : 'dark' },
 										});
