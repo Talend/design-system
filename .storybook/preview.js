@@ -74,6 +74,8 @@ const StorybookGlobalStyle = ThemeProvider.createGlobalStyle(
 	`,
 );
 
+const channel = addons.getChannel();
+
 export const parameters = {
 	docs: {
 		container: props => {
@@ -83,14 +85,6 @@ export const parameters = {
 				'coral--has-bootstrap-stylesheet',
 				true,
 			);
-
-			React.useEffect(() => {
-				const hasDarkModeFromToolbar =
-					props.context.getStoryContext(props.context).globals.theme === 'dark';
-				setDarkMode(hasDarkModeFromToolbar);
-			}, [props.context.getStoryContext(props.context).globals.theme]);
-
-			const channel = addons.getChannel();
 
 			React.useEffect(() => {
 				channel.emit(UPDATE_GLOBALS, {
