@@ -85,12 +85,24 @@ export const parameters = {
 			);
 
 			React.useEffect(() => {
+				const hasDarkModeFromToolbar =
+					props.context.getStoryContext(props.context).globals.theme === 'dark';
+				setDarkMode(hasDarkModeFromToolbar);
+			}, [props.context.getStoryContext(props.context).globals.theme]);
+
+			const channel = addons.getChannel();
+
+			React.useEffect(() => {
+				channel.emit(UPDATE_GLOBALS, {
+					globals: { theme: hasDarkMode ? 'dark' : 'light' },
+				});
+			}, [hasDarkMode]);
+
+			React.useEffect(() => {
 				document
 					.querySelectorAll('#bootstrap-theme')
 					.forEach(link => (link.disabled = !hasBootstrapStylesheet));
 			}, [hasBootstrapStylesheet]);
-
-			const channel = addons.getChannel();
 
 			return (
 				<>
@@ -109,9 +121,6 @@ export const parameters = {
 									label={'Dark mode'}
 									onChange={() => {
 										setDarkMode(!hasDarkMode);
-										channel.emit(UPDATE_GLOBALS, {
-											globals: { theme: hasDarkMode ? 'light' : 'dark' },
-										});
 									}}
 									checked={hasDarkMode}
 								/>
