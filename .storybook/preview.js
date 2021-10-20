@@ -102,7 +102,11 @@ const PageBreadcrumb = styled.div`
 
 	li,
 	a {
-		color: #aaa;
+		color: inherit;
+	}
+
+	a {
+		text-decoration: underline;
 	}
 `;
 
@@ -171,7 +175,6 @@ export const parameters = {
 					.toLocaleLowerCase()
 					.includes(term),
 			);
-
 
 			return (
 				<>
