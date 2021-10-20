@@ -9,6 +9,7 @@ import Form from './components/Form';
 import HeaderBar from './components/HeaderBar';
 import { Icon } from './components/Icon';
 import { IconsProvider } from './components/IconsProvider';
+import InlineEditing from './components/InlineEditing';
 import InlineMessage from './components/InlineMessage';
 import Layout from './components/Layout';
 import Link from './components/Link';
@@ -17,6 +18,7 @@ import Menu from './components/Menu';
 import Modal from './components/Modal';
 import Popover from './components/Popover';
 import Skeleton from './components/Skeleton';
+import Status from './components/Status';
 import Switch from './components/Switch';
 import Stepper from './components/Stepper';
 import Tabs from './components/Tabs';
@@ -41,6 +43,7 @@ export {
 	HeaderBar,
 	Icon,
 	IconsProvider,
+	InlineEditing,
 	InlineMessage,
 	Link,
 	Layout,
@@ -49,6 +52,7 @@ export {
 	Modal,
 	Popover,
 	Skeleton,
+	Status,
 	Switch,
 	Stepper,
 	Tabs,

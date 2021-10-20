@@ -1,35 +1,45 @@
 import React from 'react';
 import classnames from 'classnames';
+import { unstable_useId as useId } from 'reakit';
 
 import Loading from '../../Loading';
+import VisuallyHidden from '../../VisuallyHidden';
 import InlineMessage from '../../InlineMessage';
 
 import * as S from './Field.style';
 
-export type FieldProps = HTMLInputElement & {
+export type FieldProps = (
+	| React.InputHTMLAttributes<HTMLInputElement>
+	| React.TextareaHTMLAttributes<HTMLTextAreaElement>
+	| React.SelectHTMLAttributes<HTMLSelectElement>
+) & {
 	as?: React.ElementType;
 	label: string;
 	before?: React.ReactNode;
 	after?: React.ReactNode;
+	type?: string | undefined;
 	indeterminate?: boolean;
+	multiple?: boolean;
 	loading?: boolean;
 	link?: React.ReactNode;
 	hasError?: boolean;
 	hasWarning?: boolean;
 	hasSuccess?: boolean;
 	hasInformation?: boolean;
+	hideLabel?: boolean;
 	description?: string;
 };
 
-const Field = React.forwardRef<HTMLInputElement, FieldProps>(
+const Field = React.forwardRef(
 	(
 		{
 			as = 'input',
 			className = '',
 			label,
+			hideLabel,
 			before,
 			after,
-			id = `field--${Math.floor(Math.random() * 100)}`,
+			id,
 			loading,
 			link,
 			hasError,
@@ -41,17 +51,21 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 			disabled,
 			...rest
 		}: FieldProps,
-		ref,
+		ref: React.Ref<HTMLElement>,
 	) => {
+		const { id: reakitId } = useId();
+		const fieldId = id || `field--${reakitId}`;
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
 
 		const Label = () => (
-			<S.FieldLabel className="field__label" htmlFor={id} disabled={!!disabled}>
+			<S.FieldLabel className="field__label" htmlFor={fieldId} disabled={!!disabled}>
 				{label}
 				{required && '*'}
 			</S.FieldLabel>
 		);
+
+		const WrappedLabel = () => hideLabel ? <VisuallyHidden><Label /></VisuallyHidden> : <Label />;
 
 		const Description = () => {
 			if (hasError) {
@@ -71,7 +85,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 
 		return (
 			<S.Field className={`field ${typeof as === 'string' ? `field--${as}` : ''}`}>
-				{!inline && label && <Label />}
+				{!inline && label && <WrappedLabel />}
 				<S.FieldGroup
 					className={classnames(
 						'field__group',
@@ -90,7 +104,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 					<S.FieldControl
 						{...rest}
 						as={as}
-						id={id}
+						id={fieldId}
 						className={classnames(className, 'field__control', {
 							[`field__control--${as}`]: typeof as === 'string',
 						})}
@@ -101,7 +115,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(
 					{after}
 				</S.FieldGroup>
 				{link}
-				{inline && label && <Label />}
+				{inline && label && <WrappedLabel />}
 				{description && <Description />}
 			</S.Field>
 		);

@@ -133,14 +133,37 @@ const Breadcrumb = props => {
 	);
 };
 
+const channel = addons.getChannel();
+
 export const parameters = {
 	docs: {
 		container: props => {
 			const [hasFigmaIframe, setFigmaIframe] = useLocalStorage('coral--has-figma-iframe', false);
+			const [hasDarkMode, setDarkMode] = useLocalStorage('coral--has-dark-mode', false);
+			const [hasBootstrapStylesheet, setBootstrapStylesheet] = useLocalStorage(
+				'coral--has-bootstrap-stylesheet',
+				true,
+			);
 
-			const channel = addons.getChannel();
+			React.useEffect(() => {
+				channel.emit(UPDATE_GLOBALS, {
+					globals: { theme: hasDarkMode ? 'dark' : 'light' },
+				});
+			}, [hasDarkMode]);
 
-			const hasDarkMode = props.context.globals?.theme === 'dark';
+			React.useEffect(() => {
+				const { theme } = props.context.globals;
+				const hasDarkModeFromToolbar = theme === 'dark';
+				if (hasDarkModeFromToolbar != hasDarkMode) {
+					setDarkMode(hasDarkModeFromToolbar);
+				}
+			}, [props.context.globals.theme]);
+
+			React.useEffect(() => {
+				document
+					.querySelectorAll('#bootstrap-theme')
+					.forEach(link => (link.disabled = !hasBootstrapStylesheet));
+			}, [hasBootstrapStylesheet]);
 
 			const hasBreadcrumb = ['component', 'template', 'page'].find(term =>
 				(props.context.kind || props.context.title)
@@ -164,14 +187,16 @@ export const parameters = {
 								<Form.Switch
 									label={'Dark mode'}
 									onChange={() => {
-										channel.emit(UPDATE_GLOBALS, {
-											globals: { theme: hasDarkMode ? 'light' : 'dark' },
-										});
+										setDarkMode(!hasDarkMode);
 									}}
 									checked={hasDarkMode}
 								/>
+								<Form.Switch
+									label={'Bootstrap stylesheet'}
+									onChange={() => setBootstrapStylesheet(!hasBootstrapStylesheet)}
+									checked={!!hasBootstrapStylesheet}
+								/>
 								{/*
-								<Divider />
 								<Form.Switch
 									label={'Figma iframes'}
 									onChange={() => setFigmaIframe(!hasFigmaIframe)}
@@ -205,12 +230,12 @@ export const parameters = {
 			try {
 				// if wrapped into an arrow function
 				if (input?.trim().startsWith('(')) {
-					const body = input.replace(/\((.*)\) => {((.|\n)*)}/gm, '$2');
-					return format(body).trim();
+					const body = input.replace(/\((.*)\) => {?((.|\n)*)?}?/gm, '$2');
+					return format(body).trim().replace(/;$/, '');
 				}
 				// try to format JSX
 				// remove last semicolon added by Prettier
-				return format(input).trim().slice(0, -1);
+				return format(input).trim().replace(/;$/, '');
 			} catch (e) {
 				// otherwise, return the same string
 				return input;
