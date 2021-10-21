@@ -133,11 +133,9 @@ const Checkbox = React.forwardRef(
 			checkbox.setState((indeterminate && 'indeterminate') || checked);
 		}, [indeterminate, checked]);
 
-		const dataChecked = React.useMemo(() => {
-			if (indeterminate) return 1;
-			if (checked) return 2;
-			return 0;
-		}, [indeterminate, checked]);
+		let dataChecked = 0;
+		if (indeterminate) dataChecked = 1;
+		if (checked) dataChecked = 2;
 
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
