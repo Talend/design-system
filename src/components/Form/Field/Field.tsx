@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { unstable_useId as useId } from 'reakit';
 
 import Loading from '../../Loading';
+import VisuallyHidden from '../../VisuallyHidden';
 import InlineMessage from '../../InlineMessage';
 
 import * as S from './Field.style';
@@ -25,6 +26,7 @@ export type FieldProps = (
 	hasWarning?: boolean;
 	hasSuccess?: boolean;
 	hasInformation?: boolean;
+	hideLabel?: boolean;
 	description?: string;
 };
 
@@ -34,6 +36,7 @@ const Field = React.forwardRef(
 			as = 'input',
 			className = '',
 			label,
+			hideLabel,
 			before,
 			after,
 			id,
@@ -51,7 +54,7 @@ const Field = React.forwardRef(
 		ref: React.Ref<HTMLElement>,
 	) => {
 		const { id: reakitId } = useId();
-		const fieldId = `field--${id || reakitId}`;
+		const fieldId = id || `field--${reakitId}`;
 		const fieldDescriptionId = `field__description--${id || reakitId}`;
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
@@ -62,6 +65,8 @@ const Field = React.forwardRef(
 				{required && '*'}
 			</S.FieldLabel>
 		);
+
+		const WrappedLabel = () => hideLabel ? <VisuallyHidden><Label /></VisuallyHidden> : <Label />;
 
 		const Description = () => {
 			const descProps = {
@@ -85,7 +90,7 @@ const Field = React.forwardRef(
 
 		return (
 			<S.Field className={`c-field ${typeof as === 'string' ? `c-field--${as}` : ''}`}>
-				{!inline && label && <Label />}
+				{!inline && label && <WrappedLabel />}
 				<S.FieldGroup
 					className={classnames(
 						'c-field__group',
@@ -122,7 +127,7 @@ const Field = React.forwardRef(
 					{after}
 				</S.FieldGroup>
 				{link}
-				{inline && label && <Label />}
+				{inline && label && <WrappedLabel />}
 				{description && (
 					<div id={fieldDescriptionId} className="c-field__description">
 						<Description />

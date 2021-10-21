@@ -1,5 +1,26 @@
 # @talend/design-system
 
+## 1.8.0
+
+### Minor Changes
+
+- d723689: feat(components/InlineEditing): add component
+
+### Patch Changes
+
+- c5ae533: feat(components/Field): Keep provided id
+
+## 1.7.0
+
+### Minor Changes
+
+- 4466425: feat(Button): add a tooltip on buttons when hideText is set
+- 737da5f: feat(components/Status): add component
+
+### Patch Changes
+
+- 844ad81: Force focusing password input only if it comes from click on the reveal password button
+
 ## 1.6.0
 
 ### Minor Changes
