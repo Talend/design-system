@@ -109,7 +109,7 @@ Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-stor
 						/>
 					</Form.Fieldset>
 					<Form.Fieldset legend="Disabled are not sent" required disabled>
-						<Form.Radio label="Option E" value="option-e" {...register('disabled-inline-option')} />
+						<Form.Radio label="Option E" value="option-e" {...register('disabled-inline-option', {disabled: true)} />
 						<Form.Radio
 							label="Option F"
 							value="option-f"

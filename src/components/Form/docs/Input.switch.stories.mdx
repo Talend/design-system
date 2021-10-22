@@ -1,7 +1,11 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { useForm } from 'react-hook-form';
 import { FigmaIframe, FigmaImage, Use } from '../../../docs';
 import Form from '../';
 import { Col, Row } from '../../../docs';
+import Button from '../../Button';
+import InlineMessage from '../../InlineMessage';
+import Tooltip from '../../Tooltip';
 
 <Meta title="Components/Form/Fields/Switch" />
 
@@ -82,7 +86,41 @@ Use switches to change the state of system functionalities and preferences on or
 
 ## Usage
 
-N/C
+<Canvas>
+	<Story name="react-hook-form">
+		{() => {
+			const { register, handleSubmit } = useForm();
+			const [formData, setFormData] = React.useState();
+			return (
+				<Form onSubmit={handleSubmit(setFormData)}>
+					{formData && (
+						<InlineMessage.Information
+							title={'Form data'}
+							description={JSON.stringify(formData, null, 2)}
+							withBackground
+						/>
+					)}
+					<Form.Fieldset legend="Enabled">
+						<Form.Switch label="Option a" {...register('option-a')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Default checked">
+						<Form.Switch label="Option b" {...register('option-b')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Read only">
+						<Form.Switch label="Option c" readOnly {...register('option-c')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Disabled">
+						<Form.Switch label="Option d" disabled {...register('option-d')} />
+						<Form.Switch label="Option e" {...register('option-e', {disabled: true})} />
+					</Form.Fieldset>
+					<Form.Buttons>
+						<Button.Primary type="submit">Submit</Button.Primary>
+					</Form.Buttons>
+				</Form>
+			);
+		}}
+	</Story>
+</Canvas>
 
 ## Accessibility
 
