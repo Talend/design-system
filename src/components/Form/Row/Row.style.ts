@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 import tokens from '../../../tokens';
 
-export const Row = styled.div.attrs({
-	className: 'c-form__row',
-})`
+export const Row = styled.div`
 	display: inline-flex;
 	align-items: flex-start;
 	gap: ${tokens.space.l};
