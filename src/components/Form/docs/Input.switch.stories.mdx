@@ -49,6 +49,8 @@ Switches are a quick way to view and switch between two states or on-off state i
 
 ### Read-only
 
+`:readonly` differs from `:disabled` in a major way: a `:readonly` value is sent on submit, not a `:disabled` one. But because `[type="checkbox"]` has no native support for `:readonly`, we implemented a custom behavior using `[type:"hidden"]`. The only drawback is that the value is sent as a string.
+
 <Canvas>
 	<Story name="read-only">
 		<Form.Switch label="Read-only Switch off" readOnly />
@@ -111,7 +113,7 @@ Use switches to change the state of system functionalities and preferences on or
 					</Form.Fieldset>
 					<Form.Fieldset legend="Disabled">
 						<Form.Switch label="Option d" disabled {...register('option-d')} />
-						<Form.Switch label="Option e" {...register('option-e', {disabled: true})} />
+						<Form.Switch label="Option e" {...register('option-e', { disabled: true })} />
 					</Form.Fieldset>
 					<Form.Buttons>
 						<Button.Primary type="submit">Submit</Button.Primary>

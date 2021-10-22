@@ -10,14 +10,15 @@ export type FieldsetProps = React.FieldsetHTMLAttributes<HTMLFieldSetElement> & 
 
 const Fieldset = React.forwardRef(
 	(
-		{ legend, children, readOnly, required, ...rest }: FieldsetProps,
+		{ legend, children, disabled, readOnly, required, ...rest }: FieldsetProps,
 		ref: React.Ref<HTMLFieldSetElement>,
 	) => {
-		const childrenProps: { readOnly?: boolean } = {};
+		const childrenProps: { disabled?: boolean; readOnly?: boolean } = {};
+		if (disabled) childrenProps.disabled = true;
 		if (readOnly) childrenProps.readOnly = true;
 
 		return (
-			<S.Fieldset className="c-fieldset" {...rest} ref={ref}>
+			<S.Fieldset className="c-fieldset" disabled={disabled} {...rest} ref={ref}>
 				{legend && (
 					<S.Legend className="c-fieldset__legend">
 						{legend}

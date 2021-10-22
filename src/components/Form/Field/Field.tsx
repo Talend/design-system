@@ -5,34 +5,43 @@ import { unstable_useId as useId } from 'reakit';
 import Loading from '../../Loading';
 import VisuallyHidden from '../../VisuallyHidden';
 import InlineMessage from '../../InlineMessage';
+import Link from '../../Link';
 
 import * as S from './Field.style';
 
-export type FieldProps = (
-	| React.InputHTMLAttributes<HTMLInputElement>
-	| React.TextareaHTMLAttributes<HTMLTextAreaElement>
-	| React.SelectHTMLAttributes<HTMLSelectElement>
-) & {
-	as?: React.ElementType;
-	label: string;
-	before?: React.ReactNode;
-	after?: React.ReactNode;
-	type?: string | undefined;
-	indeterminate?: boolean;
-	multiple?: boolean;
-	loading?: boolean;
-	link?: React.ReactNode;
+type WithInlineMessageProps = {
 	hasError?: boolean;
 	hasWarning?: boolean;
 	hasSuccess?: boolean;
 	hasInformation?: boolean;
-	hideLabel?: boolean;
 	description?: string;
 };
 
+type ControlProps = WithInlineMessageProps & {
+	as?: React.ElementType;
+	type?: string | undefined;
+	label: string;
+	hideLabel?: boolean;
+	before?: React.ReactNode;
+	after?: React.ReactNode;
+	loading?: boolean;
+	indeterminate?: boolean;
+	multiple?: boolean;
+	link?: typeof Link;
+};
+
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & ControlProps;
+type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & ControlProps;
+type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & ControlProps;
+
+export type FieldProps = InputProps | TextareaProps | SelectProps;
+
 const Field = React.forwardRef(
 	(
-		{
+		props: FieldProps,
+		ref: React.Ref<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+	) => {
+		const {
 			as = 'input',
 			className = '',
 			label,
@@ -50,14 +59,24 @@ const Field = React.forwardRef(
 			required,
 			disabled,
 			...rest
-		}: FieldProps,
-		ref: React.Ref<HTMLElement>,
-	) => {
+		} = props;
+
+		let checked;
+		let readOnly;
+
 		const { id: reakitId } = useId();
 		const fieldId = id || `field--${reakitId}`;
 		const fieldDescriptionId = `field__description--${id || reakitId}`;
+
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
+
+		if ('checked' in props) {
+			checked = props.checked;
+		}
+		if ('readOnly' in props) {
+			readOnly = props.readOnly;
+		}
 
 		const Label = () => (
 			<S.FieldLabel className="c-field__label" htmlFor={fieldId} disabled={!!disabled}>
@@ -119,14 +138,13 @@ const Field = React.forwardRef(
 						id={fieldId}
 						className={classnames(className, 'c-field__control', {
 							[`c-field__control--${as}`]: typeof as === 'string',
-							// @ts-ignore
-							'c-input--read-only': rest.readOnly,
-							// @ts-ignore
-							'c-input--checked': rest.checked,
-							// @ts-ignore
+							'c-input--read-only': readOnly,
+							'c-input--checked': checked,
 							'c-input--disabled': disabled,
 						})}
 						aria-describedby={description && fieldDescriptionId}
+						checked={checked}
+						readOnly={readOnly}
 						disabled={disabled}
 						ref={ref}
 					/>

@@ -146,6 +146,8 @@ const Checkbox = React.forwardRef(
 							type="hidden"
 							id={checkboxId}
 							data-checked={dataChecked}
+							readOnly={readOnly}
+							value={['indeterminate', true].some(option => option === checkbox.state).toString()}
 							{...rest}
 							{...checkbox}
 							ref={ref}
