@@ -5,17 +5,15 @@ import * as S from './Fieldset.style';
 export type FieldsetProps = React.FieldsetHTMLAttributes<HTMLFieldSetElement> & {
 	legend?: string;
 	required?: boolean;
-	disabled?: boolean;
 	readOnly?: boolean;
 };
 
 const Fieldset = React.forwardRef(
 	(
-		{ legend, children, disabled, readOnly, required, ...rest }: FieldsetProps,
+		{ legend, children, readOnly, required, ...rest }: FieldsetProps,
 		ref: React.Ref<HTMLFieldSetElement>,
 	) => {
-		const childrenProps: { disabled?: boolean; readOnly?: boolean } = {};
-		if (disabled) childrenProps.disabled = true;
+		const childrenProps: { readOnly?: boolean } = {};
 		if (readOnly) childrenProps.readOnly = true;
 
 		return (
