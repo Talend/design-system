@@ -66,7 +66,14 @@ const Field = React.forwardRef(
 			</S.FieldLabel>
 		);
 
-		const WrappedLabel = () => hideLabel ? <VisuallyHidden><Label /></VisuallyHidden> : <Label />;
+		const WrappedLabel = () =>
+			hideLabel ? (
+				<VisuallyHidden>
+					<Label />
+				</VisuallyHidden>
+			) : (
+				<Label />
+			);
 
 		const Description = () => {
 			const descProps = {
@@ -117,7 +124,7 @@ const Field = React.forwardRef(
 							// @ts-ignore
 							'c-input--checked': rest.checked,
 							// @ts-ignore
-							'c-input--disabled': rest.disabled,
+							'c-input--disabled': disabled,
 						})}
 						aria-describedby={description && fieldDescriptionId}
 						disabled={disabled}

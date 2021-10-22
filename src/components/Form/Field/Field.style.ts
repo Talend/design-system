@@ -139,19 +139,19 @@ export const InlineStyle = styled.div.attrs<{
 
 	--t-form-radio-background-color: ${({ theme }) => theme.colors.inputRadioBackgroundColor};
 
-	--t-form-group-color: ${({ theme }) => theme.colors.inputGroupColor};
-	--t-form-group-background-color: ${({ theme }) => theme.colors.inputGroupBackgroundColor};
-	--t-form-group-interactive-color: ${({ theme }) => theme.colors.inputGroupInteractiveColor};
+	--t-form-group-color: ${({ theme }) => theme.colors.fieldGroupColor};
+	--t-form-group-background-color: ${({ theme }) => theme.colors.fieldGroupBackgroundColor};
+	--t-form-group-interactive-color: ${({ theme }) => theme.colors.fieldGroupInteractiveColor};
 	--t-form-group-interactive-background-color: ${({ theme }) =>
-		theme.colors.inputGroupInteractiveBackgroundColor};
+		theme.colors.fieldGroupInteractiveBackgroundColor};
 	--t-form-group-interactive-color--hover: ${({ theme }) =>
-		theme.colors.inputGroupInteractiveHoverColor};
+		theme.colors.fieldGroupInteractiveHoverColor};
 	--t-form-group-interactive-background-color--hover: ${({ theme }) =>
-		theme.colors.inputGroupInteractiveHoverBackgroundColor};
+		theme.colors.fieldGroupInteractiveHoverBackgroundColor};
 	--t-form-group-interactive-color--active: ${({ theme }) =>
-		theme.colors.inputGroupInteractiveActiveColor};
+		theme.colors.fieldGroupInteractiveActiveColor};
 	--t-form-group-interactive-background-color--active: ${({ theme }) =>
-		theme.colors.inputGroupInteractiveActiveBackgroundColor};
+		theme.colors.fieldGroupInteractiveActiveBackgroundColor};
 
 	margin-top: 0;
 

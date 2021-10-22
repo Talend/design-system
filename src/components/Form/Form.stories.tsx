@@ -35,7 +35,7 @@ export const Default = () => (
 				<Form.Text label="Last Name" required />
 			</Form.Row>
 			<Form.Text label="Company" value="Talend" required />
-			<Form.InputGroup
+			<Form.FieldGroup
 				label="Phone"
 				prefix={
 					<Form.Select label="Phone prefix" value="France (+33)">
@@ -49,7 +49,7 @@ export const Default = () => (
 				required
 			>
 				<Form.Tel label="Phone number" value="6121314k" />
-			</Form.InputGroup>
+			</Form.FieldGroup>
 			<Form.Select label="Industry">
 				<option selected>IT</option>
 			</Form.Select>
@@ -88,17 +88,16 @@ Error.parameters = {};
 
 export const Disabled = () => (
 	<Form>
-		<Form.Fieldset legend="Complete your registration">
+		<Form.Fieldset legend="Complete your registration" disabled>
 			<Form.Row>
-				<Form.Text label="First Name" required disabled />
-				<Form.Text label="Last Name" required disabled />
+				<Form.Text label="First Name" required />
+				<Form.Text label="Last Name" required />
 			</Form.Row>
-			<Form.Text label="Company" value="Talend" required disabled />
-			<Form.InputGroup
+			<Form.Text label="Company" value="Talend" required />
+			<Form.FieldGroup
 				label="Phone"
-				disabled
 				prefix={
-					<Form.Select label="Phone prefix" value="France (+33)" disabled>
+					<Form.Select label="Phone prefix" value="France (+33)">
 						{getCountryCodes().map((countryCode, key) => (
 							<option key={key}>{countryCode}</option>
 						))}
@@ -109,19 +108,17 @@ export const Disabled = () => (
 				required
 			>
 				<Form.Tel label="Phone number" value="6121314k" />
-			</Form.InputGroup>
-			<Form.Select label="Industry" disabled>
+			</Form.FieldGroup>
+			<Form.Select label="Industry">
 				<option selected>IT</option>
 			</Form.Select>
-			<Form.Password label="Password" disabled />
-			<Form.Password label="Repeat password" disabled />
-			<Form.Checkbox checked required disabled>
+			<Form.Password label="Password" />
+			<Form.Password label="Repeat password" />
+			<Form.Checkbox checked required>
 				I have read and accept the <Link href="#">terms of use</Link>
 			</Form.Checkbox>
 			<Form.Buttons>
-				<Button.Primary onClick={action('submit')} disabled>
-					Complete Registration
-				</Button.Primary>
+				<Button.Primary onClick={action('submit')}>Complete Registration</Button.Primary>
 			</Form.Buttons>
 		</Form.Fieldset>
 	</Form>
@@ -130,17 +127,16 @@ Disabled.parameters = {};
 
 export const ReadOnly = () => (
 	<Form>
-		<Form.Fieldset legend="Complete your registration">
+		<Form.Fieldset legend="Complete your registration" readOnly>
 			<Form.Row>
-				<Form.Text label="First Name" required readOnly />
-				<Form.Text label="Last Name" required readOnly />
+				<Form.Text label="First Name" required />
+				<Form.Text label="Last Name" required />
 			</Form.Row>
-			<Form.Text label="Company" value="Talend" required readOnly />
-			<Form.InputGroup
+			<Form.Text label="Company" value="Talend" required />
+			<Form.FieldGroup
 				label="Phone"
-				readOnly
 				prefix={
-					<Form.Select label="Phone prefix" value="France (+33)" readOnly>
+					<Form.Select label="Phone prefix" value="France (+33)">
 						{getCountryCodes().map((countryCode, key) => (
 							<option key={key}>{countryCode}</option>
 						))}
@@ -150,20 +146,18 @@ export const ReadOnly = () => (
 				description="Phone number is invalid"
 				required
 			>
-				<Form.Tel label="Phone number" value="6121314k" readOnly />
-			</Form.InputGroup>
-			<Form.Select label="Industry" readOnly>
+				<Form.Tel label="Phone number" value="6121314k" />
+			</Form.FieldGroup>
+			<Form.Select label="Industry">
 				<option selected>IT</option>
 			</Form.Select>
-			<Form.Password label="Password" readOnly />
-			<Form.Password label="Repeat password" readOnly />
-			<Form.Checkbox checked required readOnly>
+			<Form.Password label="Password" />
+			<Form.Password label="Repeat password" />
+			<Form.Checkbox checked required>
 				I have read and accept the <Link href="#">terms of use</Link>
 			</Form.Checkbox>
 			<Form.Buttons>
-				<Button.Primary onClick={action('submit')} readOnly>
-					Complete Registration
-				</Button.Primary>
+				<Button.Primary onClick={action('submit')}>Complete Registration</Button.Primary>
 			</Form.Buttons>
 		</Form.Fieldset>
 	</Form>
