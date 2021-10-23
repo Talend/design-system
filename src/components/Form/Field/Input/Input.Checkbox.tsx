@@ -140,6 +140,8 @@ const Checkbox = React.forwardRef(
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
 				<label htmlFor={checkboxId}>
+					{/*
+					// @ts-ignore */}
 					<ReakitCheckbox
 						id={checkboxId}
 						data-checked={dataChecked}

@@ -103,6 +103,8 @@ const Switch = React.forwardRef(
 		return (
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={id}>
+					{/*
+				// @ts-ignore */}
 					<Checkbox
 						id={id}
 						disabled={disabled}
