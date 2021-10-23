@@ -89,34 +89,18 @@ const Radio = React.forwardRef(
 	) => {
 		const { id: reakitId } = useId();
 		const radioId = `radio--${id || reakitId}`;
-		const name = readOnly && checked ? rest.name : undefined;
-		const value = readOnly && checked ? rest.value : undefined;
 		return (
 			<SRadio readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
-				// FIXME
-				{JSON.stringify(rest)} {checked + ' ' + value}
 				<label htmlFor={radioId}>
-					{readOnly ? (
-						// @ts-ignore
-						<input
-							type="hidden"
-							id={radioId}
-							readOnly={readOnly}
-							ref={ref}
-							name={name}
-							value={value}
-						/>
-					) : (
-						// @ts-ignore
-						<input
-							type="radio"
-							id={radioId}
-							checked={checked}
-							disabled={disabled}
-							{...rest}
-							ref={ref}
-						/>
-					)}{' '}
+					<input
+						type="radio"
+						id={radioId}
+						checked={checked}
+						disabled={disabled}
+						readOnly={readOnly}
+						{...rest}
+						ref={ref}
+					/>
 					<span>
 						{label || children}
 						{required && '*'}

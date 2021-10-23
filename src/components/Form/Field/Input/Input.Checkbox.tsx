@@ -140,29 +140,15 @@ const Checkbox = React.forwardRef(
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
 				<label htmlFor={checkboxId}>
-					{readOnly ? (
-						// @ts-ignore
-						<input
-							type="hidden"
-							id={checkboxId}
-							data-checked={dataChecked}
-							readOnly={readOnly}
-							value={['indeterminate', true].some(option => option === checkbox.state).toString()}
-							{...rest}
-							{...checkbox}
-							ref={ref}
-						/>
-					) : (
-						// @ts-ignore
-						<ReakitCheckbox
-							id={checkboxId}
-							data-checked={dataChecked}
-							disabled={disabled}
-							{...rest}
-							{...checkbox}
-							ref={ref}
-						/>
-					)}
+					<ReakitCheckbox
+						id={checkboxId}
+						data-checked={dataChecked}
+						disabled={disabled}
+						readOnly={readOnly}
+						{...rest}
+						{...checkbox}
+						ref={ref}
+					/>
 					<span>
 						{label || children}
 						{required && '*'}
