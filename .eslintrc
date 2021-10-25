@@ -1,3 +1,37 @@
 {
-	"extends": "./node_modules/@talend/scripts-config-eslint/.eslintrc"
+  "root": true,
+  "extends": [
+    "./node_modules/@talend/scripts-config-eslint/.eslintrc",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "rules": {
+    "class-methods-use-this": 0,
+    "default-case": 0,
+    "import/prefer-default-export": 0,
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@talend/import-depth": ["warn"],
+    "@typescript-eslint/unbound-method": ["warn"],
+    "jsx-a11y/no-autofocus": ["warn"],
+    "@typescript-eslint/no-use-before-define": ["error", "nofunc"]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "react/prop-types": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+          "off"
+        ]
+      }
+    }
+  ]
 }

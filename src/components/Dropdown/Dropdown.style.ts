@@ -62,19 +62,43 @@ export const AnimatedMenu = styled.div`
 export const MenuSeparator = styled(ReakitMenuSeparator)`
 	margin: 0;
 	width: 100%;
+	border-left: none;
+	border-top: none;
+	border-color: ${tokens.colors.gray[75]};
 `;
 
 export const MenuItem = styled(ReakitMenuItem)`
 	display: flex;
-	padding: ${tokens.space.s} ${tokens.space.m};
+	height: 3rem;
+	padding: 0;
+	padding-left: .9rem;
+	padding-right: .9rem;
 	color: ${({ theme }) => theme.colors.textColor};
 	text-align: start;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	cursor: pointer;
+	align-items: center;
 
 	.link__text {
 		border: none !important;
+	}
+
+	svg.tc-svg-icon.tc-icon {
+		margin: 0;
+	}
+
+	span.link__text, .btn__icon + span.btn__text {
+		margin-left: ${tokens.space.xs};
+	}
+
+	&:hover, &:focus {
+		color: ${({ theme }) => theme.colors.textColor};
+		background-color: ${tokens.colors.paleCyan[100]};
+	}
+
+	&:active {
+		background-color: ${tokens.colors.paleCyan[200]};
 	}
 `;
