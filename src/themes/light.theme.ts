@@ -21,6 +21,7 @@ const theme: DefaultTheme = {
 
 		textColor: palette.grayColor[900],
 		backgroundColor: palette.grayColor[0],
+		shadowColor: colors.paleCyan[500],
 
 		accordionBorderColor: palette.grayColor[100],
 		accordionBackgroundColor: palette.grayColor[50],
@@ -91,6 +92,9 @@ const theme: DefaultTheme = {
 
 		tooltipColor: palette.grayColor[0],
 		tooltipBackgroundColor: palette.grayColor[900],
+
+		dropdownBackgroundColor: palette.grayColor[0],
+		dropdownHoverBackgroundColor: colors.paleCyan[100],
 	},
 	id: 'light',
 };

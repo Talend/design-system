@@ -91,6 +91,9 @@ const theme: DefaultTheme = {
 
 		tooltipColor: palette.grayColor[900],
 		tooltipBackgroundColor: palette.grayColor[300],
+
+		dropdownBackgroundColor: palette.grayColor[800],
+		dropdownHoverBackgroundColor: colors.paleCyan[800],
 	},
 	id: 'dark',
 };

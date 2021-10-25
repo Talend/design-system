@@ -30,6 +30,7 @@ declare module 'styled-components' {
 			// Global
 			textColor: string;
 			backgroundColor: string;
+			shadowColor: string;
 
 			// Accordions
 			accordionBorderColor: string;
@@ -109,6 +110,10 @@ declare module 'styled-components' {
 			// Tooltips
 			tooltipColor: string;
 			tooltipBackgroundColor: string;
+
+			// Dropdowns
+			dropdownBackgroundColor: string;
+			dropdownHoverBackgroundColor: string;
 		};
 		id: string;
 	}

@@ -47,10 +47,10 @@ export const AnimatedMenu = styled.div`
 	padding: ${tokens.space.xs} ${tokens.space.none};
 	min-width: 15rem;
 	max-width: 25rem;
-	background: ${({ theme }) => theme.colors.backgroundColor};
+	background: ${({ theme }) => theme.colors.dropdownBackgroundColor};
 	border-radius: ${tokens.radii.rectRadius};
 	border: 0;
-	box-shadow: 0 2px 4px 0 ${tokens.colors.gray[300]};
+	box-shadow: ${tokens.shadows.above};
 	opacity: ${tokens.opacity.transparent};
 	transition: opacity ${tokens.transitions.normal};
 
@@ -95,7 +95,7 @@ export const MenuItem = styled(ReakitMenuItem)`
 
 	&:hover, &:focus {
 		color: ${({ theme }) => theme.colors.textColor};
-		background-color: ${tokens.colors.paleCyan[100]};
+		background-color: ${({ theme }) => theme.colors.dropdownHoverBackgroundColor};
 	}
 
 	&:active {
