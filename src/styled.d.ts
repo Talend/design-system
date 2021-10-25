@@ -114,6 +114,7 @@ declare module 'styled-components' {
 			// Dropdowns
 			dropdownBackgroundColor: string;
 			dropdownHoverBackgroundColor: string;
+			dropdownActiveBackgroundColor: string;
 		};
 		id: string;
 	}

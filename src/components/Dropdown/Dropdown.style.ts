@@ -99,6 +99,6 @@ export const MenuItem = styled(ReakitMenuItem)`
 	}
 
 	&:active {
-		background-color: ${tokens.colors.paleCyan[200]};
+		background-color:  ${({ theme }) => theme.colors.dropdownActiveBackgroundColor};
 	}
 `;

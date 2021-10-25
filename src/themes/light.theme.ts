@@ -95,6 +95,7 @@ const theme: DefaultTheme = {
 
 		dropdownBackgroundColor: palette.grayColor[0],
 		dropdownHoverBackgroundColor: colors.paleCyan[100],
+		dropdownActiveBackgroundColor: colors.paleCyan[200],
 	},
 	id: 'light',
 };
