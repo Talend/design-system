@@ -64,7 +64,7 @@
     "@types/classnames": "^2.2.11",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
-    "@types/react-is": "^16.7.2",
+    "@types/react-is": "^17.0.3",
     "@types/styled-components": "^5.1.7",
     "babel-plugin-styled-components": "^1.12.0",
     "browser-sync": "^2.26.14",
