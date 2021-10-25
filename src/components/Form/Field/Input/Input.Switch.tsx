@@ -48,16 +48,8 @@ const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disab
 				background-color: ${tokens.colors.gray[0]};
 			}
 
-			&:disabled {
-				+ * {
-					opacity: 0.54;
-					pointer-events: none;
-				}
-			}
-
 			&:not(:disabled):hover {
 				+ *::before {
-					background: ${tokens.colors.gray[200]};
 				}
 			}
 		}
@@ -70,7 +62,10 @@ const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disab
 			transform: translate(1.5rem, 0);
 		}
 
-		&.c-input--checked input:not(:disabled):hover + *::before {
+		&:not(.c-input--disabled):not(.c-input--read-only) input:hover + *::before {
+			background: ${tokens.colors.gray[200]};
+		}
+		&.c-input--checked:not(.c-input--disabled):not(.c-input--read-only) input:hover + *::before {
 			background: ${tokens.colors.lochmara[600]};
 		}
 
@@ -91,26 +86,49 @@ const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disab
 
 const Switch = React.forwardRef(
 	(
-		{ id, label, checked, readOnly, disabled, ...rest }: CheckboxProps,
+		{ id, label, defaultChecked, checked, readOnly, disabled, ...rest }: CheckboxProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
-		const checkbox = useCheckboxState({ state: checked });
+		const checkbox = useCheckboxState({ state: defaultChecked || checked || false });
 
 		React.useEffect(() => {
-			checkbox.setState(checked);
-		}, [checked]);
+			checkbox.setState(defaultChecked || checked || false);
+		}, [defaultChecked || checked]);
+
+		const checkboxProps: {
+			onClick?: (e: KeyboardEvent) => boolean | void;
+			onKeyDown?: (e: KeyboardEvent) => boolean | void;
+			'aria-checked'?: boolean;
+			checked?: boolean;
+		} = {};
+
+		if (readOnly) {
+			const isChecked = defaultChecked || checked || false;
+			// @ts-ignore
+			checkboxProps.onClick = e => {
+				e.preventDefault();
+			};
+			// @ts-ignore
+			checkboxProps.onKeyDown = e => {
+				if (e.keyCode === 32) {
+					e.preventDefault();
+				}
+			};
+			checkboxProps['aria-checked'] = isChecked;
+			checkboxProps.checked = isChecked;
+		}
 
 		return (
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={id}>
 					{/*
-				// @ts-ignore */}
+					// @ts-ignore */}
 					<Checkbox
 						id={id}
 						disabled={disabled}
 						readOnly={readOnly}
 						{...rest}
-						{...checkbox}
+						{...(readOnly ? checkboxProps : checkbox)}
 						ref={ref}
 					/>
 					<span>{label}</span>

@@ -104,16 +104,15 @@ Use switches to change the state of system functionalities and preferences on or
 					)}
 					<Form.Fieldset legend="Enabled">
 						<Form.Switch label="Option a" {...register('option-a')} />
-					</Form.Fieldset>
-					<Form.Fieldset legend="Default checked">
-						<Form.Switch label="Option b" {...register('option-b')} />
+						<Form.Switch label="Option b" checked {...register('option-b')} />
 					</Form.Fieldset>
 					<Form.Fieldset legend="Read only">
 						<Form.Switch label="Option c" readOnly {...register('option-c')} />
+						<Form.Switch label="Option d" readOnly checked {...register('option-c--checked')} />
 					</Form.Fieldset>
 					<Form.Fieldset legend="Disabled">
-						<Form.Switch label="Option d" disabled {...register('option-d')} />
-						<Form.Switch label="Option e" {...register('option-e', { disabled: true })} />
+						<Form.Switch label="Option e" disabled {...register('option-e')} />
+						<Form.Switch label="Option f" checked {...register('option-f', { disabled: true })} />
 					</Form.Fieldset>
 					<Form.Buttons>
 						<Button.Primary type="submit">Submit</Button.Primary>

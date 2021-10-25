@@ -12,7 +12,7 @@ export const SCheckbox = styled(InlineStyle)<{
 	checked: boolean;
 	disabled: boolean;
 }>`
-	input {
+	input[type='checkbox'] {
 		&::before,
 		&::after,
 		+ *::before,
@@ -34,7 +34,7 @@ export const SCheckbox = styled(InlineStyle)<{
 		}
 
 		// Indeterminate Checkboxes style
-		&[data-checked='1'] {
+		&[aria-checked='mixed'] {
 			&::before,
 			+ *::before {
 				background-color: var(--t-form-border-color--focus);
@@ -50,7 +50,7 @@ export const SCheckbox = styled(InlineStyle)<{
 			}
 		}
 
-		&:checked {
+		&[aria-checked='true'] {
 			&::before,
 			+ *::before {
 				background-color: var(--t-form-border-color--focus);
@@ -66,42 +66,45 @@ export const SCheckbox = styled(InlineStyle)<{
 			}
 		}
 
-		&:hover,
-		+ *:hover {
-			&,
-			&:checked {
-				&::before,
-				+ *::before {
-					border-color: var(--t-form-border-color--hover);
-				}
-			}
-		}
-
 		&:disabled {
 			&::before,
 			+ *::before {
 				border-color: var(--t-form-border-color--disabled);
 			}
 
-			&[data-checked='1']::before,
-			&[data-checked='1'] + *::before {
+			&[aria-checked='mixed']::before,
+			&[aria-checked='mixed'] + *::before {
 				background-color: var(--t-form-border-color--disabled);
 				border-color: var(--t-form-border-color--disabled);
 			}
 
-			&:checked::before,
-			&:checked + *::before {
+			&[aria-checked='true']::before,
+			&[aria-checked='true'] + *::before {
 				background-color: var(--t-form-border-color--disabled);
 				border-color: var(--t-form-border-color--disabled);
 			}
 		}
 	}
 
-	&.c-input--read-only.c-input--checked input {
+	&.c-input--read-only input {
+		&::before,
+		+ *::before {
+			background-color: var(--t-form-background-color--readonly);
+			border-color: var(--t-form-border-color--readonly);
+		}
+	}
+
+	&.c-input--read-only.c-input--checked input:checked {
+		&::before,
+		+ *::before {
+			background-color: var(--t-form-background-color--readonly);
+			border-color: var(--t-form-border-color--readonly);
+		}
+
 		&::after,
 		+ *::after {
 			mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc3R5bGU9ImZpbGw6IHdoaXRlIj4KCTxwYXRoIGQ9Ik02IDE0TDAgOGwxLjktMS45TDYgMTAuMiAxNC4xIDIgMTYgMy45eiI+PC9wYXRoPgo8L3N2Zz4=');
-			background: black;
+			background: var(--t-form-color--readonly);
 		}
 	}
 `;
@@ -116,6 +119,7 @@ const Checkbox = React.forwardRef(
 			id,
 			label,
 			indeterminate,
+			defaultChecked,
 			checked,
 			readOnly,
 			disabled,
@@ -127,15 +131,36 @@ const Checkbox = React.forwardRef(
 	) => {
 		const { id: reakitId } = useId();
 		const checkboxId = `checkbox--${id || reakitId}`;
-		const checkbox = useCheckboxState({ state: (indeterminate && 'indeterminate') || checked });
+		const checkbox = useCheckboxState({
+			state: (indeterminate && 'indeterminate') || defaultChecked || checked || false,
+		});
 
 		React.useEffect(() => {
-			checkbox.setState((indeterminate && 'indeterminate') || checked);
-		}, [indeterminate, checked]);
+			checkbox.setState((indeterminate && 'indeterminate') || defaultChecked || checked || false);
+		}, [indeterminate, defaultChecked, checked]);
 
-		let dataChecked = 0;
-		if (indeterminate) dataChecked = 1;
-		if (checked) dataChecked = 2;
+		const checkboxProps: {
+			onClick?: (e: KeyboardEvent) => boolean | void;
+			onKeyDown?: (e: KeyboardEvent) => boolean | void;
+			'aria-checked'?: boolean;
+			checked?: boolean;
+		} = {};
+
+		if (readOnly) {
+			const isChecked = defaultChecked || checked || false;
+			// @ts-ignore
+			checkboxProps.onClick = e => {
+				e.preventDefault();
+			};
+			// @ts-ignore
+			checkboxProps.onKeyDown = e => {
+				if (e.keyCode === 32) {
+					e.preventDefault();
+				}
+			};
+			checkboxProps['aria-checked'] = isChecked;
+			checkboxProps.checked = isChecked;
+		}
 
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
@@ -144,11 +169,10 @@ const Checkbox = React.forwardRef(
 					// @ts-ignore */}
 					<ReakitCheckbox
 						id={checkboxId}
-						data-checked={dataChecked}
 						disabled={disabled}
 						readOnly={readOnly}
 						{...rest}
-						{...checkbox}
+						{...(readOnly ? checkboxProps : checkbox)}
 						ref={ref}
 					/>
 					<span>

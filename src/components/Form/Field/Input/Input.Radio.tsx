@@ -10,7 +10,7 @@ export const SRadio = styled(InlineStyle)<{
 	checked: boolean;
 	disabled: boolean;
 }>`
-	input {
+	input[type='radio'] {
 		&::before,
 		&::after,
 		+ *::before,
@@ -34,14 +34,16 @@ export const SRadio = styled(InlineStyle)<{
 			border: 1px solid var(--t-form-border-color);
 		}
 
-		&:hover,
-		+ *:hover {
-			&,
-			&:checked {
-				&::after,
-				+ *::after {
-					border-color: var(--t-form-border-color--focus);
-				}
+		&:checked {
+			&::before,
+			+ *::before {
+				transform: scale(0.5);
+				background-color: var(--t-form-border-color--focus);
+			}
+
+			&::after,
+			+ *::after {
+				border-color: var(--t-form-border-color--focus);
 			}
 		}
 
@@ -60,45 +62,69 @@ export const SRadio = styled(InlineStyle)<{
 		}
 	}
 
-	&.c-input--checked input {
-		&::before,
-		+ *::before {
-			transform: scale(0.5);
-			background-color: var(--t-form-border-color--focus);
-		}
-
+	&.c-input--read-only input[type='radio'] {
 		&::after,
 		+ *::after {
-			border-color: var(--t-form-border-color--focus);
+			background-color: var(--t-form-background-color--readonly);
+			border-color: var(--t-form-border-color--readonly);
 		}
 	}
 
-	&.c-input--read-only span:after {
-		background-color: ${({ theme }) => theme.colors.inputReadOnlyBackgroundColor};
-		border-color: ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
-	}
-	&.c-input--read-only.c-input--checked span:before {
-		background-color: ${({ theme }) => theme.colors.inputColor};
+	&.c-input--read-only.c-input--checked input[type='radio'] {
+		&::before,
+		+ *::before {
+			background-color: var(--t-form-color--readonly);
+		}
 	}
 `;
 
 const Radio = React.forwardRef(
 	(
-		{ id, label, checked, readOnly, disabled, required, children, ...rest }: InputProps,
+		{
+			id,
+			label,
+			defaultChecked,
+			checked,
+			readOnly,
+			disabled,
+			required,
+			children,
+			...rest
+		}: InputProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { id: reakitId } = useId();
 		const radioId = `radio--${id || reakitId}`;
+
+		const radioProps: {
+			onClick?: (e: MouseEvent) => void;
+			onKeyDown?: (e: KeyboardEvent) => void;
+		} = {};
+
+		if (readOnly) {
+			radioProps.onClick = e => {
+				e.preventDefault();
+			};
+			radioProps.onKeyDown = e => {
+				if (e.keyCode === 32) {
+					e.preventDefault();
+				}
+			};
+		}
+
 		return (
 			<SRadio readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
 				<label htmlFor={radioId}>
+					{/*
+					// @ts-ignore */}
 					<input
 						type="radio"
 						id={radioId}
-						checked={checked}
+						checked={defaultChecked || checked}
 						disabled={disabled}
 						readOnly={readOnly}
 						{...rest}
+						{...radioProps}
 						ref={ref}
 					/>
 					<span>

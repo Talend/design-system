@@ -170,10 +170,6 @@ export const InlineStyle = styled.div.attrs<{
 		}
 	}
 
-	&.c-input--disabled label {
-		opacity: 0.54;
-	}
-
 	input {
 		margin: 0;
 		appearance: none;
@@ -205,20 +201,17 @@ export const InlineStyle = styled.div.attrs<{
 		margin: 0;
 	}
 
-	&.c-input--disabled label {
-		opacity: 0.54;
-	}
-
-	input:not(:disabled) + span:hover,
-	input:focus:not(:disabled) + span {
+	/*
+	input:not(:read-only):not(:disabled) + span:hover,
+	input:focus:not(:read-only):not(:disabled) + span {
 		&:before {
 			box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputFocusBorderColor};
 		}
 	}
-
+*/
 	input:focus:not(:disabled) + span {
 		// Safari
-		outline: 0.3rem solid ${({ theme }) => theme.colors.focusColor[500]};
+		outline: 0.3rem solid ${({ theme }) => theme.colors.inputFocusBorderColor};
 	}
 	input:focus:not(:focus-visible):not(:disabled) + span {
 		// Reset for others than Safari
@@ -226,22 +219,19 @@ export const InlineStyle = styled.div.attrs<{
 	}
 	input:focus-visible:not(:disabled) + span {
 		// For others than Safari
-		outline: 0.3rem solid ${({ theme }) => theme.colors.focusColor[500]};
+		outline: 0.3rem solid ${({ theme }) => theme.colors.inputFocusBorderColor};
 	}
 
-	.c-input--disabled input,
-	.c-input--disabled input + *::before,
-	.c-input--disabled input + *::after {
+	&.c-input--disabled,
+	&.c-input--disabled label {
 		opacity: ${tokens.opacity.disabled};
 		cursor: not-allowed;
 	}
 
-	&.c-input--read-only input + *::before,
-	&.c-input--read-only input + *::after {
-		color: ${({ theme }) => theme.colors.inputReadOnlyColor};
-		background: ${({ theme }) => theme.colors.inputReadOnlyBackgroundColor};
-		border: none;
-		box-shadow: 0 0 0 1px ${({ theme }) => theme.colors.inputReadOnlyBorderColor};
+	&.c-input--disabled,
+	&.c-input--disabled label {
+		opacity: ${tokens.opacity.disabled};
+		cursor: not-allowed;
 	}
 `;
 
