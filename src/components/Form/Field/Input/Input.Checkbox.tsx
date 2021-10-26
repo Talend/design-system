@@ -85,7 +85,7 @@ const Checkbox = React.forwardRef(
 
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
-				<label htmlFor={checkboxId}>
+				<label htmlFor={checkboxId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					{/*
 					// @ts-ignore */}
 					<ReakitCheckbox

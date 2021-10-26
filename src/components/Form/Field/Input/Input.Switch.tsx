@@ -91,7 +91,7 @@ const Switch = React.forwardRef(
 
 		return (
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
-				<label htmlFor={switchId}>
+				<label htmlFor={switchId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					{/*
 					// @ts-ignore */}
 					<ReakitCheckbox

@@ -57,7 +57,7 @@ const Radio = React.forwardRef(
 
 		return (
 			<SRadio readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
-				<label htmlFor={radioId}>
+				<label htmlFor={radioId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					<input
 						type="radio"
 						id={radioId}

@@ -13,7 +13,7 @@ export default function useReadOnly(checked?: Checked) {
 		e.preventDefault();
 	};
 	readOnlyState.onKeyDown = e => {
-		if (['Space', ' '].some(match => e.key === match)) {
+		if (['Space', ' ', 'Enter'].some(match => e.key === match)) {
 			e.preventDefault();
 		}
 	};
