@@ -21,7 +21,6 @@ const theme: DefaultTheme = {
 
 		textColor: palette.grayColor[900],
 		backgroundColor: palette.grayColor[0],
-		shadowColor: colors.paleCyan[500],
 
 		accordionBorderColor: palette.grayColor[100],
 		accordionBackgroundColor: palette.grayColor[50],
