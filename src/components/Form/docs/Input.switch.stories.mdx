@@ -2,7 +2,8 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { useForm } from 'react-hook-form';
 import { FigmaIframe, FigmaImage, Use } from '../../../docs';
 import Form from '../';
-import { Col, Row } from '../../../docs';
+import Button from '../../Button';
+import InlineMessage from '../../InlineMessage';
 import Button from '../../Button';
 import InlineMessage from '../../InlineMessage';
 import Tooltip from '../../Tooltip';
@@ -106,12 +107,13 @@ Use switches to change the state of system functionalities and preferences on or
 						<Form.Switch label="Option a" {...register('option-a')} />
 						<Form.Switch label="Option b" checked {...register('option-b')} />
 					</Form.Fieldset>
-					<Form.Fieldset legend="Read only">
-						<Form.Switch label="Option c" readOnly {...register('option-c')} />
-						<Form.Switch label="Option d" readOnly checked {...register('option-c--checked')} />
+					<Form.Fieldset legend="Read only" readOnly>
+						<Form.Switch label="Option c" {...register('option-c')} />
+						<Form.Switch label="Option d" checked {...register('option-d')} />
 					</Form.Fieldset>
-					<Form.Fieldset legend="Disabled">
-						<Form.Switch label="Option e" disabled {...register('option-e')} />
+					<Form.Fieldset legend="Disabled" disabled>
+						{/* @see https://github.com/react-hook-form/react-hook-form/issues/6690 */}
+						<Form.Switch label="Option e" {...register('option-e', { disabled: true })} />
 						<Form.Switch label="Option f" checked {...register('option-f', { disabled: true })} />
 					</Form.Fieldset>
 					<Form.Buttons>
@@ -128,9 +130,3 @@ Use switches to change the state of system functionalities and preferences on or
 Press <kbd>TABS</kbd> to focus on a switch.
 
 Press <kbd>SPACE</kbd> to toggle the switch between selected and not selected.
-
-## Changelog
-
-| Date       | Author     | Description |
-| ---------- | ---------- | ----------- |
-| 06/16/2020 | Monia Huet | Init page   |

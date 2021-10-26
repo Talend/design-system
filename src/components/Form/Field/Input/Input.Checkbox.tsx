@@ -1,7 +1,8 @@
 import React from 'react';
-import { Checkbox as ReakitCheckbox, useCheckboxState, unstable_useId as useId } from 'reakit';
-
+import { Checkbox as ReakitCheckbox, unstable_useId as useId } from 'reakit';
 import styled from 'styled-components';
+
+import useCheckboxState from './hooks/useCheckboxState';
 
 import { InputProps } from './Input';
 
@@ -130,49 +131,31 @@ const Checkbox = React.forwardRef(
 		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { id: reakitId } = useId();
-		const checkboxId = `checkbox--${id || reakitId}`;
+		const checkboxId = id || `checkbox--${reakitId}`;
 		const checkbox = useCheckboxState({
-			state: (indeterminate && 'indeterminate') || defaultChecked || checked || false,
+			state: (indeterminate && 'indeterminate') || defaultChecked || checked,
+			readOnly,
 		});
 
-		React.useEffect(() => {
-			checkbox.setState((indeterminate && 'indeterminate') || defaultChecked || checked || false);
-		}, [indeterminate, defaultChecked, checked]);
-
-		const checkboxProps: {
-			onClick?: (e: KeyboardEvent) => boolean | void;
-			onKeyDown?: (e: KeyboardEvent) => boolean | void;
-			'aria-checked'?: boolean;
-			checked?: boolean;
-		} = {};
-
-		if (readOnly) {
-			const isChecked = defaultChecked || checked || false;
-			// @ts-ignore
-			checkboxProps.onClick = e => {
-				e.preventDefault();
-			};
-			// @ts-ignore
-			checkboxProps.onKeyDown = e => {
-				if (e.keyCode === 32) {
-					e.preventDefault();
-				}
-			};
-			checkboxProps['aria-checked'] = isChecked;
-			checkboxProps.checked = isChecked;
-		}
+		const icon =
+			checkbox.state === 'indeterminate' ? (
+				<Icon name="talend-minus-circle" />
+			) : (
+				checkbox.state && <Icon name="talend-check" />
+			);
 
 		return (
-			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
-				<label htmlFor={checkboxId}>
+			<SCheckbox readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
+				<label htmlFor={checkboxId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					{/*
 					// @ts-ignore */}
 					<ReakitCheckbox
 						id={checkboxId}
 						disabled={disabled}
 						readOnly={readOnly}
+						required={required}
 						{...rest}
-						{...(readOnly ? checkboxProps : checkbox)}
+						{...checkbox}
 						ref={ref}
 					/>
 					<span>

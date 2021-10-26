@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useCheckboxState, Checkbox } from 'reakit';
+import { shade } from 'polished';
+import { unstable_useId as useId, Checkbox as ReakitCheckbox } from 'reakit';
 
+import useCheckboxState from './hooks/useCheckboxState';
 import { CheckboxProps } from './Input.Checkbox';
+
 import tokens from '../../../../tokens';
+
 import { InlineStyle } from '../Field.style';
 
 const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disabled: boolean }>`
@@ -86,52 +90,41 @@ const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disab
 
 const Switch = React.forwardRef(
 	(
-		{ id, label, defaultChecked, checked, readOnly, disabled, ...rest }: CheckboxProps,
+		{
+			id,
+			label,
+			defaultChecked,
+			checked,
+			readOnly,
+			disabled,
+			required,
+			children,
+			...rest
+		}: CheckboxProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
-		const checkbox = useCheckboxState({ state: defaultChecked || checked || false });
-
-		React.useEffect(() => {
-			checkbox.setState(defaultChecked || checked || false);
-		}, [defaultChecked || checked]);
-
-		const checkboxProps: {
-			onClick?: (e: KeyboardEvent) => boolean | void;
-			onKeyDown?: (e: KeyboardEvent) => boolean | void;
-			'aria-checked'?: boolean;
-			checked?: boolean;
-		} = {};
-
-		if (readOnly) {
-			const isChecked = defaultChecked || checked || false;
-			// @ts-ignore
-			checkboxProps.onClick = e => {
-				e.preventDefault();
-			};
-			// @ts-ignore
-			checkboxProps.onKeyDown = e => {
-				if (e.keyCode === 32) {
-					e.preventDefault();
-				}
-			};
-			checkboxProps['aria-checked'] = isChecked;
-			checkboxProps.checked = isChecked;
-		}
+		const { id: reakitId } = useId();
+		const switchId = id || `switch--${reakitId}`;
+		const checkbox = useCheckboxState({ state: defaultChecked || checked, readOnly });
 
 		return (
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
-				<label htmlFor={id}>
+				<label htmlFor={switchId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					{/*
 					// @ts-ignore */}
-					<Checkbox
-						id={id}
+					<ReakitCheckbox
+						id={switchId}
 						disabled={disabled}
 						readOnly={readOnly}
+						required={required}
 						{...rest}
-						{...(readOnly ? checkboxProps : checkbox)}
+						{...checkbox}
 						ref={ref}
 					/>
-					<span>{label}</span>
+					<span>
+						{label || children}
+						{required && '*'}
+					</span>
 				</label>
 			</SSwitch>
 		);

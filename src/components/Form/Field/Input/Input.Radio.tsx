@@ -5,6 +5,8 @@ import { unstable_useId as useId } from 'reakit';
 import { InputProps } from './Input';
 import { InlineStyle } from '../Field.style';
 
+import useReadOnly from './hooks/useReadOnly';
+
 export const SRadio = styled(InlineStyle)<{
 	readOnly: boolean;
 	checked: boolean;
@@ -94,35 +96,25 @@ const Radio = React.forwardRef(
 		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { id: reakitId } = useId();
-		const radioId = `radio--${id || reakitId}`;
+		const radioId = id || `radio--${reakitId}`;
+		const readOnlyRadioProps = useReadOnly(defaultChecked || checked);
 
-		const radioProps: {
-			onClick?: (e: MouseEvent) => void;
-			onKeyDown?: (e: KeyboardEvent) => void;
-		} = {};
-
+		let radioProps = {};
 		if (readOnly) {
-			radioProps.onClick = e => {
-				e.preventDefault();
-			};
-			radioProps.onKeyDown = e => {
-				if (e.keyCode === 32) {
-					e.preventDefault();
-				}
-			};
+			radioProps = readOnlyRadioProps;
 		}
 
 		return (
 			<SRadio readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
-				<label htmlFor={radioId}>
-					{/*
-					// @ts-ignore */}
+				<label htmlFor={radioId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					<input
 						type="radio"
 						id={radioId}
-						checked={defaultChecked || checked}
+						checked={checked}
+						defaultChecked={defaultChecked}
 						disabled={disabled}
 						readOnly={readOnly}
+						required={required}
 						{...rest}
 						{...radioProps}
 						ref={ref}

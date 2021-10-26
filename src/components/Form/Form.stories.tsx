@@ -87,8 +87,8 @@ export const Error = () => (
 Error.parameters = {};
 
 export const Disabled = () => (
-	<Form>
-		<Form.Fieldset legend="Complete your registration" disabled>
+	<Form disabled>
+		<Form.Fieldset legend="Complete your registration">
 			<Form.Row>
 				<Form.Text label="First Name" required />
 				<Form.Text label="Last Name" required />
@@ -126,8 +126,8 @@ export const Disabled = () => (
 Disabled.parameters = {};
 
 export const ReadOnly = () => (
-	<Form>
-		<Form.Fieldset legend="Complete your registration" readOnly>
+	<Form readOnly>
+		<Form.Fieldset legend="Complete your registration">
 			<Form.Row>
 				<Form.Text label="First Name" required />
 				<Form.Text label="Last Name" required />
@@ -186,14 +186,14 @@ InlineHelp.parameters = {};
 
 export const Loading = () => (
 	<div style={{ margin: '0 auto', width: '60rem' }}>
-		<Form>
+		<Form disabled>
 			<Form.Fieldset legend="Run job">
-				<Form.Text label="Name" required disabled placeholder="Job using JDBC connection" />
-				<Form.Textarea label="Description" disabled placeholder="Describe the job" />
+				<Form.Text label="Name" required placeholder="Job using JDBC connection" />
+				<Form.Textarea label="Description" placeholder="Describe the job" />
 			</Form.Fieldset>
 			<Form.Buttons>
-				<Button.Secondary disabled>Previous</Button.Secondary>
-				<Button.Secondary disabled>Save</Button.Secondary>
+				<Button.Secondary>Previous</Button.Secondary>
+				<Button.Secondary>Save</Button.Secondary>
 				<Button.Primary icon="talend-launch" loading>
 					Run
 				</Button.Primary>
