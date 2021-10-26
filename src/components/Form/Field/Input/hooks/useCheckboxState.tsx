@@ -8,7 +8,7 @@ type InitialChoiceState = Reakit.CheckboxInitialState & {
 
 export default function useCheckboxState({ readOnly, ...initialState }: InitialChoiceState) {
 	const checkboxState = useReakitCheckboxState(initialState);
-	const readOnlyState = useReadOnly();
+	const readOnlyState = useReadOnly(initialState.state);
 
 	if (readOnly) {
 		return { ...checkboxState, ...readOnlyState, setState: () => {} };
