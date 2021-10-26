@@ -42,8 +42,8 @@ export const Menu = styled(ReakitMenu)`
 `;
 
 export const AnimatedMenu = styled.div`
-	display: flex;
-	flex-direction: column;
+	max-height: 32rem;
+	overflow: scroll;
 	padding: ${tokens.space.xs} ${tokens.space.none};
 	min-width: 15rem;
 	max-width: 25rem;
@@ -68,6 +68,7 @@ export const MenuSeparator = styled(ReakitMenuSeparator)`
 `;
 
 export const MenuItem = styled(ReakitMenuItem)`
+	width: 100%;
 	display: flex;
 	height: 3rem;
 	padding: 0;
@@ -91,6 +92,8 @@ export const MenuItem = styled(ReakitMenuItem)`
 
 	span.link__text, .btn__icon + span.btn__text {
 		margin-left: ${tokens.space.xs};
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 
 	&:hover, &:focus {

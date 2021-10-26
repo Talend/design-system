@@ -9,31 +9,34 @@ import Button from '../Button';
 
 import * as S from './Dropdown.style';
 
-type MenuItemProps = React.PropsWithChildren<any> & {
+type DividerType = { divider: boolean };
+type LinkType = {
 	label: string;
-	href?: string;
-	icon?: IconName;
-	divider?: boolean;
-	'data-feature'?: string;
+	href: string;
+	onClick: React.MouseEventHandler;
+	icon: IconName;
+	'data-feature': string;
 };
+type ButtonType = Omit<LinkType, 'href'>;
+type MenuItemProps = DividerType | LinkType | ButtonType;
 
 export type DropdownProps = BoxProps &
 	StyledProps<any> & {
 		/** Dropdown menu items */
-		items: MenuItemProps[] | React.ReactElement<any>[];
+		items: MenuItemProps[];
 	};
 
 function convertItem(item: MenuItemProps) {
-	if (item.divider) {
+	if ('divider' in item) {
 		return <></>;
 	}
 
-	return item.href ? (
+	return 'href' in item ? (
 		<Link hideExternalIcon iconBefore={item.icon} {...item}>
 			{item.label}
 		</Link>
 	) : (
-		<Button icon={item.icon} {...item}>
+		<Button {...item}>
 			{item.label}
 		</Button>
 	);
@@ -67,13 +70,7 @@ const Dropdown: React.FC<DropdownProps> = React.forwardRef(
 				{items.length ? (
 					<S.Menu {...menu} aria-label={ariaLabel} aria-labelledby={ariaLabelledby}>
 						<S.AnimatedMenu>
-							{items.map((item: React.ReactElement<any>, index: number) => {
-								let element = item;
-								if (!ReactIs.isElement(item)) {
-									element = convertItem(element);
-								}
-								return getItem(element, index);
-							})}
+							{items.map((item: MenuItemProps, index: number) => getItem(convertItem(item), index))}
 						</S.AnimatedMenu>
 					</S.Menu>
 				) : null}
