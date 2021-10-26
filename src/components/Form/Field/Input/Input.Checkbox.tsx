@@ -10,7 +10,11 @@ import { InlineStyle } from '../Field.style';
 
 import tokens from '../../../../tokens';
 
-export const SCheckbox = styled(InlineStyle)<{ readOnly: boolean; checked: boolean }>`
+export const SCheckbox = styled(InlineStyle)<{
+	readOnly: boolean;
+	checked: boolean;
+	disabled: boolean;
+}>`
 	label > span:before,
 	label > span:after {
 		border-radius: ${tokens.radii.inputBorderRadius};
@@ -50,12 +54,25 @@ export type CheckboxProps = InputProps & {
 
 const Checkbox = React.forwardRef(
 	(
-		{ id, label, indeterminate, checked, readOnly, required, children, ...rest }: CheckboxProps,
+		{
+			id,
+			label,
+			indeterminate,
+			defaultChecked,
+			checked,
+			readOnly,
+			disabled,
+			required,
+			children,
+			...rest
+		}: CheckboxProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { id: reakitId } = useId();
 		const checkboxId = `checkbox--${id || reakitId}`;
-		const checkbox = useCheckboxState({ state: (indeterminate && 'indeterminate') || checked });
+		const checkbox = useCheckboxState({
+			state: (indeterminate && 'indeterminate') || defaultChecked || checked || false,
+		});
 
 		const icon =
 			checkbox.state === 'indeterminate' ? (
@@ -65,19 +82,45 @@ const Checkbox = React.forwardRef(
 			);
 
 		React.useEffect(() => {
-			checkbox.setState((indeterminate && 'indeterminate') || checked);
-		}, [indeterminate, checked]);
+			checkbox.setState((indeterminate && 'indeterminate') || defaultChecked || checked || false);
+		}, [indeterminate, defaultChecked, checked]);
+
+		const checkboxProps: {
+			onClick?: (e: KeyboardEvent) => boolean | void;
+			onKeyDown?: (e: KeyboardEvent) => boolean | void;
+			'aria-checked'?: boolean;
+			checked?: boolean;
+		} = {};
+
+		if (readOnly) {
+			const isChecked = defaultChecked || checked || false;
+			// @ts-ignore
+			checkboxProps.onClick = e => {
+				e.preventDefault();
+			};
+			// @ts-ignore
+			checkboxProps.onKeyDown = e => {
+				if (e.keyCode === 32) {
+					e.preventDefault();
+				}
+			};
+			checkboxProps['aria-checked'] = isChecked;
+			checkboxProps.checked = isChecked;
+		}
 
 		return (
-			<SCheckbox readOnly={!!readOnly} checked={!!checked}>
+			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
 				<label htmlFor={checkboxId}>
-					{readOnly ? (
-						// @ts-ignore
-						<input type="hidden" id={checkboxId} {...rest} {...checkbox} ref={ref} />
-					) : (
-						// @ts-ignore
-						<ReakitCheckbox id={checkboxId} {...rest} {...checkbox} ref={ref} />
-					)}
+					{/*
+					// @ts-ignore */}
+					<ReakitCheckbox
+						id={checkboxId}
+						disabled={disabled}
+						readOnly={readOnly}
+						{...rest}
+						{...(readOnly ? checkboxProps : checkbox)}
+						ref={ref}
+					/>
 					<span>
 						{label || children}
 						{required && '*'}
