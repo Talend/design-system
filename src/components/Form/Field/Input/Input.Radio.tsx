@@ -47,8 +47,8 @@ const Radio = React.forwardRef(
 		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { id: reakitId } = useId();
-		const radioId = `radio--${id || reakitId}`;
-		const readOnlyRadioProps = useReadOnly(defaultChecked || checked);
+		const radioId = id || `radio--${reakitId}`;
+		const readOnlyRadioProps = useReadOnly();
 
 		let radioProps = {};
 		if (readOnly) {
@@ -63,10 +63,11 @@ const Radio = React.forwardRef(
 					<input
 						type="radio"
 						id={radioId}
-						defaultChecked={defaultChecked}
 						checked={checked}
+						defaultChecked={defaultChecked}
 						disabled={disabled}
 						readOnly={readOnly}
+						required={required}
 						{...rest}
 						{...radioProps}
 						ref={ref}

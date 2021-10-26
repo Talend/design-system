@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { shade } from 'polished';
-import { Checkbox } from 'reakit';
+import { unstable_useId as useId, Checkbox as ReakitCheckbox } from 'reakit';
 
 import useCheckboxState from './hooks/useCheckboxState';
 import { CheckboxProps } from './Input.Checkbox';
@@ -72,18 +72,41 @@ const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disab
 
 const Switch = React.forwardRef(
 	(
-		{ id, label, defaultChecked, checked, readOnly, disabled, ...rest }: CheckboxProps,
+		{
+			id,
+			label,
+			defaultChecked,
+			checked,
+			readOnly,
+			disabled,
+			required,
+			children,
+			...rest
+		}: CheckboxProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
-		const checkbox = useCheckboxState({ state: defaultChecked || checked || false, readOnly });
+		const { id: reakitId } = useId();
+		const switchId = id || `switch--${reakitId}`;
+		const checkbox = useCheckboxState({ state: defaultChecked || checked, readOnly });
 
 		return (
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
-				<label htmlFor={id}>
+				<label htmlFor={switchId}>
 					{/*
-				// @ts-ignore */}
-					<Checkbox id={id} disabled={disabled} {...rest} {...checkbox} ref={ref} />
-					<span>{label}</span>
+					// @ts-ignore */}
+					<ReakitCheckbox
+						id={switchId}
+						disabled={disabled}
+						readOnly={readOnly}
+						required={required}
+						{...rest}
+						{...checkbox}
+						ref={ref}
+					/>
+					<span>
+						{label || children}
+						{required && '*'}
+					</span>
 				</label>
 			</SSwitch>
 		);

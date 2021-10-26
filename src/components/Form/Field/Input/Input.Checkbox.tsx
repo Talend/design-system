@@ -70,9 +70,9 @@ const Checkbox = React.forwardRef(
 		ref: React.Ref<HTMLInputElement>,
 	) => {
 		const { id: reakitId } = useId();
-		const checkboxId = `checkbox--${id || reakitId}`;
+		const checkboxId = id || `checkbox--${reakitId}`;
 		const checkbox = useCheckboxState({
-			state: (indeterminate && 'indeterminate') || defaultChecked || checked || false,
+			state: (indeterminate && 'indeterminate') || defaultChecked || checked,
 			readOnly,
 		});
 
@@ -88,7 +88,15 @@ const Checkbox = React.forwardRef(
 				<label htmlFor={checkboxId}>
 					{/*
 					// @ts-ignore */}
-					<ReakitCheckbox id={checkboxId} disabled={disabled} {...rest} {...checkbox} ref={ref} />
+					<ReakitCheckbox
+						id={checkboxId}
+						disabled={disabled}
+						readOnly={readOnly}
+						required={required}
+						{...rest}
+						{...checkbox}
+						ref={ref}
+					/>
 					<span>
 						{label || children}
 						{required && '*'}
