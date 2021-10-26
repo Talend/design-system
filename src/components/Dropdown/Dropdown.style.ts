@@ -43,7 +43,7 @@ export const Menu = styled(ReakitMenu)`
 
 export const AnimatedMenu = styled.div`
 	max-height: 32rem;
-	overflow: scroll;
+	overflow: auto;
 	padding: ${tokens.space.xs} ${tokens.space.none};
 	min-width: 15rem;
 	max-width: 25rem;
