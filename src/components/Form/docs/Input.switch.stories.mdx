@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { useForm } from 'react-hook-form';
 import { FigmaIframe, FigmaImage, Use } from '../../../docs';
@@ -103,12 +102,12 @@ Use switches to change the state of system functionalities and preferences on or
 						<Form.Switch label="Option a" {...register('option-a')} />
 						<Form.Switch label="Option b" checked {...register('option-b')} />
 					</Form.Fieldset>
-					<Form.Fieldset legend="Read only">
-						<Form.Switch label="Option c" readOnly {...register('option-c')} />
-						<Form.Switch label="Option d" readOnly checked {...register('option-c--checked')} />
+					<Form.Fieldset legend="Read only" readOnly>
+						<Form.Switch label="Option c" {...register('option-c')} />
+						<Form.Switch label="Option d" checked {...register('option-d')} />
 					</Form.Fieldset>
-					<Form.Fieldset legend="Disabled">
-						<Form.Switch label="Option e" disabled {...register('option-e')} />
+					<Form.Fieldset legend="Disabled" disabled>
+						<Form.Switch label="Option e" {...register('option-e')} />
 						<Form.Switch label="Option f" checked {...register('option-f', { disabled: true })} />
 					</Form.Fieldset>
 					<Form.Buttons>

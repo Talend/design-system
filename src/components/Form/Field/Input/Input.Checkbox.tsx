@@ -1,7 +1,8 @@
 import React from 'react';
-import { Checkbox as ReakitCheckbox, useCheckboxState, unstable_useId as useId } from 'reakit';
-
+import { Checkbox as ReakitCheckbox, unstable_useId as useId } from 'reakit';
 import styled from 'styled-components';
+
+import useCheckboxState from './hooks/useCheckboxState';
 
 import { InputProps } from './Input';
 import { Icon } from '../../../Icon/Icon';
@@ -72,6 +73,7 @@ const Checkbox = React.forwardRef(
 		const checkboxId = `checkbox--${id || reakitId}`;
 		const checkbox = useCheckboxState({
 			state: (indeterminate && 'indeterminate') || defaultChecked || checked || false,
+			readOnly,
 		});
 
 		const icon =
@@ -81,46 +83,12 @@ const Checkbox = React.forwardRef(
 				checkbox.state && <Icon name="talend-check" />
 			);
 
-		React.useEffect(() => {
-			checkbox.setState((indeterminate && 'indeterminate') || defaultChecked || checked || false);
-		}, [indeterminate, defaultChecked, checked]);
-
-		const checkboxProps: {
-			onClick?: (e: KeyboardEvent) => boolean | void;
-			onKeyDown?: (e: KeyboardEvent) => boolean | void;
-			'aria-checked'?: boolean;
-			checked?: boolean;
-		} = {};
-
-		if (readOnly) {
-			const isChecked = defaultChecked || checked || false;
-			// @ts-ignore
-			checkboxProps.onClick = e => {
-				e.preventDefault();
-			};
-			// @ts-ignore
-			checkboxProps.onKeyDown = e => {
-				if (e.keyCode === 32) {
-					e.preventDefault();
-				}
-			};
-			checkboxProps['aria-checked'] = isChecked;
-			checkboxProps.checked = isChecked;
-		}
-
 		return (
-			<SCheckbox readOnly={!!readOnly} checked={!!checked} disabled={!!disabled}>
+			<SCheckbox readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={checkboxId}>
 					{/*
 					// @ts-ignore */}
-					<ReakitCheckbox
-						id={checkboxId}
-						disabled={disabled}
-						readOnly={readOnly}
-						{...rest}
-						{...(readOnly ? checkboxProps : checkbox)}
-						ref={ref}
-					/>
+					<ReakitCheckbox id={checkboxId} disabled={disabled} {...rest} {...checkbox} ref={ref} />
 					<span>
 						{label || children}
 						{required && '*'}

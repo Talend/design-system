@@ -6,6 +6,7 @@ import { InputProps } from './Input';
 import { InlineStyle } from '../Field.style';
 
 import tokens from '../../../../tokens';
+import useReadOnly from './hooks/useReadOnly';
 
 export const SRadio = styled(InlineStyle)<{
 	readOnly: boolean;
@@ -47,21 +48,11 @@ const Radio = React.forwardRef(
 	) => {
 		const { id: reakitId } = useId();
 		const radioId = `radio--${id || reakitId}`;
+		const readOnlyRadioProps = useReadOnly(defaultChecked || checked);
 
-		const radioProps: {
-			onClick?: (e: MouseEvent) => void;
-			onKeyDown?: (e: KeyboardEvent) => void;
-		} = {};
-
+		let radioProps = {};
 		if (readOnly) {
-			radioProps.onClick = e => {
-				e.preventDefault();
-			};
-			radioProps.onKeyDown = e => {
-				if (e.keyCode === 32) {
-					e.preventDefault();
-				}
-			};
+			radioProps = readOnlyRadioProps;
 		}
 
 		return (
@@ -72,7 +63,8 @@ const Radio = React.forwardRef(
 					<input
 						type="radio"
 						id={radioId}
-						checked={defaultChecked || checked}
+						defaultChecked={defaultChecked}
+						checked={checked}
 						disabled={disabled}
 						readOnly={readOnly}
 						{...rest}

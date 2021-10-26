@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { shade } from 'polished';
-import { useCheckboxState, Checkbox } from 'reakit';
+import { Checkbox } from 'reakit';
 
+import useCheckboxState from './hooks/useCheckboxState';
 import { CheckboxProps } from './Input.Checkbox';
+
 import tokens from '../../../../tokens';
+
 import { InlineStyle } from '../Field.style';
 
 const SSwitch = styled(InlineStyle)<{ readOnly: boolean; checked: boolean; disabled: boolean }>`
@@ -72,48 +75,14 @@ const Switch = React.forwardRef(
 		{ id, label, defaultChecked, checked, readOnly, disabled, ...rest }: CheckboxProps,
 		ref: React.Ref<HTMLInputElement>,
 	) => {
-		const checkbox = useCheckboxState({ state: defaultChecked || checked || false });
-
-		React.useEffect(() => {
-			checkbox.setState(defaultChecked || checked || false);
-		}, [defaultChecked || checked]);
-
-		const checkboxProps: {
-			onClick?: (e: KeyboardEvent) => boolean | void;
-			onKeyDown?: (e: KeyboardEvent) => boolean | void;
-			'aria-checked'?: boolean;
-			checked?: boolean;
-		} = {};
-
-		if (readOnly) {
-			const isChecked = defaultChecked || checked || false;
-			// @ts-ignore
-			checkboxProps.onClick = e => {
-				e.preventDefault();
-			};
-			// @ts-ignore
-			checkboxProps.onKeyDown = e => {
-				if (e.keyCode === 32) {
-					e.preventDefault();
-				}
-			};
-			checkboxProps['aria-checked'] = isChecked;
-			checkboxProps.checked = isChecked;
-		}
+		const checkbox = useCheckboxState({ state: defaultChecked || checked || false, readOnly });
 
 		return (
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={id}>
 					{/*
-					// @ts-ignore */}
-					<Checkbox
-						id={id}
-						disabled={disabled}
-						readOnly={readOnly}
-						{...rest}
-						{...(readOnly ? checkboxProps : checkbox)}
-						ref={ref}
-					/>
+				// @ts-ignore */}
+					<Checkbox id={id} disabled={disabled} {...rest} {...checkbox} ref={ref} />
 					<span>{label}</span>
 				</label>
 			</SSwitch>
