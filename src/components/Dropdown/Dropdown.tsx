@@ -70,7 +70,19 @@ const Dropdown: React.FC<DropdownProps> = React.forwardRef(
 				{items.length ? (
 					<S.Menu {...menu} aria-label={ariaLabel} aria-labelledby={ariaLabelledby}>
 						<S.AnimatedMenu>
-							{items.map((item: MenuItemProps, index: number) => getItem(convertItem(item), index))}
+							{items.map((item: MenuItemProps, index: number) => {
+							     if('divider' in item) {
+							         return <S.MenuSeparator key={`separator-${index}`} />
+							     }
+							     
+							     const LinkOrButton = convertItem(item);
+							     
+							     return (
+							         <S.MenuItem {...LinkOrButton.props} key={`entry-${index}`}>
+			                                                  {itemProps => React.cloneElement(LinkOrButton, itemProps)}
+		                                                  </S.MenuItem>
+							     )
+							})}
 						</S.AnimatedMenu>
 					</S.Menu>
 				) : null}
