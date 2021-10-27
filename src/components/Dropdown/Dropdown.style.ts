@@ -64,7 +64,7 @@ export const MenuSeparator = styled(ReakitMenuSeparator)`
 	width: 100%;
 	border-left: none;
 	border-top: none;
-	border-color: ${tokens.colors.gray[75]};
+	border-color: ${({ theme }) => theme.colors.dropdownSeparatorColor};
 `;
 
 export const MenuItem = styled(ReakitMenuItem)`
