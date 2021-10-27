@@ -88,6 +88,215 @@ export const WithManyItems = () => (
 		as={Button.Destructive}
 		aria-label="Custom menu"
 		items={[
+			,
+			{ label: 'Lorem', onClick: () => console.log('Lorem click') },
+			{
+				label: 'Ipsum',
+				onClick: () => console.log('Ipsum click'),
+			},
+			{
+				label: 'Dolor',
+				onClick: () => console.log('Dolor click'),
+			},
+			{
+				label: 'Consectetur',
+				onClick: () => console.log('Consectetur click'),
+			},
+			{
+				label: 'Adipiscing',
+				onClick: () => console.log('Adipiscing click'),
+			},
+			{
+				label: 'Elit',
+				onClick: () => console.log('Elit click'),
+			},
+			{
+				label: 'Facilisis',
+				onClick: () => console.log('Facilisis click'),
+			},
+			{
+				label: 'Tortor',
+				onClick: () => console.log('Tortor click'),
+			},
+			{
+				label: 'Lorem',
+				onClick: () => console.log('Lorem click'),
+			},
+			{
+				label: 'Auctor',
+				onClick: () => console.log('Auctor click'),
+			},
+			{
+				label: 'Venenatis',
+				onClick: () => console.log('Venenatis click'),
+			},
+			{
+				label: 'Varius',
+				onClick: () => console.log('Varius click'),
+			},
+			{
+				label: 'Orci',
+				onClick: () => console.log('Orci click'),
+			},
+			{
+				label: 'Facilisis',
+				onClick: () => console.log('Facilisis click'),
+			},
+			{
+				label: 'Fusce',
+				onClick: () => console.log('Fusce click'),
+			},
+			{
+				label: 'Vitae',
+				onClick: () => console.log('Vitae click'),
+			},
+			{
+				label: 'Molestie',
+				onClick: () => console.log('Molestie click'),
+			},
+			{
+				label: 'Rutrum',
+				onClick: () => console.log('Rutrum click'),
+			},
+			{
+				label: 'Vestibulum',
+				onClick: () => console.log('Vestibulum click'),
+			},
+			{
+				label: 'Tempor',
+				onClick: () => console.log('Tempor click'),
+			},
+			{
+				label: 'Massa',
+				onClick: () => console.log('Massa click'),
+			},
+			{
+				label: 'Finibus',
+				onClick: () => console.log('Finibus click'),
+			},
+			{
+				label: 'Tincidunt',
+				onClick: () => console.log('Tincidunt click'),
+			},
+			{
+				label: 'Aliquet',
+				onClick: () => console.log('Aliquet click'),
+			},
+			{
+				label: 'Consectetur',
+				onClick: () => console.log('Consectetur click'),
+			},
+			{
+				label: 'Donec',
+				onClick: () => console.log('Donec click'),
+			},
+			{
+				label: 'Pharetra',
+				onClick: () => console.log('Pharetra click'),
+			},
+			{
+				label: 'Ipsum',
+				onClick: () => console.log('Ipsum click'),
+			},
+			{
+				label: 'Bibendum',
+				onClick: () => console.log('Bibendum click'),
+			},
+			{
+				label: 'Pellentesque',
+				onClick: () => console.log('Pellentesque click'),
+			},
+			{
+				label: 'Fermentum',
+				onClick: () => console.log('Fermentum click'),
+			},
+			{
+				label: 'Nullam',
+				onClick: () => console.log('Nullam click'),
+			},
+			{
+				label: 'Rhoncus',
+				onClick: () => console.log('Rhoncus click'),
+			},
+			{
+				label: 'Fringilla',
+				onClick: () => console.log('Fringilla click'),
+			},
+			{
+				label: 'Pellentesque',
+				onClick: () => console.log('Pellentesque click'),
+			},
+			{
+				label: 'Curabitur',
+				onClick: () => console.log('Curabitur click'),
+			},
+			{
+				label: 'Lorem',
+				onClick: () => console.log('Lorem click'),
+			},
+			{
+				label: 'Dictum',
+				onClick: () => console.log('Dictum click'),
+			},
+			{
+				label: 'Mauris',
+				onClick: () => console.log('Mauris click'),
+			},
+			{
+				label: 'Luctus',
+				onClick: () => console.log('Luctus click'),
+			},
+			{
+				label: 'Pulvinar',
+				onClick: () => console.log('Pulvinar click'),
+			},
+			{
+				label: 'Vitae',
+				onClick: () => console.log('Vitae click'),
+			},
+			{
+				label: 'Neque',
+				onClick: () => console.log('Neque click'),
+			},
+			{
+				label: 'Cras',
+				onClick: () => console.log('Cras click'),
+			},
+			{
+				label: 'Facilisis',
+				onClick: () => console.log('Facilisis click'),
+			},
+			{
+				label: 'Quisque',
+				onClick: () => console.log('Quisque click'),
+			},
+			{
+				label: 'Congue',
+				onClick: () => console.log('Congue click'),
+			},
+			{
+				label: 'Malesuada',
+				onClick: () => console.log('Malesuada click'),
+			},
+			{
+				label: 'Risus',
+				onClick: () => console.log('Risus click'),
+			},
+			{
+				label: 'Quis',
+				onClick: () => console.log('Quis click'),
+			},
+		]}
+	>
+		Menu
+	</Dropdown>
+);
+
+export const WithLongText = () => (
+	<Dropdown
+		as={Button.Destructive}
+		aria-label="Custom menu"
+		items={[
 			{
 				href: 'http://google.com',
 				label: "Etre ou n'être pas, c'est là la question",

@@ -70,14 +70,11 @@ export const MenuSeparator = styled(ReakitMenuSeparator)`
 export const MenuItem = styled(ReakitMenuItem)`
 	width: 100%;
 	display: flex;
-	height: 3rem;
+	min-height: 3rem;
 	padding: 0;
 	padding: ${tokens.space.s} ${tokens.space.m};
 	color: ${({ theme }) => theme.colors.dropdownColor};
 	text-align: start;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
 	cursor: pointer;
 	align-items: center;
 
@@ -91,8 +88,6 @@ export const MenuItem = styled(ReakitMenuItem)`
 
 	span.link__text, .btn__icon + span.btn__text {
 		margin-left: ${tokens.space.xs};
-		text-overflow: ellipsis;
-		overflow: hidden;
 	}
 
 	&:hover, &:focus {
