@@ -72,9 +72,8 @@ export const MenuItem = styled(ReakitMenuItem)`
 	display: flex;
 	height: 3rem;
 	padding: 0;
-	padding-left: .9rem;
-	padding-right: .9rem;
-	color: ${({ theme }) => theme.colors.textColor};
+	padding: ${tokens.space.s} ${tokens.space.m};
+	color: ${({ theme }) => theme.colors.dropdownColor};
 	text-align: start;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -97,7 +96,7 @@ export const MenuItem = styled(ReakitMenuItem)`
 	}
 
 	&:hover, &:focus {
-		color: ${({ theme }) => theme.colors.textColor};
+		color: ${({ theme }) => theme.colors.dropdownColor};
 		background-color: ${({ theme }) => theme.colors.dropdownHoverBackgroundColor};
 	}
 

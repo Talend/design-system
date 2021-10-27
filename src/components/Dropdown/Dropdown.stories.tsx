@@ -14,26 +14,31 @@ export const WithIcons = () => (
 			{
 				icon: 'talend-upload',
 				label: 'En haut',
+				onClick: () => console.log('En haut click'),
 				href: 'http://google.com',
 			},
 			{
 				icon: 'talend-caret-down',
 				label: 'En bas',
+				onClick: () => console.log('En bas click'),
 				href: 'http://google.com',
 			},
 			{
 				icon: 'talend-arrow-left',
 				label: 'À gauche',
+				onClick: () => console.log('À gauche click'),
 				href: 'http://google.com',
 			},
 			{
 				icon: 'talend-arrow-right',
 				label: 'À droite',
+				onClick: () => console.log('À droite click'),
 				href: 'http://google.com',
 			},
 			{
 				icon: 'talend-hadoop',
 				label: 'CES ANNÉES LÀÀÀÀ',
+				onClick: () => console.log('CES ANNÉES LÀÀÀÀ click'),
 				href: 'http://google.com',
 			},
 		]}
@@ -197,31 +202,27 @@ export const Default = () => (
 			{
 				icon: 'talend-file-json-o',
 				label: 'Support',
-				'data-feature': 'actiondropdown.items',
 				href: 'http://google.com',
-				onClick: () => console.log('document 1 click'),
+				onClick: () => console.log('Support click'),
 			},
 			{
 				divider: true,
 			},
 			{
 				label: 'Management Console',
-				'data-feature': 'actiondropdown.items',
-				onClick: () => console.log('document 2 click'),
+				onClick: () => console.log('Management Console click'),
 			},
 			{
 				icon: 'talend-file-json-o',
 				label: 'Account & Subscription',
-				'data-feature': 'actiondropdown.items',
-				onClick: () => console.log('document 1 click'),
+				onClick: () => console.log('Account & Subscription click'),
 			},
 			{
 				divider: true,
 			},
 			{
 				label: 'Logout',
-				'data-feature': 'actiondropdown.items',
-				onClick: () => console.log('document 2 click'),
+				onClick: () => console.log('Logout click'),
 			},
 		]}
 	>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyledProps } from 'styled-components';
-import * as ReactIs from 'react-is';
 import { BoxProps, useMenuState } from 'reakit';
 import { IconName } from '@talend/icons';
 
@@ -26,29 +25,13 @@ export type DropdownProps = BoxProps &
 		items: MenuItemProps[];
 	};
 
-function convertItem(item: MenuItemProps) {
-	if ('divider' in item) {
-		return <></>;
-	}
-
+function convertItem(item: ButtonType | LinkType) {
 	return 'href' in item ? (
 		<Link hideExternalIcon iconBefore={item.icon} {...item}>
 			{item.label}
 		</Link>
 	) : (
-		<Button {...item}>
-			{item.label}
-		</Button>
-	);
-}
-
-function getItem(item: React.ReactElement<any>, index: number) {
-	return ReactIs.isFragment(item) && React.Children.toArray(item.props.children).length === 0 ? (
-		<S.MenuSeparator />
-	) : (
-		<S.MenuItem {...item.props} key={index}>
-			{itemProps => React.cloneElement(item, itemProps)}
-		</S.MenuItem>
+		<Button {...item}>{item.label}</Button>
 	);
 }
 
@@ -59,29 +42,28 @@ const Dropdown: React.FC<DropdownProps> = React.forwardRef(
 			gutter: 0,
 			loop: true,
 		});
-
 		const { 'aria-label': ariaLabel, 'aria-labelledby': ariaLabelledby, ...rest } = props;
+
 		return (
 			<>
-				<S.Button as={Button} ref={ref} {...menu} {...rest}>
+				<S.Button as={Button} {...menu} {...rest} ref={ref}>
 					{children}
 					{items.length ? <S.ButtonIcon name="talend-caret-down" /> : null}
 				</S.Button>
 				{items.length ? (
 					<S.Menu {...menu} aria-label={ariaLabel} aria-labelledby={ariaLabelledby}>
-						<S.AnimatedMenu>
+						<S.AnimatedMenu {...menu}>
 							{items.map((item: MenuItemProps, index: number) => {
-							     if('divider' in item) {
-							         return <S.MenuSeparator key={`separator-${index}`} />
-							     }
-							     
-							     const LinkOrButton = convertItem(item);
-							     
-							     return (
-							         <S.MenuItem {...LinkOrButton.props} key={`entry-${index}`}>
-			                                                  {itemProps => React.cloneElement(LinkOrButton, itemProps)}
-		                                                  </S.MenuItem>
-							     )
+								if ('divider' in item) {
+									return <S.MenuSeparator key={`separator-${index}`} />;
+								}
+
+								const LinkOrButton = convertItem(item);
+								return (
+									<S.MenuItem {...LinkOrButton.props} key={`entry-${index}`} {...menu}>
+										{itemProps => React.cloneElement(LinkOrButton, itemProps)}
+									</S.MenuItem>
+								);
 							})}
 						</S.AnimatedMenu>
 					</S.Menu>

@@ -111,6 +111,7 @@ declare module 'styled-components' {
 			tooltipBackgroundColor: string;
 
 			// Dropdowns
+			dropdownColor: string;
 			dropdownBackgroundColor: string;
 			dropdownHoverBackgroundColor: string;
 			dropdownActiveBackgroundColor: string;
