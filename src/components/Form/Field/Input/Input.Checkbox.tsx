@@ -87,6 +87,7 @@ const Checkbox = React.forwardRef(
 			<SCheckbox readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={checkboxId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					{/*
+					// ReakitCheckbox is not based HTMLInputElement
 					// @ts-ignore */}
 					<ReakitCheckbox
 						id={checkboxId}
