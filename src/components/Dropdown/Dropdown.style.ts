@@ -86,7 +86,7 @@ export const MenuItem = styled(ReakitMenuItem)`
 		margin: 0;
 	}
 
-	span.link__text, .btn__icon + span.btn__text {
+	svg.link__icon.link__icon--external, span.link__text, .btn__icon + span.btn__text {
 		margin-left: ${tokens.space.xs};
 	}
 
