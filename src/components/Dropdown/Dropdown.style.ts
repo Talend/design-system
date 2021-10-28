@@ -63,7 +63,7 @@ export const MenuSeparator = styled(ReakitMenuSeparator)`
 	margin: 0;
 	width: 100%;
 	border-left: none;
-	border-top: none;
+	border-bottom: none;
 	border-color: ${({ theme }) => theme.colors.dropdownSeparatorColor};
 `;
 
