@@ -69,7 +69,7 @@ export const MenuSeparator = styled(ReakitMenuSeparator)`
 
 export const MenuItem = styled(ReakitMenuItem)`
 	width: 100%;
-	display: flex;
+	display: block;
 	min-height: 3rem;
 	padding: 0;
 	padding: ${tokens.space.s} ${tokens.space.m};
@@ -82,20 +82,26 @@ export const MenuItem = styled(ReakitMenuItem)`
 		border: none !important;
 	}
 
-	svg.tc-svg-icon.tc-icon {
+	.btn__icon + .btn__text {
 		margin: 0;
 	}
 
-	svg.link__icon.link__icon--external, span.link__text, .btn__icon + span.btn__text {
+	svg.tc-svg-icon.tc-icon {
+		margin: 0;
+		margin-right: ${tokens.space.xs};
+	}
+
+	svg.link__icon.link__icon--external {
 		margin-left: ${tokens.space.xs};
 	}
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		color: ${({ theme }) => theme.colors.dropdownColor};
 		background-color: ${({ theme }) => theme.colors.dropdownHoverBackgroundColor};
 	}
 
 	&:active {
-		background-color:  ${({ theme }) => theme.colors.dropdownActiveBackgroundColor};
+		background-color: ${({ theme }) => theme.colors.dropdownActiveBackgroundColor};
 	}
 `;
