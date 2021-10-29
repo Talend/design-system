@@ -137,13 +137,6 @@ const Checkbox = React.forwardRef(
 			readOnly,
 		});
 
-		const icon =
-			checkbox.state === 'indeterminate' ? (
-				<Icon name="talend-minus-circle" />
-			) : (
-				checkbox.state && <Icon name="talend-check" />
-			);
-
 		return (
 			<SCheckbox readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={checkboxId} style={readOnly ? { pointerEvents: 'none' } : {}}>
