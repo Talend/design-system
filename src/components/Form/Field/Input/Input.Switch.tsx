@@ -111,6 +111,7 @@ const Switch = React.forwardRef(
 			<SSwitch readOnly={!!readOnly} checked={!!checkbox.state} disabled={!!disabled}>
 				<label htmlFor={switchId} style={readOnly ? { pointerEvents: 'none' } : {}}>
 					{/*
+					// ReakitCheckbox is not based on HTMLInputElement despite working like one
 					// @ts-ignore */}
 					<ReakitCheckbox
 						id={switchId}
