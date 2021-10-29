@@ -66,7 +66,7 @@ const Field = React.forwardRef(
 
 		const { id: reakitId } = useId();
 		const fieldId = id || `field--${reakitId}`;
-		const fieldDescriptionId = `field__description--${id || reakitId}`;
+		const fieldDescriptionId = `field__description--${reakitId}`;
 
 		const { multiple, type = '' } = rest;
 		const inline = ['checkbox', 'radio'].includes(type);
