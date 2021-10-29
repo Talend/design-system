@@ -139,6 +139,9 @@ export const InlineStyle = styled.div.attrs<{
 
 	--t-form-radio-background-color: ${({ theme }) => theme.colors.inputRadioBackgroundColor};
 
+	--t-form-checkbox-background-image--indeterminate: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMTIgMTIiPgogIDxyZWN0IHg9IjMiIHk9IjUiIHdpZHRoPSI2IiBoZWlnaHQ9IjIiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K');
+	--t-form-checkbox-background-image--checked: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc3R5bGU9ImZpbGw6IHdoaXRlIj4KCTxwYXRoIGQ9Ik02IDE0TDAgOGwxLjktMS45TDYgMTAuMiAxNC4xIDIgMTYgMy45eiI+PC9wYXRoPgo8L3N2Zz4=');
+
 	--t-form-group-color: ${({ theme }) => theme.colors.fieldGroupColor};
 	--t-form-group-background-color: ${({ theme }) => theme.colors.fieldGroupBackgroundColor};
 	--t-form-group-interactive-color: ${({ theme }) => theme.colors.fieldGroupInteractiveColor};

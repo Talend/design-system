@@ -29,11 +29,6 @@ export const SCheckbox = styled(InlineStyle)<{
 			border-radius: 0.2rem;
 		}
 
-		&::after,
-		+ *::after {
-			background-size: contain;
-		}
-
 		// Indeterminate Checkboxes style
 		&[aria-checked='mixed'] {
 			&::before,
@@ -47,7 +42,8 @@ export const SCheckbox = styled(InlineStyle)<{
 				margin: 0;
 				width: 1.4rem;
 				height: 1.4rem;
-				background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciICB2aWV3Qm94PSIwIDAgMTIgMTIiPgogIDxyZWN0IHg9IjMiIHk9IjUiIHdpZHRoPSI2IiBoZWlnaHQ9IjIiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgo8L3N2Zz4K');
+				mask-image: var(--t-form-checkbox-background-image--indeterminate);
+				background: var(--t-form-background-color);
 			}
 		}
 
@@ -63,7 +59,8 @@ export const SCheckbox = styled(InlineStyle)<{
 				margin: 0.1rem;
 				width: calc(1.4rem - 2 * 0.1rem);
 				height: calc(1.4rem - 2 * 0.1rem);
-				background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc3R5bGU9ImZpbGw6IHdoaXRlIj4KCTxwYXRoIGQ9Ik02IDE0TDAgOGwxLjktMS45TDYgMTAuMiAxNC4xIDIgMTYgMy45eiI+PC9wYXRoPgo8L3N2Zz4=');
+				mask-image: var(--t-form-checkbox-background-image--checked);
+				background: var(--t-form-background-color);
 			}
 		}
 
@@ -73,39 +70,30 @@ export const SCheckbox = styled(InlineStyle)<{
 				border-color: var(--t-form-border-color--disabled);
 			}
 
-			&[aria-checked='mixed']::before,
-			&[aria-checked='mixed'] + *::before {
-				background-color: var(--t-form-border-color--disabled);
-				border-color: var(--t-form-border-color--disabled);
-			}
-
-			&[aria-checked='true']::before,
-			&[aria-checked='true'] + *::before {
-				background-color: var(--t-form-border-color--disabled);
-				border-color: var(--t-form-border-color--disabled);
+			&[aria-checked='mixed'],
+			&[aria-checked='true'] {
+				&::before,
+				+ *::before {
+					background-color: var(--t-form-border-color--disabled);
+					border-color: var(--t-form-border-color--disabled);
+				}
 			}
 		}
 	}
 
-	&.c-input--read-only input {
-		&::before,
-		+ *::before {
-			background-color: var(--t-form-background-color--readonly);
-			border-color: var(--t-form-border-color--readonly);
-		}
-	}
-
-	&.c-input--read-only.c-input--checked input:checked {
+	&.c-input--read-only input[type='checkbox'] {
 		&::before,
 		+ *::before {
 			background-color: var(--t-form-background-color--readonly);
 			border-color: var(--t-form-border-color--readonly);
 		}
 
-		&::after,
-		+ *::after {
-			mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgc3R5bGU9ImZpbGw6IHdoaXRlIj4KCTxwYXRoIGQ9Ik02IDE0TDAgOGwxLjktMS45TDYgMTAuMiAxNC4xIDIgMTYgMy45eiI+PC9wYXRoPgo8L3N2Zz4=');
-			background: var(--t-form-color--readonly);
+		&[aria-checked='mixed'],
+		&[aria-checked='true'] {
+			&::after,
+			+ *::after {
+				background: var(--t-form-color--readonly);
+			}
 		}
 	}
 `;
