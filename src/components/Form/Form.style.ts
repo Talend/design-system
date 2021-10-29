@@ -27,4 +27,3 @@ export const Form = styled.form.attrs({
 	.c-inline-message {
 		margin-bottom: ${tokens.space.s};
 	}
-`;
