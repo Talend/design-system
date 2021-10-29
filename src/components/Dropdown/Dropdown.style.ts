@@ -44,13 +44,13 @@ export const Menu = styled(ReakitMenu)`
 export const AnimatedMenu = styled.div`
 	max-height: 32rem;
 	overflow: auto;
-	padding: ${tokens.space.xs} ${tokens.space.none};
+	padding: ${tokens.space.none};
 	min-width: 15rem;
 	max-width: 25rem;
 	background: ${({ theme }) => theme.colors.dropdownBackgroundColor};
 	border-radius: ${tokens.radii.rectRadius};
 	border: 0;
-	box-shadow: ${tokens.shadows.above};
+	box-shadow: ${tokens.shadows.onTop};
 	opacity: ${tokens.opacity.transparent};
 	transition: opacity ${tokens.transitions.normal};
 
@@ -68,31 +68,18 @@ export const MenuSeparator = styled(ReakitMenuSeparator)`
 `;
 
 export const MenuItem = styled(ReakitMenuItem)`
-	width: 100%;
-	display: block;
-	min-height: 3rem;
-	padding: 0;
-	padding: ${tokens.space.s} ${tokens.space.m};
-	color: ${({ theme }) => theme.colors.dropdownColor};
-	text-align: start;
-	cursor: pointer;
+	display: flex;
 	align-items: center;
+	justify-content: start;
+	width: 100%;
+	min-height: ${tokens.sizes.xxl};
+	padding: ${tokens.space.none} ${tokens.space.s};
+	color: ${({ theme }) => theme.colors.dropdownColor};
 
-	.link__text {
-		border: none !important;
-	}
-
-	.btn__icon + .btn__text {
-		margin: 0;
-	}
-
-	svg.tc-svg-icon.tc-icon {
-		margin: 0;
-		margin-right: ${tokens.space.xs};
-	}
-
-	svg.link__icon.link__icon--external {
-		margin-left: ${tokens.space.xs};
+	// Bootstrap
+	& {
+		white-space: normal;
+		text-align: start;
 	}
 
 	&:hover,
@@ -103,5 +90,18 @@ export const MenuItem = styled(ReakitMenuItem)`
 
 	&:active {
 		background-color: ${({ theme }) => theme.colors.dropdownActiveBackgroundColor};
+	}
+
+	.btn__text,
+	.link__text {
+		justify-content: start;
+		font-weight: ${tokens.fontWeights.normal};
+		border: none;
+	}
+
+	> svg:first-child {
+		margin-bottom: 0;
+		width: ${tokens.sizes.l};
+		height: ${tokens.sizes.l};
 	}
 `;
