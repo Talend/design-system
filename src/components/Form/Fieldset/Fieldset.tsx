@@ -13,8 +13,7 @@ const Fieldset = React.forwardRef(
 		{ legend, children, disabled, readOnly, required, ...rest }: FieldsetProps,
 		ref: React.Ref<HTMLFieldSetElement>,
 	) => {
-		const childrenProps: { readOnly?: boolean } = {};
-		if (readOnly) childrenProps.readOnly = true;
+		const childrenProps = readOnly ? { readOnly: true } : {};
 		return (
 			<S.Fieldset disabled={disabled} {...rest} ref={ref}>
 				{legend && (
