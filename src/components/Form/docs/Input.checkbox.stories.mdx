@@ -65,8 +65,6 @@ Use a checkbox when you want to give your recipients the opportunity to select m
 
 ### Read only
 
-`:readonly` differs from `:disabled` in a major way: a `:readonly` value is sent on submit, not a `:disabled` one. But because `[type="checkbox"]` has no native support for `:readonly`, we implemented a custom behavior using `[type:"hidden"]`. The only drawback is that the value is sent as a string.
-
 <Canvas>
 	<Story name="read-only">
 		<Form.Checkbox label="Read-Only Checkbox" readOnly />

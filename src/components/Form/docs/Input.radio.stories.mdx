@@ -59,8 +59,6 @@ Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-stor
 
 ### Read only
 
-`:readonly` differs from `:disabled` in a major way: a `:readonly` value is sent on submit, not a `:disabled` one. But because `[type="radio"]` has no native support for `:readonly`, we implemented a custom behavior using `[type:"hidden"]`. The only drawback is that the value is sent as a string.
-
 <Canvas>
 	<Story name="read-only">
 		<Form.Radio label="Read-Only Radio" readOnly />
