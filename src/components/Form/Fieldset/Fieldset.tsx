@@ -22,7 +22,7 @@ const Fieldset = React.forwardRef(
 						{required && '*'}
 					</S.Legend>
 				)}
-				{React.Children.toArray(children).map((child, key) =>
+				{React.Children.toArray(children).map((child) =>
 					isElement(child) ? React.cloneElement(child, childrenProps) : child,
 				)}
 			</S.Fieldset>
