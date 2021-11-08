@@ -57,7 +57,7 @@ The `[data-test]` attributes here are an addition to what the product team can p
 - For a filter of a list
   `[data-test="search.input"]`
 
-- For a `Switch` with three options, which it uses radio buttons under the hood
+- For a `Switch` with three options, which uses radio buttons under the hood
   `[data-test="switch.radio[1]"]` `[data-test="switch.radio[2]"]` `[data-test="switch.radio[3]"]`
 
 All of this will be part of the documentation (see below) and each of them will be used in [Cypress component testing](https://docs.cypress.io/guides/component-testing/introduction) in our Design System codebase.
