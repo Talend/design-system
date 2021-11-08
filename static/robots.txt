@@ -1,0 +1,2 @@
+User-agent: Algolia Crawler
+Allow: /?path=/docs/*
