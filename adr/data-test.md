@@ -10,7 +10,8 @@ QA teams lean on HTML ID attributes or XPath to automate tests on UI, and update
 
 ## Solutions
 
-Systematically enforce [data-test] attributes for QA purpose in the components or layout markup that require them.
+Systematically enforce [data-test] attributes for QA purpose in the components or layout markup that require them. 
+They will be **mandatory for each interactive element**, at least.
 We see two benefits to that pattern:
 
 1 — Better documentation. The single data attribute act as a contract with our QA team and it's easy to find which components are under that contract.
