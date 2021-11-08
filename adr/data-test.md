@@ -10,9 +10,12 @@ QA teams lean on HTML ID attributes or XPath to automate tests on UI, and update
 
 ## Solutions
 
-Expose [data-test] attributes for QA purpose suggest in the components or layout markup.
-1 — By documenting them, the first benefit will be to act on a contract with our QA team.
-2 — By using them, after all, the second benefit will also be to perform component testing.
+Systematically enforce [data-test] attributes for QA purpose in the components or layout markup that require them.
+We see two benefits to that pattern:
+
+1 — Better documentation. The single data attribute act as a contract with our QA team and it's easy to find which components are under that contract.
+
+2 — Easier of use. Component testing becomes more straightforward as the same pattern can be expected on all design system components.
 
 ```css
 [data-test="<block_name>.<element_type>[?<element_index>].<?element_identifier>"]
