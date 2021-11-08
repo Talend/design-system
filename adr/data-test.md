@@ -1,4 +1,4 @@
-# [data-test] attributes
+# Use [data-test] attributes for generic automated tests
 
 ## Context
 
