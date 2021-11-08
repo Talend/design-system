@@ -34,9 +34,11 @@ We need to precise something,
 > It seems we can't determine if we will use the input for a `first name` or an `API key name`.
 > That's why we need to **keep it simple and stupid**.
 
-Keep in mind that the Product teams can add `[data-testid]` to give a more comprehensive identifier.
-The ones we embed are here in addition to what the product team can provide.
-`[data-test]` are just the default ones that we can agree on, to be able to write E2E tests without worrying about the HTML markup or the CSS.
+For more specific testing, Product teams can add `[data-testid]` in their implementation of the shared components and use a more comprehensive identifier there.
+
+The `[data-test]` attributes here are an addition to what the product team can provide.
+
+`[data-test]` attributes are the default that we can agree on, enabling to write E2E tests without worrying about the HTML markup or the CSS.
 
 ### Examples
 
