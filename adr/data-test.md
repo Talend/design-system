@@ -28,11 +28,13 @@ We see two benefits to that pattern:
 | `element_index`      | yes      | Element index if it's repeated (radio, menu items, etc.)                                                                                                         |
 | `element_identifier` | yes      | A short and comprehensive identifier when we talk about it each other, in case of a form field we can reuse its label value (reveal, cancel, edit, submit, etc.) |
 
-We need to precise something,
+Stick to this ruleset but keep in mind:
 
-> To decide which values to use and to live in the Design System, we definitively have to be **context agnostic**.
-> It seems we can't determine if we will use the input for a `first name` or an `API key name`.
-> That's why we need to **keep it simple and stupid**.
+> This ruleset applies to Design System components: we definitively have to be **context agnostic**.
+> If we're testing a text input, it could for instance be used for a `first name` or an `API key name`.
+> That's why we need to **keep it simple and stupid** when naming things.
+
+Describe the pattern, not the specific one-shot use you will use it for.
 
 For more specific testing, Product teams can add `[data-testid]` in their implementation of the shared components and use a more comprehensive identifier there.
 
