@@ -26,7 +26,7 @@ We see two benefits to that pattern:
 | `block_name`         |          | Component or layout identifier from our design language (ex: modal, search, password, inlineediting, etc.)                                                       |
 | `element_type`       |          | Element or its type used (ex: button, link, input, textarea, radio, etc.)                                                                                        |
 | `element_index`      | yes      | Element index if it's repeated (radio, menu items, etc.)                                                                                                         |
-| `element_identifier` | yes      | A short and comprehensive identifier when we talk about it each other, in case of a form field we can reuse its label value (reveal, cancel, edit, submit, etc.) |
+| `element_identifier` | yes      | A short and comprehensive identifier. In case of a form field, we can use its label value (reveal, cancel, edit, submit, etc.) for instance. |
 
 Stick to this ruleset but keep in mind:
 
