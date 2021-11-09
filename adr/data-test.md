@@ -16,7 +16,7 @@ We see two benefits to that pattern:
 
 1 — Better documentation. The single data attribute acts as a contract with our QA team and it's easy to find which components are under that contract.
 
-2 — Easier of use. Component testing becomes more straightforward as the same pattern can be expected on all design system components.
+2 — Ease of use. Component testing becomes more straightforward as the same pattern can be expected on all design system components.
 
 ```css
 [data-test="<block_name>.<element_type>[?<element_index>].<?element_identifier>"]
