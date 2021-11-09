@@ -1,201 +1,70 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=welcome&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=getting-started&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=component-catalog&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=design-tokens-design-tokens&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=themes-themes&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=content-voice-and-tone&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=content-internationalization&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=content-style-conventions&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=content-capitalization&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=content-wording&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-accordion&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-button&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-combobox&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-divider&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-drawer&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-dropdown&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-form&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-form-fieldset&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-form-field&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-form-field-group&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-password&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-checkbox&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-color&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-copy&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-datalist&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-date&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-datetime-local&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-email&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-file&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-month&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-number&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-radio&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-range&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-search&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-select&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-text&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-switch&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-tel&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-textarea&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-time&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-url&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-fields-week&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-form-form-buttons&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-headerbar&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-icon&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-inline-editing&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-inline-message&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-link&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-loading&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-menu&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-modal&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-popover&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-skeleton&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-stepper-stepper&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-stepper-step&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-status&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-switch&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-tabs&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-tag&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-toggle&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-tooltip&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=components-visuallyhidden&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=principles&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=component-status&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=templates-templates&viewMode=docs</loc>
-  </url>
-  <url>
-    <loc>https://design.talend.com/iframe.html?id=pages-pages&viewMode=docs</loc>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://design.talend.com/?path=/docs/welcome</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/getting-started</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/component-catalog</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/design-tokens-design-tokens</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/themes-themes</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/content-voice-and-tone</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/content-internationalization</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/content-style-conventions</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/content-capitalization</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/content-wording</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-accordion</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-button</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-combobox</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-divider</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-drawer</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-dropdown</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-form</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-form-fieldset</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-form-field</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-form-field-group</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-password</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-checkbox</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-color</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-copy</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-datalist</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-date</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-datetime-local</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-email</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-file</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-month</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-number</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-radio</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-range</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-search</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-select</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-text</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-switch</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-tel</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-textarea</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-time</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-url</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-fields-week</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-form-form-buttons</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-headerbar</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-icon</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-inline-editing</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-inline-message</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-link</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-loading</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-menu</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-modal</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-popover</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-skeleton</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-stepper-stepper</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-stepper-step</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-status</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-switch</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-tabs</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-tag</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-toggle</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-tooltip</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/components-visuallyhidden</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/principles</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/component-status</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/templates-templates</loc></url>
+<url><loc>https://design.talend.com/?path=/docs/pages-pages</loc></url>
 </urlset>
