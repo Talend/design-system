@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { I18nextProvider } from 'react-i18next';
 import prettier from 'prettier/standalone';
 import prettierBabel from 'prettier/parser-babel';
@@ -106,8 +107,14 @@ export const parameters = {
 					.forEach(link => (link.disabled = !hasBootstrapStylesheet));
 			}, [hasBootstrapStylesheet]);
 
+			console.log(props.context);
+
 			return (
 				<>
+					<Helmet>
+						<title>{props.context.title?.split('/').join(' / ')}</title>
+						<link rel="canonical" href={`/?path=/docs/${props.context.id}`} />
+					</Helmet>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 					<ThemeProvider theme={hasDarkMode ? dark : light}>
 						<ThemeProvider.GlobalStyle />

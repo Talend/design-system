@@ -44,9 +44,11 @@ module.exports = {
 		'../src/templates/**/*.stories.@(js|tsx|mdx)',
 		'../src/pages/**/*.stories.@(js|tsx|mdx)',
 	],
+	staticDirs: ['../public', '../static'],
 	addons: [
 		'@storybook/addon-a11y',
 		'@storybook/addon-essentials',
+		'@storybook/addon-interactions',
 		'@storybook/addon-links',
 		'storybook-addon-mdx-embed',
 	],
