@@ -1,17 +1,16 @@
 import Datalist from './Field/Datalist';
 import Fieldset from './Fieldset';
 import Form from './Form';
+import Row from './Row';
 import Buttons from './Buttons';
 import Input from './Field/Input';
-import InputGroup from './Field/InputGroup';
+import FieldGroup from './FieldGroup';
 import Label from './Label';
 import Select from './Field/Select';
 import Textarea from './Field/Textarea';
 
-import * as S from './Form.style';
-
 export const FormComponent = Form as typeof Form & {
-	Row: typeof S.Row;
+	Row: typeof Row;
 	Color: typeof Input.Color;
 	Checkbox: typeof Input.Checkbox;
 	Datalist: typeof Datalist;
@@ -22,7 +21,7 @@ export const FormComponent = Form as typeof Form & {
 	File: typeof Input.File;
 	Hidden: typeof Input.Hidden;
 	Copy: typeof Input.Copy;
-	InputGroup: typeof InputGroup;
+	FieldGroup: typeof FieldGroup;
 	Label: typeof Label;
 	Month: typeof Input.Month;
 	Number: typeof Input.Number;
@@ -41,7 +40,7 @@ export const FormComponent = Form as typeof Form & {
 	Buttons: typeof Buttons;
 };
 
-FormComponent.Row = S.Row;
+FormComponent.Row = Row;
 
 FormComponent.Color = Input.Color;
 FormComponent.Checkbox = Input.Checkbox;
@@ -53,7 +52,7 @@ FormComponent.Fieldset = Fieldset;
 FormComponent.File = Input.File;
 FormComponent.Hidden = Input.Hidden;
 FormComponent.Copy = Input.Copy;
-FormComponent.InputGroup = InputGroup;
+FormComponent.FieldGroup = FieldGroup;
 FormComponent.Label = Label;
 FormComponent.Month = Input.Month;
 FormComponent.Number = Input.Number;
