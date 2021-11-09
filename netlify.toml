@@ -14,4 +14,4 @@ package = "@netlify/plugin-sitemap"
 
     [plugins.inputs]
     buildDir = "storybook-static"
-    prettyURLs = true
+    filePath = "netlify/sitemap.xml"
