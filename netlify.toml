@@ -13,5 +13,5 @@ package = "@algolia/netlify-plugin-crawler"
 package = "@netlify/plugin-sitemap"
 
     [plugins.inputs]
-    buildDir = "static"
+    buildDir = "storybook-static"
     prettyURLs = true

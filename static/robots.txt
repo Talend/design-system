@@ -1,4 +1,3 @@
 User-agent: Algolia Crawler
-Disallow: /?path=
 Disallow: /?*viewMode=story*
 Allow: /iframe.html?*viewMode=docs*
