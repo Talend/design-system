@@ -7,3 +7,7 @@
     branches = ['master', 'frassinier/chore/storybook/algolia']
     customDomain = "design.talend.com"
     renderJavaScript = true
+  package = "@netlify/plugin-sitemap"
+    [plugins.inputs]
+    buildDir = "static"
+    prettyURLs = true
