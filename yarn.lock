@@ -1735,6 +1735,17 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@jest/types@^27.2.5":
+  version "27.2.5"
+  resolved "https://registry.yarnpkg.com/@jest/types/-/types-27.2.5.tgz#420765c052605e75686982d24b061b4cbba22132"
+  integrity sha512-nmuM4VuDtCZcY+eTpw+0nvstwReMsjPoj7ZR80/BbixulhLaiX+fbv8oeLW8WZlJMcsGQsTmMKT/iTZu1Uy/lQ==
+  dependencies:
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    "@types/istanbul-reports" "^3.0.0"
+    "@types/node" "*"
+    "@types/yargs" "^16.0.0"
+    chalk "^4.0.0"
+
 "@manypkg/find-root@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@manypkg/find-root/-/find-root-1.1.0.tgz#a62d8ed1cd7e7d4c11d9d52a8397460b5d4ad29f"
@@ -2051,6 +2062,24 @@
     core-js "^3.8.2"
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
+
+"@storybook/addon-interactions@6.4.0-beta.31":
+  version "6.4.0-beta.31"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-interactions/-/addon-interactions-6.4.0-beta.31.tgz#429b7966d3a61437004d07c0cba4baee90e40ffa"
+  integrity sha512-bymPBiejvJ7asBg3E/1DGOzPXTTMsW9BJlZw17BBhUBT7udg+b5qauPRp2O0Arz+4b0064YNdDt9o/xQ8MRgSw==
+  dependencies:
+    "@storybook/addons" "6.4.0-beta.31"
+    "@storybook/api" "6.4.0-beta.31"
+    "@storybook/components" "6.4.0-beta.31"
+    "@storybook/core-common" "6.4.0-beta.31"
+    "@storybook/core-events" "6.4.0-beta.31"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/instrumenter" "6.4.0-beta.31"
+    "@storybook/theming" "6.4.0-beta.31"
+    global "^4.4.0"
+    jest-mock "^27.0.6"
+    polished "^4.0.5"
+    ts-dedent "^2.2.0"
 
 "@storybook/addon-links@6.4.0-beta.31":
   version "6.4.0-beta.31"
@@ -2515,6 +2544,16 @@
   integrity sha512-ajk1Uxa+rBpFQHKrCcTmJyQBXZ5slfwHVEaKlkuFaW77it8RgbPJp/ccna3sgoi8oZ7FkkOyvv1Ve4SmwFqRqw==
   dependencies:
     lodash "^4.17.15"
+
+"@storybook/instrumenter@6.4.0-beta.31":
+  version "6.4.0-beta.31"
+  resolved "https://registry.yarnpkg.com/@storybook/instrumenter/-/instrumenter-6.4.0-beta.31.tgz#dda54ae569aa356408f85dece86916b88486197c"
+  integrity sha512-iHcCfNCLdlLCm4mqzHnz25hjo6Ro7exWzUoCvpPerwJVcYQ65OKl9wJuwtFbIQCSi4YNlKtElv4WG+a6LDJPAQ==
+  dependencies:
+    "@storybook/addons" "6.4.0-beta.31"
+    "@storybook/client-logger" "6.4.0-beta.31"
+    "@storybook/core-events" "6.4.0-beta.31"
+    global "^4.4.0"
 
 "@storybook/manager-webpack4@6.4.0-beta.31":
   version "6.4.0-beta.31"
@@ -10101,6 +10140,14 @@ jest-mock@^26.6.2:
     "@jest/types" "^26.6.2"
     "@types/node" "*"
 
+jest-mock@^27.0.6:
+  version "27.3.0"
+  resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-27.3.0.tgz#ddf0ec3cc3e68c8ccd489bef4d1f525571a1b867"
+  integrity sha512-ziZiLk0elZOQjD08bLkegBzv5hCABu/c8Ytx45nJKkysQwGaonvmTxwjLqEA4qGdasq9o2I8/HtdGMNnVsMTGw==
+  dependencies:
+    "@jest/types" "^27.2.5"
+    "@types/node" "*"
+
 jest-pnp-resolver@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.2.tgz#b704ac0ae028a89108a4d040b3f919dfddc8e33c"
@@ -15466,7 +15513,7 @@ trough@^1.0.0:
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
-ts-dedent@^2.0.0:
+ts-dedent@^2.0.0, ts-dedent@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/ts-dedent/-/ts-dedent-2.2.0.tgz#39e4bd297cd036292ae2394eb3412be63f563bb5"
   integrity sha512-q5W7tVM71e2xjHZTlgfTDoPF/SmqKG5hddq9SzR49CH2hayqRKJtQ4mtRlSxKaJlR/+9rEM+mnBHf7I2/BQcpQ==
