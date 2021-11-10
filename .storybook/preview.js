@@ -107,8 +107,6 @@ export const parameters = {
 					.forEach(link => (link.disabled = !hasBootstrapStylesheet));
 			}, [hasBootstrapStylesheet]);
 
-			console.log(props.context);
-
 			return (
 				<>
 					<Helmet>
