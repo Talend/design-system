@@ -25,7 +25,6 @@
     --coralColorPrimaryBackgroundStrong: hsla(204,95%,31%,1);
     --coralColorPrimaryBackgroundStrongHover: hsla(204,95%,23%,1);
     --coralColorPrimaryBackgroundStrongActive: hsla(205,95%,15%,1);
-    --coralColorPrimaryBorder: hsla(204,95%,31%,1);
     --coralColorPrimaryBorderHover: hsla(204,95%,23%,1);
     --coralColorPrimaryBorderActive: hsla(205,95%,15%,1);
     --coralColorDangerTextWeak: hsla(0,0%,100%,1);
@@ -106,6 +105,7 @@
     --coralColorChartsNegative: hsla(359,51%,52%,1);
     --coralColorBrandingStitch: hsla(48,100%,50%,1);
     --coralColorBrandingTwilight: linear-gradient(90deg,hsla(210,62%,26%,1) 0%, hsla(254,47%,23%,1) 100%);    
+    --coralColorBrandingNavigation: linear-gradient(90deg,hsla(210,62%,26%,1) 0%, hsla(254,47%,23%,1) 100%);    
     --coralSizeXxs: 0.4rem;    
     --coralSizeXs: 0.8rem;    
     --coralSizeS: 1.2rem;    
