@@ -9,9 +9,7 @@ ${Array.from(
 	new Set(
 		Object.values(data.stories).map(
 			({ id }) =>
-				`<url><loc>https://design.talend.com/iframe.html?id=${
-					id.split('--')[0]
-				}&amp;viewMode=docs</loc></url>`,
+				`<url><loc>https://design.talend.com/iframe.html?id=${id}&amp;viewMode=docs</loc></url>`,
 		),
 	),
 ).join('\n')}
