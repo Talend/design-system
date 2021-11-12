@@ -3,15 +3,7 @@
 
 [[plugins]]
 package = "@algolia/netlify-plugin-crawler"
-
     [plugins.inputs]
     branches = ['master', 'frassinier/chore/storybook/algolia']
     customDomain = "design.talend.com"
     renderJavaScript = true
-
-[[plugins]]
-package = "@netlify/plugin-sitemap"
-
-    [plugins.inputs]
-    buildDir = "storybook-static"
-    filePath = "sitemap.netlify.xml"
