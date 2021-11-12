@@ -13,7 +13,7 @@
     "start": "npm run storybook",
     "test": "talend-scripts test",
     "storybook": "npm run build:lib && BROWSER=none start-storybook -p 6006",
-    "build-storybook": "npm run build:lib && build-storybook --docs",
+    "build-storybook": "npm run build:lib && build-storybook --docs && node ./scripts/sitemap.js",
     "extract-i18n": "i18next-scanner --config i18next-scanner.config.js",
     "lint:es": "talend-scripts lint:es"
   },
