@@ -113,7 +113,7 @@ export const parameters = {
 			return (
 				<>
 					<Helmet>
-						<title>{title?.replace(/\//, ' / ')}</title>
+						<title>{title?.replaceAll(/\//gi, ' / ')}</title>
 						{titleArray.length > 1 && <meta property="article:section" value={titleArray[0]} />}
 					</Helmet>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
