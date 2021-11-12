@@ -41,6 +41,7 @@
     "typeface-source-sans-pro": "^1.1.13"
   },
   "devDependencies": {
+    "@algolia/autocomplete-js": "^1.5.0",
     "@babel/core": "^7.12.10",
     "@changesets/cli": "^2.14.1",
     "@cypress/react": "^5.4.0",
@@ -67,6 +68,7 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-is": "^16.7.2",
     "@types/styled-components": "^5.1.7",
+    "algoliasearch": "^4.11.0",
     "babel-plugin-styled-components": "^1.12.0",
     "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.3.0",

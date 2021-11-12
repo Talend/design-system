@@ -1,3 +1,4 @@
+import Algolia from './Algolia.component';
 import Area from './Area.component';
 import Card from './Card.component';
 import Col from './Col.component';
@@ -16,6 +17,7 @@ import { Icons } from './Icons.component';
 import WithSelector from './WithSelector.component';
 
 export {
+	Algolia,
 	Area,
 	Card,
 	Col,
