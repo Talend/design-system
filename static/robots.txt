@@ -1,4 +1,5 @@
 User-agent: Algolia Crawler
+Disallow: /?path=/docs/*
 Disallow: /?path=/story/*
 Disallow: *viewMode=story*
 Disallow: *viewMode=story$

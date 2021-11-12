@@ -5,6 +5,9 @@ export function Item({ hit, components }) {
 		<a href={hit.url} target="_parent" className="aa-ItemLink">
 			<div className="aa-ItemContent">
 				<div className="aa-ItemTitle">
+					<div>
+						<strong>{hit.title}</strong>
+					</div>
 					<components.Highlight hit={hit} attribute="content" />
 				</div>
 			</div>

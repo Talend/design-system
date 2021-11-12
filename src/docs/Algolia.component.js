@@ -13,30 +13,28 @@ function Algolia() {
 	return (
 		<div style={{ maxWidth: '33%', margin: '0 auto' }}>
 			<Autocomplete
-				getSources={({ query }) =>
-					console.log(query) || [
-						{
-							sourceId: 'pages',
-							getItems() {
-								return getAlgoliaResults({
-									searchClient,
-									queries: [
-										{
-											indexName:
-												'netlify_d6d66424-7754-4257-bb5e-cc6de2f9d9aa_frassinier-chore-storybook-algolia_all',
-											query,
-										},
-									],
-								});
-							},
-							templates: {
-								item({ item, components }) {
-									return <Item hit={item} components={components} />;
-								},
+				getSources={({ query }) => [
+					{
+						sourceId: 'pages',
+						getItems() {
+							return getAlgoliaResults({
+								searchClient,
+								queries: [
+									{
+										indexName:
+											'netlify_d6d66424-7754-4257-bb5e-cc6de2f9d9aa_frassinier-chore-storybook-algolia_all',
+										query,
+									},
+								],
+							});
+						},
+						templates: {
+							item({ item, components }) {
+								return <Item hit={item} components={components} />;
 							},
 						},
-					]
-				}
+					},
+				]}
 			/>
 		</div>
 	);
