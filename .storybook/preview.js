@@ -114,7 +114,7 @@ export const parameters = {
 				<>
 					<Helmet>
 						<title>{title?.replace(/\//, ' / ')}</title>
-						{titleArray.length > 1 && <meta property="article:section" value={titleArray[1]} />}
+						{titleArray.length > 1 && <meta property="article:section" value={titleArray[0]} />}
 					</Helmet>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 					<ThemeProvider theme={hasDarkMode ? dark : light}>
