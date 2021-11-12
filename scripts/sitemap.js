@@ -5,14 +5,16 @@ try {
 	const data = JSON.parse(json);
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${Array.from(
-	new Set(
-		Object.values(data.stories).map(
-			({ id }) =>
-				`<url><loc>https://design.talend.com/iframe.html?id=${id}&amp;viewMode=docs</loc></url>`,
-		),
-	),
-).join('\n')}
+${Object.values(data.stories)
+	.reduce((acc, next) => {
+		const { id } = next;
+		if (!acc.some(storyId => storyId.split('--')[0] === id.split('--')[0])) acc.push(next.id);
+		return acc;
+	}, [])
+	.map(
+		id => `<url><loc>https://design.talend.com/iframe.html?id=${id}&amp;viewMode=docs</loc></url>`,
+	)
+	.join('\n')}
 </urlset>`;
 
 	fs.writeFile('./static/sitemap.xml', sitemap, err => {

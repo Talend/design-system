@@ -112,10 +112,6 @@ export const parameters = {
 					<>
 						<Helmet>
 							<title>{props.context.title?.replace('/', ' / ')}</title>
-							<link
-								rel="canonical"
-								href={`https://design.talend.com/iframe.html?id=${props.context.id}`}
-							/>
 						</Helmet>
 						<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 						<ThemeProvider theme={hasDarkMode ? dark : light}>
