@@ -107,49 +107,51 @@ export const parameters = {
 					.forEach(link => (link.disabled = !hasBootstrapStylesheet));
 			}, [hasBootstrapStylesheet]);
 
+			const title = props.context.title;
+			const titleArray = title?.split('/');
+
 			return (
-				console.log(props) || (
-					<>
-						<Helmet>
-							<title>{props.context.title?.replace('/', ' / ')}</title>
-						</Helmet>
-						<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
-						<ThemeProvider theme={hasDarkMode ? dark : light}>
-							<ThemeProvider.GlobalStyle />
-							<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
-						</ThemeProvider>
-						<TableOfContents>
-							{['component', 'template', 'page'].find(term =>
-								props.context.title?.split('/')[0].toLocaleLowerCase().includes(term),
-							) && (
-								<ThemeProvider>
-									<Divider />
-									<Form.Switch
-										label={'Dark mode'}
-										onChange={() => {
-											setDarkMode(!hasDarkMode);
-										}}
-										checked={hasDarkMode}
-									/>
-									<Form.Switch
-										label={'Bootstrap stylesheet'}
-										onChange={() => setBootstrapStylesheet(!hasBootstrapStylesheet)}
-										checked={!!hasBootstrapStylesheet}
-									/>
-									{/*
+				<>
+					<Helmet>
+						<title>{title?.replace(/\//, ' / ')}</title>
+						{titleArray.length > 1 && <meta property="article:section" value={titleArray[1]} />}
+					</Helmet>
+					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
+					<ThemeProvider theme={hasDarkMode ? dark : light}>
+						<ThemeProvider.GlobalStyle />
+						<StorybookGlobalStyle hasFigmaIframe={hasFigmaIframe} />
+					</ThemeProvider>
+					<TableOfContents>
+						{['component', 'template', 'page'].find(term =>
+							titleArray[0].toLocaleLowerCase().includes(term),
+						) && (
+							<ThemeProvider>
+								<Divider />
+								<Form.Switch
+									label={'Dark mode'}
+									onChange={() => {
+										setDarkMode(!hasDarkMode);
+									}}
+									checked={hasDarkMode}
+								/>
+								<Form.Switch
+									label={'Bootstrap stylesheet'}
+									onChange={() => setBootstrapStylesheet(!hasBootstrapStylesheet)}
+									checked={!!hasBootstrapStylesheet}
+								/>
+								{/*
 								<Form.Switch
 									label={'Figma iframes'}
 									onChange={() => setFigmaIframe(!hasFigmaIframe)}
 									checked={!!hasFigmaIframe}
 								/>
 								*/}
-								</ThemeProvider>
-							)}
-						</TableOfContents>
-						<DocsContainer {...props} />
-						<BackToTop />
-					</>
-				)
+							</ThemeProvider>
+						)}
+					</TableOfContents>
+					<DocsContainer {...props} />
+					<BackToTop />
+				</>
 			);
 		},
 		source: {

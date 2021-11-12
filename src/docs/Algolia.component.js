@@ -3,16 +3,16 @@ import algoliasearch from 'algoliasearch';
 import { getAlgoliaResults } from '@algolia/autocomplete-js';
 
 import { Autocomplete } from './AlgoliaAutocomplete.component';
-import { Item } from './AlgoliaAutocompleteItem.component';
+import { Item } from './AlgoliaItem.component';
 
-const appId = '9MAEU8VF6E';
-const apiKey = '1ccc24ce1685b14139d476bc26f79802';
-const searchClient = algoliasearch(appId, apiKey);
+const searchClient = algoliasearch('9MAEU8VF6E', '1ccc24ce1685b14139d476bc26f79802');
 
 function Algolia() {
 	return (
 		<div style={{ maxWidth: '33%', margin: '0 auto' }}>
 			<Autocomplete
+				openOnFocus
+				placeholder="Search for..."
 				getSources={({ query }) => [
 					{
 						sourceId: 'pages',
