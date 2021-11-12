@@ -11,7 +11,7 @@ ${Array.from(
 			({ id }) =>
 				`<url><loc>https://design.talend.com/iframe.html?id=${
 					id.split('--')[0]
-				}&viewMode=docs</loc></url>`,
+				}&amp;viewMode=docs</loc></url>`,
 		),
 	),
 ).join('\n')}
