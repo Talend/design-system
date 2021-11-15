@@ -100,7 +100,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextWeak',
+        name: 'coralColorAccentTextWeak',
         type: 'color',
         description: ``,
         hsla: 'hsla(0,0%,100%,1)',
@@ -109,7 +109,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextWeakHover',
+        name: 'coralColorAccentTextWeakHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,59%,88%,1)',
@@ -118,7 +118,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextWeakActive',
+        name: 'coralColorAccentTextWeakActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,60%,75%,1)',
@@ -127,7 +127,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryText',
+        name: 'coralColorAccentText',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,95%,31%,1)',
@@ -136,7 +136,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextHover',
+        name: 'coralColorAccentTextHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,96%,18%,1)',
@@ -145,7 +145,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextActive',
+        name: 'coralColorAccentTextActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,94%,13%,1)',
@@ -154,7 +154,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackground',
+        name: 'coralColorAccentBackground',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,59%,88%,1)',
@@ -163,7 +163,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundHover',
+        name: 'coralColorAccentBackgroundHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,60%,75%,1)',
@@ -172,7 +172,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundActive',
+        name: 'coralColorAccentBackgroundActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,60%,63%,1)',
@@ -181,7 +181,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundWeak',
+        name: 'coralColorAccentBackgroundWeak',
         type: 'color',
         description: ``,
         hsla: 'hsla(0,0%,100%,1)',
@@ -190,7 +190,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundWeakHover',
+        name: 'coralColorAccentBackgroundWeakHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,59%,88%,1)',
@@ -199,7 +199,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundWeakActive',
+        name: 'coralColorAccentBackgroundWeakActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,60%,75%,1)',
@@ -208,7 +208,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundStrong',
+        name: 'coralColorAccentBackgroundStrong',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,95%,31%,1)',
@@ -217,7 +217,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundStrongHover',
+        name: 'coralColorAccentBackgroundStrongHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,95%,23%,1)',
@@ -226,7 +226,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBackgroundStrongActive',
+        name: 'coralColorAccentBackgroundStrongActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,95%,15%,1)',
@@ -235,7 +235,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBorderHover',
+        name: 'coralColorAccentBorderHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,95%,23%,1)',
@@ -244,7 +244,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryBorderActive',
+        name: 'coralColorAccentBorderActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,95%,15%,1)',
@@ -802,7 +802,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextStrong',
+        name: 'coralColorAccentTextStrong',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,96%,18%,1)',
@@ -811,7 +811,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextStrongHover',
+        name: 'coralColorAccentTextStrongHover',
         type: 'color',
         description: ``,
         hsla: 'hsla(204,97%,13%,1)',
@@ -820,7 +820,7 @@ const dictionary = [
         
     },
     {
-        name: 'coralColorPrimaryTextStrongActive',
+        name: 'coralColorAccentTextStrongActive',
         type: 'color',
         description: ``,
         hsla: 'hsla(205,95%,8%,1)',
