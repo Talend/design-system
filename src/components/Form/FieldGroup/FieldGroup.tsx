@@ -108,11 +108,11 @@ const FieldGroup = React.forwardRef(
 									...childrenProps,
 									ref: (node: HTMLInputElement) => {
 										fieldRef.current = node;
-										const { ref: childrenRef } = child as React.PropsWithRef<any>;
-										if (typeof childrenRef === 'function') {
-											childrenRef(node);
-										} else if (childrenRef) {
-											childrenRef.current = node;
+										const { ref: childRef } = child as React.PropsWithRef<any>;
+										if (typeof childRef === 'function') {
+											childRef(node);
+										} else if (childRef) {
+											childRef.current = node;
 										}
 									},
 								}),
