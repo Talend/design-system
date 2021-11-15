@@ -1,4 +1,4 @@
-:root[data-theme="light"], *[data-theme="light"] {
+[data-theme="light"] {
     --coralColorNeutralText: hsla(0,0%,13%,1);
     --coralColorNeutralTextWeak: hsla(0,0%,42%,1);
     --coralColorNeutralTextDisabled: hsla(0,0%,55%,1);
@@ -115,13 +115,13 @@
     --coralSizeLimit: 32rem;    
     --coralElevationShadowM: 0rem 0.2rem 0.6rem 0rem hsla(0,0%,0%,0.3);    
     --coralElevationShadowL: 0rem 0.4rem 0.8rem 0rem hsla(0,0%,0%,0.3);    
-    --coralHeadingL: 400 1.8rem/140% 'Source Sans Pro';
+    --coralHeadingL: 600 1.8rem/140% 'Source Sans Pro';
     --coralParagraphM: 400 1.4rem/140% 'Source Sans Pro';
-    --coralParagraphMBold: 400 1.4rem/140% 'Source Sans Pro';
+    --coralParagraphMBold: 600 1.4rem/140% 'Source Sans Pro';
     --coralParagraphS: 400 1.2rem/140% 'Source Sans Pro';
-    --coralParagraphSBold: 400 1.2rem/140% 'Source Sans Pro';
-    --coralHeadingM: 400 1.6rem/140% 'Source Sans Pro';
-    --coralHeadingS: 400 1.4rem/140% 'Source Sans Pro';
+    --coralParagraphSBold: 600 1.2rem/140% 'Source Sans Pro';
+    --coralHeadingM: 600 1.6rem/140% 'Source Sans Pro';
+    --coralHeadingS: 600 1.4rem/140% 'Source Sans Pro';
     --coralRadiusM: 0.8rem;    
     --coralRadiusL: 1.6rem;    
     --coralRadiusRound: 9999.9rem;    
