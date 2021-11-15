@@ -111,17 +111,6 @@ Use switches to change the state of system functionalities and preferences on or
 						<Form.Switch label="Option e" {...register('option-e', { disabled: true })} />
 						<Form.Switch label="Option f" checked {...register('option-f', { disabled: true })} />
 					</Form.Fieldset>
-					<Form.FieldGroup
-						label="yolo"
-						suffix={<Button.Icon icon="talend-files-o">Copy</Button.Icon>}
-						description="The input seems readonly and the value is not displayed while submitting the form"
-					>
-						<Form.Text
-							label="woot"
-							value={42}
-							{...register('apiKey')}
-						/>
-					</Form.FieldGroup>
 					<Form.Buttons>
 						<Button.Primary type="submit">Submit</Button.Primary>
 					</Form.Buttons>
