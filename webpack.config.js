@@ -1,4 +1,7 @@
 module.exports = {
+	entry: {
+		themes: './src/themes/themes.scss',
+	},
 	module: {
 		rules: [
 			{

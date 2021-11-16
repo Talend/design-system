@@ -2925,6 +2925,19 @@
   dependencies:
     semver "^7.3.5"
 
+"@talend/bootstrap-sass@^3.4.8":
+  version "3.4.8"
+  resolved "https://registry.yarnpkg.com/@talend/bootstrap-sass/-/bootstrap-sass-3.4.8.tgz#a59838af06b3a83ac709cc50d586710d3d08414b"
+  integrity sha512-H93jAhLGleijrH9Rle+EvwgsYKCVIueFLcHH4Fc4rTD7DwtJCRkd2Sb9Rr6oeh9llE0h5JRXvH9IKeZT5s2veQ==
+
+"@talend/bootstrap-theme@^6.38.5":
+  version "6.38.5"
+  resolved "https://registry.yarnpkg.com/@talend/bootstrap-theme/-/bootstrap-theme-6.38.5.tgz#70663cf3bc95d19c6761f65ab0d3acdcdd200461"
+  integrity sha512-eRPV59kNdbYOnKDK2sD5rHEsP5VkTjB/vvhE72NcLYNtcKOCU8xM13d8W7iffOdveSLFe1l3MPrZwdilqWHEYw==
+  dependencies:
+    "@talend/bootstrap-sass" "^3.4.8"
+    "@talend/icons" "^6.36.3"
+
 "@talend/dynamic-cdn-webpack-plugin@^9.7.12":
   version "9.7.12"
   resolved "https://registry.yarnpkg.com/@talend/dynamic-cdn-webpack-plugin/-/dynamic-cdn-webpack-plugin-9.7.12.tgz#3f02a7b869f926a3e2add8ce16d195435acc3e38"
