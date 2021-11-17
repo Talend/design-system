@@ -40,7 +40,6 @@ module.exports = {
 		'../src/content/docs/Wording.stories.@(js|tsx|mdx)',
 		'../src/themes/docs/Light.stories.@(js|tsx|mdx)',
 		'../src/themes/docs/*.stories.@(js|tsx|mdx)',
-		'../src/themes/manager/ThemeManager.stories.@(js|tsx|mdx)',
 		'../src/components/**/*.stories.mdx',
 		'../src/templates/**/*.stories.@(js|tsx|mdx)',
 		'../src/pages/**/*.stories.@(js|tsx|mdx)',
