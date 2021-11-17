@@ -19,6 +19,8 @@ type BaseProps = {
 	hideText?: boolean;
 	/** All buttons must have contents */
 	children: React.ReactNode | React.ReactNodeArray;
+	/** The type of the button */
+	type?: 'button' | 'submit';
 	/** Use these if the button should be an anchor or router link */
 	as?: React.ElementType;
 	/** When hideText is set, a tooltip appears. Use this if you want to customize its position */
@@ -31,7 +33,17 @@ export type ButtonProps = ClickableProps & BaseProps;
 
 const Button = React.forwardRef(
 	(
-		{ className, icon, small, hideText, loading, children, tooltipPlacement, ...rest }: ButtonProps,
+		{
+			className,
+			icon,
+			small,
+			hideText,
+			loading,
+			children,
+			tooltipPlacement,
+			type = 'button',
+			...rest
+		}: ButtonProps,
 		ref: React.Ref<any>,
 	) => {
 		const button = (
@@ -44,6 +56,7 @@ const Button = React.forwardRef(
 				} ${loading ? 'btn--loading' : ''}
 			`}
 				aria-busy={!!loading}
+				type={type}
 			>
 				{loading && <Loading className="btn__loading btn__icon" name={icon} aria-hidden />}
 				{!loading &&
