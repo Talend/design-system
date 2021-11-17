@@ -83,26 +83,20 @@ const ColorField = React.forwardRef(({ token, property, ...rest }: { token: Colo
 const ThemeEditor = React.forwardRef(
 	(
 		{
-			properties,
+			properties = [],
 			onBack,
 			onSubmit,
 		}: { properties: Property[]; onBack: () => void; onSubmit: () => void },
 		ref,
 	) => {
 		const { register, handleSubmit } = useForm();
-		const [formData, setFormData] = React.useState();
 		return (
-			<Form onSubmit={handleSubmit(setFormData)} ref={ref}>
+			<Form onSubmit={handleSubmit(onSubmit)} ref={ref}>
 				<InlineMessage.Warning
 					title="Caution"
 					description="Editing these values will impact all your users!"
 					withBackground
 				/>
-				{formData && (
-					<code>
-						<pre>{JSON.stringify(formData, null, 4)}</pre>
-					</code>
-				)}
 				{Object.entries(groupBy(dictionary, 'type')).map(([type, tokens], index) => (
 					<Form.Fieldset key={index} legend={type}>
 						{tokens.map((token: Token, key: number) =>
@@ -128,9 +122,7 @@ const ThemeEditor = React.forwardRef(
 				))}
 				<Form.Buttons>
 					<Button.Secondary onClick={onBack}>Back</Button.Secondary>
-					<Button.Primary type="submit" onClick={onSubmit}>
-						Save
-					</Button.Primary>
+					<Button.Primary type="submit">Save</Button.Primary>
 				</Form.Buttons>
 			</Form>
 		);
