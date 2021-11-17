@@ -21,7 +21,7 @@ const ThemeProvider = ({ theme = defaultTheme, children }: ThemeProviderProps<an
 	const switchTheme = (newTheme: DefaultTheme) => setSelectedTheme(newTheme);
 	return (
 		<ThemeContext.Provider value={context.theme ? context : { switchTheme, theme: selectedTheme }}>
-			<StyledThemeProvider theme={context?.theme || selectedTheme}>{children}</StyledThemeProvider>
+			<StyledThemeProvider theme={context.theme || selectedTheme}>{children}</StyledThemeProvider>
 		</ThemeContext.Provider>
 	);
 };
