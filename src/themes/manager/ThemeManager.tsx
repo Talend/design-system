@@ -28,8 +28,8 @@ type Token = {
 };
 
 type ColorToken = Token & {
-	hex?: string;
-	hsla?: string;
+	hex: string;
+	hsla: string;
 };
 
 enum STATE {
