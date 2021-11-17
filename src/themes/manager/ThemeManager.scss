@@ -11,5 +11,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+
+    img {
+      margin-bottom: 0.8rem;
+    }
+
+    figcaption {
+      text-align: center;
+    }
+
+    .switch {
+      margin-bottom: 0.8rem;
+      display: block;
+    }
   }
 }

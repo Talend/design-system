@@ -28,8 +28,8 @@ type Token = {
 };
 
 type ColorToken = Token & {
-	hex?: string;
-	hsla?: string;
+	hex: string;
+	hsla: string;
 };
 
 enum STATE {
@@ -125,7 +125,21 @@ const ThemeEditor = React.forwardRef(
 	},
 );
 
-const ThemeManager = () => {
+type ThemeManagerProps = {
+	isLightThemeEnabled: boolean;
+	isDarkThemeEnabled: boolean;
+	setDarkThemeEnabled: (value: boolean) => void;
+	setLightThemeEnabled: (value: boolean) => void;
+	onThemeSubmit: () => void;
+};
+
+const ThemeManager = ({
+	isLightThemeEnabled,
+	isDarkThemeEnabled,
+	setDarkThemeEnabled,
+	setLightThemeEnabled,
+	onThemeSubmit,
+}: ThemeManagerProps) => {
 	const [state, setState] = React.useState(STATE.DEFAULT);
 
 	const goBack = () => {
@@ -134,39 +148,65 @@ const ThemeManager = () => {
 
 	switch (state) {
 		case STATE.LIGHT:
-			return <ThemeEditor onBack={goBack} />;
+			return <ThemeEditor onBack={goBack} onSubmit={onThemeSubmit} />;
 		case STATE.DARK:
-			return <ThemeEditor onBack={goBack} />;
+			return <ThemeEditor onBack={goBack} onSubmit={onThemeSubmit} />;
 		default:
 			return (
 				<div className={theme.manager}>
 					{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
 					<ul role="list" className={theme.list}>
 						<li>
-							<figure className={theme.mode}>
-								<img
-									src="https://github.githubassets.com/images/modules/settings/color_modes/light_colorblind_preview.svg"
-									alt=""
-								/>
-								<figcaption>
-									<Button.Secondary small onClick={() => setState(STATE.LIGHT)}>
-										Edit light theme
-									</Button.Secondary>
-								</figcaption>
-							</figure>
+							<Form>
+								<Form.Fieldset>
+									<figure className={theme.mode}>
+										<img
+											src="https://github.githubassets.com/images/modules/settings/color_modes/light_colorblind_preview.svg"
+											alt=""
+										/>
+										<figcaption>
+											<div className={theme.switch}>
+												<Form.Switch
+													onChange={() => setLightThemeEnabled(!isLightThemeEnabled)}
+													label="Enable custom light theme"
+													checked={isLightThemeEnabled}
+												/>
+											</div>
+											{isLightThemeEnabled && (
+												<Button.Secondary small onClick={() => setState(STATE.LIGHT)}>
+													Edit light theme
+												</Button.Secondary>
+											)}
+										</figcaption>
+									</figure>
+								</Form.Fieldset>
+							</Form>
 						</li>
 						<li>
-							<figure className={theme.mode}>
-								<img
-									src="https://github.githubassets.com/images/modules/settings/color_modes/dark_colorblind_preview.svg"
-									alt=""
-								/>
-								<figcaption>
-									<Button.Secondary small onClick={() => setState(STATE.DARK)}>
-										Edit dark theme
-									</Button.Secondary>
-								</figcaption>
-							</figure>
+							<Form>
+								<Form.Fieldset>
+									<figure className={theme.mode}>
+										<img
+											src="https://github.githubassets.com/images/modules/settings/color_modes/dark_colorblind_preview.svg"
+											alt=""
+										/>
+										<figcaption>
+											<div className={theme.switch}>
+												<Form.Switch
+													onChange={() => setDarkThemeEnabled(!isDarkThemeEnabled)}
+													label="Enable custom dark theme"
+													checked={isDarkThemeEnabled}
+												/>
+											</div>
+											{isDarkThemeEnabled && (
+												<Button.Secondary small onClick={() => setState(STATE.DARK)}>
+													Edit dark theme
+												</Button.Secondary>
+											)}
+										</figcaption>
+									</figure>
+								</Form.Fieldset>
+							</Form>
 						</li>
 					</ul>
 				</div>
