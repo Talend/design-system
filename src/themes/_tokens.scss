@@ -1,4 +1,3 @@
-/* Default text color */
 $coralColorNeutralText: var(--coralColorNeutralText, hsla(0,0%,13%,1));
 $coralColorNeutralTextWeak: var(--coralColorNeutralTextWeak, hsla(0,0%,42%,1));
 $coralColorNeutralTextDisabled: var(--coralColorNeutralTextDisabled, hsla(0,0%,55%,1));
@@ -125,6 +124,7 @@ $coralHeadingS: var(--coralHeadingS, 400 1.4rem/140% 'Source Sans Pro');
 $coralRadiusM: var(--coralRadiusM, 0.8rem);
 $coralRadiusL: var(--coralRadiusL, 1.6rem);
 $coralRadiusRound: var(--coralRadiusRound, 9999.9rem);
+$coralRadiusS: var(--coralRadiusS, 0.4rem);
 $coralBorderSolidS: var(--coralBorderSolidS, 1px solid);
 $coralBorderSolidM: var(--coralBorderSolidM, 2px solid);
 $coralBorderDashedS: var(--coralBorderDashedS, 1px dashed);
