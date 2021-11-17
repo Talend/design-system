@@ -52,7 +52,7 @@ function getLabel(token) {
 		.join(' ');
 }
 
-const ColorField = React.forwardRef(({ token, ...rest }: { token: ColorToken }, ref) => {
+const ColorField = React.forwardRef(({ token, property, ...rest }: { token: ColorToken }, ref) => {
 	const [color, setColor] = React.useState(token.value);
 	return (
 		<Form.FieldGroup
@@ -71,7 +71,7 @@ const ColorField = React.forwardRef(({ token, ...rest }: { token: ColorToken }, 
 		>
 			<Form.Text
 				name={token.name}
-				defaultValue={token.value}
+				defaultValue={property || token.value}
 				{...rest}
 				onKeyUp={e => setColor(e.target.value)}
 				ref={ref}
@@ -81,7 +81,14 @@ const ColorField = React.forwardRef(({ token, ...rest }: { token: ColorToken }, 
 });
 
 const ThemeEditor = React.forwardRef(
-	({ onBack, onSubmit }: { onBack: () => void; onSubmit: () => void }, ref) => {
+	(
+		{
+			properties,
+			onBack,
+			onSubmit,
+		}: { properties: Property[]; onBack: () => void; onSubmit: () => void },
+		ref,
+	) => {
 		const { register, handleSubmit } = useForm();
 		const [formData, setFormData] = React.useState();
 		return (
@@ -98,16 +105,21 @@ const ThemeEditor = React.forwardRef(
 				)}
 				{Object.entries(groupBy(dictionary, 'type')).map(([type, tokens], index) => (
 					<Form.Fieldset key={index} legend={type}>
-						{tokens.map((token, key) =>
+						{tokens.map((token: Token, key: number) =>
 							type === 'color' ? (
-								<ColorField token={token} key={key} {...register(token.name)} />
+								<ColorField
+									token={token}
+									property={properties[token.name]}
+									key={key}
+									{...register(token.name)}
+								/>
 							) : (
 								<Form.Text
 									key={key}
 									label={getLabel(token)}
 									name={token.name}
 									description={token.description}
-									defaultValue={token.value}
+									defaultValue={properties[token.name] || token.value}
 									{...register(token.name)}
 								/>
 							),
@@ -125,20 +137,30 @@ const ThemeEditor = React.forwardRef(
 	},
 );
 
+type Property = {
+	[key: string]: string;
+};
+
 type ThemeManagerProps = {
 	isLightThemeEnabled: boolean;
 	isDarkThemeEnabled: boolean;
-	setDarkThemeEnabled: (value: boolean) => void;
 	setLightThemeEnabled: (value: boolean) => void;
-	onThemeSubmit: () => void;
+	setDarkThemeEnabled: (value: boolean) => void;
+	lightProperties: Property[];
+	darkProperties: Property[];
+	onLightThemeSubmit: () => void;
+	onDarkThemeSubmit: () => void;
 };
 
 const ThemeManager = ({
 	isLightThemeEnabled,
 	isDarkThemeEnabled,
-	setDarkThemeEnabled,
 	setLightThemeEnabled,
-	onThemeSubmit,
+	setDarkThemeEnabled,
+	lightProperties,
+	darkProperties,
+	onLightThemeSubmit,
+	onDarkThemeSubmit,
 }: ThemeManagerProps) => {
 	const [state, setState] = React.useState(STATE.DEFAULT);
 
@@ -148,9 +170,13 @@ const ThemeManager = ({
 
 	switch (state) {
 		case STATE.LIGHT:
-			return <ThemeEditor onBack={goBack} onSubmit={onThemeSubmit} />;
+			return (
+				<ThemeEditor onBack={goBack} properties={lightProperties} onSubmit={onLightThemeSubmit} />
+			);
 		case STATE.DARK:
-			return <ThemeEditor onBack={goBack} onSubmit={onThemeSubmit} />;
+			return (
+				<ThemeEditor onBack={goBack} properties={darkProperties} onSubmit={onDarkThemeSubmit} />
+			);
 		default:
 			return (
 				<div className={theme.manager}>
