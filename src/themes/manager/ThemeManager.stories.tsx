@@ -1,33 +1,72 @@
 import React from 'react';
 import { fireEvent, within } from '@testing-library/react';
 
-import ThemeManager from './ThemeManager';
+import ThemeManager, { Properties } from './ThemeManager';
+
+import lightDictionary from '../light/dictionary';
+import darkDictionary from '../dark/dictionary';
 
 export default {
 	title: 'Themes/Theme Manager',
 	component: ThemeManager,
 };
 
-const TenantPreferences = () => {
+type Theme = {
+	id: 'light' | 'dark';
+	enabled: boolean;
+	properties: { [key: string]: string };
+};
+
+const Preferences = () => {
 	const [isLightThemeEnabled, setDarkThemeEnabled] = React.useState(false);
 	const [isDarkThemeEnabled, setLightThemeEnabled] = React.useState(false);
+	const [formData, setFormData] = React.useState<Theme>();
+
+	const onLightThemeSubmitHandler = (properties: Properties) => {
+		setFormData({
+			id: 'light',
+			enabled: isLightThemeEnabled,
+			properties,
+		});
+	};
+
+	const onDarkThemeSubmitHandler = (properties: Properties) => {
+		setFormData({
+			id: 'dark',
+			enabled: isDarkThemeEnabled,
+			properties,
+		});
+	};
+
 	return (
-		<ThemeManager
-			isDarkThemeEnabled={isLightThemeEnabled}
-			isLightThemeEnabled={isDarkThemeEnabled}
-			setDarkThemeEnabled={setDarkThemeEnabled}
-			setLightThemeEnabled={setLightThemeEnabled}
-			onThemeSubmit={() => {}}
-		/>
+		<>
+			{formData && (
+				<code>
+					<pre>{JSON.stringify(formData, null, 3)}</pre>
+				</code>
+			)}
+			<ThemeManager
+				isDarkThemeEnabled={isLightThemeEnabled}
+				isLightThemeEnabled={isDarkThemeEnabled}
+				setDarkThemeEnabled={setDarkThemeEnabled}
+				setLightThemeEnabled={setLightThemeEnabled}
+				darkProperties={Object.fromEntries(darkDictionary.map(token => [token.name, token.value]))}
+				lightProperties={Object.fromEntries(
+					lightDictionary.map(token => [token.name, token.value]),
+				)}
+				onDarkThemeSubmit={onDarkThemeSubmitHandler}
+				onLightThemeSubmit={onLightThemeSubmitHandler}
+			/>
+		</>
 	);
 };
 
 export const Disabled = () => {
-	return <TenantPreferences />;
+	return <Preferences />;
 };
 
 export const Enabled = () => {
-	return <TenantPreferences />;
+	return <Preferences />;
 };
 Enabled.play = async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
 	const canvas = within(canvasElement);
@@ -36,7 +75,7 @@ Enabled.play = async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) =
 };
 
 export const EditLightMode = () => {
-	return <TenantPreferences />;
+	return <Preferences />;
 };
 EditLightMode.play = async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
 	const canvas = within(canvasElement);
@@ -45,7 +84,7 @@ EditLightMode.play = async ({ canvasElement }: { canvasElement: HTMLCanvasElemen
 };
 
 export const EditDarkMode = () => {
-	return <TenantPreferences />;
+	return <Preferences />;
 };
 EditDarkMode.play = async ({ canvasElement }: { canvasElement: HTMLCanvasElement }) => {
 	const canvas = within(canvasElement);

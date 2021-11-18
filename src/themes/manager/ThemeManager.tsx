@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { useForm } from 'react-hook-form';
 
 import Button from '../../components/Button';
@@ -7,6 +7,7 @@ import InlineMessage from '../../components/InlineMessage';
 
 import dictionary from '../light/dictionary';
 
+// @ts-ignore
 import theme from './ThemeManager.scss';
 
 type TokenType =
@@ -27,109 +28,14 @@ type Token = {
 	value: string;
 };
 
+type Tokens = Token[];
+
 type ColorToken = Token & {
 	hex: string;
 	hsla: string;
 };
 
-enum STATE {
-	DEFAULT,
-	LIGHT,
-	DARK,
-}
-
-function groupBy(collection, property) {
-	return collection.reduce((acc, cur) => {
-		(acc[cur[property]] = acc[cur[property]] || []).push(cur);
-		return acc;
-	}, {});
-}
-
-function getLabel(token) {
-	return token.name
-		.replace('coral', '')
-		.split(/(?=[A-Z])/)
-		.join(' ');
-}
-
-const ColorField = React.forwardRef(({ token, property, ...rest }: { token: ColorToken }, ref) => {
-	const [color, setColor] = React.useState(token.value);
-	return (
-		<Form.FieldGroup
-			label={getLabel(token)}
-			description={token.description}
-			suffix={
-				<div
-					style={{
-						width: '3.2rem',
-						height: '3.2rem',
-						background: color,
-						boxShadow: 'inset 8px 0px 8px 0px hsla(0, 0%, 50%, .1) ',
-					}}
-				/>
-			}
-		>
-			<Form.Text
-				name={token.name}
-				defaultValue={property || token.value}
-				{...rest}
-				onKeyUp={e => setColor(e.target.value)}
-				ref={ref}
-			/>
-		</Form.FieldGroup>
-	);
-});
-
-const ThemeEditor = React.forwardRef(
-	(
-		{
-			properties = [],
-			onBack,
-			onSubmit,
-		}: { properties: Property[]; onBack: () => void; onSubmit: () => void },
-		ref,
-	) => {
-		const { register, handleSubmit } = useForm();
-		return (
-			<Form onSubmit={handleSubmit(onSubmit)} ref={ref}>
-				<InlineMessage.Warning
-					title="Caution"
-					description="Editing these values will impact all your users!"
-					withBackground
-				/>
-				{Object.entries(groupBy(dictionary, 'type')).map(([type, tokens], index) => (
-					<Form.Fieldset key={index} legend={type}>
-						{tokens.map((token: Token, key: number) =>
-							type === 'color' ? (
-								<ColorField
-									token={token}
-									property={properties[token.name]}
-									key={key}
-									{...register(token.name)}
-								/>
-							) : (
-								<Form.Text
-									key={key}
-									label={getLabel(token)}
-									name={token.name}
-									description={token.description}
-									defaultValue={properties[token.name] || token.value}
-									{...register(token.name)}
-								/>
-							),
-						)}
-					</Form.Fieldset>
-				))}
-				<Form.Buttons>
-					<Button.Secondary onClick={onBack}>Back</Button.Secondary>
-					<Button.Primary type="submit">Save</Button.Primary>
-				</Form.Buttons>
-			</Form>
-		);
-	},
-);
-
-type Property = {
+export type Properties = {
 	[key: string]: string;
 };
 
@@ -138,11 +44,153 @@ type ThemeManagerProps = {
 	isDarkThemeEnabled: boolean;
 	setLightThemeEnabled: (value: boolean) => void;
 	setDarkThemeEnabled: (value: boolean) => void;
-	lightProperties: Property[];
-	darkProperties: Property[];
-	onLightThemeSubmit: () => void;
-	onDarkThemeSubmit: () => void;
+	lightProperties: Properties;
+	darkProperties: Properties;
+	onLightThemeSubmit: (properties: Properties) => void;
+	onDarkThemeSubmit: (properties: Properties) => void;
 };
+
+enum STATE {
+	ALL,
+	LIGHT,
+	DARK,
+}
+
+function groupBy(collection: {}[], property: string) {
+	return collection.reduce((acc, cur) => {
+		// @ts-ignore
+		(acc[cur[property]] = acc[cur[property]] || []).push(cur);
+		return acc;
+	}, {});
+}
+
+function getLabel(token: Token) {
+	return token.name
+		.replace('coral', '')
+		.split(/(?=[A-Z])/)
+		.join(' ');
+}
+
+const ColorField = React.forwardRef(
+	(
+		{ token, property, ...rest }: { token: ColorToken; property?: string },
+		ref: React.Ref<HTMLInputElement>,
+	) => {
+		const [color, setColor] = React.useState(property || token.value);
+		return (
+			<Form.FieldGroup
+				label={getLabel(token)}
+				description={token.description}
+				suffix={
+					<div
+						style={{
+							width: '3.2rem',
+							height: '3.2rem',
+							background: color,
+							boxShadow: 'inset 8px 0px 8px 0px hsla(0, 0%, 50%, .1) ',
+						}}
+					/>
+				}
+			>
+				{/*
+				// @ts-ignore */}
+				<Form.Text
+					{...rest}
+					defaultValue={property || token.value}
+					onKeyUp={(event: KeyboardEvent): void =>
+						setColor((event.target as HTMLInputElement).value)
+					}
+					ref={ref}
+				/>
+			</Form.FieldGroup>
+		);
+	},
+);
+
+const ThemeEditor = React.forwardRef(
+	(
+		{
+			name,
+			properties = {},
+			onBack,
+			onSubmit,
+		}: {
+			name: string;
+			properties: Properties;
+			onBack: () => void;
+			onSubmit: (properties: Properties) => void;
+		},
+		ref: React.Ref<HTMLFormElement>,
+	) => {
+		const [visibleType, setVisibleType] = React.useState<TokenType>('color');
+		const { register, handleSubmit } = useForm();
+
+		let lastPath: string;
+		return (
+			<Form onSubmit={handleSubmit(onSubmit)} ref={ref}>
+				<h1>{name}</h1>
+
+				<InlineMessage.Warning
+					title="Caution"
+					description="Editing these values will impact all your users!"
+					withBackground
+				/>
+
+				<div className={theme.categories}>
+					{Object.entries(groupBy(dictionary, 'type')).map(([type, tokens], index) => {
+						const isActive = visibleType === type;
+						return (
+							<>
+								<div className={theme.category} data-show={isActive}>
+									<Form.Fieldset key={index} legend={type}>
+										<div className={theme.content}>
+											{(tokens as Tokens).map((token: Token, key: number) => {
+												const path = token.name.replace('coral', '').split(/(?=[A-Z])/);
+												const slicedPath = path.slice(1, path.length - 1).join('');
+												const isNewPath = slicedPath !== lastPath;
+												if (isNewPath) {
+													lastPath = slicedPath;
+												}
+												return type === 'color' ? (
+													<div key={key} style={isNewPath ? { gridColumnStart: '1' } : {}}>
+														<ColorField
+															token={token as ColorToken}
+															property={properties[token.name]}
+															{...register(token.name)}
+														/>
+													</div>
+												) : (
+													<Form.Text
+														key={key}
+														label={getLabel(token)}
+														description={token.description}
+														defaultValue={properties[token.name] || token.value}
+														{...register(token.name)}
+													/>
+												);
+											})}
+										</div>
+									</Form.Fieldset>
+								</div>
+								<Button
+									aria-current={isActive}
+									className={theme.disclosure}
+									onClick={() => setVisibleType(type as TokenType)}
+								>
+									{type}
+								</Button>
+							</>
+						);
+					})}
+				</div>
+				<Form.Buttons>
+					<Button.Secondary onClick={onBack}>Back</Button.Secondary>
+					<Button.Primary type="submit">Save</Button.Primary>
+				</Form.Buttons>
+			</Form>
+		);
+	},
+);
 
 const ThemeManager = ({
 	isLightThemeEnabled,
@@ -154,20 +202,30 @@ const ThemeManager = ({
 	onLightThemeSubmit,
 	onDarkThemeSubmit,
 }: ThemeManagerProps) => {
-	const [state, setState] = React.useState(STATE.DEFAULT);
+	const [state, setState] = React.useState(STATE.ALL);
 
 	const goBack = () => {
-		setState(STATE.DEFAULT);
+		setState(STATE.ALL);
 	};
 
 	switch (state) {
 		case STATE.LIGHT:
 			return (
-				<ThemeEditor onBack={goBack} properties={lightProperties} onSubmit={onLightThemeSubmit} />
+				<ThemeEditor
+					name="Light"
+					properties={lightProperties}
+					onBack={goBack}
+					onSubmit={onLightThemeSubmit}
+				/>
 			);
 		case STATE.DARK:
 			return (
-				<ThemeEditor onBack={goBack} properties={darkProperties} onSubmit={onDarkThemeSubmit} />
+				<ThemeEditor
+					name="Dark"
+					properties={darkProperties}
+					onBack={goBack}
+					onSubmit={onDarkThemeSubmit}
+				/>
 			);
 		default:
 			return (
