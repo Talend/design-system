@@ -6,4 +6,4 @@ import darkDictionary from './dark/dictionary';
 
 import './themes.scss';
 
-export default { light, lightDictionary, dark, darkDictionary };
+export { light, lightDictionary, dark, darkDictionary };
