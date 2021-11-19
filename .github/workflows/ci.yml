@@ -39,7 +39,7 @@ jobs:
       - name: Test
         run: yarn test --coverage
 
-      - name: Release snapshot
+      - name: Release NPM snapshot
         run: |
           npx changeset version --snapshot
           npx changeset publish --tag canary
