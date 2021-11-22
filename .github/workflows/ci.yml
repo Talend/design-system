@@ -8,6 +8,7 @@ on:
 
 jobs:
   check:
+    environment: pull_request_unsafe
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
