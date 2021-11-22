@@ -5,8 +5,8 @@ import { getAlgoliaResults } from '@algolia/autocomplete-js';
 import { Autocomplete } from './AlgoliaAutocomplete.component';
 
 const searchClient = algoliasearch(
-	process.env.ALGOLIA_SEARCH_APP_ID,
-	process.env.ALGOLIA_SEARCH_API_KEY,
+	process.env.STORYBOOK_ALGOLIA_SEARCH_APP_ID,
+	process.env.STORYBOOK_ALGOLIA_SEARCH_API_KEY,
 );
 
 function SearchBar() {
@@ -23,7 +23,7 @@ function SearchBar() {
 								searchClient,
 								queries: [
 									{
-										indexName: process.env.ALGOLIA_SEARCH_INDEX,
+										indexName: process.env.STORYBOOK_ALGOLIA_SEARCH_INDEX,
 										query,
 									},
 								],
