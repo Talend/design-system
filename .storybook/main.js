@@ -51,6 +51,14 @@ module.exports = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-links',
 		'@storybook/addon-interactions',
+		{
+			name: '@storybook/preset-scss',
+			options: {
+				cssLoaderOptions: {
+					modules: true,
+				},
+			},
+		},
 		'storybook-addon-mdx-embed',
 	],
 	typescript: {

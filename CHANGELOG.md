@@ -1,5 +1,38 @@
 # @talend/design-system
 
+## 1.9.6
+
+### Patch Changes
+
+- 6f1a293: fix(components/switch): no animation with defaultValue
+
+## 1.9.5
+
+### Patch Changes
+
+- 0a3d6ad: fix(Form): Copy field uncrontolled value
+
+## 1.9.4
+
+### Patch Changes
+
+- 5297f7b: fix(themes): export
+
+## 1.9.3
+
+### Patch Changes
+
+- 35357e6: Expose design tokens dictionaries into the UMD
+
+## 1.9.2
+
+### Patch Changes
+
+- 0a0acb3: distribute themes in package
+- 371aa80: fix(Form): preserve ref inside fieldgroup
+- de33900: fix(ThemeProvider): Handle nested providers
+- bd8dbc2: Removed usage of array index as key
+
 ## 1.9.1
 
 ### Patch Changes
