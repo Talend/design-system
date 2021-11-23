@@ -4,6 +4,8 @@ import { getAlgoliaResults } from '@algolia/autocomplete-js';
 
 import { Autocomplete } from './AlgoliaAutocomplete.component';
 
+import theme from './SearchBar.scss';
+
 const searchClient = algoliasearch(
 	process.env.STORYBOOK_ALGOLIA_SEARCH_APP_ID,
 	process.env.STORYBOOK_ALGOLIA_SEARCH_API_KEY,
@@ -39,20 +41,20 @@ function SearchBar() {
 							item({ item, components }) {
 								return (
 									<a
-										className="aa-ItemLink"
+										className={`aa-ItemLink ${theme.link}`}
 										href={item.url?.replace(/\/iframe.html\?id=(.*)&/, '/?path=/docs/$1&')}
 										target="_parent"
 									>
 										<div className="aa-ItemWrapper">
 											<div className="aa-ItemContent">
 												<div className="aa-ItemContentBody">
-													<div className="aa-ItemContentTitle">
+													<div className={`aa-ItemContentTitle ${theme.title}`}>
 														<components.Snippet hit={item} attribute="title" />
 													</div>
-													<small className="aa-ItemContentCategory">
+													<small className={`aa-ItemContentCategory ${theme.category}`}>
 														<components.Snippet hit={item} attribute="category" />
 													</small>
-													<div className="aa-ItemContentDescription">
+													<div className={`aa-ItemContentDescription ${theme.description}`}>
 														<components.Snippet hit={item} attribute="content" />
 													</div>
 												</div>
