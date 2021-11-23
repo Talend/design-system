@@ -39,9 +39,6 @@ function SearchBar() {
 										<div className="aa-ItemWrapper">
 											<div className="aa-ItemContent">
 												<div className="aa-ItemContentBody">
-													<div className="aa-ItemContentImage">
-														<components.Snippet hit={item} attribute="image" />
-													</div>
 													<div className="aa-ItemContentTitle">
 														<components.Snippet hit={item} attribute="title" />
 													</div>

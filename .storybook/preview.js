@@ -117,7 +117,7 @@ export const parameters = {
 				<>
 					<Helmet>
 						<title>{fTitle}</title>
-						<meta property="og:title" content={fTitle} />
+						<meta property="og:title" content={titleArray[titleArray.length - 1]} />
 						<meta property="og:type" content="article" />
 						<meta
 							property="og:url"
@@ -125,7 +125,7 @@ export const parameters = {
 						/>
 						<meta
 							property="og:image"
-							content={`https://via.placeholder.com/468x60?text=${fTitle}`}
+							content={`https://via.placeholder.com/450x100?text=${fTitle}`}
 						/>
 						{titleArray.length > 1 && <meta property="article:section" content={titleArray[0]} />}
 					</Helmet>
