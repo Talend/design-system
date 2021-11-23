@@ -117,21 +117,17 @@ export const parameters = {
 				<>
 					<Helmet>
 						<title>{fTitle}</title>
-						{titleArray.length > 1 && (
-							<>
-								<meta property="og:title" content={fTitle} />
-								<meta property="og:type" content="article" />
-								<meta
-									property="og:url"
-									content={`https://design.talend.com/?path=/docs/${props.context.id}`}
-								/>
-								<meta
-									property="og:image"
-									content={`https://via.placeholder.com/468x60?text=${fTitle}`}
-								/>
-								<meta property="article:section" content={titleArray[0]} />
-							</>
-						)}
+						<meta property="og:title" content={fTitle} />
+						<meta property="og:type" content="article" />
+						<meta
+							property="og:url"
+							content={`https://design.talend.com/?path=/docs/${props.context.id}`}
+						/>
+						<meta
+							property="og:image"
+							content={`https://via.placeholder.com/468x60?text=${fTitle}`}
+						/>
+						{titleArray.length > 1 && <meta property="article:section" content={titleArray[0]} />}
 					</Helmet>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 					<ThemeProvider theme={hasDarkMode ? dark : light}>
