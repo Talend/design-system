@@ -22,70 +22,46 @@ const designTokensPlugin = () => tree =>
 	});
 
 module.exports = {
+	features: {
+		previewCsfV3: true,
+		modernInlineRender: true,
+	},
 	stories: [
 		'../src/Welcome.stories.@(js|tsx|mdx)',
 		'../src/GettingStarted.stories.@(js|tsx|mdx)',
+		'../src/DesignSystem.stories.@(js|tsx|mdx)',
 		'../src/Status.stories.@(js|tsx|mdx)',
 		'../src/Catalog.stories.@(js|tsx|mdx)',
 		'../src/tokens/docs/*.stories.@(js|tsx|mdx)',
-		'../src/content/docs/*.stories.@(js|tsx|mdx)',
+		'../src/content/docs/VoiceAndTone.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Internationalization.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Conventions.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Capitalization.stories.@(js|tsx|mdx)',
+		'../src/content/docs/Wording.stories.@(js|tsx|mdx)',
 		'../src/themes/docs/Light.stories.@(js|tsx|mdx)',
 		'../src/themes/docs/*.stories.@(js|tsx|mdx)',
-		'../src/components/**/*.stories.@(js|tsx|mdx)',
+		'../src/components/**/*.stories.mdx',
 		'../src/templates/**/*.stories.@(js|tsx|mdx)',
 		'../src/pages/**/*.stories.@(js|tsx|mdx)',
 	],
-	reactOptions: {
-		fastRefresh: true,
-		strictMode: true,
-	},
+	staticDirs: ['../public', '../static'],
 	addons: [
+		'@storybook/addon-a11y',
+		'@storybook/addon-essentials',
+		'@storybook/addon-links',
+		'@storybook/addon-interactions',
 		{
-			name: '@storybook/addon-docs',
+			name: '@storybook/preset-scss',
 			options: {
-				transcludeMarkdown: true,
-				sourceLoaderOptions: {
-					prettierConfig: {
-						arrowParens: 'avoid',
-						printWidth: 100,
-						singleQuote: true,
-						trailingComma: 'all',
-						semi: true,
-						useTabs: true,
-						overrides: [
-							{
-								files: '**/*.json',
-								options: {
-									tabWidth: 2,
-									useTabs: false,
-								},
-							},
-							{
-								files: '**/*.scss',
-								options: {
-									printWidth: 1000,
-								},
-							},
-						],
-					},
+				cssLoaderOptions: {
+					modules: true,
 				},
 			},
 		},
-		'@storybook/addon-controls',
-		'@storybook/addon-a11y',
-		'@storybook/addon-actions',
-		'@storybook/addon-backgrounds',
-		'@storybook/addon-viewport',
-		'@storybook/addon-toolbars',
-		'@storybook/addon-links',
-		'storybook-addon-pseudo-states',
 		'storybook-addon-mdx-embed',
 	],
-	features: {
-		postcss: false,
-	},
 	typescript: {
-		check: false,
+		check: true,
 		checkOptions: {},
 		reactDocgen: 'react-docgen-typescript',
 		reactDocgenTypescriptOptions: {
@@ -95,7 +71,6 @@ module.exports = {
 					// filter inherited props
 					return !prop.parent.fileName.includes('node_modules');
 				}
-
 				// filter inherited styled-components props
 				return !['theme', 'as', 'forwardedAs', 'ref'].includes(prop.name);
 			},

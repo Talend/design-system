@@ -1,12 +1,15 @@
-import {Meta, Canvas, Story, ArgsTable} from '@storybook/addon-docs/blocks';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { FigmaIframe, FigmaImage, FigmaLink, GitHubLink, Links, Use } from '../../../docs';
+import InlineMessage from '../../InlineMessage';
+import Button from '../../Button';
 import Form from '../';
+import { useForm } from 'react-hook-form';
 
 <Meta title="Components/Form/Fields/Radio" />
 
 <Links>
-    <FigmaLink href="https://www.figma.com/file/Ux9flIa7RJXED6xnsajju8/Radio?node-id=1%3A66" />
-    <GitHubLink href="https://github.com/Talend/design-system/tree/master/src/components/Form/Field/Input" />
+	<FigmaLink href="https://www.figma.com/file/Ux9flIa7RJXED6xnsajju8/Radio?node-id=1%3A66" />
+	<GitHubLink href="https://github.com/Talend/design-system/tree/master/src/components/Form/Field/Input" />
 </Links>
 
 # Radio
@@ -14,7 +17,7 @@ import Form from '../';
 Radio buttons are used when a question has only one answer. Radio buttons allow the user to select one option from a set.
 Use radio buttons for exclusive selection if you think that the user needs to see all available options side-by-side.
 
-Otherwise, consider <a href="/?path=/docs/components-form-fields-checkbox--default-story">checkboxes</a>, <a href="/?path=/docs/components-form-fields-switch--default-story">switch</a> or a <a href="/?path=/docs/components-form-fields-select--default-story">select</a>.
+Otherwise, consider <a href="/docs/components-form-fields-checkbox--default-story">checkboxes</a>, <a href="/docs/components-form-fields-switch--default-story">switch</a> or a <a href="/docs/components-form-fields-select--default-story">select</a>.
 
 ## Zoning
 
@@ -65,6 +68,69 @@ Otherwise, consider <a href="/?path=/docs/components-form-fields-checkbox--defau
 	</Story>
 </Canvas>
 
+### Multiple radios
+
+<Canvas>
+	<Story name="react-hook-form">
+		{() => {
+			const { register, handleSubmit } = useForm();
+			const [formData, setFormData] = React.useState();
+			return (
+				<Form onSubmit={handleSubmit(setFormData)}>
+					{formData && (
+						<InlineMessage.Information
+							title={'Form data'}
+							description={JSON.stringify(formData, null, 2)}
+							withBackground
+						/>
+					)}
+					<Form.Fieldset legend="Pick one option" required>
+						<Form.Radio label="Option A" value="option-a" {...register('option')} />
+						<Form.Radio label="Option B" value="option-b" defaultChecked {...register('option')} />
+					</Form.Fieldset>
+					<Form.Fieldset legend="Pick one inline option" required>
+						<Form.Row>
+							<Form.Radio label="Inline option A" value="option-a" {...register('inline-option')} />
+							<Form.Radio
+								label="Inline option B"
+								value="option-b"
+								defaultChecked
+								{...register('inline-option')}
+							/>
+						</Form.Row>
+					</Form.Fieldset>
+					<Form.Fieldset legend="Read only are sent" required readOnly>
+						<Form.Radio label="Option C" value="option-c" {...register('readonly-option')} />
+						<Form.Radio
+							label="Option D"
+							value="option-d"
+							checked
+							{...register('readonly-option')}
+						/>
+					</Form.Fieldset>
+					<Form.Fieldset legend="Disabled are not sent" required disabled>
+						{/* @see https://github.com/react-hook-form/react-hook-form/issues/6690 */}
+						<Form.Radio
+							label="Option E"
+							value="option-e"
+							{...register('disabled-inline-option', { disabled: true })}
+						/>
+						<Form.Radio
+							label="Option F"
+							value="option-f"
+							checked
+							{...register('disabled-inline-option', { disabled: true })}
+						/>
+					</Form.Fieldset>
+					<Form.Buttons>
+						<Button.Primary type="submit">Submit</Button.Primary>
+					</Form.Buttons>
+				</Form>
+			);
+		}}
+	</Story>
+</Canvas>
+
 ## Content
 
 Radio buttons appear as a list of two or more options on UI where users can select only one option, so it's important to make their labels comprehensive and clearly distinct.
@@ -96,44 +162,50 @@ Radio buttons appear as a list of two or more options on UI where users can sele
 
 ## Usage
 
+export const Template = args => {
+	const Component = Form.Radio;
+	Component.displayName = 'Form.Radio';
+	return <Component {...args} />;
+};
+
 <Canvas>
-    <Story
-        name="basic"
-        args={{
-            label: 'Radio',
-            checked: false,
-            readOnly: false,
-            disabled: false,
-        }}
-        argTypes={{
-            label: {
-                description: 'Radio label',
-                control: {
-                    type: 'text',
-                },
-            },
-            checked: {
-                description: 'Radio is checked or  not',
-                control: {
-                    type: 'boolean',
-                },
-            },
-            readOnly: {
-                description: 'Radio is read only or not',
-                control: {
-                    type: 'boolean',
-                },
-            },
-            disabled: {
-                description: 'Radio is disabled or not',
-                control: {
-                    type: 'boolean',
-                },
-            },
-        }}
-    >
-        {props => <Form.Radio {...props} />}
-    </Story>
+	<Story
+		name="basic"
+		args={{
+			label: 'Radio',
+			checked: false,
+			readOnly: false,
+			disabled: false,
+		}}
+		argTypes={{
+			label: {
+				description: 'Radio label',
+				control: {
+					type: 'text',
+				},
+			},
+			checked: {
+				description: 'Radio is checked or  not',
+				control: {
+					type: 'boolean',
+				},
+			},
+			readOnly: {
+				description: 'Radio is read only or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+			disabled: {
+				description: 'Radio is disabled or not',
+				control: {
+					type: 'boolean',
+				},
+			},
+		}}
+	>
+		{Template.bind({})}
+	</Story>
 </Canvas>
 
 <ArgsTable story="basic" />

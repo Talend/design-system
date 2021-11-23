@@ -1,11 +1,10 @@
-import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs/blocks';
-import { ColorPalette, ColorItem, IconItem, IconGallery } from '@storybook/components';
+import { ArgsTable, Meta, Canvas, Story } from '@storybook/addon-docs';
+import { IconItem, IconGallery } from '@storybook/components';
 import { FigmaImage, Use } from '../../../docs';
+import * as Stories from '../InlineMessage.stories';
 
-import tokens from '../../../tokens';
 import { Icon } from '../../Icon';
 import InlineMessage from '../';
-import Link from '../../Link';
 
 <Meta title="Components/Inline Message" component={InlineMessage} />
 
@@ -26,27 +25,14 @@ It can be additional information related to system status, it can be a required 
 ### Icons
 
 <IconGallery>
-	{['talend-error', 'talend-warning', 'talend-check', 'talend-info-circle'].map((iconName, index) => (
-		<IconItem key={index} name={iconName}>
-			<Icon name={iconName} />
-		</IconItem>
-	))}
+	{['talend-info-circle', 'talend-check-circle', 'talend-warning', 'talend-error'].map(
+		(iconName, index) => (
+			<IconItem key={index} name={iconName}>
+				<Icon name={iconName} />
+			</IconItem>
+		),
+	)}
 </IconGallery>
-
-### Colors
-
-<ColorPalette>
-	<ColorItem
-		title="theme.color.palette"
-		subtitle="Inline message colors"
-		colors={{
-			Error: tokens.colors.coral[500],
-			Warning: tokens.colors.jaffa[500],
-			Success: tokens.colors.rioGrande[500],
-			Information: tokens.colors.lochmara[500],
-		}}
-	/>
-</ColorPalette>
 
 ### Text
 
@@ -57,186 +43,42 @@ The text should adapt the surrounding layout. Depending on the context, if the t
 **Default**
 
 <Canvas>
-	<Story name="information">
-		<InlineMessage.Information
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-		/>
-	</Story>
-	<Story name="success">
-		<InlineMessage.Success
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-		/>
-	</Story>
-	<Story name="warning">
-		<InlineMessage.Warning
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-		/>
-	</Story>
-	<Story name="destructive">
-		<InlineMessage.Destructive
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-		/>
-	</Story>
+	<Story story={Stories.Information} />
+	<Story story={Stories.Success} />
+	<Story story={Stories.Warning} />
+	<Story story={Stories.Destructive} />
 </Canvas>
 
 **Small**
 
 <Canvas>
-	<Story name="informationSmall">
-		<InlineMessage.Information
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-		/>
-	</Story>
-	<Story name="successSmall">
-		<InlineMessage.Success
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-		/>
-	</Story>
-	<Story name="warningSmall">
-		<InlineMessage.Warning
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-		/>
-	</Story>
-	<Story name="destructiveSmall">
-		<InlineMessage.Destructive
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-		/>
-	</Story>
+	<Story story={Stories.InformationSmall} />
+	<Story story={Stories.SuccessSmall} />
+	<Story story={Stories.WarningSmall} />
+	<Story story={Stories.DestructiveSmall} />
 </Canvas>
 
 **With background**
 
 <Canvas>
-	<Story name="informationWithBg">
-		<InlineMessage.Information
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			withBackground
-		/>
-	</Story>
-	<Story name="successWithBg">
-		<InlineMessage.Success
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			withBackground
-		/>
-	</Story>
-	<Story name="warningWithBg">
-		<InlineMessage.Warning
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			withBackground
-		/>
-	</Story>
-	<Story name="destructiveWithBg">
-		<InlineMessage.Destructive
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			withBackground
-		/>
-	</Story>
+	<Story story={Stories.InformationBackground} />
+	<Story story={Stories.SuccessBackground} />
+	<Story story={Stories.WarningBackground} />
+	<Story story={Stories.DestructiveBackground} />
 </Canvas>
 
 **Small with background**
 
 <Canvas>
-	<Story name="informationSmallWithBg">
-		<InlineMessage.Information
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-			withBackground
-		/>
-	</Story>
-	<Story name="successSmallWithBg">
-		<InlineMessage.Success
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-			withBackground
-		/>
-	</Story>
-	<Story name="warningSmallWithBg">
-		<InlineMessage.Warning
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-			withBackground
-		/>
-	</Story>
-	<Story name="destructiveSmallWithBg">
-		<InlineMessage.Destructive
-			title={'Lorem ipsum'}
-			description={
-				'dolor sit amet, consectetur adipiscing elit. Integer gravida orci lacus, vel convallis enim posuere ac.'
-			}
-			link={<Link href={'#'}>See more</Link>}
-			small
-			withBackground
-		/>
-	</Story>
+	<Story story={Stories.InformationBackgroundSmall} />
+	<Story story={Stories.SuccessBackgroundSmall} />
+	<Story story={Stories.WarningBackgroundSmall} />
+	<Story story={Stories.DestructiveBackgroundSmall} />
 </Canvas>
 
 ## Interactions
 
-Inline messages are non clickable, except if there is a link. In that case, only the link will be clickable.
+Inline messages are non-clickable, except if there is a link. In that case, only the link will be clickable.
 Please refer to the hyperlink guidelines for more information.
 
 ## Content
@@ -245,28 +87,51 @@ Inline messages interrupt the user to deliver a communication. They can be notif
 Error messages should tell why there was a problem and what could be done to resolve it where possible.There are several types of error messages including:
 
 <ul>
-	<li>Errors whichdisplay to tell users something serious or less serious has gone wrong and need users' comprehension and may be action.</li>
-    <li>Field-validation errors which display when a user enters info in a form field, but it isn’t formatted correctly.</li>
-    <li>System errors which display when the entire application is having trouble, like when something is down or users' data is missing through no fault of their own.</li>
+	<li>
+		Errors which display to tell users something serious or less serious has gone wrong and need
+		users' comprehension and may be action.
+	</li>
+	<li>
+		Field-validation errors which display when a user enters info in a form field, but it isn’t
+		formatted correctly.
+	</li>
+	<li>
+		System errors which display when the entire application is having trouble, like when something
+		is down or users' data is missing through no fault of their own.
+	</li>
 </ul>
 
 <Use>
-    <Use.Do>
-        <ul>
-            <li>Be clear and conversational.</li>
-            <li>Get right to the point. Be brief but also super literal. Say what exactly happened and what
-                the user needs to do to fix the error.</li>
-            <li>Use the correct combination of call-to-action buttons. For example, if you say "Replace the source file with X?" the options should be Replace/Cancel and not Yes/No/Retry.</li>
-            <li>Provide appropriate actions where applicable. Actions in error messages guide users about the next step.</li>
-            <li>Use appropriate language for your audience and keep technical jargon to minimum.</li>
-        </ul>
-    </Use.Do>
-    <Use.Dont>
-        <ul>
-            <li>Don’t include extra details about why the error happened—give only the info that users need to know.</li>
-            <li>Avoid negative words. For example, say "You need to have enough rights to publish pipelines" instead of "You don't have enough rights to publish pipelines".</li>
-        </ul>
-    </Use.Dont>
+	<Use.Do>
+		<ul>
+			<li>Be clear and conversational.</li>
+			<li>
+				Get right to the point. Be brief but also super literal. Say what exactly happened and what
+				the user needs to do to fix the error.
+			</li>
+			<li>
+				Use the correct combination of call-to-action buttons. For example, if you say "Replace the
+				source file with X?" the options should be Replace/Cancel and not Yes/No/Retry.
+			</li>
+			<li>
+				Provide appropriate actions where applicable. Actions in error messages guide users about
+				the next step.
+			</li>
+			<li>Use appropriate language for your audience and keep technical jargon to minimum.</li>
+		</ul>
+	</Use.Do>
+	<Use.Dont>
+		<ul>
+			<li>
+				Don’t include extra details about why the error happened—give only the info that users need
+				to know.
+			</li>
+			<li>
+				Avoid negative words. For example, say "You need to have enough rights to publish pipelines"
+				instead of "You don't have enough rights to publish pipelines".
+			</li>
+		</ul>
+	</Use.Dont>
 </Use>
 
 ## Usage
@@ -277,10 +142,12 @@ Error messages should tell why there was a problem and what could be done to res
 		args={{
 			title: 'A title',
 			description: 'with a description',
-			withBackground: true,
+			small: false,
+			withBackground: false,
 		}}
 		argTypes={{
 			variant: {
+				name: 'Variation',
 				description: 'InlineMessage variation',
 				control: {
 					type: 'select',
@@ -289,10 +156,7 @@ Error messages should tell why there was a problem and what could be done to res
 			},
 		}}
 	>
-		{({ variant, ...rest }) => {
-			const Component = InlineMessage[variant] || InlineMessage;
-			return <Component {...rest} />;
-		}}
+		{Stories.render.bind({})}
 	</Story>
 </Canvas>
 
@@ -300,10 +164,4 @@ Error messages should tell why there was a problem and what could be done to res
 
 ## Accessibility
 
-_To do_
-
-## Changelog
-
-| Date       | Author     | Description |
-| ---------- | ---------- | ----------- |
-| 03/18/2020 | Monia Huet | Init page   |
+Each Inline Message has a role `status` and an aria-live attribute `polite` by default.

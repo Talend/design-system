@@ -2,16 +2,29 @@ name: Visual regression testing
 
 on:
   pull_request:
-    types: [labeled]
+    branches:
+      - master
+    types: 
+      - labeled
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
-  test:
-    if: ${{ github.event.label.name == 'need visual approval' }}
+  build-pr:
+    if: |
+      (!startsWith(github.event.head_commit.message, 'chore(deps-dev)') && github.ref == 'refs/heads/master') ||
+      (github.event.label.name == 'need visual approval')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: npm install
-      - uses: chromaui/action@v1
+      - uses: actions/checkout@v2
         with:
-          appCode: ${{ secrets.CHROMATIC_APP_CODE }}
+          fetch-depth: 0
+      - name: Install dependencies
+        run: yarn
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

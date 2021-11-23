@@ -1,8 +1,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
-	href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inconsolata:wght@300;400;500;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
 	rel="stylesheet"
 />
+<link id="bootstrap-theme" href="https://talend.surge.sh/theme/bootstrap.css" rel="stylesheet" />
 <style>
 	html {
 		font-size: 62.5%;
@@ -22,6 +23,27 @@
 		overflow: hidden;
 		clip: rect(0, 0, 0, 0);
 		border: 0;
+	}
+
+	.sbdocs.sbdocs-toc,
+	.sbdocs.sbdocs-top {
+		border-radius: 0.5rem;
+	}
+
+	.sbdocs.sbdocs-toc {
+		--toc-color: #202020;
+		--toc-background: white;
+		--toc-indicator-color: #f5f5f5;
+		--toc-indicator-color--active: #0675c1;
+
+		box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+	}
+
+	.sbdocs.sbdocs-top {
+		--toc-button-color: #202020;
+		--toc-button-background: transparent;
+		--toc-button-background--hover: #ffffff;
+		--toc-button-background--active: #efefef;
 	}
 
 	.sbdocs.sbdocs-wrapper {
@@ -168,6 +190,10 @@
 
 	.sbdocs.sbdocs-preview pre.prismjs {
 		background: #022e4d;
+	}
+
+	.sbdocs .token.plain-text {
+		color: #91d1ed;
 	}
 
 	.sbdocs kbd {

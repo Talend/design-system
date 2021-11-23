@@ -3,11 +3,13 @@ import Button from './components/Button';
 import Card from './components/Card';
 import Combobox from './components/Combobox';
 import Divider from './components/Divider';
+import Drawer from './components/Drawer';
 import Dropdown from './components/Dropdown';
 import Form from './components/Form';
 import HeaderBar from './components/HeaderBar';
 import { Icon } from './components/Icon';
 import { IconsProvider } from './components/IconsProvider';
+import InlineEditing from './components/InlineEditing';
 import InlineMessage from './components/InlineMessage';
 import Layout from './components/Layout';
 import Link from './components/Link';
@@ -16,6 +18,7 @@ import Menu from './components/Menu';
 import Modal from './components/Modal';
 import Popover from './components/Popover';
 import Skeleton from './components/Skeleton';
+import Status from './components/Status';
 import Switch from './components/Switch';
 import Stepper from './components/Stepper';
 import Tabs from './components/Tabs';
@@ -25,7 +28,7 @@ import Toggle from './components/Toggle';
 import Tooltip from './components/Tooltip';
 import VisuallyHidden from './components/VisuallyHidden';
 
-import themes from './themes';
+import * as themes from './themes';
 import tokens from './tokens';
 
 export {
@@ -34,11 +37,13 @@ export {
 	Card,
 	Combobox,
 	Divider,
+	Drawer,
 	Dropdown,
 	Form,
 	HeaderBar,
 	Icon,
 	IconsProvider,
+	InlineEditing,
 	InlineMessage,
 	Link,
 	Layout,
@@ -47,6 +52,7 @@ export {
 	Modal,
 	Popover,
 	Skeleton,
+	Status,
 	Switch,
 	Stepper,
 	Tabs,

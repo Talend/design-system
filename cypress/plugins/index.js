@@ -9,6 +9,10 @@ module.exports = (on, config) => {
 			module: {
 				rules: [
 					{
+						test: /\.s[ac]ss$/i,
+						use: ['style-loader', 'css-loader', 'sass-loader'],
+					},
+					{
 						test: /\.css$/i,
 						use: ['style-loader', 'css-loader'],
 					},
@@ -21,6 +25,13 @@ module.exports = (on, config) => {
 							},
 						},
 						exclude: /node_modules/,
+					},
+					{
+						test: /\.woff(2)?(\?v=\d+\.\d+\.\d+)?$/,
+						loader: 'url-loader',
+						options: {
+							mimetype: 'application/font-woff',
+						},
 					},
 				],
 			},

@@ -42,7 +42,7 @@ const theme: DefaultTheme = {
 		buttonDisabledBackgroundColor: palette.grayColor[600],
 
 		inputColor: palette.grayColor[0],
-		inputBackgroundColor: palette.grayColor[600],
+		inputBackgroundColor: palette.grayColor[800],
 		inputBorderColor: palette.grayColor[75],
 		inputHoverBorderColor: palette.activeColor[500],
 		inputFocusBorderColor: palette.primaryColor[500],
@@ -53,10 +53,14 @@ const theme: DefaultTheme = {
 		inputReadOnlyBorderColor: palette.grayColor[600],
 		inputPlaceholderColor: palette.grayColor[100],
 		inputRadioBackgroundColor: palette.grayColor[600],
-		inputGroupColor: palette.grayColor[0],
-		inputGroupBackgroundColor: palette.grayColor[600],
-		inputGroupInteractiveColor: palette.primaryColor[500],
-		inputGroupInteractiveBackgroundColor: palette.grayColor[700],
+		fieldGroupColor: palette.grayColor[0],
+		fieldGroupBackgroundColor: palette.grayColor[600],
+		fieldGroupInteractiveColor: palette.activeColor[500],
+		fieldGroupInteractiveBackgroundColor: palette.activeColor[900],
+		fieldGroupInteractiveHoverColor: palette.activeColor[400],
+		fieldGroupInteractiveHoverBackgroundColor: palette.activeColor[800],
+		fieldGroupInteractiveActiveColor: palette.activeColor[300],
+		fieldGroupInteractiveActiveBackgroundColor: palette.activeColor[700],
 
 		linkColor: palette.activeColor[500],
 		linkHoverColor: palette.activeColor[400],
@@ -79,8 +83,20 @@ const theme: DefaultTheme = {
 		tagWarningColor: palette.warningColor[700],
 		tagWarningBackgroundColor: palette.warningColor[100],
 
+		statusInProgressColor: palette.activeColor[500],
+		statusSuccessColor: palette.successColor[400],
+		statusFailedColor: palette.destructiveColor[400],
+		statusWarningColor: palette.warningColor[400],
+		statusCanceledColor: palette.grayColor[300],
+
 		tooltipColor: palette.grayColor[900],
 		tooltipBackgroundColor: palette.grayColor[300],
+
+		dropdownColor: palette.grayColor[0],
+		dropdownSeparatorColor: palette.grayColor[75],
+		dropdownBackgroundColor: palette.grayColor[800],
+		dropdownHoverBackgroundColor: colors.paleCyan[800],
+		dropdownActiveBackgroundColor: colors.paleCyan[900],
 	},
 	id: 'dark',
 };

@@ -65,10 +65,14 @@ declare module 'styled-components' {
 			inputReadOnlyBorderColor: string;
 			inputPlaceholderColor: string;
 			inputRadioBackgroundColor: string;
-			inputGroupColor: string;
-			inputGroupBackgroundColor: string;
-			inputGroupInteractiveColor: string;
-			inputGroupInteractiveBackgroundColor: string;
+			fieldGroupColor: string;
+			fieldGroupBackgroundColor: string;
+			fieldGroupInteractiveColor: string;
+			fieldGroupInteractiveBackgroundColor: string;
+			fieldGroupInteractiveHoverColor: string;
+			fieldGroupInteractiveHoverBackgroundColor: string;
+			fieldGroupInteractiveActiveColor: string;
+			fieldGroupInteractiveActiveBackgroundColor: string;
 
 			// Links
 			linkColor: string;
@@ -95,9 +99,23 @@ declare module 'styled-components' {
 			tagWarningColor: string;
 			tagWarningBackgroundColor: string;
 
+			// Status
+			statusInProgressColor: string;
+			statusSuccessColor: string;
+			statusFailedColor: string;
+			statusWarningColor: string;
+			statusCanceledColor: string;
+
 			// Tooltips
 			tooltipColor: string;
 			tooltipBackgroundColor: string;
+
+			// Dropdowns
+			dropdownColor: string;
+			dropdownSeparatorColor: string;
+			dropdownBackgroundColor: string;
+			dropdownHoverBackgroundColor: string;
+			dropdownActiveBackgroundColor: string;
 		};
 		id: string;
 	}
