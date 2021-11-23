@@ -13,7 +13,6 @@ function SearchBar() {
 	return (
 		<div style={{ maxWidth: '33%', margin: '0 auto' }}>
 			<Autocomplete
-				openOnFocus
 				placeholder="Search for design system topic..."
 				getSources={({ query }) => [
 					{
