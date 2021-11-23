@@ -18,7 +18,7 @@ function SearchBar() {
 	}
 
 	return (
-		<div style={{ maxWidth: '33%', margin: '0 auto' }}>
+		<div style={{ maxWidth: '50%', margin: '0 auto' }}>
 			<Autocomplete
 				placeholder="Search for design system topic..."
 				getSources={({ query }) => [
