@@ -40,7 +40,7 @@ function SearchBar() {
 											<div className="aa-ItemContent">
 												<div className="aa-ItemContentBody">
 													<div className="aa-ItemContentTitle">
-														<components.Snippet item={item} attribute="title" />
+														<components.Snippet hit={item} attribute="title" />
 													</div>
 													<div className="aa-ItemContentDescription">
 														<components.Snippet hit={item} attribute="content" />
