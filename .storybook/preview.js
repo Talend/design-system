@@ -109,12 +109,29 @@ export const parameters = {
 
 			const title = props.context.title;
 			const titleArray = title?.split('/');
+			const fTitle = title?.replaceAll(/\//gi, ' / ');
+
+			console.log(props.context);
 
 			return (
 				<>
 					<Helmet>
-						<title>{title?.replaceAll(/\//gi, ' / ')}</title>
-						{titleArray.length > 1 && <meta property="article:section" value={titleArray[0]} />}
+						<title>{fTitle}</title>
+						{titleArray.length > 1 && (
+							<>
+								<meta property="og:title" content={fTitle} />
+								<meta property="og:type" content="article" />
+								<meta
+									property="og:url"
+									content={`https://design.talend.com/?path=/docs/${props.context.id}`}
+								/>
+								<meta
+									property="og:image"
+									content={`https://via.placeholder.com/468x60?text=${fTitle}`}
+								/>
+								<meta property="article:section" content={titleArray[0]} />
+							</>
+						)}
 					</Helmet>
 					<IconsProvider bundles={['https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg']} />
 					<ThemeProvider theme={hasDarkMode ? dark : light}>
