@@ -10,6 +10,13 @@ const searchClient = algoliasearch(
 );
 
 function SearchBar() {
+	if (!process.env.STORYBOOK_ALGOLIA_SEARCH_INDEX) {
+		console.warn(
+			'Algolia is not set up correctly, be sure to configure STORYBOOK_ALGOLIA_SEARCH_APP_ID, STORYBOOK_ALGOLIA_SEARCH_API_KEY and STORYBOOK_ALGOLIA_SEARCH_INDEX secrets before.',
+		);
+		return null;
+	}
+
 	return (
 		<div style={{ maxWidth: '33%', margin: '0 auto' }}>
 			<Autocomplete
@@ -42,9 +49,9 @@ function SearchBar() {
 													<div className="aa-ItemContentTitle">
 														<components.Snippet hit={item} attribute="title" />
 													</div>
-													<div className="aa-ItemContentCategory">
+													<small className="aa-ItemContentCategory">
 														<components.Snippet hit={item} attribute="category" />
-													</div>
+													</small>
 													<div className="aa-ItemContentDescription">
 														<components.Snippet hit={item} attribute="content" />
 													</div>
